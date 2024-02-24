@@ -104,7 +104,7 @@
 
 .backgroundImages2 {
   width: 100%;
-  background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/gradient-background_5Polm9r9c.svg?updatedAt=1708796446079');
+  background-image: url('./assets/gradient-background.svg');
   background-size: cover;
 }
 
