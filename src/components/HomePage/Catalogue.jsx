@@ -7,10 +7,10 @@ import People from '../../assets/people.svg';
 const Catalogue = () => {
   return (
     <>
-      <div className=' w-full background-image2 sm:h-[2000px] lg:h-[1563px]'>
+      <div className=' w-full backgroundImages2 sm:h-[2116px] lg:h-[1563px]'>
         <div className='flex  items-center  justify-center'>
-          <div className='container '>
-            <div className='container_ '>
+          <div className=' '>
+            <div className=' '>
               <div className='flex flex-col pt-[166px] sm:px-[16px] items-center'>
                 <div className='sm:p-[16px] lg:p-[32px]  productBg  flex sm:flex-col lg:flex-row gap-[48px] rounded-[48px] '>
                   <div className='flex w-full'>
