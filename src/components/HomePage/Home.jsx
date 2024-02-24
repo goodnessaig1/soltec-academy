@@ -10,7 +10,7 @@ import Sponsors from './Sponsors';
 const Home = () => {
   return (
     <div className='w-full'>
-      <HeroSection />
+      {/* <HeroSection /> */}
       <Catalogue />
       <Sponsors />
       <Courses />
