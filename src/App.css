@@ -106,17 +106,15 @@
   width: 100%;
   background-image: url('./assets/gradientbackground1.jpg');
   background-size: cover;
-  /* background-position: 5% 75%; */
   background-size: 100% 100%;
   background-position: center center;
   background-attachment: fixed;
-  /* background-repeat: no-repeat; */
   background-size: cover;
   max-width: 100%;
 }
 
 .productBg {
-  /* color: rgba(255, 255, 255, 1); */
+  color: rgba(255, 255, 255, 1);
   background: rgba(255, 255, 255, 0.2);
 }
 
