@@ -106,7 +106,13 @@
   width: 100%;
   background-image: url('./assets/gradient-background.svg');
   background-size: cover;
-  background-position: 5% 75%;
+  /* background-position: 5% 75%; */
+  background-size: 100% 100%;
+  background-position: center center;
+  background-attachment: fixed;
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+  max-width: 100%;
 }
 
 .productBg {
