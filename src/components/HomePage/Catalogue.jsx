@@ -100,7 +100,7 @@ const Catalogue = () => {
                 </h1>
               </div>
               <div className='sm:w-full sm:mt-[60px] lg:mt-[0px] lg:w-1/2 flex flex-col gap-[14px]  '>
-                <div className='bg-colorOpacity hover:bg-[#fff] group hover:cursor-pointer transition duration-[200] p-[12px] flex flex-row gap-[24px] rounded-[24px] '>
+                <div className='bg-colorOpacity hover:bg-[#fff] group hover:cursor-pointer transition duration-[200] p-[12px] flex flex-row items-center gap-[24px] rounded-[24px] '>
                   <div className='bg-[#fff] sm:px-[16px] lg:px-[20px] h-[87px] w-[106px] flex items-center justify-center rounded-[16px] '>
                     <img src={Tutor} alt='' />
                   </div>
@@ -114,7 +114,7 @@ const Catalogue = () => {
                     </span>
                   </div>
                 </div>
-                <div className='bg-colorOpacity hover:bg-[#fff] group hover:cursor-pointer transition duration-[200] p-[12px] pr-[24px] flex flex-row gap-[24px] rounded-[24px] '>
+                <div className='bg-colorOpacity hover:bg-[#fff] group hover:cursor-pointer transition duration-[200] p-[12px] flex flex-row items-center gap-[24px] rounded-[24px] '>
                   <div className='bg-[#fff] sm:px-[16px] lg:px-[20px] h-[87px] w-[116px] flex items-center justify-center rounded-[16px] '>
                     <img src={Industry} alt='' />
                   </div>
@@ -128,7 +128,7 @@ const Catalogue = () => {
                     </span>
                   </div>
                 </div>
-                <div className='bg-colorOpacity hover:bg-[#fff] group hover:cursor-pointer transition duration-[200] p-[12px] pr-[24px] flex flex-row gap-[24px] rounded-[24px] '>
+                <div className='bg-colorOpacity hover:bg-[#fff] group hover:cursor-pointer transition duration-[200] p-[12px] flex flex-row items-center gap-[24px] rounded-[24px] '>
                   <div className='bg-[#fff] sm:px-[16px] lg:px-[20px] h-[87px] w-[106px] flex items-center justify-center rounded-[16px] '>
                     <img src={Facilities} alt='' />
                   </div>
@@ -142,7 +142,7 @@ const Catalogue = () => {
                     </span>
                   </div>
                 </div>
-                <div className='bg-colorOpacity hover:bg-[#fff] group hover:cursor-pointer transition duration-[200] p-[12px] pr-[24px] flex flex-row gap-[24px] rounded-[24px] '>
+                <div className='bg-colorOpacity hover:bg-[#fff] group hover:cursor-pointer transition duration-[200] p-[12px] flex flex-row items-center gap-[24px] rounded-[24px] '>
                   <div className='bg-[#fff] sm:px-[16px] lg:px-[20px] h-[87px] w-[106px] flex items-center justify-center rounded-[16px] '>
                     <img src={People} alt='' />
                   </div>
