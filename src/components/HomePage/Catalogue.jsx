@@ -7,7 +7,7 @@ import People from '../../assets/people.svg';
 const Catalogue = () => {
   return (
     <>
-      <div className=' w-full backgroundImages2 sm:h-[2116px] lg:h-[1563px]'>
+      <div className=' w-full backgroundImages2'>
         <div className='flex  items-center  justify-center'>
           <div className=' '>
             <div className=' '>
