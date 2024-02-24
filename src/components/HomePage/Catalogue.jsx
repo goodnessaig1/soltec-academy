@@ -7,8 +7,8 @@ import People from '../../assets/people.svg';
 const Catalogue = () => {
   return (
     <>
-      <div className=' background-image sm:h-[2116px] lg:h-[1563px]'>
-        <div className='flex items-center  justify-center'>
+      <div className=' w-full backgroundImages sm:h-[2116px] lg:h-[1563px]'>
+        <div className='flex  items-center  justify-center'>
           <div className='container '>
             <div className='container_ '>
               <div className='flex flex-col pt-[166px] sm:px-[16px] items-center'>
