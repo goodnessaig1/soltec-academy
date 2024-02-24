@@ -80,7 +80,7 @@ const Footer = () => {
               <input
                 type='text'
                 placeholder='Enter your email'
-                className='font-[400] outtline-none bg-transparent text-footerCol text-[14px] w-full focus:outline-none placeholder-footerCol focus:border-none leading-[16px]'
+                className='font-[400] text-[16px] outtline-none bg-transparent text-footerCol w-full focus:outline-none placeholder-footerCol focus:border-none leading-[16px]'
               />
             </div>
             <div className='p-[8px] rounded-[12px] bg-[#fff] '>
