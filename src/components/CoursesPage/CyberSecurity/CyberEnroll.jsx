@@ -5,9 +5,13 @@ const CyberEnroll = () => {
   return (
     <div className='background-image4 h-[416px] w-full'>
       <div className='w-full gap-[32px] h-full items-center justify-center flex flex-col'>
-        <h1 className='barlow-semi condensed-black   text-[32px] text-[#fff] font-[700px] leading-[48px] text-center '>
+        <h1 className='barlow-semi condensed-black  text-[24px] lg:text-[32px] text-[#fff] font-[700px] leading-[48px] text-center '>
           Ready to begin your{' '}
-          <span className='text-cyberCol'>CYBERSECURITY</span> <br />
+          <span className='text-cyberCol'>
+            <br className='lg:hidden' />
+            CYBERSECURITY
+          </span>{' '}
+          <br className='hidden lg:block' />
           journey?
         </h1>
         <Link

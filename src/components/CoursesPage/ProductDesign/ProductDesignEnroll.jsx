@@ -5,9 +5,14 @@ const ProductDesignEnroll = () => {
   return (
     <div className='background-image3 h-[416px] w-full'>
       <div className='w-full gap-[32px] h-full items-center justify-center flex flex-col'>
-        <h1 className='barlow-semi condensed-black   text-[32px] text-[#fff] font-[700px] leading-[48px] text-center '>
-          Ready to begin your{' '}
-          <span className='text-yellowc3'>PRODUCT DESIGN</span> <br />
+        <h1 className='barlow-semi condensed-black  sm:text-[24px] lg:text-[32px] text-[#fff] font-[700px] leading-[48px] text-center '>
+          Ready to begin your
+          <span className='text-yellowc3'>
+            {' '}
+            <br className='lg:hidden' />
+            PRODUCT DESIGN
+          </span>{' '}
+          <br className='hidden lg:block' />
           journey?
         </h1>
         <Link
