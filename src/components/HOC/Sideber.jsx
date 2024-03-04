@@ -45,7 +45,7 @@ const Sideber = ({ toggle, showSidebar }) => {
             </NavLink>
             <Link
               to={'/blog/payment-guide'}
-              className='w-[159px] h-[48px] hover:bg-[#f1f1f1] flex items-center justify-center border border-[1px] rounded-[10px] p-[10px] text-[14px] text-[#000]'
+              className='w-[159px] h-[48px] hover:bg-[#f1f1f1] flex items-center justify-center sidebarPay  rounded-[12px] p-[10px] text-[14px] text-[#000]'
             >
               <h1 className='text-[14px]'>Payment Guide</h1>
             </Link>
