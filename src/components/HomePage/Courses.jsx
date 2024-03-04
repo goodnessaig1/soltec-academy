@@ -7,6 +7,7 @@ import Arrow from '../../assets/arrow.svg';
 import Next from '../../assets/next.svg';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Link } from 'react-router-dom';
 
 const CustomPrevArrow = props => {
   return (
@@ -69,7 +70,7 @@ const Courses = () => {
     <div className='w-full'>
       <div className='container_'>
         <div className=''>
-          <div className='sm:my-[-60px] sm:mb-[120px] lg:mb-[130px] lg:my-[130px]'>
+          <div className='sm:my-[80px] sm:mt-[80px] md:mt-[120px] sm:mb-[120px] lg:mb-[130px] lg:my-[130px]'>
             <div className='w-full items-center justify-center flex'>
               <img src={Text} className='w-[311px] lg:w-[400px] ' alt='' />
             </div>
@@ -112,11 +113,14 @@ const Courses = () => {
                         <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
                           N250,000
                         </h1>
-                        <div className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
+                        <Link
+                          to={'/courses/product-design'}
+                          className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
+                        >
                           <span className='font-[600] text-[16px] leading-[24px]'>
                             Enroll now
                           </span>
-                        </div>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -228,17 +232,20 @@ const Courses = () => {
                         <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
                           N250,000
                         </h1>
-                        <div className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
+                        <Link
+                          to={'/courses/product-design'}
+                          className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
+                        >
                           <span className='font-[600] text-[16px] leading-[24px]'>
                             Enroll now
                           </span>
-                        </div>
+                        </Link>
                       </div>
                     </div>
                   </div>
                   <div className='max-w-[367px]'>
                     <div className='flex max-w-[367px] flex-col max_wid w-[367px] h-[320px] py-[16px] gap-[32px] rounded-[24px] backgroundThree items-center'>
-                      <h1 className='font-[700] w-[301px] text-[32px] leading-[48px] text-[#fff]  text-nowrap'>
+                      <h1 className='font-[700] text-nowrap w-[301px] text-[31px] leading-[48px] text-[#fff]  text-nowrap'>
                         Frontend Web Dev...
                       </h1>
                       <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
@@ -260,7 +267,7 @@ const Courses = () => {
                   </div>
                   <div className='max-w-[367px]'>
                     <div className='flex max-w-[367px] flex-col max_wid w-[367px] h-[320px] py-[16px] gap-[32px] rounded-[24px] backgroundFour items-center'>
-                      <h1 className='font-[700] w-[301px] text-[32px] leading-[48px] text-[#fff]  text-nowrap'>
+                      <h1 className='font-[700] w-[301px]  text-[31px] leading-[48px] text-[#fff]  text-nowrap'>
                         Backend Developm..
                       </h1>
                       <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
@@ -341,11 +348,14 @@ const Courses = () => {
                     <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
                       N250,000
                     </h1>
-                    <div className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
+                    <Link
+                      to={'/courses/product-design'}
+                      className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
+                    >
                       <span className='font-[600] text-[16px] leading-[24px]'>
                         Enroll now
                       </span>
-                    </div>
+                    </Link>
                   </div>
                 </div>
                 <div className='flex flex-col w-[343px]  py-[20px] gap-[20px] rounded-[24px] backgroundFour items-center'>
@@ -393,12 +403,12 @@ const Courses = () => {
 
             <div className='w-full flex items-center  sm:mt-[64px] lg:mt-[80px] justify-center'>
               <div className='w-[228px] h-[48px] flex items-center justify-center rounded-[16px] hover:bg-[#f1f1f1] hover:cursor-pointer transition duration-200 borderCol bg-[#fff]  '>
-                <div className='flex flex-row gap-[8px]'>
+                <Link to={'/courses'} className='flex flex-row gap-[8px]'>
                   <span className='font-[600] text-[16px] leading-[24px] '>
                     All courses
                   </span>
                   <img src={Arrow} alt='' />
-                </div>
+                </Link>
               </div>
             </div>
           </div>

@@ -4,22 +4,22 @@ import Gradient from '../../assets/gradient.svg';
 import Profile from '../../assets/profile.jpg';
 import Media from '../../assets/media.svg';
 import Media1 from '../../assets/media1.svg';
-import Media2 from '../../assets/media2.svg';
+import Media2 from '../../assets/media-icons3.svg';
 import Cursor from '../../assets/cursor.svg';
 import Marquee from 'react-fast-marquee';
 import Header from '../Header/Header';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
     <div className='w-full'>
+      <Header />
       <div className='flex mx-[0] my-auto sm:px-[16px] lg:px-[120px] sm:py-[16px] lg:py-[24px] flex-col'>
         {/* Hero session gradient */}
         <div className='absolute top-[0] ml-[127px]'>
           <img src={Gradient} alt='' />
         </div>
         {/* Header */}
-        <Header />
-
         <div className='absolute top-0 right-0 left-0 '>
           <div className='w-full'>
             <div className='hero_se'>
@@ -27,7 +27,7 @@ const HeroSection = () => {
                 <div className='sm:flex lg:hidden w-full flex justify-end'>
                   <img src={Frame3} alt='' />
                 </div>
-                <div className='sm:pl-[16px] lg:pl-[120px] flex sm:w-full lg:w-1/2 lg:items-start xxl:items-end flex-col gap-[27px] sm:mt-[0px] lg:mt-[235px]'>
+                <div className='sm:pl-[16px] lg:pl-[120px] flex sm:w-full lg:w-1/2 mdl:items-center  lg:items-start xxl:items-end flex-col gap-[27px] sm:mt-[0px] lg:mt-[235px]'>
                   <div className=' flex flex-col gap-[27px]'>
                     <h1 className='text-nowrap barlow-semi condensed-bold  font-[700] sm:text-[37px] xs:text-[32px]  lg:text-[64px] text-[#1c1c1c] sm:leading-[48px] lg:leading-[76px] '>
                       Best place to learn a <br />
@@ -50,11 +50,14 @@ const HeroSection = () => {
                       <br className='sm:hidden lg:flex' />
                       passion. We handle the rest.
                     </span>
-                    <div className='sm:w-[132px] lg:w-[182px] h-[48px] custom-gradient  rounded-[16px] flex items-center justify-center '>
+                    <Link
+                      to={'/courses'}
+                      className='sm:w-[132px] lg:w-[182px] h-[48px] custom-gradient  rounded-[16px] flex items-center justify-center '
+                    >
                       <span className='text-[#fff] text-[700] text-[16px] '>
                         Enroll now
                       </span>
-                    </div>
+                    </Link>
                   </div>
                 </div>
                 <div className='sm:hidden  justify-end lg:flex lg:w-1/2'>
@@ -66,7 +69,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className='relative sm:mt-[800px] sm:mb-[110px] lg:mb-[120px] lg:mt-[720px]'>
+      <div className='relative sm:mt-[800px] md:mt-[940px] sm:mb-[110px] lg:mb-[120px] lg:mt-[640px]'>
         <Marquee
           speed={55}
           className='flex flex-row gap-[24px] '
@@ -142,10 +145,10 @@ const HeroSection = () => {
                 </span>
               </div>
             </div>
-            <div className='absolute items-right top-[0] mt-[16px] sm:ml-[230px] lg:ml-[398px] '>
+            <div className='absolute items-right top-[0] sm:ml-[230px] lg:ml-[398px] '>
               <img
                 src={Media2}
-                className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[51px]  '
+                className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[74px]  '
                 alt=''
               />
             </div>

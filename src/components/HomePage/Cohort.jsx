@@ -18,7 +18,7 @@ const Cohort = () => {
           <img src={Stroke} alt='' />
         </div>
         <div className='mt-[48px] flex text-center'>
-          <span className='font-[400] sm:text-[18px] lg:text-[20px] text-nowrap leading-[30px] text-center  text-[#fff]'>
+          <span className='font-[400] sm:text-[16px] lg:text-[20px] text-nowrap leading-[30px] text-center  text-[#fff]'>
             We’re still putting together plans for our next{' '}
             <br className='sm:block lg:hidden' />
             bootcamp. You can sign up <br className='sm:hidden lg:block' />
@@ -27,7 +27,7 @@ const Cohort = () => {
             new students!
           </span>
         </div>
-        <div className='bg-colorOpacity flex items-center rounded-[20px] mt-[32px] justify-between w-[383px] py-[6px] pr-[6px] pl-[20px]'>
+        <div className='bg-colorOpacity flex items-center rounded-[20px] mt-[32px] justify-between sm:w-[343px] lg:w-[383px] py-[6px] pr-[6px] pl-[20px]'>
           <input
             type='text'
             placeholder='Enter email address'

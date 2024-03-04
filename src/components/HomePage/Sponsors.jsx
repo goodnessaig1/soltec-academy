@@ -44,18 +44,6 @@ const Sponsors = () => {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
   };
-  var MobileSettings = {
-    className: 'center',
-    dots: false,
-    infinite: true,
-    centerMode: true,
-    centerPadding: '0',
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    prevArrow: <CustomPrevArrow />,
-    nextArrow: <CustomNextArrow />,
-  };
 
   return (
     <div className='w-full w-full'>
@@ -94,74 +82,51 @@ const Sponsors = () => {
         </div>
       </Marquee>
       <div className='container_'>
-        <div className='mt-[130px] sm:ml-[16px] lg:ml-[130px]'>
+        <div className=' sm:mt-[80px] lg:mt-[130px] sm:px-[16px] lg:px-0 sm:ml-[0] lg:ml-[130px]'>
           <div className=' sm:hidden lg:block'>
             <div className='slider-container '>
               <Slider
                 {...settings}
                 className='flex outline-none flex-row overflow-initial'
               >
-                <div className='w-[626px] h-[599px] gap-[16px] flex flex-col'>
+                <div className='w-[606px] h-[599px] gap-[16px] flex flex-col'>
                   <div className='flex flex-row gap-[16px]'>
-                    <img src={Codes} className='w-[314px] h-[234px]' alt='' />
-                    <img src={Meet} className='w-[329px] h-[234px]' alt='' />
+                    <img src={Codes} className='w-[270px] h-[234px]' alt='' />
+                    <img src={Meet} className='w-[300px] h-[234px]' alt='' />
                   </div>
                   <div className='mt-[16px]'>
-                    <img src={Office} className='w-[661px]' alt='' />
+                    <img src={Office} className='w-[596px]' alt='' />
                   </div>
                 </div>
-                <div className='w-[626px] h-[599px]'>
-                  <img src={Video} alt='' />
+                <div className='w-[540px] h-[599px]'>
+                  <img src={Video} className='' alt='' />
                 </div>
-                <div className='w-[626px] h-[599px]'>
+                <div className='w-[606px] h-[599px]'>
                   <img src={Video} alt='' />
                 </div>
               </Slider>
             </div>
           </div>
-          <div className='place-items-center'>
-            <div className='sm:block lg:hidden '>
-              <div className='slider-container '>
-                <Slider
-                  {...MobileSettings}
-                  className='flex outline-none flex-row overflow-initial'
-                >
-                  <div className=' gap-[16px] flex flex-col'>
-                    <div className='flex flex-row gap-[16px]'>
-                      <img
-                        src={Codes}
-                        className='sm:w-[170px] lg:w-[314px] sm:h-[179px] lg:h-[234px]'
-                        alt=''
-                      />
-                      <img
-                        src={Meet}
-                        className='sm:w-[200px] lg:w-[329px] sm:h-[179px] lg:h-[234px]'
-                        alt=''
-                      />
-                    </div>
-                    <div className='mt-[16px]'>
-                      <img
-                        src={Office}
-                        className='sm:w-[385px] lg:w-[661px]'
-                        alt=''
-                      />
-                    </div>
-                  </div>
-                  <div className=' flex items-center lg:w-[626px] h-[599px]'>
-                    <img
-                      src={Video}
-                      className='sm:w-auto lg:w-[626px] '
-                      alt=''
-                    />
-                  </div>
-                  <div className='lg:w-[626px] ml:[16px] h-[599px]'>
-                    <img
-                      src={Video}
-                      alt=''
-                      className='sm:w-[345px] lg:w-[626px]'
-                    />
-                  </div>
-                </Slider>
+          <div className='sm:flex items-center justify-center w-full lg:hidden '>
+            <div className=' gap-[8px] w-[343px] flex flex-col'>
+              <div className='flex flex-row gap-[8px]'>
+                <img
+                  src={Codes}
+                  className='sm:w-[140px] lg:w-[304px] sm:h-[169px] '
+                  alt=''
+                />
+                <img
+                  src={Meet}
+                  className='sm:w-[180px] lg:w-[309px] sm:h-[169px] '
+                  alt=''
+                />
+              </div>
+              <div className='mt-[6px]'>
+                <img
+                  src={Office}
+                  className='sm:w-[330px] lg:w-[661px]'
+                  alt=''
+                />
               </div>
             </div>
           </div>

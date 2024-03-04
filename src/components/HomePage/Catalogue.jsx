@@ -3,17 +3,18 @@ import Tutor from '../../assets/tutor-icon.svg';
 import Industry from '../../assets/industry-icon.svg';
 import Facilities from '../../assets/stroke.svg';
 import People from '../../assets/people.svg';
+import { Link } from 'react-router-dom';
 
 const Catalogue = () => {
   return (
     <>
-      <div className=' w-full backgroundImages2 sm:h-[2116px] lg:h-[1563px]'>
+      <div className=' w-full backgroundImages2 sm:h-[2116px] md:h-[2300px] lg:h-[1563px]'>
         <div className='flex  items-center  justify-center'>
           <div className=' '>
             <div className=' '>
               <div className='flex flex-col pt-[166px] sm:px-[16px] items-center'>
                 <div className='sm:p-[16px] lg:p-[32px]  productBg  flex sm:flex-col lg:flex-row gap-[48px] rounded-[48px] '>
-                  <div className='flex w-full'>
+                  <div className='flex '>
                     <span className='absolute ml-[30px] mt-[20px] text-[20px] text-[#fff] leading-[24px] '>
                       PRODUCT DESIGN
                     </span>
@@ -55,9 +56,12 @@ const Catalogue = () => {
                       <li>Prototyping</li>
                       <li>Design thinking</li>
                     </ul>
-                    <div className=' sm:mt-[14px] lg:mt-[0px] lg:w-[186px] h-[48px] rounded-[50px] flex items-center justify-center bg-[#fff] text-[#000] '>
+                    <Link
+                      to={'/courses/product-design'}
+                      className=' sm:mt-[14px] hover:cursor-pointer lg:mt-[0px] lg:w-[186px] h-[48px] rounded-[50px] flex items-center justify-center bg-[#fff] hover:bg-[#f1f1f1] text-[#000] '
+                    >
                       <span>See more</span>
-                    </div>
+                    </Link>
                   </div>
                 </div>
                 <div className='mt-[48px] sm:px-[6px] lg:px-[0px] sm:grid sm:grid-cols-2   gap-y-[24px] gap-x-[16px]  lg:flex lg:flex-row lg:gap-[61px]  '>

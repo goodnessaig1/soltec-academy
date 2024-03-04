@@ -1,33 +1,51 @@
-import { NavLink } from 'react-router-dom';
+/* eslint-disable react/prop-types */
+import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../assets/logo.svg';
 import Logo2 from '../../assets/mobile-logo.svg';
+// import LogoDark from '../../assets/logo-dark.svg';
 import Menu from '../../assets/menu.svg';
+import Menu2 from '../../assets/menu-1.svg';
 import Sideber from '../HOC/Sideber';
 import { useState } from 'react';
 
-const Header = () => {
+// eslint-disable-next-line no-unused-vars
+const Header = ({ headerCol }) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
   return (
-    <div className='contaier'>
+    <div className='contaier px-[16px] lg:px-[120px] py-[16px] lg:py-[24px]'>
       <div className={`sidebar ${showSidebar ? 'open z-3' : ''}`}>
         <Sideber showSidebar={showSidebar} toggle={toggleSidebar} />
       </div>
       <div className=''>
         <div className='flex flex-row items-center justify-between'>
-          <div className=''>
-            <img src={Logo} className='sm:hidden lg:flex' alt='' />
-            <img src={Logo2} className='sm:flex lg:hidden' alt='' />
+          <div className='z-10'>
+            {headerCol ? (
+              // <img src={LogoDark} className='sm:hidden lg:flex' alt='' />
+              <Link to={'/'}>
+                <img src={Logo} className='hidden  lg:flex' alt='' />
+              </Link>
+            ) : (
+              <Link to={'/'}>
+                <img src={Logo} className='hidden lg:flex' alt='' />
+              </Link>
+            )}
+            <Link to={'/'}>
+              <img src={Logo2} className='flex lg:hidden' alt='' />
+            </Link>
           </div>
-          <div className='sm:hidden z-10 lg:flex flex-row lg:gap-[36px] xxl:gap-[64px] '>
+          <div className='hidden z-10 lg:flex flex-row lg:gap-[36px] xxl:gap-[64px] '>
             <NavLink
-              exact
               className={({ isActive }) =>
-                isActive
-                  ? 'nav-link'
-                  : 'unselected hover:text-[#000] transition duration-200'
+                isActive && headerCol
+                  ? 'text-[#fff] nav-link'
+                  : isActive
+                  ? 'nav-link text-[#000]'
+                  : !isActive && headerCol
+                  ? 'unselected transition duration-200 hover:text-[#fff]'
+                  : 'unselected hover:text-[#000]'
               }
               to='/'
             >
@@ -35,9 +53,13 @@ const Header = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                isActive
-                  ? 'nav-link'
-                  : 'unselected hover:text-[#000] transition duration-200'
+                isActive && headerCol
+                  ? 'text-[#fff] nav-link'
+                  : isActive
+                  ? 'nav-link text-[#000]'
+                  : !isActive && headerCol
+                  ? 'unselected transition duration-200 hover:text-[#fff]'
+                  : 'unselected hover:text-[#000]'
               }
               to='/courses'
             >
@@ -45,9 +67,13 @@ const Header = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                isActive
-                  ? 'nav-link'
-                  : 'unselected hover:text-[#000] transition duration-200'
+                isActive && headerCol
+                  ? 'text-[#fff] nav-link'
+                  : isActive
+                  ? 'nav-link text-[#000]'
+                  : !isActive && headerCol
+                  ? 'unselected transition duration-200 hover:text-[#fff]'
+                  : 'unselected hover:text-[#000]'
               }
               to='/blog'
             >
@@ -55,22 +81,29 @@ const Header = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                isActive
-                  ? 'nav-link'
-                  : 'unselected hover:text-[#000] transition duration-200'
+                isActive && headerCol
+                  ? 'text-[#fff] nav-link'
+                  : isActive
+                  ? 'nav-link text-[#000]'
+                  : !isActive && headerCol
+                  ? 'unselected transition duration-200 hover:text-[#fff]'
+                  : 'unselected hover:text-[#000]'
               }
               to='/about-us'
             >
               <h1>ABOUT US</h1>
             </NavLink>
           </div>
-          <div className='sm:hidden lg:flex z-10 bg-[#fff] hover:bg-[#f0f0f0] rounded-[16px] hover:cursor-pointer border border-[1px] border-[#1c1c1c] p-[10px] '>
+          <Link
+            to={'/blog/payment-guide'}
+            className='payment_grad hidden lg:flex z-10 bg-[#fff] hover:bg-[#f0f0f0] rounded-[16px] hover:cursor-pointer border border-[1px] border-[#1c1c1c] p-[10px] '
+          >
             <span>Payment Guide</span>
-          </div>
+          </Link>
 
           {/* Menu bar */}
-          <div onClick={toggleSidebar} className='sm:flex lg:hidden z-1'>
-            <img src={Menu} alt='' />
+          <div onClick={toggleSidebar} className='flex lg:hidden z-1'>
+            {headerCol ? <img src={Menu2} alt='' /> : <img src={Menu} alt='' />}
           </div>
         </div>
       </div>
