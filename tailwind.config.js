@@ -14,6 +14,7 @@ export default {
         lg: '960px',
         lgl: '1024px',
         xl: '1280px',
+        xll: '1380px',
         xxl: '1600px',
       },
       fontFamily: {

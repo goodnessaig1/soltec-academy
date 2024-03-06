@@ -89,13 +89,25 @@ const Sponsors = () => {
                 {...settings}
                 className='flex outline-none flex-row overflow-initial'
               >
-                <div className='w-[606px] h-[599px] gap-[16px] flex flex-col'>
-                  <div className='flex flex-row gap-[16px]'>
-                    <img src={Codes} className='w-[270px] h-[234px]' alt='' />
-                    <img src={Meet} className='w-[300px] h-[234px]' alt='' />
+                <div className='w-[500px] xl:w-[606px] h-[500px] xl:h-[599px] gap-[16px] flex flex-col'>
+                  <div className='flex flex-row gap-[8px] xl:gap-[16px]'>
+                    <img
+                      src={Codes}
+                      className='w-[200px] xl:w-[270px] h-[234px]'
+                      alt=''
+                    />
+                    <img
+                      src={Meet}
+                      className='w-[220px] xl:w-[300px] h-[234px]'
+                      alt=''
+                    />
                   </div>
                   <div className='mt-[16px]'>
-                    <img src={Office} className='w-[596px]' alt='' />
+                    <img
+                      src={Office}
+                      className='w-[420px] xl:w-[596px]'
+                      alt=''
+                    />
                   </div>
                 </div>
                 <div className='w-[540px] h-[599px]'>

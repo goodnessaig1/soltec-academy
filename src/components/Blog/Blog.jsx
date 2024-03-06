@@ -8,7 +8,7 @@ const Blog = () => {
       <Header headerCol={false} />
 
       <div className='container_'>
-        <div className='flex px-[16px] lg:px-[100px] xl:px-[120px] pb-[160px] flex-col'>
+        <div className='flex px-[16px] lg:px-[100px] xl:px-[60px] xll:px-[120px] pb-[160px] flex-col'>
           <div className='flex flex-col gap-[16px] mt-[60px] items-center justify-center'>
             <img src={Icons?.Blog} className='lg:block hidden' alt='' />
             <img src={Icons?.BlogMobile} className='block lg:hidden' alt='' />

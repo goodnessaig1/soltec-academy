@@ -47,13 +47,175 @@ const Blog = () => {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
   };
+  var mdSettings = {
+    dots: false,
+    infinite: false,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
+  };
   return (
     <div className='flex flex-col sm:mt-[120px] lg:mt-[180px] sm:px-[16px] pb-[120px]'>
       <div className='flex items-center justify-center '>
         <img src={BlogText} alt='' className='' />
       </div>
-      <div className='lg:pl-[120px] sm:hidden lg:block mt-[82px]'>
+      <div className='lg:pl-[120px] sm:hidden lg:hidden xl:block mt-[82px]'>
         <Slider {...settings} className='slider-container'>
+          <div className='blog-card flex flex-col gap-[18px] pb-[20px] rounded-[36px] '>
+            <img src={FrontendImg} alt='' className='borderR' />
+            <div className='px-[20px] flex flex-col gap-[13px]'>
+              <h1 className='font-[600] text-[20px] leading-[24px] '>
+                The secret to mastering Frontend deve..
+              </h1>
+              <span className='font-[400] text-[14px] leading-[21px] text-lightB'>
+                Like the famous martial artist Bruce Lee once said, I fear not
+                the man who has practiced 10,000 kicks once, but I fear the...
+              </span>
+            </div>
+            <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
+              <div className='flex flex-row gap-[8px] '>
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
+                <div className='flex flex-col'>
+                  <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
+                    Quicksand
+                  </h3>
+                  <h3 className='text-[12px] font-[400] leading-[14px] text-lightB'>
+                    5 min read
+                  </h3>
+                </div>
+              </div>
+              <div className='flex items-center justify-center readMore rounded-[16px] w-[113px] h-[48px]'>
+                <span className='text-[14px] leading-[17px] font-[400]'>
+                  Read more
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className='blog-card flex flex-col gap-[18px] pb-[20px] rounded-[36px]  '>
+            <img src={Uiux} alt='' className='borderR' />
+            <div className='px-[20px] flex flex-col gap-[13px]'>
+              <h1 className='font-[600] text-[20px] leading-[24px] '>
+                The secret to mastering UI/UX design
+              </h1>
+              <span className='font-[400] text-[14px] leading-[21px] text-lightB'>
+                Like the famous martial artist Bruce Lee once said, I fear not
+                the man who has practiced 10,000 kicks once, but I fear the...
+              </span>
+            </div>
+            <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
+              <div className='flex flex-row gap-[8px] '>
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
+                <div className='flex flex-col'>
+                  <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
+                    Quicksand
+                  </h3>
+                  <h3 className='text-[12px] font-[400] leading-[14px] text-lightB'>
+                    5 min read
+                  </h3>
+                </div>
+              </div>
+              <div className='flex items-center justify-center readMore rounded-[16px] w-[113px] h-[48px]'>
+                <span className='text-[14px] leading-[17px] font-[400]'>
+                  Read more
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className='blog-card flex flex-col gap-[18px] pb-[20px] rounded-[36px] '>
+            <img src={Product} alt='' className='borderR' />
+            <div className='px-[20px] flex flex-col gap-[13px]'>
+              <h1 className='font-[600] text-[20px] leading-[24px] '>
+                The secret to mastering product design
+              </h1>
+              <span className='font-[400] text-[14px] leading-[21px] text-lightB'>
+                Like the famous martial artist Bruce Lee once said, I fear not
+                the man who has practiced 10,000 kicks once, but I fear the...
+              </span>
+            </div>
+            <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
+              <div className='flex flex-row gap-[8px] '>
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
+                <div className='flex flex-col'>
+                  <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
+                    Quicksand
+                  </h3>
+                  <h3 className='text-[12px] font-[400] leading-[14px] text-lightB'>
+                    5 min read
+                  </h3>
+                </div>
+              </div>
+              <div className='flex items-center justify-center readMore rounded-[16px] w-[113px] h-[48px]'>
+                <span className='text-[14px] leading-[17px] font-[400]'>
+                  Read more
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className='blog-card flex flex-col gap-[18px] pb-[20px] rounded-[36px]  '>
+            <img src={Uiux} alt='' className='borderR' />
+            <div className='px-[20px] flex flex-col gap-[13px]'>
+              <h1 className='font-[600] text-[20px] leading-[24px] '>
+                The secret to mastering UI/UX design
+              </h1>
+              <span className='font-[400] text-[14px] leading-[21px] text-lightB'>
+                Like the famous martial artist Bruce Lee once said, I fear not
+                the man who has practiced 10,000 kicks once, but I fear the...
+              </span>
+            </div>
+            <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
+              <div className='flex flex-row gap-[8px] '>
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
+                <div className='flex flex-col'>
+                  <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
+                    Quicksand
+                  </h3>
+                  <h3 className='text-[12px] font-[400] leading-[14px] text-lightB'>
+                    5 min read
+                  </h3>
+                </div>
+              </div>
+              <div className='flex items-center justify-center readMore rounded-[16px] w-[113px] h-[48px]'>
+                <span className='text-[14px] leading-[17px] font-[400]'>
+                  Read more
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className='blog-card flex flex-col gap-[18px] pb-[20px] rounded-[36px] '>
+            <img src={FrontendImg} alt='' className='borderR' />
+            <div className='px-[20px] flex flex-col gap-[13px]'>
+              <h1 className='font-[600] text-[20px] leading-[24px] '>
+                The secret to mastering Frontend deve..
+              </h1>
+              <span className='font-[400] text-[14px] leading-[21px] text-lightB'>
+                Like the famous martial artist Bruce Lee once said, I fear not
+                the man who has practiced 10,000 kicks once, but I fear the...
+              </span>
+            </div>
+            <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
+              <div className='flex flex-row gap-[8px] '>
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
+                <div className='flex flex-col'>
+                  <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
+                    Quicksand
+                  </h3>
+                  <h3 className='text-[12px] font-[400] leading-[14px] text-lightB'>
+                    5 min read
+                  </h3>
+                </div>
+              </div>
+              <div className='flex items-center justify-center readMore rounded-[16px] w-[113px] h-[48px]'>
+                <span className='text-[14px] leading-[17px] font-[400]'>
+                  Read more
+                </span>
+              </div>
+            </div>
+          </div>
+        </Slider>
+      </div>
+      <div className='lg:pl-[120px] sm:hidden lg:block xl:hidden mt-[82px]'>
+        <Slider {...mdSettings} className='slider-container'>
           <div className='blog-card flex flex-col gap-[18px] pb-[20px] rounded-[36px] '>
             <img src={FrontendImg} alt='' className='borderR' />
             <div className='px-[20px] flex flex-col gap-[13px]'>
