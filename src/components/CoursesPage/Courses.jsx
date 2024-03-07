@@ -56,7 +56,7 @@ const Courses = () => {
             </span>
           </div>
           <div className='w-full mt-[40px] flex items-center justify-center'>
-            <div className='w-[384px] bg-lightGray h-[60px] z-10 rounded-[20px] flex items-center py-[6px] pl-[20px] pr-[6px] justify-between '>
+            <div className='w-[384px] bg-lightGray h-[60px] z-8 rounded-[20px] flex items-center py-[6px] pl-[20px] pr-[6px] justify-between '>
               <input
                 type='text'
                 value={searchTerm}
