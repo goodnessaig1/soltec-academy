@@ -4,8 +4,8 @@ import Instructor from '../../../assets/instructor.png';
 
 const CyberInstructors = () => {
   return (
-    <div className='w-full sm:mt-[230px] md:mt-[100px] lg:mt-0'>
-      <div className='flex flex-col px-[16px] pb-[200px] items-center gap-[48px] justify-center text-[#fff]'>
+    <div className='w-full sm:mt-[230px] md:mt-[100px] lg:mt-[100px]'>
+      <div className='flex flex-col px-[16px] sm:pb-[200px] lg:pb-[240px] items-center gap-[48px] justify-center text-[#fff]'>
         <img src={Text} className='sm:w-[216px] lg:w-[323px] ' alt='' />
         <div className='flex flex-row gap-[12px] lg:gap-[37px]'>
           <div className='flex flex-col w-[166px] lg:w-[368px] instructor  h-[225px] lg:h-[432px] rounded-[20px] items-center  '>

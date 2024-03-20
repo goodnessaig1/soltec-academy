@@ -1,7 +1,7 @@
 import Header from '../../Header/Header';
 import Footer from '../../Footer/Footer';
-import Icons from '../../../assets/index';
 import { useEffect, useState } from 'react';
+import { Vector1, Vector2 } from '../../../Utils/Assets';
 const CyberSecurityPayment = () => {
   const [type, setType] = useState('Transfer');
   useEffect(() => {
@@ -50,7 +50,7 @@ const CyberSecurityPayment = () => {
                   Apply
                 </div>
               </div>
-              <div className='bg-mainRed text-[#fff] text-center  py-[8px] px-[16px] rounded-[12px] '>
+              <div className='bg-mainRed hover:bg-red-600 h-[56px] hover:cursor-pointer transition duration-400 flex items-center justify-center text-[#fff] text-center  py-[8px] px-[16px] rounded-[12px] '>
                 Save
               </div>
             </div>
@@ -90,9 +90,9 @@ const CyberSecurityPayment = () => {
                     className='flex gap-[8px] hover:cursor-pointer'
                   >
                     {type === 'Transfer' ? (
-                      <img src={Icons?.Vector1} alt='' />
+                      <img src={Vector1} alt='' />
                     ) : (
-                      <img src={Icons?.Vector2} alt='' />
+                      <img src={Vector2} alt='' />
                     )}
                     <h1 className='font-[600] text-[14px]'>Bank Transfer</h1>
                   </div>
@@ -108,9 +108,9 @@ const CyberSecurityPayment = () => {
                     className='flex gap-[8px] hover:cursor-pointer'
                   >
                     {type === 'Paypal' ? (
-                      <img src={Icons?.Vector1} alt='' />
+                      <img src={Vector1} alt='' />
                     ) : (
-                      <img src={Icons?.Vector2} alt='' />
+                      <img src={Vector2} alt='' />
                     )}
                     <h1 className='font-[600] text-[14px]'>Paypal</h1>
                   </div>
@@ -121,9 +121,9 @@ const CyberSecurityPayment = () => {
                     className='flex gap-[8px] hover:cursor-pointer '
                   >
                     {type === 'Card' ? (
-                      <img src={Icons?.Vector1} alt='' />
+                      <img src={Vector1} alt='' />
                     ) : (
-                      <img src={Icons?.Vector2} alt='' />
+                      <img src={Vector2} alt='' />
                     )}
                     <h1 className='font-[600] text-[14px]'>Credit Card</h1>
                   </div>
@@ -148,7 +148,7 @@ const CyberSecurityPayment = () => {
                   </span>
                 </span>
               </div>
-              <div className='text-[#fff] flex items-center text-center justify-center h-[56px] rounded-[12px] bg-mainRed font-[600]'>
+              <div className='text-[#fff] flex items-center text-center justify-center h-[56px] rounded-[12px] bg-mainRed hover:bg-red-600 h-[56px] hover:cursor-pointer transition duration-400 font-[600]'>
                 Make payment
               </div>
             </div>

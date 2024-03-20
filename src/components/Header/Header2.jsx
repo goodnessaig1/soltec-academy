@@ -14,6 +14,28 @@ const Header2 = ({ headerCol }) => {
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
+  const navLinks = [
+    {
+      name: 'HOME',
+      link: '/',
+    },
+    {
+      name: 'COURSES',
+      link: '/courses',
+    },
+    {
+      name: 'BOOK WORKSPACE',
+      link: '/book-workspace',
+    },
+    {
+      name: 'BLOG',
+      link: '/blog',
+    },
+    {
+      name: 'ABOUT US',
+      link: '/about-us',
+    },
+  ];
   return (
     <div className='contaier px-[16px] lg:px-[120px] py-[16px] lg:py-[24px]'>
       <div className={`sidebar ${showSidebar ? 'open z-3' : ''}`}>
@@ -37,62 +59,23 @@ const Header2 = ({ headerCol }) => {
             </Link>
           </div>
           <div className='hidden z-10 lg:flex flex-row lg:gap-[36px] xxl:gap-[64px] '>
-            <NavLink
-              className={({ isActive }) =>
-                isActive && headerCol
-                  ? 'text-[#fff] nav-link'
-                  : isActive
-                  ? 'nav-link text-[#000]'
-                  : !isActive && headerCol
-                  ? 'unselected transition duration-200 hover:text-[#fff]'
-                  : 'unselected hover:text-[#000]'
-              }
-              to='/'
-            >
-              <h1>HOME</h1>
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                isActive && headerCol
-                  ? 'text-[#fff] nav-link'
-                  : isActive
-                  ? 'nav-link text-[#000]'
-                  : !isActive && headerCol
-                  ? 'unselected transition duration-200 hover:text-[#fff]'
-                  : 'unselected hover:text-[#000]'
-              }
-              to='/courses'
-            >
-              <h1>COURSES</h1>
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                isActive && headerCol
-                  ? 'text-[#fff] nav-link'
-                  : isActive
-                  ? 'nav-link text-[#000]'
-                  : !isActive && headerCol
-                  ? 'unselected transition duration-200 hover:text-[#fff]'
-                  : 'unselected hover:text-[#000]'
-              }
-              to='/blog'
-            >
-              <h1>BLOG</h1>
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                isActive && headerCol
-                  ? 'text-[#fff] nav-link'
-                  : isActive
-                  ? 'nav-link text-[#000]'
-                  : !isActive && headerCol
-                  ? 'unselected transition duration-200 hover:text-[#fff]'
-                  : 'unselected hover:text-[#000]'
-              }
-              to='/about-us'
-            >
-              <h1>ABOUT US</h1>
-            </NavLink>
+            {navLinks.map((link, index) => (
+              <NavLink
+                key={index}
+                className={({ isActive }) =>
+                  isActive && headerCol
+                    ? 'text-[#fff] nav-link'
+                    : isActive
+                    ? 'nav-link text-[#000]'
+                    : !isActive && headerCol
+                    ? 'unselected transition duration-200 hover:text-[#fff]'
+                    : 'unselected hover:text-[#000]'
+                }
+                to={link.link}
+              >
+                <h1>{link.name}</h1>
+              </NavLink>
+            ))}
           </div>
           <Link
             to={'/blog/payment-guide'}

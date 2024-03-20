@@ -98,31 +98,30 @@
 
 .backgroundOne {
   background: rgba(1, 15, 64, 0.8);
-  box-shadow: 0px 10px 50px 0px rgba(11, 45, 165, 0.25);
+  /* box-shadow: 0px 10px 50px 0px rgba(11, 45, 165, 0.25); */
 }
 
 .backgroundTwo {
   background: rgba(98, 10, 100, 0.8);
-  box-shadow: 0px 10px 50px 0px rgba(11, 45, 165, 0.25) !important;
+  /* box-shadow: 0px 10px 50px 0px rgba(11, 45, 165, 0.25) !important; */
 }
 .backgroundThree {
   background: rgba(26, 131, 154, 0.8);
-  box-shadow: 0px 10px 50px 0px rgba(72, 156, 174, 0.58);
+  /* box-shadow: 0px 10px 50px 0px rgba(72, 156, 174, 0.58); */
 }
 .backgroundFour {
   background: rgba(0, 147, 50, 0.8);
-  box-shadow: 0px 10px 50px 0px rgba(14, 165, 11, 0.25);
+  /* box-shadow: 0px 10px 50px 0px rgba(14, 165, 11, 0.25); */
 }
 
 .backgroundFive {
   background: rgba(226, 176, 0, 0.8);
-  box-shadow: 0px 10px 50px 0px rgba(165, 131, 11, 0.25);
+  /* box-shadow: 0px 10px 50px 0px rgba(165, 131, 11, 0.25); */
 }
 
 .backgroundSix {
   background: rgba(39, 85, 176, 0.8);
-
-  box-shadow: 0px 10px 50px 0px rgba(165, 131, 11, 0.25);
+  /* box-shadow: 0px 10px 50px 0px rgba(165, 131, 11, 0.25); */
 }
 
 .borderCol {
@@ -333,7 +332,7 @@
   border: 2px solid;
   border-image-source: linear-gradient(
     180deg,
-    #f8b917 0%,
+    #000000 0%,
     rgba(255, 255, 255, 0) 100%
   );
 
@@ -463,4 +462,136 @@
 .sidebarPay {
   border: 1px solid rgba(28, 28, 28, 1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.workSpaceBg {
+  background: rgba(2, 2, 15, 0.7);
+  background-image: url('/src//assets/office.jpg');
+  background-blend-mode: darken;
+  background-size: cover;
+}
+.workSp,
+.inter__ {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.bookSp {
+  background: rgba(255, 195, 52, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 0px 10px 50px 0px rgba(231, 154, 39, 0.4);
+  font-family: 'Barlow', sans-serif;
+}
+
+.bookSp:hover {
+  background: rgb(245, 188, 57);
+  cursor: pointer;
+  transition: 0.25s ease-in;
+}
+
+.col {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 49.9%,
+    rgba(153, 153, 153, 0) 100%
+  );
+}
+
+.redLine {
+  width: 79px;
+  height: 8px;
+  border-radius: 50px;
+  background: rgba(239, 68, 68, 1);
+}
+
+.superFast {
+  background: linear-gradient(98.47deg, #fb585a 9.77%, #953435 56.48%);
+}
+
+.inter_ {
+  font-family: 'Inter', sans-serif !important;
+}
+.conducive {
+  background: linear-gradient(
+    105.68deg,
+    #17b94f 0.42%,
+    #28cc60 0.42%,
+    #0e5f2a 61.46%
+  );
+}
+
+.solarPower {
+  background: #6f6f6f;
+  background: linear-gradient(99.17deg, #3a78f9 6.67%, #002268 61.84%);
+}
+
+.bookWorkBg {
+  /* background: linear-gradient(94.76deg, #f18989 5.14%, #561068 96.77%); */
+  background-image: url('./assets/lines-grad-bg.jpg');
+  background-size: cover;
+  max-width: 100%;
+}
+
+.pay_ct {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(228, 228, 228, 1);
+  color: white !important;
+}
+
+.book_now {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 1);
+}
+
+.seats_bg {
+  border: 1px solid rgba(228, 228, 228, 1);
+}
+
+.input_cont {
+  background: rgba(247, 247, 247, 1);
+  border: 1px solid rgba(228, 228, 228, 1);
+}
+
+.total_p {
+  border-top: 1px solid rgba(228, 228, 228, 1);
+}
+
+.borderrr {
+  border-radius: 24px 0 0 24px;
+}
+
+.sideBarAdmin {
+  padding: 0px 12px 0px 12px;
+  background: rgba(239, 68, 68, 1);
+  box-shadow: 0px 4px 25px 0px rgba(216, 36, 36, 0.25);
+}
+
+.AdminHeader {
+  border-bottom: 1px solid rgba(228, 228, 228, 1);
+}
+
+.logOutBtn {
+  border: 1px solid rgba(220, 38, 38, 1);
+}
+
+.coursesP {
+  border: 1px solid rgba(228, 228, 228, 1);
+  padding: 6px 12px 12px 12px;
+}
+
+.addCourse {
+  border: 1px solid rgba(228, 228, 228, 1);
+}
+
+.z_ind {
+  z-index: 11200 !important;
+}
+
+.zinde {
+  z-index: 400;
+}
+
+.z_indd {
+  z-index: 800 !important;
 }

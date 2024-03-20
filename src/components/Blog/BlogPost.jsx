@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import Header from '../Header/Header';
-import Icons from '../../assets/index';
 import OtherBlogPost from './OtherBlogPosts';
 import Footer from '../Footer/Footer';
+import { BlogPost2 } from '../../Utils/Assets';
 const BlogPost = () => {
   return (
     <div className='w-full'>
@@ -29,7 +29,7 @@ const BlogPost = () => {
             </div>
           </div>
           <div className='flex mt-[24px] lg:mt-[40px] items-center'>
-            <img src={Icons?.BlogPost} alt='' />
+            <img src={BlogPost2} alt='' />
           </div>
           <div className='text-[14px] lg:text-[16px] mt-[16px] lg:mt-[24px] mb-[20px] fontTyp leading-[21px] lg:leading-[24px] font-[400] '>
             <p>Introduction:</p>

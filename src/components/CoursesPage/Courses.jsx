@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import coursesData from './CoursesData';
-import Icons from '../../assets/index';
+import { Emogi } from '../../Utils/Assets';
 
 const Courses = () => {
   const navigate = useNavigate();
@@ -103,7 +103,7 @@ const Courses = () => {
           {searchTerm != '' && searchResults?.length == 0 ? (
             <div className='flex w-full items-center justify-center'>
               <div className='flex mt-[80px] gap-[14px] flex-col items0center justify-center'>
-                <img src={Icons?.Emogi} className='h-[75px]' alt='' />
+                <img src={Emogi} className='h-[75px]' alt='' />
                 <span className=''>
                   No search results with the term {`“${searchTerm}”`}
                 </span>

@@ -7,7 +7,7 @@ const ProductDesignEnroll = () => {
       <div className='w-full gap-[32px] h-full items-center justify-center flex flex-col'>
         <h1 className='barlow-semi condensed-black  sm:text-[24px] lg:text-[32px] text-[#fff] font-[700px] leading-[48px] text-center '>
           Ready to begin your
-          <span className='text-yellowc3'>
+          <span className='text-yellowc3 font-[700]'>
             {' '}
             <br className='lg:hidden' />
             PRODUCT DESIGN

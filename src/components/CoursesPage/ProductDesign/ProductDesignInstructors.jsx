@@ -5,7 +5,7 @@ import Instructor1 from '../../../assets/instructor1.png';
 const ProductDesignInstructors = () => {
   return (
     <div className='w-full'>
-      <div className='flex flex-col px-[16px] pb-[200px] items-center gap-[48px] justify-center text-[#fff]'>
+      <div className='flex flex-col px-[16px] pt-[80px] pb-[260px] items-center gap-[48px] justify-center text-[#fff]'>
         <img src={Text} className='sm:w-[216px] lg:w-[323px]' alt='' />
         <div className='flex flex-row gap-[12px] lg:gap-[37px]'>
           <div className='flex flex-col  w-[166px] lg:w-[368px] instructor  h-[225px] lg:h-[432px] rounded-[20px] items-center  '>

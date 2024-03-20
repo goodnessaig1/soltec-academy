@@ -2,16 +2,15 @@
 /* eslint-disable react/prop-types */
 import Slider from 'react-slick';
 import BlogText from '../../assets/otherposts.svg';
-import FrontendImg from '../../assets/frontend.png';
-import Uiux from '../../assets/uiux.jpg';
+// import FrontendImg from '../../assets/frontend.png';
+// import Uiux from '../../assets/uiux.jpg';
 import Product from '../../assets/product-design.jpg';
-import Profile from '../../assets/profile1.svg';
 import Prev from '../../assets/prev.svg';
 import Next from '../../assets/next.svg';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
-import Icons from '../../assets/index';
+import { BlogP, FrontendImg, Profile, Uiux } from '../../Utils/Assets';
 
 const CustomPrevArrow = props => {
   return (
@@ -68,10 +67,10 @@ const OtherBlogPost = () => {
       <div className='flex items-center sm:justify-center lg:justify-start lg:ml-[60px] xl:ml-[100px] '>
         <img src={BlogText} alt='' className='' />
       </div>
-      <div className=' lg:px-[60px] sm:hidden xl:block xll:hidden mt-[32px]'>
+      <div className=' lg:px-[60px] lg:pl-[100px] sm:hidden xl:block xll:hidden mt-[32px]'>
         <Slider {...settings} className='slider-container'>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
-            <img src={Icons?.FrontendImg} alt='' className='borderR' />
+            <img src={FrontendImg} alt='' className='borderR' />
             <div className='px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering Frontend dev..
@@ -83,11 +82,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -108,7 +103,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px]  '>
-            <img src={Icons?.Uiux} alt='' className='borderR' />
+            <img src={Uiux} alt='' className='borderR' />
             <div className='sm:px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering UI/UX design
@@ -120,11 +115,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -145,7 +136,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
-            <img src={Icons?.Product} alt='' className='borderR' />
+            <img src={Product} alt='' className='borderR' />
             <div className='sm:px-[10px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px]'>
                 The secret to mastering product design
@@ -157,11 +148,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -182,7 +169,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
-            <img src={Icons?.FrontendImg} alt='' className='borderR' />
+            <img src={FrontendImg} alt='' className='borderR' />
             <div className='sm:px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering Frontend dev..
@@ -194,11 +181,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -220,7 +203,7 @@ const OtherBlogPost = () => {
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
             <img
-              src={Icons?.BlogP}
+              src={BlogP}
               alt=''
               className='borderR h-[181px] lg:h-[210px]'
             />
@@ -235,11 +218,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -260,7 +239,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px]  '>
-            <img src={Icons?.Uiux} alt='' className='borderR' />
+            <img src={Uiux} alt='' className='borderR' />
             <div className='sm:px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering UI/UX design
@@ -272,11 +251,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -298,10 +273,10 @@ const OtherBlogPost = () => {
           </div>
         </Slider>
       </div>
-      <div className=' lg:px-[60px] sm:hidden xll:block mt-[32px]'>
+      <div className=' lg:px-[60px] lg:pl-[100px] sm:hidden xll:block mt-[32px]'>
         <Slider {...mdSettings} className='slider-container'>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
-            <img src={Icons?.FrontendImg} alt='' className='borderR' />
+            <img src={FrontendImg} alt='' className='borderR' />
             <div className='px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering Frontend dev..
@@ -313,11 +288,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -338,7 +309,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px]  '>
-            <img src={Icons?.Uiux} alt='' className='borderR' />
+            <img src={Uiux} alt='' className='borderR' />
             <div className='sm:px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering UI/UX design
@@ -350,11 +321,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -375,7 +342,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
-            <img src={Icons?.Product} alt='' className='borderR' />
+            <img src={Product} alt='' className='borderR' />
             <div className='sm:px-[10px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px]'>
                 The secret to mastering product design
@@ -387,11 +354,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -412,7 +375,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
-            <img src={Icons?.FrontendImg} alt='' className='borderR' />
+            <img src={FrontendImg} alt='' className='borderR' />
             <div className='sm:px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering Frontend dev..
@@ -424,11 +387,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -450,7 +409,7 @@ const OtherBlogPost = () => {
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
             <img
-              src={Icons?.BlogP}
+              src={BlogP}
               alt=''
               className='borderR h-[181px] lg:h-[210px]'
             />
@@ -465,11 +424,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -490,7 +445,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px]  '>
-            <img src={Icons?.Uiux} alt='' className='borderR' />
+            <img src={Uiux} alt='' className='borderR' />
             <div className='sm:px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering UI/UX design
@@ -502,11 +457,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -528,10 +479,10 @@ const OtherBlogPost = () => {
           </div>
         </Slider>
       </div>
-      <div className='px-[60px] sm:hidden lg:block xl:hidden mt-[32px]'>
+      <div className='px-[60px] lg:pl-[100px] sm:hidden lg:block xl:hidden mt-[32px]'>
         <Slider {...settingsIpad} className='slider-container'>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
-            <img src={Icons?.FrontendImg} alt='' className='borderR' />
+            <img src={FrontendImg} alt='' className='borderR' />
             <div className='px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering Frontend dev..
@@ -543,11 +494,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -568,7 +515,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px]  '>
-            <img src={Icons?.Uiux} alt='' className='borderR' />
+            <img src={Uiux} alt='' className='borderR' />
             <div className='sm:px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering UI/UX design
@@ -580,11 +527,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -605,7 +548,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
-            <img src={Icons?.Product} alt='' className='borderR' />
+            <img src={Product} alt='' className='borderR' />
             <div className='sm:px-[10px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px]'>
                 The secret to mastering product design
@@ -617,11 +560,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -642,7 +581,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
-            <img src={Icons?.FrontendImg} alt='' className='borderR' />
+            <img src={FrontendImg} alt='' className='borderR' />
             <div className='sm:px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering Frontend dev..
@@ -654,11 +593,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -680,7 +615,7 @@ const OtherBlogPost = () => {
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
             <img
-              src={Icons?.BlogP}
+              src={BlogP}
               alt=''
               className='borderR h-[181px] lg:h-[210px]'
             />
@@ -695,11 +630,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand
@@ -720,7 +651,7 @@ const OtherBlogPost = () => {
             </div>
           </div>
           <div className='blog-card3 w-[340px] lg:w-[395px] h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px]  '>
-            <img src={Icons?.Uiux} alt='' className='borderR' />
+            <img src={Uiux} alt='' className='borderR' />
             <div className='sm:px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
               <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 The secret to mastering UI/UX design
@@ -732,11 +663,7 @@ const OtherBlogPost = () => {
             </div>
             <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
               <div className='flex flex-row gap-[8px] '>
-                <img
-                  src={Icons?.Profile}
-                  alt=''
-                  className='rounded-[100%] w-[32px]'
-                />
+                <img src={Profile} alt='' className='rounded-[100%] w-[32px]' />
                 <div className='flex flex-col'>
                   <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
                     Quicksand

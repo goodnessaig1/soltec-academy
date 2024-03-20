@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Text from '../../../assets/FAQs.svg';
 import LightGradient from '../../../assets/light-gradient.svg';
+import { PlusW } from '../../../Utils/Assets';
+import { motion } from 'framer-motion';
 
 const CyberFaqs = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -51,16 +53,22 @@ const CyberFaqs = () => {
                       onClick={() => toggleFAQ(index)}
                       className='text-[#fff] hover:cursor-pointer font-[900] text-[24px]'
                     >
-                      {activeIndex == index ? '-' : '+'}
+                      {activeIndex == index ? '-' : <img src={PlusW} alt='' />}
                     </span>
                   </div>
 
                   {activeIndex === index && (
-                    <div className='py-[10px] lg:py-[25px] px-[10px] lg:px-[16px] bg-bgOpacity rounded-[16px]'>
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      transition={{ duration: 0.2 }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className='py-[10px] lg:py-[25px] px-[10px] lg:px-[16px] bg-bgOpacity rounded-[16px]'
+                    >
                       <span className='text-lightcol text-[14px] lg:text-[16px] opacity-1'>
                         {faq?.answer}
                       </span>
-                    </div>
+                    </motion.div>
                   )}
                 </div>
               ))}

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './App.css';
@@ -13,8 +13,19 @@ import ProductDesignPayment from './components/CoursesPage/ProductDesign/Product
 import CyberSecurityPayment from './components/CoursesPage/CyberSecurity/CyberSecurityPayment';
 import PaymentConfirmation from './components/Payment/PaymentConfirmation';
 import AboutUs from './components/AboutUs/AboutUs';
+import WorkSpace from './components/WorkSpace/WorkSpace';
+import BookSpace from './components/WorkSpace/BookSpace';
+import Dashboard from './components/Admin/Dashboard/Dashboard';
+import AdminCourses from './components/Admin/Courses/Courses';
+import { useEffect } from 'react';
 
 function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [navigate]);
+
   return (
     <>
       <Routes>
@@ -30,12 +41,19 @@ function App() {
           path='/courses/cybersecurity/payment'
           Component={CyberSecurityPayment}
         />
+
+        <Route path='/book-workspace' Component={WorkSpace} />
+        <Route path='/book-workspace/bookspace' Component={BookSpace} />
+
         <Route path='/blog' Component={Blog} />
         <Route path='/blog/post' Component={BlogPost} />
         <Route path='/blog/payment-guide' Component={PaymentGuide} />
         <Route path='/payment-confirmation' Component={PaymentConfirmation} />
 
         <Route path='/about-us' Component={AboutUs} />
+
+        <Route path='/admin/dashboard' Component={Dashboard} />
+        <Route path='/admin/courses' Component={AdminCourses} />
       </Routes>
     </>
   );

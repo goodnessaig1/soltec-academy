@@ -298,7 +298,7 @@ const CyberOtherCourses = () => {
               <div className='max-w-[367px]'>
                 <div className='flex flex-col max-w-[367px] max_wid w-[367px] h-[320px] py-[16px] gap-[32px] rounded-[24px] backgroundTwo items-center'>
                   <h1 className='font-[700] text-[32px] leading-[48px] text-[#fff] '>
-                    product Design
+                    Product Design
                   </h1>
                   <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
                     This 6 week prep course will not only <br />
@@ -417,7 +417,7 @@ const CyberOtherCourses = () => {
               <div className='max-w-[367px]'>
                 <div className='flex flex-col max-w-[367px] max_wid w-[367px] h-[320px] py-[16px] gap-[32px] rounded-[24px] backgroundTwo items-center'>
                   <h1 className='font-[700] text-[32px] leading-[48px] text-[#fff] '>
-                    product Design
+                    Product Design
                   </h1>
                   <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
                     This 6 week prep course will not only <br />

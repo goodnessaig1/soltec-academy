@@ -4,7 +4,7 @@ import FaqsText from '../../assets/FAQs.svg';
 import Minus from '../../assets/minus.svg';
 import Plus from '../../assets/plus.svg';
 import { faqsData } from './FaqsData';
-
+import { motion } from 'framer-motion';
 const Faqs = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const toggleFAQ = index => {
@@ -40,9 +40,15 @@ const Faqs = () => {
                 </div>
               </div>
               {activeIndex === index && (
-                <span className='font-[400] sm:text-[14px] lg:text-[16px] leading-[24px] '>
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  transition={{ duration: 0.2 }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className='font-[400] sm:text-[14px] lg:text-[16px] leading-[24px] '
+                >
                   {faq.answer}
-                </span>
+                </motion.div>
               )}
             </div>
           </div>

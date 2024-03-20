@@ -21,7 +21,7 @@ const CyberCatalogue = () => {
               <img src={LightGradient} alt='' />
             </div>
           </div>
-          <div className='flex-[0.77] w-full mt-[54px] lg:mt-[0] rounded-[24px] sm:h-[693px] px-[24px] lg:px-[48px] product_cards'>
+          <div className='flex-[0.77] w-full mt-[54px] lg:mt-[0] rounded-[24px] sm:h-[693px] lg:h-[417px] px-[24px] lg:px-[48px] product_cards'>
             <div className='grid grid-cols-1 lg:grid-cols-2  gap-[12px] lg:gap-y-[18px] lg:gap-y-[20px] lg:gap-x-[45px]'>
               <div className='flex flex-row gap-[18px] items-center'>
                 <img src={RedCheck} alt='' />

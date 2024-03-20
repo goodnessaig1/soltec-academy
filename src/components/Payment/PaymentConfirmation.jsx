@@ -1,6 +1,6 @@
 import Header from '../Header/Header';
-import Icons from '../../assets/index';
 import Footer from '../Footer/Footer';
+import { Confett, Print } from '../../Utils/Assets';
 const PaymentConfirmation = () => {
   const handlePrint = () => {
     window.print();
@@ -14,7 +14,7 @@ const PaymentConfirmation = () => {
         <div className='sml:w-[500px] lg:w-[739px] flex flex-col items-center justify-center gap-[40px]'>
           <div className='gap-[19px] flex flex-col'>
             <div className='flex items-center justify-center'>
-              <img src={Icons?.Confett} alt='' />
+              <img src={Confett} alt='' />
             </div>
             <h1 className='font-[700] text-[32px] leading-[41px] text-center items-center'>
               Thank You For Your Payment!
@@ -77,7 +77,7 @@ const PaymentConfirmation = () => {
                 onClick={handlePrint}
                 className='flex hover:bg-[#f1f1f1] hover:cursor-pointer transition duration-200 gap-[6px] printB items-center rounded-[50px] py-[8px] px-[12px]'
               >
-                <img src={Icons?.Print} alt='' />
+                <img src={Print} alt='' />
                 <h1 className='font-[500] text-[14px] leading-[21px]'>
                   Print Receipt
                 </h1>
