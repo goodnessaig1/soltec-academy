@@ -141,8 +141,8 @@ const BookSpace = () => {
       <Header />
       {openModal && <PaymentModal setOpenModal={setOpenModal} data={data} />}
 
-      <div className='w-full px-[16px] md:px-[120px] pt-[90px] pb-[200px] justify-center flex  '>
-        <div className='flex lg:flex-row  gap-[75px] lg:w-[1018px] '>
+      <div className='w-full px-[20px] md:px-[120px] pt-[90px] pb-[200px] justify-center flex  '>
+        <div className='flex lg:flex-row  gap-[75px] w-full lg:w-[1018px] '>
           <div className=' w-[56%] hidden lg:flex flex-col gap-[23px]'>
             <img src={Starlink1} alt='' />
             <div className='flex flex-row gap-[16px]'>
@@ -153,7 +153,7 @@ const BookSpace = () => {
           </div>
 
           {/*  */}
-          <div className='w-[100%]  md:w-[365px] flex flex-col gap-[20px]'>
+          <div className='w-full md:w-[365px] flex flex-col gap-[20px]'>
             <div className='flex flex-row gap-[12px] items-center'>
               <div
                 onClick={() => setDays('Daily')}
@@ -186,8 +186,12 @@ const BookSpace = () => {
                 Monthly
               </div>
             </div>
-            <form action='' onSubmit={event => handleCheckout(event)}>
-              <div className='flex flex-col gap-[20px]'>
+            <form
+              action=''
+              className='w-full'
+              onSubmit={event => handleCheckout(event)}
+            >
+              <div className='flex flex-col w-full gap-[20px]'>
                 <div className='flex flex-col gap-[17px]'>
                   <div className='flex flex-row w-full gap-[17px]'>
                     <div className='w-1/2 flex flex-col gap-[8px]'>
