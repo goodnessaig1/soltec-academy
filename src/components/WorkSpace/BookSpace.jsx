@@ -193,9 +193,9 @@ const BookSpace = () => {
             >
               <div className='flex flex-col w-full gap-[20px]'>
                 <div className='flex flex-col gap-[17px]'>
-                  <div className='flex flex-row w-full gap-[17px]'>
-                    <div className='w-1/2 flex flex-col gap-[8px]'>
-                      <h1 className='text-[10px] sm:text-[14px] font-[600]'>
+                  <div className='flex flex-col lg:flex-row w-full gap-[17px]'>
+                    <div className='w-full lg:w-1/2 flex flex-col gap-[8px]'>
+                      <h1 className='text-[14px] sm:text-[14px] font-[600]'>
                         Select number of seats
                       </h1>
                       <div
@@ -228,7 +228,7 @@ const BookSpace = () => {
                         </div>
                       )}
                     </div>
-                    <div className='w-1/2 flex flex-col gap-[8px]'>
+                    <div className='w-full lg:w-1/2 flex flex-col gap-[8px]'>
                       <h1 className='text-[10px] sm:text-[14px] font-[600]'>
                         Select Date
                       </h1>
