@@ -603,3 +603,10 @@ input[type='date'] {
     var(--lwc-heightInput, 1.875rem) + (1px * 2) + 24px
   ) !important;
 }
+
+@media (max-width: 767px) {
+  .react-datepicker-wrapper {
+    left: -10%;
+    transform: translateX(16%);
+  }
+}
