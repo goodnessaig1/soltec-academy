@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import Header from '../Header/Header';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import {
   format,
@@ -13,12 +13,15 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowDown,
+  Calendar,
   Codes,
   Meet,
   Starlink1,
   Vector1,
   Vector2,
 } from '../../Utils/Assets';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const BookSpace = () => {
   const [days, setDays] = useState('Daily');
@@ -71,8 +74,8 @@ const BookSpace = () => {
     }
   }, [days, numberOfSeates]);
 
-  const handleDateChange = event => {
-    const selectedDateString = event.target.value;
+  const handleDateChange = date => {
+    const selectedDateString = date;
     const parsedDate = new Date(selectedDateString);
     let endDate = addDays(
       parsedDate,
@@ -135,6 +138,12 @@ const BookSpace = () => {
       price,
     });
     setOpenModal(true);
+  };
+  const datePickerRef = useRef(null);
+  const openCalendar = () => {
+    if (datePickerRef.current) {
+      datePickerRef.current.setOpen(true);
+    }
   };
   return (
     <div>
@@ -233,9 +242,25 @@ const BookSpace = () => {
                         Select Date
                       </h1>
                       <div className='seats_bg h-[50px] hover:bg-[#f3f3f3]  hover:cursor-pointer transition duration-300 px-[16px] rounded-[12px] flex items-center justify-between'>
-                        <input
+                        <DatePicker
+                          ref={datePickerRef}
+                          selected={selectedDate}
+                          onChange={handleDateChange}
+                          minDate={firstDayOfMonth}
+                          maxDate={lastDayOfMonth}
+                          onFocus={e => {
+                            e.currentTarget.readOnly = true; // To prevent keyboard on mobile devices
+                          }}
+                          className='outline-none bg-transparent w-full'
+                        ></DatePicker>
+                        <img src={Calendar} onClick={openCalendar} alt='' />
+                        {/* <input
                           type='date'
                           name='duration'
+                          onFocus={e => {
+                            e.currentTarget.type = 'date';
+                            e.currentTarget.focus();
+                          }}
                           value={selectedDate || ''}
                           onChange={event => {
                             handleDateChange(event);
@@ -243,7 +268,7 @@ const BookSpace = () => {
                           min={format(firstDayOfMonth, 'yyyy-MM-dd')}
                           max={format(lastDayOfMonth, 'yyyy-MM-dd')}
                           className='outline-none bg-transparent w-full'
-                        />
+                        /> */}
                       </div>
                     </div>
                   </div>

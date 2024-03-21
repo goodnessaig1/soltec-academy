@@ -43,6 +43,7 @@ import Meet from '../assets/meet.png';
 import ArrowDown from '../assets/arrow-down.svg';
 import BackArrow from '../assets/back-arrow.svg';
 import AddRound from '../assets/add-rounded.svg';
+import Calendar from '../assets/calendar.svg';
 
 export {
   Logo,
@@ -90,4 +91,5 @@ export {
   ArrowDown,
   BackArrow,
   AddRound,
+  Calendar,
 };
