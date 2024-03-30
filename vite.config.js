@@ -9,7 +9,22 @@
 // vite.config.js
 import react from '@vitejs/plugin-react';
 import tailwindcss from 'tailwindcss';
+import { defineConfig } from 'vite';
 
-export default {
-  plugins: [react(), tailwindcss('./tailwind.config.js')],
-};
+export default defineConfig(({ mode }) => {
+  const config = {
+    plugins: [react(), tailwindcss('./tailwind.config.js')],
+    define: {},
+  };
+
+  if (mode === 'development') {
+    config.define.global = {};
+  }
+
+  return config;
+});
+
+// export default {
+//   plugins: [react(), tailwindcss('./tailwind.config.js')],
+//    define: {}
+// };

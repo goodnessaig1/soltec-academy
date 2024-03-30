@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import Footer from '../../Footer/Footer';
 import OtherCourses from './OtherCourses';
 import ProductCatalogue from './ProductCatalogue';
@@ -8,6 +9,9 @@ import ProductDesignVid from './ProductDesignVid';
 import ProductFaqs from './ProductFaqs';
 
 const ProductDesign = () => {
+  const location = useLocation();
+  const data = location.state;
+  console.log(data);
   return (
     <div className=''>
       <div className='mainpBg'>

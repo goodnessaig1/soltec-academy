@@ -2,7 +2,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../assets/logo.svg';
 import Logo2 from '../../assets/mobile-logo.svg';
-// import LogoDark from '../../assets/logo-dark.svg';
+import LogoDark from '../../assets/soltec-d-logo.svg';
 import Menu from '../../assets/menu.svg';
 import Menu2 from '../../assets/menu-1.svg';
 import Sideber from '../HOC/Sideber';
@@ -45,9 +45,9 @@ const Header = ({ headerCol }) => {
         <div className='flex flex-row items-center justify-between'>
           <div className='z-5'>
             {headerCol ? (
-              // <img src={LogoDark} className='sm:hidden lg:flex' alt='' />
               <Link to={'/'}>
-                <img src={Logo} className='hidden  lg:flex' alt='' />
+                <img src={LogoDark} className='hidden lg:flex' alt='' />
+                {/* <img src={Logo} className='hidden  lg:flex' alt='' /> */}
               </Link>
             ) : (
               <Link to={'/'}>

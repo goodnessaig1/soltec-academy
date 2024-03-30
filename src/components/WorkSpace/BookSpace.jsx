@@ -194,7 +194,7 @@ const BookSpace = () => {
               >
                 Monthly
               </div>
-            </div>
+            </div> 
             <form
               action=''
               className='w-full'
@@ -249,26 +249,11 @@ const BookSpace = () => {
                           minDate={firstDayOfMonth}
                           maxDate={lastDayOfMonth}
                           onFocus={e => {
-                            e.currentTarget.readOnly = true; // To prevent keyboard on mobile devices
+                            e.currentTarget.readOnly = true;
                           }}
                           className='outline-none bg-transparent w-full'
-                        ></DatePicker>
+                        />
                         <img src={Calendar} onClick={openCalendar} alt='' />
-                        {/* <input
-                          type='date'
-                          name='duration'
-                          onFocus={e => {
-                            e.currentTarget.type = 'date';
-                            e.currentTarget.focus();
-                          }}
-                          value={selectedDate || ''}
-                          onChange={event => {
-                            handleDateChange(event);
-                          }}
-                          min={format(firstDayOfMonth, 'yyyy-MM-dd')}
-                          max={format(lastDayOfMonth, 'yyyy-MM-dd')}
-                          className='outline-none bg-transparent w-full'
-                        /> */}
                       </div>
                     </div>
                   </div>

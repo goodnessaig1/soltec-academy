@@ -36,7 +36,7 @@ const AdminSidebar = () => {
       name: 'Blog',
       activeIcon: Blog2,
       icon: Blog,
-      linkTo: '/admin/blog',
+      linkTo: '/admin/blogs',
     },
     {
       name: 'Testimonials',
@@ -76,9 +76,8 @@ const AdminSidebar = () => {
                 ? 'flex flex-row gap-[6px] items-center h-[48px] rounded-[50px] sideBarAdmin text-[#fff] font-[500] '
                 : 'flex flex-row gap-[6px] items-center h-[48px] rounded-[50px] pr-[12px] pl-[12px] transition text-lightB hover:bg-[#fff] duration-200 font-[400]'
             }
-            // className='flex flex-row gap-[6px] items-center h-[48px] rounded-[50px] sideBarAdmin'
           >
-            {currentPath == link.linkTo ? (
+            {currentPath.includes(link.linkTo) ? (
               <img src={link.activeIcon} alt='' />
             ) : (
               <img src={link.icon} alt='' />

@@ -4,7 +4,7 @@ import Sort from '../../../assets/sort.svg';
 import Check from '../../../assets/check.svg';
 import { coursePurchase, newsLetter } from './coursesInvoice';
 import { Link } from 'react-router-dom';
-import { BlogP, FrontendImg, Profile } from '../../../Utils/Assets'
+import { BlogP, FrontendImg, Profile } from '../../../Utils/Assets';
 
 const Dashboard = () => {
   return (
@@ -66,7 +66,7 @@ const Dashboard = () => {
           </h1>
           <div className='w-full flex flex-col coursesP rounded-[12px]'>
             {/* Head */}
-            <div className='flex flex-row w-full items-center'>
+            <div className='flex flex-row w-full mb-[10px] items-center'>
               <div className='w-[15%]'>
                 <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
                   <h1 className='text-[14px] font-[600] leading-[17px]'>
@@ -114,7 +114,10 @@ const Dashboard = () => {
             </div>
             {/* Data */}
             {coursePurchase.map((item, index) => (
-              <div key={index} className='flex flex-row items-start w-full'>
+              <div
+                key={index}
+                className='flex flex-row w-full items-start w-full min-h-[48px]'
+              >
                 <div className='w-[15%]'>
                   <h1 className='text-[14px] font-[400] py-[10px] px-[12px] leading-[17px]'>
                     {item.date}
@@ -200,11 +203,7 @@ const Dashboard = () => {
           </h1>
           <div className='flex flex-row w-ful gap-[28px]'>
             <div className='blog-card2 w-[340px] lg:w-[536px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '>
-              <img
-                src={FrontendImg}
-                alt=''
-                className='borderR h-[223px]'
-              />
+              <img src={FrontendImg} alt='' className='borderR h-[223px]' />
               <div className='px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
                 <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                   The secret to mastering Frontend dev..

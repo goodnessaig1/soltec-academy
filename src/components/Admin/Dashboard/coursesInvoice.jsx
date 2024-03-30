@@ -6,6 +6,7 @@ export const coursePurchase = [
     cupon: true,
     course: 'Product Design',
     paymentMethod: 'Card',
+    amount: 'N250,000.00',
   },
   {
     date: '02 Dec 2023, 12:00PM',
@@ -14,6 +15,7 @@ export const coursePurchase = [
     cupon: true,
     course: 'Cybersecurity',
     paymentMethod: 'Bank transfer',
+    amount: 'N250,000.00',
   },
   {
     date: '02 Dec 2023, 12:00PM',
@@ -22,6 +24,7 @@ export const coursePurchase = [
     cupon: true,
     course: 'Blockchain development',
     paymentMethod: 'Bank transfer',
+    amount: 'N250,000.00',
   },
   {
     date: '02 Dec 2023, 12:00PM',
@@ -30,6 +33,7 @@ export const coursePurchase = [
     cupon: true,
     course: 'Data Science',
     paymentMethod: 'Card',
+    amount: 'N250,000.00',
   },
   {
     date: '02 Dec 2023, 12:00PM',
@@ -38,6 +42,7 @@ export const coursePurchase = [
     cupon: true,
     course: 'Blockchain development',
     paymentMethod: 'Bank transfer',
+    amount: 'N250,000.00',
   },
 ];
 

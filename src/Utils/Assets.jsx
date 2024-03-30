@@ -17,6 +17,7 @@ import Vector1 from '../assets/Vector-click.svg';
 import Vector2 from '../assets/Vector-d.svg';
 import Confett from '../assets/Confetti.svg';
 import Print from '../assets/ic_round-print.svg';
+import PrintOutlined from '../assets/printer.svg';
 import Emogi from '../assets/emogi.svg';
 import PlusW from '../assets/plus-w.svg';
 import Office from '../assets/office.jpg';
@@ -44,6 +45,18 @@ import ArrowDown from '../assets/arrow-down.svg';
 import BackArrow from '../assets/back-arrow.svg';
 import AddRound from '../assets/add-rounded.svg';
 import Calendar from '../assets/calendar.svg';
+import Edit from '../assets/edit-line.svg';
+import Trahs from '../assets/trash.svg';
+import UploadIcon from '../assets/upload.svg';
+import CircleGradient from '../assets/circle-gradient.svg';
+import UploadFile from '../assets/upload-file.svg';
+import SearchGray from '../assets/search-ico.svg';
+import EditIcon from '../assets/edit-icon.svg';
+import CheckBox from '../assets/checkbox-outline.svg';
+import Delete from '../assets/delete-b.svg';
+import CloudAdd from '../assets/cloud-add.svg';
+import DeleteRed from '../assets/delete-red.svg';
+import Dropdown from '../assets/dropdown-icon.svg';
 
 export {
   Logo,
@@ -92,4 +105,17 @@ export {
   BackArrow,
   AddRound,
   Calendar,
+  Edit,
+  Trahs,
+  UploadIcon,
+  CircleGradient,
+  UploadFile,
+  SearchGray,
+  EditIcon,
+  Delete,
+  CheckBox,
+  CloudAdd,
+  DeleteRed,
+  Dropdown,
+  PrintOutlined,
 };
