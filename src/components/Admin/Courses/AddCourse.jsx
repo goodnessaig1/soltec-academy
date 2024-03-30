@@ -206,11 +206,12 @@ const AddCourses = () => {
       faqs: faqs,
       overviews: overviews,
     };
+    console.log(values);
     const overviewHasEmptyHeaderOrBody =
       values.overviews.some(isHeaderOrBodyEmpty);
     if (!overviewHasEmptyHeaderOrBody) {
       setOverviewError(null);
-      console.log('overview do not have');
+      // console.log('overview do not have');
     } else {
       setOverviewError('Some fields for overview are empty');
       return console.log('overview has');
@@ -222,13 +223,14 @@ const AddCourses = () => {
       setOverallLoading(true);
       try {
         const response = await axios.post(
-          'https://academy-wo2r.onrender.com/api/v1/courses/create_course/',
+          `${BaseURL}/courses/create_course/`,
           values,
         );
         setOverallLoading(false);
         clearForm();
         console.log(response.data);
       } catch (error) {
+        setOverallLoading(false);
         console.log(error);
       }
     }
