@@ -1,9 +1,32 @@
 import { Link } from 'react-router-dom';
 import { PlusW, SearchGray } from '../../../Utils/Assets';
 import Layout from '../Common/Layout';
-import { sponsorsData } from './SponsorsData';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { BaseURL } from '../../../Utils/BaseUrl';
+import Skeleton from 'react-loading-skeleton';
 
 const AdminSponsors = () => {
+  const [sponsors, setSponsors] = useState(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    GetSponsors();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+  const GetSponsors = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`${BaseURL}/sponsors/`);
+      setSponsors(response?.data.results);
+      setLoading(false);
+      setLoading(false);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
   return (
     <Layout text='Sponsors'>
       <div className='w-full inter__ flex flex-col gap-[36px] px-[36px] pb-[140px]'>
@@ -31,14 +54,38 @@ const AdminSponsors = () => {
         </div>
 
         <div className='grid grid-cols-5 gap-[16px] gap-y-[16px] '>
-          {sponsorsData.map((sponsor, index) => (
-            <div key={index} className='flex flex-col gap-[12px]'>
-              <img src={sponsor.image} alt='' />
-              <span className='font-[500] text-[14px] leading-[17px] text-byCol'>
-                {sponsor.name}
-              </span>
+          {!loading ? (
+            <>
+              {sponsors &&
+                sponsors.map((sponsor, index) => (
+                  <div key={index} className='flex flex-col gap-[12px]'>
+                    <img src={sponsor?.logo} alt='' />
+                    <span className='font-[500] text-[14px] leading-[17px] text-byCol'>
+                      {sponsor?.name}
+                    </span>
+                  </div>
+                ))}
+            </>
+          ) : (
+            <div className='flex flex-row gap-[24px]'>
+              <div className='flex flex-col gap-[12px]'>
+                <Skeleton height={70} width={150} />
+                <Skeleton height={30} width={80} />
+              </div>
+              <div className='flex flex-col gap-[12px]'>
+                <Skeleton height={70} width={150} />
+                <Skeleton height={30} width={80} />
+              </div>
+              <div className='flex flex-col gap-[12px]'>
+                <Skeleton height={70} width={150} />
+                <Skeleton height={30} width={80} />
+              </div>
+              <div className='flex flex-col gap-[12px]'>
+                <Skeleton height={70} width={150} />
+                <Skeleton height={30} width={80} />
+              </div>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </Layout>

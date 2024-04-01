@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from 'react';
 import { FaPause } from 'react-icons/fa6';
 import { FaPlay } from 'react-icons/fa';
 
-const CourseOverviewVideo = () => {
+const CourseOverviewVideo = ({ courseDetail }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showPlayButton, setShowPlayButton] = useState(true);
@@ -43,13 +44,12 @@ const CourseOverviewVideo = () => {
     }
   };
 
-  const src = `https://academy-wo2r.onrender.com/media/videos/WhatsApp_Video_2024-03-27_at_22.07.49_4f0a2a4f.mp4`;
   return (
     <div>
       <div className='flex w-full mt-[-118px] items-center  justify-center'>
         <div className='video-player'>
           <video className='rounded-[24px]' ref={videoRef} controls>
-            <source src={src} type='video/mp4' />
+            <source src={courseDetail?.video} type='video/mp4' />
           </video>
           {showPlayButton && (
             <button

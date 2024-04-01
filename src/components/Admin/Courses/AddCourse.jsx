@@ -14,11 +14,11 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import axios from 'axios';
-import { faqsData } from '../../HomePage/FaqsData';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Oval, ProgressBar } from 'react-loader-spinner';
 import { BaseURL } from '../../../Utils/BaseUrl';
+import { toast } from 'react-toastify';
 
 const AddCourses = () => {
   const navigate = useNavigate();
@@ -62,6 +62,9 @@ const AddCourses = () => {
     overview5,
     overview6,
   ]);
+  const [overviewDone, setOverviewDone] = useState(false);
+  const [instructorDone, setInstructorDone] = useState(false);
+  const [faqDone, setFaqDone] = useState(false);
 
   const [openFaqs, setOpenFaqs] = useState(false);
   const [faqs, setFAQs] = useState([{ id: 1, question: '', answer: '' }]);
@@ -87,6 +90,7 @@ const AddCourses = () => {
   const handleFileChange = event => {
     setFile(event.target.files[0]);
   };
+
   const uploadVideo = async () => {
     if (file != null) {
       try {
@@ -110,6 +114,8 @@ const AddCourses = () => {
           setVideoSuccess(false);
         }, 6000);
       } catch (error) {
+        setVideoSuccess(false);
+        setVidLoading(false);
         console.error('Error uploading file: ', error);
       }
     } else {
@@ -135,6 +141,7 @@ const AddCourses = () => {
       setLoading(false);
     } catch (error) {
       console.error('Error uploading file: ', error);
+      setLoading(false);
     }
   };
 
@@ -166,6 +173,9 @@ const AddCourses = () => {
   };
 
   const clearForm = () => {
+    setOverviewDone(false);
+    setInstructorDone(false);
+    setFaqDone(false);
     setCourseName('');
     setBackgroundImg(null);
     setFAQs([{ id: 1, question: '', answer: '' }]);
@@ -206,12 +216,10 @@ const AddCourses = () => {
       faqs: faqs,
       overviews: overviews,
     };
-    console.log(values);
     const overviewHasEmptyHeaderOrBody =
       values.overviews.some(isHeaderOrBodyEmpty);
     if (!overviewHasEmptyHeaderOrBody) {
       setOverviewError(null);
-      // console.log('overview do not have');
     } else {
       setOverviewError('Some fields for overview are empty');
       return console.log('overview has');
@@ -228,13 +236,19 @@ const AddCourses = () => {
         );
         setOverallLoading(false);
         clearForm();
-        console.log(response.data);
+        toast.success('Success', {
+          position: 'top-right',
+        });
       } catch (error) {
-        setOverallLoading(false);
+        toast.error('An error occured, please try again', {
+          position: 'top-left',
+        });
         console.log(error);
+        setOverallLoading(false);
       }
     }
   };
+
   return (
     <Layout text='Courses'>
       <div className='w-full inter__ flex flex-col gap-[36px] px-[36px] pb-[140px]'>
@@ -257,6 +271,7 @@ const AddCourses = () => {
             setOverview6={setOverview6}
             overviews={overviews}
             setOverviews={setOverviews}
+            setOverviewDone={setOverviewDone}
           />
         )}
         {openInstructorInfo && (
@@ -269,6 +284,7 @@ const AddCourses = () => {
             setInstructorInfo1={setInstructorInfo1}
             instructorInfo2={instructorInfo2}
             setInstructorInfo2={setInstructorInfo2}
+            setInstructorDone={setInstructorDone}
           />
         )}
         {openFaqs && (
@@ -279,6 +295,7 @@ const AddCourses = () => {
             setFAQs={setFAQs}
             activeId={activeId}
             setActiveId={setActiveId}
+            setFaqDone={setFaqDone}
           />
         )}
         <div
@@ -314,7 +331,7 @@ const AddCourses = () => {
                       value={courseName}
                       onChange={e => {
                         setCourseName(e.target.value);
-                        if (courseName.length > 20) {
+                        if (courseName.length > 26) {
                           setCourseNameError('Name too long');
                         } else {
                           setCourseNameError(false);
@@ -501,18 +518,37 @@ const AddCourses = () => {
                         onChange={handleFileChange}
                         className='w-full hidden outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                       />
-                      <span> {file ? file.name : ''}</span>
+                      <span>
+                        {' '}
+                        {fileUrl
+                          ? fileUrl.substring(0, 50) + '..'
+                          : file
+                          ? file.name
+                          : ''}
+                      </span>
                     </div>
                     {!vidLoading ? (
-                      <div className='bg-tintBlue w-[106px] h-[40px] rounded-[12px] flex flex-row items-center justify-center gap-[8px] hover:cursor-pointer hover:opacity-[0.8] '>
-                        <img src={UploadIcon} alt='' />
-                        <span
-                          onClick={() => uploadVideo()}
-                          className='text-[14px] font-[500] leading-[21px] text-mainBlue'
-                        >
-                          Upload
-                        </span>
-                      </div>
+                      <>
+                        {!fileUrl ? (
+                          <div className='bg-tintBlue w-[106px] h-[40px] rounded-[12px] flex flex-row items-center justify-center gap-[8px] hover:cursor-pointer hover:opacity-[0.8] '>
+                            <img src={UploadIcon} alt='' />
+                            <span
+                              onClick={() => uploadVideo()}
+                              className='text-[14px] font-[500] leading-[21px] text-mainBlue'
+                            >
+                              Upload
+                            </span>
+                          </div>
+                        ) : (
+                          <div className=''>
+                            <img
+                              src={Good}
+                              className='w-[24px] h-[24px] rounded-[50%]'
+                              alt=''
+                            />
+                          </div>
+                        )}
+                      </>
                     ) : (
                       <div className=''>
                         <Oval
@@ -559,49 +595,86 @@ const AddCourses = () => {
                     )}
                   </AnimatePresence>
                 </div>
-                <div className='flex flex-col  gap-[6px]'>
+
+                <div className='flex flex-row items-center gap-[12px]'>
+                  <div className='flex flex-col  gap-[6px]'>
+                    <div
+                      onClick={() => setOpenOverview(true)}
+                      className='w-[208px] px-[8px] gap-[8px] flex items-center hover:bg-[#f1f1f1] hover:cursor-pointer transitiion duration-300 course_input rounded-[12px] h-[48px] text-[14px]'
+                    >
+                      <img src={AddRound} alt='' />
+                      <span className='font-[600] text-[16px] leading-[24px]'>
+                        Add course overview
+                      </span>
+                    </div>
+                    <AnimatePresence>
+                      {overviewError && (
+                        <motion.div
+                          initial={{ height: 0 }}
+                          animate={{ height: 'auto' }}
+                          exit={{ height: 0 }}
+                          transition={{ duration: 0.7, ease: 'easeInOut' }}
+                        >
+                          <p className='text-[#2C2C2CB2] text-[#D50000]   text-[10px] font-normal md:text-base'>
+                            {overviewError}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                  {overviewDone && (
+                    <div className=''>
+                      <img
+                        src={Good}
+                        className='w-[24px] h-[24px] rounded-[50%]'
+                        alt=''
+                      />
+                    </div>
+                  )}
+                </div>
+
+                <div className='flex flex-row items-center gap-[12px]'>
                   <div
-                    onClick={() => setOpenOverview(true)}
-                    className='w-[208px] px-[8px] gap-[8px] flex items-center hover:bg-[#f1f1f1] hover:cursor-pointer transitiion duration-300 course_input rounded-[12px] h-[48px] text-[14px]'
+                    onClick={() => setOpenInstructorInfo(true)}
+                    className='w-[246px] px-[8px] gap-[8px] flex items-center hover:bg-[#f1f1f1] hover:cursor-pointer transitiion duration-300 course_input rounded-[12px] h-[48px] text-[14px]'
                   >
                     <img src={AddRound} alt='' />
                     <span className='font-[600] text-[16px] leading-[24px]'>
-                      Add course overview
+                      Add instructor information
                     </span>
                   </div>
-                  <AnimatePresence>
-                    {overviewError && (
-                      <motion.div
-                        initial={{ height: 0 }}
-                        animate={{ height: 'auto' }}
-                        exit={{ height: 0 }}
-                        transition={{ duration: 0.7, ease: 'easeInOut' }}
-                      >
-                        <p className='text-[#2C2C2CB2] text-[#D50000]   text-[10px] font-normal md:text-base'>
-                          {overviewError}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {instructorDone && (
+                    <div className=''>
+                      <img
+                        src={Good}
+                        className='w-[24px] h-[24px] rounded-[50%]'
+                        alt=''
+                      />
+                    </div>
+                  )}
                 </div>
-                <div
-                  onClick={() => setOpenInstructorInfo(true)}
-                  className='w-[246px] px-[8px] gap-[8px] flex items-center hover:bg-[#f1f1f1] hover:cursor-pointer transitiion duration-300 course_input rounded-[12px] h-[48px] text-[14px]'
-                >
-                  <img src={AddRound} alt='' />
-                  <span className='font-[600] text-[16px] leading-[24px]'>
-                    Add instructor information
-                  </span>
+
+                <div className='flex flex-row items-center gap-[12px]'>
+                  <div
+                    onClick={() => setOpenFaqs(true)}
+                    className='w-[122px] px-[8px] gap-[8px] flex items-center hover:bg-[#f1f1f1] hover:cursor-pointer transitiion duration-300 course_input rounded-[12px] h-[48px] text-[14px]'
+                  >
+                    <img src={AddRound} alt='' />
+                    <span className='font-[600] text-[16px] leading-[24px]'>
+                      Add FAQ
+                    </span>
+                  </div>
+                  {faqDone && (
+                    <div className=''>
+                      <img
+                        src={Good}
+                        className='w-[24px] h-[24px] rounded-[50%]'
+                        alt=''
+                      />
+                    </div>
+                  )}
                 </div>
-                <div
-                  onClick={() => setOpenFaqs(true)}
-                  className='w-[122px] px-[8px] gap-[8px] flex items-center hover:bg-[#f1f1f1] hover:cursor-pointer transitiion duration-300 course_input rounded-[12px] h-[48px] text-[14px]'
-                >
-                  <img src={AddRound} alt='' />
-                  <span className='font-[600] text-[16px] leading-[24px]'>
-                    Add FAQ
-                  </span>
-                </div>
+
                 <div className='flex flex-col gap-[6px] w-[242px] '>
                   <label
                     className='font-[600]  text-[14px] leading-[21px]'
@@ -660,8 +733,10 @@ const AddCourses = () => {
                   Course Name
                 </div>
               ) : (
-                <div className='text-[#fff] text-[32px] leading-[48px] font-[700] text-center text-[#fff]'>
-                  {courseName}
+                <div className='text-[#fff] text-nowrap text-[32px] leading-[48px] font-[700] text-center text-[#fff]'>
+                  {courseName.length > 18
+                    ? `${courseName.substring(0, 18) + '..'}`
+                    : `${courseName}`}
                 </div>
               )}
               {!courseDescription ? (

@@ -9,9 +9,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { BaseURL } from '../../../Utils/BaseUrl';
+import { toast } from 'react-toastify';
+import { ProgressBar } from 'react-loader-spinner';
 const AddSponsor = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [addLoading, setAddLoading] = useState(false);
 
   const uploadImg = async (setFieldValue, file) => {
     setLoading(true);
@@ -57,8 +61,28 @@ const AddSponsor = () => {
     e.preventDefault();
   };
 
-  const handleSubmit = async values => {
-    console.log(values);
+  const handleSubmit = async (values, resetForm, setFieldValue) => {
+    setAddLoading(true);
+    if (values?.logo != '') {
+      try {
+        await axios.post(`${BaseURL}/sponsors/`, values);
+        setAddLoading(false);
+        toast.success('Success', {
+          position: 'top-right',
+        });
+        resetForm();
+        setFieldValue('name', '');
+      } catch (error) {
+        console.error('Error uploading file: ', error);
+        toast.error('An error occured, please try again!', {
+          position: 'top-right',
+        });
+        setAddLoading(false);
+      }
+    } else {
+      setAddLoading(false);
+      alert('Please select an image');
+    }
   };
   return (
     <Layout text='Sponsors'>
@@ -81,8 +105,8 @@ const AddSponsor = () => {
                 .max(20, 'max 20 characters')
                 .required('Required'),
             })}
-            onSubmit={(values, { setFieldError }) => {
-              handleSubmit(values);
+            onSubmit={(values, { resetForm, setFieldValue }) => {
+              handleSubmit(values, resetForm, setFieldValue);
             }}
           >
             {({
@@ -200,13 +224,28 @@ const AddSponsor = () => {
                     </div>
                   )}
                 </div>
-
-                <button
-                  type='submit'
-                  className='text-[16px] hover:opacity-[0.9] text-white bg-mainBlue rounded-[16px] font-[600] w-[505px] h-[48px] flex items-center justify-center mt-[8px]'
-                >
-                  Add
-                </button>
+                {!addLoading ? (
+                  <button
+                    type='submit'
+                    className='text-[16px] hover:opacity-[0.9] text-white bg-mainBlue rounded-[16px] font-[600] w-[505px] h-[48px] flex items-center justify-center mt-[8px]'
+                  >
+                    Add
+                  </button>
+                ) : (
+                  <div className='w-full flex items-center justify-center h-[48px]'>
+                    <ProgressBar
+                      visible={true}
+                      height='80'
+                      width='80'
+                      color='#f1f1f1'
+                      barColor='gray'
+                      borderColor='black'
+                      ariaLabel='progress-bar-loading'
+                      wrapperStyle={{}}
+                      wrapperClass=''
+                    />
+                  </div>
+                )}
               </Form>
             )}
           </Formik>

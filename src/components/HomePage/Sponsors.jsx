@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import Slider from 'react-slick';
-import Google from '../../assets/Google_logo.svg';
 import Codes from '../../assets/codes.png';
 import Meet from '../../assets/meet.png';
 import Office from '../../assets/office.png';
@@ -11,6 +10,10 @@ import Next from '../../assets/next.svg';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Marquee from 'react-fast-marquee';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { BaseURL } from '../../Utils/BaseUrl';
+import Skeleton from 'react-loading-skeleton';
 
 const CustomPrevArrow = props => {
   return (
@@ -44,42 +47,69 @@ const Sponsors = () => {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
   };
+  const [loading, setLoading] = useState(true);
+  const [sponsors, setSponsors] = useState(null);
 
+  useEffect(() => {
+    GetSponsors();
+  }, []);
+
+  const GetSponsors = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`${BaseURL}/sponsors/`);
+      setSponsors(response.data?.results);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log('error', error);
+    }
+  };
   return (
     <div className='w-full w-full'>
       <Marquee speed={55}>
-        <div className='flex flex-row mt-[140px] justify-center gap-[65px] sm:ml-[40px] lg:ml-[px] items-center '>
-          <img
-            src={Google}
-            className='sm:w-[104px] lg:w-[148px] sm:h-[35px] lg:h-[50px] '
-            alt=''
-          />
-          <img
-            src={Google}
-            className='sm:w-[104px] lg:w-[148px] sm:h-[35px] lg:h-[50px] '
-            alt=''
-          />
-          <img
-            src={Google}
-            className='sm:w-[104px] lg:w-[148px] sm:h-[35px] lg:h-[50px] '
-            alt=''
-          />
-          <img
-            src={Google}
-            className='sm:w-[104px] lg:w-[148px] sm:h-[35px] lg:h-[50px] '
-            alt=''
-          />
-          <img
-            src={Google}
-            className='sm:w-[104px] lg:w-[148px] sm:h-[35px] lg:h-[50px] '
-            alt=''
-          />
-          <img
-            src={Google}
-            className='sm:w-[104px] lg:w-[148px] sm:h-[35px] lg:h-[50px] '
-            alt=''
-          />
-        </div>
+        {!loading ? (
+          <div className='flex flex-row mt-[140px] justify-center gap-[65px] sm:ml-[40px] lg:ml-[px] items-center '>
+            {sponsors &&
+              sponsors.map((sponsor, index) => (
+                <div key={index} className=''>
+                  <div className='flex flex-col gap-[8px]'>
+                    <img
+                      src={sponsor?.logo}
+                      className='w-[198px] h-[78px]'
+                      alt=''
+                    />
+                    <span className='text-[#64748B] font-[500] text-[14px]'>
+                      {sponsor?.name}
+                    </span>
+                  </div>
+                </div>
+              ))}
+          </div>
+        ) : (
+          <div className='flex flex-row mt-[140px] justify-center gap-[65px] sm:ml-[40px] lg:ml-[px] items-center '>
+            <div className='flex flex-col gap-[8px]'>
+              <Skeleton height={78} width={198} />
+              <Skeleton height={38} width={98} />
+            </div>
+            <div className='flex flex-col gap-[8px]'>
+              <Skeleton height={78} width={198} />
+              <Skeleton height={38} width={98} />
+            </div>
+            <div className='flex flex-col gap-[8px]'>
+              <Skeleton height={78} width={198} />
+              <Skeleton height={38} width={98} />
+            </div>
+            <div className='flex flex-col gap-[8px]'>
+              <Skeleton height={78} width={198} />
+              <Skeleton height={38} width={98} />
+            </div>
+            <div className='flex flex-col gap-[8px]'>
+              <Skeleton height={78} width={198} />
+              <Skeleton height={38} width={98} />
+            </div>
+          </div>
+        )}
       </Marquee>
       <div className='container_'>
         <div className=' sm:mt-[80px] lg:mt-[130px] sm:px-[16px] lg:px-0 sm:ml-[0] lg:ml-[130px]'>

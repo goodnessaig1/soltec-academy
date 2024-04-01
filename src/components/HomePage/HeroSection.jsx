@@ -3,14 +3,37 @@ import Frame3 from '../../assets/frame3.png';
 import Gradient from '../../assets/gradient.svg';
 import Profile from '../../assets/profile.jpg';
 import Media from '../../assets/media.svg';
-import Media1 from '../../assets/media1.svg';
 import Media2 from '../../assets/media-icons3.svg';
 import Cursor from '../../assets/cursor.svg';
 import Marquee from 'react-fast-marquee';
 import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { BaseURL } from '../../Utils/BaseUrl';
+import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
 
 const HeroSection = () => {
+  const [loading, setLoading] = useState(true);
+  const [testimonial, setTestimonial] = useState(null);
+  useEffect(() => {
+    GetTestimonials();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+  const GetTestimonials = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`${BaseURL}/testimonials/`);
+      setTestimonial(response.data?.results);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log('error', error);
+    }
+  };
   return (
     <div className='w-full'>
       <Header />
@@ -70,90 +93,85 @@ const HeroSection = () => {
       </div>
 
       <div className='relative sm:mt-[800px] md:mt-[940px] sm:mb-[110px] lg:mb-[120px] lg:mt-[640px]'>
-        <Marquee
-          speed={55}
-          className='flex flex-row gap-[24px] '
-          direction='left'
-        >
-          <div className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] sm:w-[315px] lg:w-[506px] border backg p-[20px] bg-[fff] items-center'>
-            <img
-              src={Profile}
-              className='sm:w-[77px] lg:w-[91px] lg:h-auto sm:h-[76px] '
-              alt=''
-            />
-            <div className='flex flex-col gap-[11px]'>
-              <h1 className='text-[16px] font-[500] z-10 leading-[19px] '>
-                X was a fantastic place for me to learn and put to action
-                quickly
-              </h1>
-              <div>
-                <span className='font-[400] text-[14px] profile_col leading-[16px]'>
-                  James Doe,
-                  <p>UI/UX Designer,X Alumni</p>
-                </span>
-              </div>
-            </div>
-            <div className='absolute items-right top-[0] mt-[16px] sm:ml-[230px] lg:ml-[398px] '>
+        {!loading ? (
+          <Marquee
+            speed={55}
+            className='flex flex-row gap-[24px] '
+            direction='left'
+          >
+            {testimonial &&
+              testimonial.map((testimony, index) => (
+                <div
+                  key={index}
+                  className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] sm:w-[315px] lg:w-[506px] border backg p-[20px] bg-[fff] items-center'
+                >
+                  <div className='w-[80px] h-[80px]'>
+                    <img
+                      src={testimony?.author_image}
+                      className='w-[80px] h-[80px] rounded-[50%] object-cover'
+                      // className='sm:w-[46px] rounded-[50%] w-[61px] lg:w-[61px]  sm:h-[46px] '
+                      alt=''
+                    />
+                  </div>
+                  <div className='flex w-[87%] flex-col gap-[11px]'>
+                    <h1 className='text-[16px] font-[500] z-10 leading-[19px] '>
+                      {testimony?.content.length > 100
+                        ? `${testimony?.content.substring(0, 100) + '...'}`
+                        : `${testimony?.content}`}
+                    </h1>
+                    <div>
+                      <span className='font-[400] text-[14px] profile_col leading-[16px]'>
+                        {testimony?.author},<p>{testimony?.proffession}</p>
+                      </span>
+                    </div>
+                  </div>
+                  <div className='absolute items-right top-[0] mt-[16px] sm:ml-[230px] lg:ml-[398px] '>
+                    <img
+                      src={Media}
+                      className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[51px]  '
+                      alt=''
+                    />
+                  </div>
+                </div>
+              ))}
+            <div className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] sm:w-[315px] lg:w-[506px] border backg p-[20px] bg-[fff] items-center'>
               <img
-                src={Media}
-                className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[51px]  '
+                src={Profile}
+                className='sm:w-[77px] lg:w-[91px] sm:h-[76px] lg:h-auto'
                 alt=''
               />
-            </div>
-          </div>
-          <div className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] sm:w-[315px] lg:w-[506px] border backg p-[20px] bg-[fff] items-center'>
-            <img
-              src={Profile}
-              className='sm:w-[77px] lg:w-[91px] sm:h-[76px] lg:h-auto'
-              alt=''
-            />
-            <div className='flex flex-col gap-[11px]'>
-              <h1 className='text-[16px] font-[500] z-10 leading-[19px] '>
-                X was a fantastic place for me to learn and put to action
-                quickly
-              </h1>
-              <div>
-                <span className='font-[400] text-[14px] profile_col leading-[16px]'>
-                  James Doe,
-                  <p>UI/UX Designer,X Alumni</p>
-                </span>
+              <div className='flex flex-col gap-[11px]'>
+                <h1 className='text-[16px] font-[500] z-10 leading-[19px] '>
+                  X was a fantastic place for me to learn and put to action
+                  quickly
+                </h1>
+                <div>
+                  <span className='font-[400] text-[14px] profile_col leading-[16px]'>
+                    James Doe,
+                    <p>UI/UX Designer,X Alumni</p>
+                  </span>
+                </div>
+              </div>
+              <div className='absolute items-right top-[0] sm:ml-[230px] lg:ml-[398px] '>
+                <img
+                  src={Media2}
+                  className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[74px]  '
+                  alt=''
+                />
               </div>
             </div>
-            <div className='absolute items-right top-[0] mt-[16px] sm:ml-[230px] lg:ml-[398px] '>
-              <img
-                src={Media1}
-                className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[51px]   '
-                alt=''
-              />
-            </div>
-          </div>
-          <div className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] sm:w-[315px] lg:w-[506px] border backg p-[20px] bg-[fff] items-center'>
-            <img
-              src={Profile}
-              className='sm:w-[77px] lg:w-[91px] sm:h-[76px] lg:h-auto'
-              alt=''
-            />
-            <div className='flex flex-col gap-[11px]'>
-              <h1 className='text-[16px] font-[500] z-10 leading-[19px] '>
-                X was a fantastic place for me to learn and put to action
-                quickly
-              </h1>
-              <div>
-                <span className='font-[400] text-[14px] profile_col leading-[16px]'>
-                  James Doe,
-                  <p>UI/UX Designer,X Alumni</p>
-                </span>
-              </div>
-            </div>
-            <div className='absolute items-right top-[0] sm:ml-[230px] lg:ml-[398px] '>
-              <img
-                src={Media2}
-                className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[74px]  '
-                alt=''
-              />
-            </div>
-          </div>
-        </Marquee>
+          </Marquee>
+        ) : (
+          <Marquee
+            speed={55}
+            className='flex flex-row gap-[24px] '
+            direction='left'
+          >
+            <Skeleton className='ml-[40px]' width={365} height={192} />
+            <Skeleton className='ml-[40px]' width={365} height={192} />
+            <Skeleton className='ml-[40px]' width={365} height={192} />
+          </Marquee>
+        )}
       </div>
     </div>
   );

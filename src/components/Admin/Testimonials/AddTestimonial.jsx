@@ -9,17 +9,23 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
+import { BaseURL } from '../../../Utils/BaseUrl';
+import { ProgressBar } from 'react-loader-spinner';
+import { toast } from 'react-toastify';
+
 const AddTestimonial = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [addLoading, setAddLoading] = useState(false);
 
   const uploadImg = async (setFieldValue, file) => {
     setLoading(true);
+    /testimonials/;
     try {
       const formData = new FormData();
       formData.append('file', file);
       const response = await axios.post(
-        'https://academy-wo2r.onrender.com/api/v1/courses/upload_file/',
+        `${BaseURL}/courses/upload_file/`,
         formData,
         {
           headers: {
@@ -27,18 +33,18 @@ const AddTestimonial = () => {
           },
         },
       );
-      setFieldValue('file', response.data.file);
+      setFieldValue('author_image', response.data.file);
       setLoading(false);
     } catch (error) {
       console.error('Error uploading file: ', error);
     }
   };
 
-  const handleDrop = e => {
+  const handleDrop = (e, setFieldValue) => {
     e.preventDefault();
     const droppedFile = e.dataTransfer.files[0];
     if (droppedFile.type.startsWith('image/')) {
-      uploadImg(droppedFile);
+      uploadImg(setFieldValue, droppedFile);
     } else {
       alert('Please drop an image file!');
     }
@@ -57,8 +63,27 @@ const AddTestimonial = () => {
     e.preventDefault();
   };
 
-  const handleSubmit = async values => {
-    console.log(values);
+  const handleSubmit = async (values, resetForm) => {
+    setAddLoading(true);
+    if (values?.author_image != '') {
+      try {
+        const response = await axios.post(`${BaseURL}/testimonials/`, values);
+        setAddLoading(false);
+        toast.success('Success', {
+          position: 'top-right',
+        });
+        resetForm();
+      } catch (error) {
+        console.error('Error uploading file: ', error);
+        toast.error('An error occured, please try again!', {
+          position: 'top-right',
+        });
+        setAddLoading(false);
+      }
+    } else {
+      setAddLoading(false);
+      alert('Please select an image');
+    }
   };
 
   return (
@@ -76,22 +101,22 @@ const AddTestimonial = () => {
             initialValues={{
               author: '',
               content: '',
-              title: '',
-              file: '',
+              proffession: '',
+              author_image: '',
             }}
             validationSchema={Yup.object({
               author: Yup.string()
                 .max(20, 'max 20 characters')
                 .required('Required'),
-              title: Yup.string()
+              proffession: Yup.string()
                 .max(20, 'max 20 characters')
                 .required('Required'),
               content: Yup.string()
                 .max(260, 'max 260 characters')
                 .required('Required'),
             })}
-            onSubmit={(values, { setFieldError }) => {
-              handleSubmit(values);
+            onSubmit={(values, { resetForm }) => {
+              handleSubmit(values, resetForm);
             }}
           >
             {({
@@ -145,15 +170,15 @@ const AddTestimonial = () => {
                   <div className='w-full course_input rounded-[12px] h-[40px] text-[14px]'>
                     <input
                       type='text'
-                      name='title'
+                      name='proffession'
                       required
-                      onChange={handleChange('title')}
-                      onBlur={handleBlur('title')}
+                      onChange={handleChange('proffession')}
+                      onBlur={handleBlur('proffession')}
                       className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                     />
                   </div>
                   <AnimatePresence>
-                    {touched.title && errors.title && (
+                    {touched.proffession && errors.proffession && (
                       <motion.div
                         initial={{ height: 0 }}
                         animate={{ height: 'auto' }}
@@ -161,7 +186,7 @@ const AddTestimonial = () => {
                         transition={{ duration: 0.7, ease: 'easeInOut' }}
                       >
                         <p className='text-[#2C2C2CB2] text-[#D50000]   text-[10px] font-normal md:text-base'>
-                          {errors.title}
+                          {errors.proffession}
                         </p>
                       </motion.div>
                     )}
@@ -209,10 +234,10 @@ const AddTestimonial = () => {
                   </label>
                   {!loading ? (
                     <>
-                      {!values.file ? (
+                      {!values.author_image ? (
                         <div
                           className='dropZone w-full h-[192px] rounded-[12px] flex flex-col gap-[16px] py-[24px] items-center'
-                          onDrop={handleDrop}
+                          onDrop={e => handleDrop(e, setFieldValue)}
                           onDragOver={handleDragOver}
                         >
                           <input
@@ -261,7 +286,7 @@ const AddTestimonial = () => {
                             </div>
                           </div>
                           <img
-                            src={values.file}
+                            src={values.author_image}
                             className=' w-full rounded-[12px]'
                             alt=''
                           />
@@ -274,13 +299,28 @@ const AddTestimonial = () => {
                     </div>
                   )}
                 </div>
-
-                <button
-                  type='submit'
-                  className='text-[16px] hover:opacity-[0.9] text-white bg-mainBlue rounded-[16px] font-[600] w-[505px] h-[48px] flex items-center justify-center mt-[8px]'
-                >
-                  Add
-                </button>
+                {!addLoading ? (
+                  <button
+                    type='submit'
+                    className='text-[16px] hover:opacity-[0.9] text-white bg-mainBlue rounded-[16px] font-[600] w-[505px] h-[48px] flex items-center justify-center mt-[8px]'
+                  >
+                    Add
+                  </button>
+                ) : (
+                  <div className='w-full flex items-center justify-center h-[48px]'>
+                    <ProgressBar
+                      visible={true}
+                      height='80'
+                      width='80'
+                      color='#f1f1f1'
+                      barColor='gray'
+                      borderColor='black'
+                      ariaLabel='progress-bar-loading'
+                      wrapperStyle={{}}
+                      wrapperClass=''
+                    />
+                  </div>
+                )}
               </Form>
             )}
           </Formik>

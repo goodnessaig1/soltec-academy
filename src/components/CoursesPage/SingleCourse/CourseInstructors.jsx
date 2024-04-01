@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 import Text from '../../../assets/Instructors-text.svg';
-import Instructor from '../../../assets/instructor.png';
 
 const CourseInstructors = ({ courseDetail }) => {
-  console.log(courseDetail);
   const instructors = courseDetail?.instructors;
   return (
     <div className='w-full'>
@@ -15,13 +13,15 @@ const CourseInstructors = ({ courseDetail }) => {
               key={index}
               className='flex flex-col  w-[166px] lg:w-[368px] instructor  h-[225px] lg:h-[432px] rounded-[20px] items-center  '
             >
-              <img
-                src={Instructor}
-                className='brrr w-[166px] lg:w-[368px]  h-[160px] lg:h-[432px]'
-                alt=''
-              />
+              <div className=''>
+                <img
+                  src={instructor?.image}
+                  className='brrr w-[166px] lg:w-[368px]  h-[160px] object-cover lg:h-[342px]'
+                  alt=''
+                />
+              </div>
 
-              <div className='font-[700] text-[14px] lg:text-[24px] leading-[28px] mt-[2px] lg:mt-[2px] mb-[6px] text-[#fff]'>
+              <div className='font-[700] text-[14px] lg:text-[24px] leading-[28px] lg:mt-[4px] mb-[6px] text-[#fff]'>
                 {instructor?.name}
               </div>
               <p className='font-[400] sm:text-[12px] text-center lg:text-[16px] leading-[20px] mb-[10px] text-opacityWhite'>

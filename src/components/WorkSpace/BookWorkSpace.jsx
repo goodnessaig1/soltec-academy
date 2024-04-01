@@ -26,13 +26,17 @@ const BookWorkSpace = () => {
             </h1>
           </div>
           <div className='pt-[24px] lg:pt-[70px] flex items-center justify-center'>
-            <img src={BookText} className='w-[343px]' alt='' />
+            <img
+              src={BookText}
+              className='sma:w-[343px] lg:w-[543px] '
+              alt=''
+            />
           </div>
 
           <div className='w-full flex flex-col lg:flex-row gap-[40px] mt-[4px] lg:mt-[48px] justify-center items-center'>
             <motion.div
               whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.1 }}
               className='pay_ct w-[287px] hover:cursor-pointer transition duration-300 flex flex-col items-center justify-center h-[244px] rounded-[24px] p-[24px] gap-[24px] '
             >
               <div className='flex flex-col gap-[20px]'>
@@ -53,7 +57,7 @@ const BookWorkSpace = () => {
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.1 }}
               className='pay_ct w-[287px] hover:cursor-pointer transition duration-300 flex flex-col items-center justify-center h-[244px] rounded-[24px] p-[24px] gap-[24px] '
             >
               <div className='flex flex-col gap-[20px]'>
@@ -76,7 +80,7 @@ const BookWorkSpace = () => {
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.1 }}
               className='pay_ct w-[287px] hover:cursor-pointer transition duration-300 flex flex-col items-center justify-center h-[244px] rounded-[24px] p-[24px] gap-[24px] '
             >
               <div className='flex flex-col gap-[20px]'>

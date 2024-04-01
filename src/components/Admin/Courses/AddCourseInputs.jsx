@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { UploadFile } from '../../../Utils/Assets';
 import axios from 'axios';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { BaseURL } from '../../../Utils/BaseUrl';
+import { IoMdClose } from 'react-icons/io';
 
 export const OverViewContainer = ({
   setOpenOverview,
@@ -25,7 +26,12 @@ export const OverViewContainer = ({
   setOverview5,
   setOverview6,
   setOverviews,
+  setOverviewDone,
 }) => {
+  const isHeaderOrBodyEmpty = data => {
+    return data.header.trim() === '' || data.body.trim() === '';
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     setOverviews([
@@ -36,15 +42,28 @@ export const OverViewContainer = ({
       overview5,
       overview6,
     ]);
-    setOpenOverview(false);
+    let overview = [
+      overview1,
+      overview2,
+      overview3,
+      overview4,
+      overview5,
+      overview6,
+    ];
+    const overviewHasEmptyHeaderOrBody = overview.some(isHeaderOrBodyEmpty);
+    console.log(overviewHasEmptyHeaderOrBody);
+    if (!overviewHasEmptyHeaderOrBody) {
+      setOverviewDone(true);
+      setOpenOverview(false);
+    } else {
+      setOverviewDone(false);
+      console.log('overview has');
+    }
   };
 
   return (
     <div className='fixed z_indd h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-transparent'>
-      <div
-        onClick={() => setOpenOverview(false)}
-        className='w-full z_indd fixed hover:cursor-pointer h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-dOverlay '
-      ></div>
+      <div className='w-full z_indd fixed hover:cursor-pointer h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-dOverlay '></div>
       <AnimatePresence className='z_ind'>
         <motion.div
           initial={{ opacity: 0, scale: 0.2 }}
@@ -55,9 +74,18 @@ export const OverViewContainer = ({
           }}
           className='bg-white z_ind flex p-[24px] inter__ gap-[22px] flex-col w-[413px] h-[503px] rounded-[24px]'
         >
-          <h1 className='font-[500] text-[16px] text-center'>
-            COURSE OVERVIEW
-          </h1>
+          <div className='flex flex-row justify-between items-center'>
+            <span></span>
+            <h1 className='font-[500] text-[16px] text-center'>
+              COURSE OVERVIEW
+            </h1>
+            <div
+              onClick={() => setOpenOverview(false)}
+              className='w-[34px] hover:opacity-[0.7] hover:cursor-pointer transition duration-300 text-mainBlue h-[34px] flex items-center justify-center rounded-[50%] bg-tintBlue'
+            >
+              <IoMdClose size={24} />
+            </div>
+          </div>
           <div className='flex flex-row items-center justify-center gap-[12px]'>
             <div
               onClick={() => setOverviewIndex('1')}
@@ -500,11 +528,28 @@ export const InstructorInfo = ({
   setInstructorInfo1,
   instructorInfo2,
   setInstructorInfo2,
+  setInstructorDone,
 }) => {
+  const IsFieldEmpty = data => {
+    return (
+      data.name.trim() === '' ||
+      data.image.trim() === '' ||
+      data.proffession.trim() === ''
+    );
+  };
   const handleSubmit = e => {
     e.preventDefault();
     const data = [instructorInfo1, instructorInfo2];
-    setOpenInstructorInfo(false);
+    const check = data.some(IsFieldEmpty);
+    console.log(check);
+    if (!check) {
+      setInstructorDone(true);
+      setOpenInstructorInfo(false);
+    } else {
+      setInstructorDone(false);
+      alert('complet all fields');
+      console.log('overview has');
+    }
   };
   const [loading, setLoading] = useState(false);
 
@@ -603,10 +648,7 @@ export const InstructorInfo = ({
 
   return (
     <div className='fixed z_indd h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-transparent'>
-      <div
-        onClick={() => setOpenInstructorInfo(false)}
-        className='w-full z_indd fixed hover:cursor-pointer h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-dOverlay '
-      ></div>
+      <div className='w-full z_indd fixed hover:cursor-pointer h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-dOverlay '></div>
       <AnimatePresence className='z_ind'>
         <motion.div
           initial={{ opacity: 0, scale: 0.2 }}
@@ -618,9 +660,18 @@ export const InstructorInfo = ({
           }}
           className='bg-white z_ind flex p-[24px] inter__ gap-[22px] flex-col w-[413px] h-[660px] rounded-[24px]'
         >
-          <h1 className='font-[500] text-[16px] text-center'>
-            INSTRUCTOR INFORMATION
-          </h1>
+          <div className='flex flex-row justify-between items-center'>
+            <span></span>
+            <h1 className='font-[500] text-[16px] text-center'>
+              INSTRUCTOR INFORMATION
+            </h1>
+            <div
+              onClick={() => setOpenInstructorInfo(false)}
+              className='w-[34px] hover:opacity-[0.7] hover:cursor-pointer transition duration-300 text-mainBlue h-[34px] flex items-center justify-center rounded-[50%] bg-tintBlue'
+            >
+              <IoMdClose size={24} />
+            </div>
+          </div>
           <div className='flex flex-row items-center justify-center gap-[12px]'>
             <div
               onClick={() => setInstructorInfoIndex('1')}
@@ -943,10 +994,27 @@ export const FAQInputContainer = ({
   setActiveId,
   faqs,
   setFAQs,
+  setFaqDone,
 }) => {
+  const IsFieldEmpty = data => {
+    return data.question.trim() === '' || data.answer.trim() === '';
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    setOpenFaqs(false);
+
+    const check = faqs.some(IsFieldEmpty);
+    if (!check) {
+      if (faqs.length <= 1) {
+        alert('Add more faq questions');
+      } else {
+        setFaqDone(true);
+        setOpenFaqs(false);
+      }
+    } else {
+      setFaqDone(false);
+      alert('No field should be empty');
+    }
   };
   const addFAQ = () => {
     const newFAQs = [
@@ -958,6 +1026,7 @@ export const FAQInputContainer = ({
 
   const handleInputChange = (id, e) => {
     const { name, value } = e.target;
+    setFaqDone(false);
     const updatedFAQs = faqs.map(faq => {
       if (faq.id === id) {
         return { ...faq, [name]: value };
@@ -969,10 +1038,7 @@ export const FAQInputContainer = ({
 
   return (
     <div className='fixed z_indd h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-transparent'>
-      <div
-        onClick={() => setOpenFaqs(false)}
-        className='w-full z_indd fixed hover:cursor-pointer h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-dOverlay '
-      ></div>
+      <div className='w-full z_indd fixed hover:cursor-pointer h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-dOverlay '></div>
       <AnimatePresence className='z_ind'>
         <motion.div
           initial={{ opacity: 0, scale: 0.2 }}
@@ -983,9 +1049,18 @@ export const FAQInputContainer = ({
           }}
           className='bg-white z_ind flex p-[24px] inter__ gap-[22px] flex-col w-[413px] h-[463px] rounded-[24px]'
         >
-          <h1 className='font-[500] text-[16px] text-center'>
-            FREQUENTLY ASKED QUESTIONS
-          </h1>
+          <div className='flex flex-row justify-between items-center'>
+            <span></span>
+            <h1 className='font-[500] text-[16px] text-center'>
+              FREQUENTLY ASKED QUESTIONS
+            </h1>
+            <div
+              onClick={() => setOpenFaqs(false)}
+              className='w-[34px] text-mainBlue hover:opacity-[0.7] hover:cursor-pointer transition duration-300 h-[34px] flex items-center justify-center rounded-[50%] bg-tintBlue'
+            >
+              <IoMdClose size={24} />
+            </div>
+          </div>
           <div className='flex items-center justify-center flex-row gap-[12px]'>
             {faqs.map((faq, index) => (
               <div
@@ -1019,7 +1094,7 @@ export const FAQInputContainer = ({
                     className='font-[600] text-[14px] leading-[21px]'
                     htmlFor=''
                   >
-                    Title
+                    Question
                   </label>
                   <div className='w-full course_input rounded-[12px] h-[40px] text-[14px]'>
                     <input
@@ -1038,12 +1113,12 @@ export const FAQInputContainer = ({
                     className='font-[600] text-[14px] leading-[21px]'
                     htmlFor='body'
                   >
-                    Body
+                    Answer
                   </label>
                   <div className='w-full course_input rounded-[12px]  text-[14px]'>
                     <textarea
                       type='text'
-                      style={{ height: '126px', resize: 'none' }}
+                      style={{ height: '106px', resize: 'none' }}
                       name='answer'
                       required
                       value={faq.answer}

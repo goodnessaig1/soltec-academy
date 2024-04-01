@@ -40,7 +40,7 @@ const SingleCourse = () => {
         <div className=''>
           <div className='mainpBg flex flex-col'>
             <CourseHero courseDetail={courseDetail} />
-            <CourseOverviewVideo />
+            <CourseOverviewVideo courseDetail={courseDetail} />
             <CourseOverview courseDetail={courseDetail} />
             <CourseInstructors courseDetail={courseDetail} />
             <CourseFaqs courseDetail={courseDetail} />
@@ -53,10 +53,10 @@ const SingleCourse = () => {
         <div className='w-full h-[100vh] flex items-center justify-center'>
           <RotatingLines
             visible={true}
-            height='96'
-            width='96'
+            height='66'
+            width='66'
             strokeColor='grey'
-            strokeWidth='5'
+            strokeWidth='3'
             animationDuration='0.75'
             ariaLabel='rotating-lines-loading'
             wrapperStyle={{}}

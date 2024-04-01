@@ -34,6 +34,7 @@ const BookSpace = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState(null);
+  const [isNumberValid, setIsNumberValid] = useState(true);
   const seats = [
     { number: '1' },
     { number: '2' },
@@ -128,16 +129,20 @@ const BookSpace = () => {
 
   const handleCheckout = event => {
     event.preventDefault();
-    setData({
-      phoneNumber,
-      email,
-      fullName,
-      duration,
-      numberOfSeates,
-      days,
-      price,
-    });
-    setOpenModal(true);
+    if (duration != '') {
+      setData({
+        phoneNumber,
+        email,
+        fullName,
+        duration,
+        numberOfSeates,
+        days,
+        price,
+      });
+      setOpenModal(true);
+    } else {
+      setError('Select date');
+    }
   };
   const datePickerRef = useRef(null);
   const openCalendar = () => {
@@ -145,13 +150,31 @@ const BookSpace = () => {
       datePickerRef.current.setOpen(true);
     }
   };
+
+  const validatePhoneNumber = number => {
+    const nigeriaRegex = /^\+234\d{10}$/;
+    const otherRegex = /^(080|070|081|090|091)\d{8}$/;
+    const hasAlphabets = /[a-zA-Z]/.test(number);
+    const isValidNigeria = nigeriaRegex.test(number);
+    const isValidOther = otherRegex.test(number);
+    if (hasAlphabets || number.length > 10) {
+      setIsNumberValid(isValidNigeria || isValidOther);
+    } else setIsNumberValid(true);
+  };
+
+  const handleInputChange = e => {
+    const number = e.target.value;
+    setPhoneNumber(number);
+    validatePhoneNumber(number);
+  };
+
   return (
     <div>
       <Header />
       {openModal && <PaymentModal setOpenModal={setOpenModal} data={data} />}
 
       <div className='w-full px-[20px] md:px-[120px] pt-[90px] pb-[200px] justify-center flex  '>
-        <div className='flex lg:flex-row  gap-[75px] w-full lg:w-[1018px] '>
+        <div className='flex lg:flex-row items-center justify-center  gap-[75px] w-full lg:w-[1018px] '>
           <div className=' w-[56%] hidden lg:flex flex-col gap-[23px]'>
             <img src={Starlink1} alt='' />
             <div className='flex flex-row gap-[16px]'>
@@ -162,7 +185,7 @@ const BookSpace = () => {
           </div>
 
           {/*  */}
-          <div className='w-full md:w-[365px] flex flex-col gap-[20px]'>
+          <div className='w-full md:w-[512px] lg:w-[365px] flex flex-col gap-[20px]'>
             <div className='flex flex-row gap-[12px] items-center'>
               <div
                 onClick={() => setDays('Daily')}
@@ -194,7 +217,7 @@ const BookSpace = () => {
               >
                 Monthly
               </div>
-            </div> 
+            </div>
             <form
               action=''
               className='w-full'
@@ -229,7 +252,7 @@ const BookSpace = () => {
                                 setNumberOfSeates(seat.number),
                                 setOpenSeats(false)
                               )}
-                              className='hover:bg-blue-600 hover:text-[#fff] hover:cursor-pointer transition duration-200 ease-in-out px-[12px] rounded-[8px] py-[6px] '
+                              className='hover:bg-blue-600 w-[172px] hover:text-[#fff] hover:cursor-pointer transition duration-200 ease-in-out px-[12px] rounded-[8px] py-[6px] '
                             >
                               {seat?.number}
                             </div>
@@ -308,18 +331,34 @@ const BookSpace = () => {
                     className='w-full outline-none px-[16px] bg-transparent focus:outline-none'
                   />
                 </div>
-                <div className='w-full flex items-center input_cont h-[50px] rounded-[12px] '>
-                  <input
-                    autoComplete='phoneNumber'
-                    type='phoneNumber'
-                    name='phoneNumber'
-                    required
-                    value={phoneNumber}
-                    onChange={e => setPhoneNumber(e.target.value)}
-                    placeholder='Phone number'
-                    className='w-full outline-none px-[16px] bg-transparent focus:outline-none'
-                  />
+                <div className='flex flex-col gap-[6px]'>
+                  <div className='w-full flex items-center input_cont h-[50px] rounded-[12px] '>
+                    <input
+                      autoComplete='phoneNumber'
+                      type='phoneNumber'
+                      name='phoneNumber'
+                      required
+                      value={phoneNumber}
+                      onChange={e => handleInputChange(e)}
+                      placeholder='Phone number'
+                      className='w-full outline-none px-[16px] bg-transparent focus:outline-none'
+                    />
+                  </div>
+
+                  <AnimatePresence>
+                    {!isNumberValid && (
+                      <motion.h1
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: '24px' }}
+                        transition={{ duration: 0.3 }}
+                        className='text-red-500'
+                      >
+                        Invalid Phone Number
+                      </motion.h1>
+                    )}
+                  </AnimatePresence>
                 </div>
+
                 <div className='w-full flex items-center input_cont h-[50px] rounded-[12px] '>
                   <input
                     autoComplete='email'
@@ -370,10 +409,16 @@ const PaymentModal = ({ data, setOpenModal }) => {
       ></div>
       <AnimatePresence className='z_ind'>
         <motion.div
-          initial={{ x: '100%', opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          exit={{ x: '100%', opacity: 0 }}
+          initial={{ opacity: 0, scale: 0.2 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.6,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+          // initial={{ x: '100%', opacity: 0 }}
+          // animate={{ x: 0, opacity: 1 }}
+          // transition={{ duration: 0.5 }}
+          // exit={{ x: '100%', opacity: 0 }}
           className='bg-white z_ind flex flex-col lg:flex-row w-[99%] sml:w-[88%] md:w-[66%] lg:w-[76%] xl:w-[62%] h-[660px] lg:h-[419px] rounded-[24px]'
         >
           <div className='lg:w-1/2 bg-bg3 h-full rounded-t-[24px] lg:rounded-tr-[0] lg:rounded-l-[24px] flex flex-col items-center justify-center gap-[32px] lg:gap-[56px] '>

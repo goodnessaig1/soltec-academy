@@ -5,14 +5,13 @@ import { EllipseSvg, hexToRGBA } from '../../../Utils/Index';
 import Header from '../../Header/Header';
 
 const CourseHero = ({ courseDetail }) => {
-  console.log(courseDetail?.video);
   const CourseTitle = ({ title }) => {
     const hasSpace = title.includes(' ');
     const [firstIndex, secondIndex] = hasSpace ? title.split(' ') : [title, ''];
     return (
       <>
         {hasSpace ? (
-          <h1 className='text-[40px] lg:text-[92px] text-[#fff] font-[700] leading-[48px] lg:leading-[116px]'>
+          <h1 className='text-[40px] text-nowrap lg:text-[92px] text-[#fff] font-[700] leading-[48px] lg:leading-[116px]'>
             {firstIndex}{' '}
             <span style={{ color: courseDetail?.color_code }} className=''>
               {secondIndex}
@@ -26,11 +25,10 @@ const CourseHero = ({ courseDetail }) => {
       </>
     );
   };
-  const backgroundImg =
-    'https://academy-wo2r.onrender.com/media/videos/view-nutritional-counter-app_1.jpg';
+
   return (
     <div
-      style={{ backgroundImage: `url(${backgroundImg})` }}
+      style={{ backgroundImage: `url(${courseDetail?.background_image})` }}
       className='courseBg h-[565px] lg:h-[810px] w-full'
     >
       <Header headerCol={true} />

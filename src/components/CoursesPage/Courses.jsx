@@ -9,6 +9,7 @@ import { Emogi } from '../../Utils/Assets';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { BaseURL } from '../../Utils/BaseUrl';
 
 const Courses = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Courses = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://academy-wo2r.onrender.com/api/v1/courses/fetch_home_courses/`,
+        `${BaseURL}/courses/fetch_home_courses/`,
       );
       setLoading(false);
       setCourses(response.data);
@@ -57,7 +58,6 @@ const Courses = () => {
   };
   const handleKeyPress = e => {
     if (e.key === 'Enter') {
-      // Handle the submission here (you can customize this part)
       console.log('Submitted search term:', searchTerm);
     }
   };
@@ -142,7 +142,9 @@ const Courses = () => {
                         className='flex flex-col max_wid sm:w-[343px] lg:w-[367px] py-[16px] gap-[32px] rounded-[24px] items-center'
                       >
                         <h1 className='font-[700] text-[32px] leading-[48px] text-[#fff] '>
-                          {course?.title}
+                          {course?.title.length > 17
+                            ? `${course?.title?.substring(0) + '..'}`
+                            : `${course?.title}`}
                         </h1>
                         <span className='text-[16px] px-[28px] text-extraGray font-[500] leading-[24px] text-center'>
                           {course?.description.length > 110 ? (

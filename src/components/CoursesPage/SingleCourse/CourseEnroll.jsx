@@ -25,8 +25,8 @@ const CourseEnroll = ({ courseDetail }) => {
             boxShadow: `box-shadow: 0px 10px 50px 0px #E79A2766;
 `,
           }}
-          to={'/courses/product-design/payment'}
-          className='w-[221px] h-[56px] hover:opacity-[0.9] transition duration-300 border border-[#000] border-[2px] rounded-[16px] flex flex-row items-center justify-center gap-[8px] '
+          to={`/courses/${courseDetail?.id}/${courseDetail?.title}/payment`}
+          className='w-[221px] h-[56px] hover:opacity-[0.4] transition duration-300 border border-[#000] border-[2px] rounded-[16px] flex flex-row items-center justify-center gap-[8px] '
         >
           <span className='text-[16px] font-[600] leading-[24px]'>
             Enroll now
