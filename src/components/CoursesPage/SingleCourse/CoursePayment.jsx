@@ -19,7 +19,6 @@ const CoursePayment = () => {
   const [emailError, setEmailError] = useState(false);
   const [numberError, setNumberError] = useState(false);
   const [paymentRequest, setPaymentRequest] = useState(false);
-  const [paymentReference, setPaymentReference] = useState(null);
 
   const fetchCourseDetail = async () => {
     setLoading(true);
@@ -62,11 +61,8 @@ const CoursePayment = () => {
           data,
         );
         console.log(response.data.reference);
-        setPaymentReference(response.data.reference);
-        setTimeout(() => {
-          window.location.href = response.data.url;
-          setPaymentRequest(false);
-        }, 10000);
+        window.location.href = response.data.url;
+        setPaymentRequest(false);
       } catch (error) {
         console.log(error);
         setPaymentRequest(false);
