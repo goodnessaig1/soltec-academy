@@ -61,10 +61,12 @@ const CoursePayment = () => {
           `${BaseURL}/courses/${courseData?.id}/enroll_students_to_course/`,
           data,
         );
-        console.log(response.data);
+        console.log(response.data.reference);
         setPaymentReference(response.data.reference);
-        window.location.href = response.data.url;
-        setPaymentRequest(false);
+        setTimeout(() => {
+          window.location.href = response.data.url;
+          setPaymentRequest(false);
+        }, 10000);
       } catch (error) {
         console.log(error);
         setPaymentRequest(false);
