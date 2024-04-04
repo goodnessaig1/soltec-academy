@@ -21,7 +21,7 @@ const CourseInstructors = ({ courseDetail }) => {
                 />
               </div>
 
-              <div className='font-[700] text-[14px] lg:text-[24px] leading-[28px] lg:mt-[4px] mb-[6px] text-[#fff]'>
+              <div className='font-[700] text-[14px] lg:text-[24px] leading-[28px] lg:mt-[10px] mb-[6px] text-[#fff]'>
                 {instructor?.name}
               </div>
               <p className='font-[400] sm:text-[12px] text-center lg:text-[16px] leading-[20px] mb-[10px] text-opacityWhite'>

@@ -143,18 +143,18 @@ const Courses = () => {
                       >
                         <h1 className='font-[700] text-[32px] leading-[48px] text-[#fff] '>
                           {course?.title.length > 17
-                            ? `${course?.title?.substring(0) + '..'}`
+                            ? `${course?.title?.substring(0, 17) + '..'}`
                             : `${course?.title}`}
                         </h1>
                         <span className='text-[16px] px-[28px] text-extraGray font-[500] leading-[24px] text-center'>
                           {course?.description.length > 110 ? (
-                            <span className='text-[500] text-[16px] items-center text-center leading-[24px] text-extraGray'>
+                            <span className='text-[500] line-clamp-3 max-w-[310px] break-words text-[16px] items-center text-center leading-[24px] text-extraGray'>
                               {`${
                                 course?.description.substring(0, 110) + '...'
                               }`}
                             </span>
                           ) : (
-                            <span className='text-[500] text-[16px] items-center text-center leading-[24px] text-extraGray'>
+                            <span className='text-[500] line-clamp-3 max-w-[310px] break-words text-[16px] items-center text-center leading-[24px] text-extraGray'>
                               {course?.description}
                             </span>
                           )}

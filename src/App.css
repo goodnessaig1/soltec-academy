@@ -718,6 +718,7 @@ input[type='date'] {
 }
 .courseBg {
   background: linear-gradient(180deg, #02020f 0%, #02020f 100%);
+  background-blend-mode: darken !important;
   background-size: cover;
   max-width: 100%;
 }

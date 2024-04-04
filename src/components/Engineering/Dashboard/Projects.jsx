@@ -55,62 +55,62 @@ const Projects = () => {
         <div className='w-full projects  flex items-center justify-center'>
           <div className='slick-container opacity-[1]'>
             <Slider {...settings} className=' opacity-[1]'>
-              <div className='w-1/3 p-[56px] flex flex-col gap-[24px] first_bg1 h-[367px]'>
-                <div className='w-full px-[20px] py-[12px] mb-[24px] text-white bg-opacityC rounded-[4px]'>
-                  <h1 className='text-[24px] font-[600]  leading-[36px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] first_bg1 h-[367px]'>
+                <div className='w-full py-[12px] mb-[24px] text-white  rounded-[4px]'>
+                  <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600]  leading-[36px]'>
                     POWER AND ENERGY
                   </h1>
                 </div>
-                <span className='inter__  font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                <span className='inter__  opacity-0 group-hover:opacity-[0.8] group-hover:transition-opacity duration-300 ease-in-out font-[500] text-[18px] leading-[27px] text-white '>
                   Solar installation and all kinds of activities, works and
                   services relating to the business of environmentally
                   sustainable energy sources available across Nigeria
                 </span>
               </div>
-              <div className='w-1/3 p-[56px] flex flex-col gap-[24px] second_bg1 h-[367px]'>
-                <div className='w-full px-[20px]  py-[12px] mb-[24px] text-white bg-opacityC rounded-[4px]'>
-                  <h1 className='text-[24px] font-[600] leading-[36px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] second_bg1 h-[367px]'>
+                <div className='w-full py-[12px] mb-[24px] text-white rounded-[4px]'>
+                  <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600] leading-[36px]'>
                     BUILDING AND CONSTRUCTION
                   </h1>
                 </div>
-                <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                <span className='inter__ opacity-0 group-hover:opacity-[0.8] group-hover:transition-opacity duration-300 ease-in-out font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
                   Includes lab or field testing, analysis and monitoring of
                   structures, and building materials such as foundations,
                   drainage systems, pavements, concrete, soils and reinforcing
                   or structural steel.
                 </span>
               </div>
-              <div className='w-1/3 p-[56px] flex flex-col gap-[24px] third_bg1 h-[367px]'>
-                <div className='w-full px-[20px] py-[12px] mb-[24px] text-white bg-opacityC rounded-[4px]'>
-                  <h1 className='text-[24px] font-[600] leading-[36px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] third_bg1 h-[367px]'>
+                <div className='w-full py-[12px] mb-[24px] text-white  rounded-[4px]'>
+                  <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600] leading-[36px]'>
                     SMART SECURITY
                   </h1>
                 </div>
-                <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                <span className='inter__ opacity-0 group-hover:opacity-[0.8] group-hover:transition-opacity duration-300 ease-in-out font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
                   We provide and install a comprehensive security network that
                   gives you complete protection and control - from anywhere
                 </span>
               </div>
-              <div className='w-1/3 p-[56px] flex flex-col gap-[24px] fourth_bg1 h-[367px]'>
-                <div className='w-full px-[20px] py-[12px] mb-[24px] text-white bg-opacityC rounded-[4px]'>
-                  <h1 className='text-[24px] font-[600] leading-[36px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] fourth_bg1 h-[367px]'>
+                <div className='w-full py-[12px] mb-[24px] text-white rounded-[4px]'>
+                  <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600] leading-[36px]'>
                     SOFTWARE DEVELOPMENT
                   </h1>
                 </div>
-                <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                <span className='inter__ opacity-0 group-hover:opacity-[0.8] group-hover:transition-opacity duration-300 ease-in-out font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
                   Plan, design, develop, integrate, test, manage and evolve
                   software solutions. offer end-to-end development that covers
                   everything from business analysis to software delivery and
                   support,
                 </span>
               </div>
-              <div className='w-1/3 p-[56px] flex flex-col gap-[24px] fifth_bg1 h-[367px]'>
-                <div className='w-full px-[20px] py-[12px] mb-[24px]  text-white bg-opacityC rounded-[4px]'>
-                  <h1 className='text-[24px] font-[600] leading-[36px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] fifth_bg1 h-[367px]'>
+                <div className='w-full py-[12px] mb-[24px]  text-white rounded-[4px]'>
+                  <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600] leading-[36px]'>
                     TEACHING COURSES
                   </h1>
                 </div>
-                <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                <span className='inter__ opacity-0 group-hover:opacity-[0.8] group-hover:transition-opacity duration-300 ease-in-out font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
                   <ul className='list-disc ml-[20px] '>
                     <li>Front, Back and Fullstack Web Development</li>
                     <li>Mobile App Development</li>
@@ -121,13 +121,13 @@ const Projects = () => {
                   </ul>
                 </span>
               </div>
-              <div className='w-1/3 p-[56px] flex flex-col gap-[24px] sixth_bg1 h-[367px]'>
-                <div className='w-full px-[20px] py-[12px] mb-[24px]  text-white bg-opacityC rounded-[4px]'>
-                  <h1 className='text-[24px] font-[600] leading-[36px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] sixth_bg1 h-[367px]'>
+                <div className='w-full py-[12px] mb-[24px]  text-white rounded-[4px]'>
+                  <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600] leading-[36px]'>
                     ROBOTICS AND AUTOMATION
                   </h1>
                 </div>
-                <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                <span className='inter__ opacity-0 group-hover:opacity-[0.8] group-hover:transition-opacity duration-300 ease-in-out font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
                   All kinds of activities, works and services relating to the
                   business of environmentally sustainable energy sources
                   available across Nigeria

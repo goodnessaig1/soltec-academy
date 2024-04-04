@@ -32,8 +32,12 @@ const CourseOverview = ({ courseDetail }) => {
                   >
                     <img src={overview?.icon} alt='' />
                     <div className='flex flex-col text-[14px] text-[#fff] leading-[21px]'>
-                      <h1 className='font-[700] '>{overview?.header}</h1>
-                      <span className='font-[400]'>{overview?.body}</span>
+                      <h1 className='font-[700] max-w-[320px] break-words '>
+                        {overview?.header}
+                      </h1>
+                      <span className='font-[400] max-w-[320px] break-words'>
+                        {overview?.body}
+                      </span>
                     </div>
                   </div>
                 ))}

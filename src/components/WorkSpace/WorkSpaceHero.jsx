@@ -17,7 +17,7 @@ const WorkSpaceHero = () => {
             <span className=''>BOOK A SPACE NOW</span>
             <img src={NextArrow} alt='' />
           </Link>
-          <div className=' mt-[60px] flex flex-row gap-[13px] col items-center justify-center text-[#fff]'>
+          <div className=' px-[24px] mt-[60px] flex flex-row gap-[13px] col items-center justify-center text-[#fff]'>
             <h1 className='text-[96px] font-[800] leading-[115.2px]'>4</h1>
             <span className='text-[24px] leading-[28px] font-[600]'>
               SLOTS <br />

@@ -80,13 +80,13 @@ const OtherCourses = () => {
   };
 
   return (
-    <div className='w-full h-[1026] py-[120px]'>
+    <div className='w-full h-[1026] pt-[100px] py-[120px]'>
       <div className='flex sm:items-center sm:justify-center lg:justify-start lg:ml-[110px]'>
         <img src={Courses} alt='' />
       </div>
       <div className=' lg:ml-[110px]'>
         <div className='sm:hidden lg:hidden xxl:block'>
-          <div className='mt-[78px] '>
+          <div className='mt-[70px] '>
             <Slider {...lgSettings} className=''>
               <div className='max-w-[367px]'>
                 <div className='flex flex-col max-w-[367px] max_wid w-[367px] h-[320px] py-[16px] gap-[32px] rounded-[24px] backgroundOne items-center'>
@@ -205,7 +205,7 @@ const OtherCourses = () => {
           </div>
         </div>
         <div className='sm:hidden xl:block  xxl:hidden'>
-          <div className='mt-[78px] '>
+          <div className='mt-[70px] '>
             <Slider {...mdSettings} className=''>
               <div className='max-w-[367px]'>
                 <div className='flex flex-col max-w-[367px] max_wid w-[367px] h-[320px] py-[16px] gap-[32px] rounded-[24px] backgroundOne items-center'>
@@ -324,7 +324,7 @@ const OtherCourses = () => {
           </div>
         </div>
         <div className='sm:hidden lg:block xl:hidden xxl:hidden'>
-          <div className='mt-[78px] '>
+          <div className='mt-[70px] '>
             <Slider {...settings} className=''>
               <div className='max-w-[367px]'>
                 <div className='flex flex-col max-w-[367px] max_wid w-[367px] h-[320px] py-[16px] gap-[32px] rounded-[24px] backgroundOne items-center'>

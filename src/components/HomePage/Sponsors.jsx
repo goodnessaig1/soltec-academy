@@ -79,9 +79,6 @@ const Sponsors = () => {
                       className='w-[198px] h-[78px]'
                       alt=''
                     />
-                    <span className='text-[#64748B] font-[500] text-[14px]'>
-                      {sponsor?.name}
-                    </span>
                   </div>
                 </div>
               ))}

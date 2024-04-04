@@ -87,12 +87,12 @@ const Courses = ({ courses }) => {
     <div className='w-full'>
       <div className='container_'>
         <div className=''>
-          <div className='sm:my-[80px] sm:mt-[80px] md:mt-[120px] sm:mb-[120px] lg:mb-[130px] lg:my-[130px]'>
+          <div className='sm:my-[80px] sm:mt-[80px] md:mt-[80px] sm:mb-[120px] lg:mb-[100px] lg:my-[80px]'>
             <div className='w-full items-center justify-center flex'>
               <img src={Text} className='w-[311px] lg:w-[400px] ' alt='' />
             </div>
             <div className='sm:hidden lg:hidden xxl:block'>
-              <div className='ml-[30px] mt-[78px] '>
+              <div className='ml-[30px] mt-[70px] '>
                 <Slider {...lgSettings} className=''>
                   {courses &&
                     courses.map((course, index) => (
@@ -106,10 +106,10 @@ const Courses = ({ courses }) => {
                               ? `${course?.title?.substring(0, 17) + '..'}`
                               : `${course?.title}`}
                           </h1>
-                          <span className='text-[16px] px-[24px] text-extraGray font-[500] leading-[24px] text-center'>
-                            {course?.description.length > 110
+                          <span className='text-[16px] line-clamp-3 max-w-[310px] break-words px-[24px] text-extraGray font-[500] leading-[24px] text-center'>
+                            {course?.description.length > 100
                               ? `${
-                                  course?.description.substring(0, 110) + '...'
+                                  course?.description.substring(0, 100) + '...'
                                 }`
                               : `${course?.description}`}
                           </span>
@@ -137,7 +137,7 @@ const Courses = ({ courses }) => {
               </div>
             </div>
             <div className='sm:hidden lg:block xl:hidden xxl:hidden'>
-              <div className='ml-[30px] mt-[78px] '>
+              <div className='ml-[30px] mt-[70px] '>
                 <Slider {...mdSettings} className=''>
                   {courses &&
                     courses.map((course, index) => (
@@ -151,10 +151,10 @@ const Courses = ({ courses }) => {
                               ? `${course?.title?.substring(0, 17) + '..'}`
                               : `${course?.title}`}
                           </h1>
-                          <span className='text-[16px] px-[24px] text-extraGray font-[500] leading-[24px] text-center'>
-                            {course?.description.length > 110
+                          <span className='text-[16px] line-clamp-3 max-w-[310px] break-words px-[24px] text-extraGray font-[500] leading-[24px] text-center'>
+                            {course?.description.length > 100
                               ? `${
-                                  course?.description.substring(0, 110) + '...'
+                                  course?.description.substring(0, 100) + '...'
                                 }`
                               : `${course?.description}`}
                           </span>
@@ -178,102 +178,11 @@ const Courses = ({ courses }) => {
                         </div>
                       </div>
                     ))}
-                  <div className='max-w-[367px]'>
-                    <div className='flex flex-col max-w-[367px] max_wid w-[367px] h-[320px] py-[16px] gap-[32px] rounded-[24px] backgroundTwo items-center'>
-                      <h1 className='font-[700] text-[32px] leading-[48px] text-[#fff] '>
-                        Product Design
-                      </h1>
-                      <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
-                        This 6 week prep course will not only <br />
-                        introduce you to the fundamentals like <br />
-                        Javascript, CSS and the like…
-                      </span>
-                      <div className='flex flex-col gap-[12px] items-center'>
-                        <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
-                          N250,000
-                        </h1>
-                        <Link
-                          to={'/courses/product-design'}
-                          className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
-                        >
-                          <span className='font-[600] text-[16px] leading-[24px]'>
-                            Enroll now
-                          </span>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='max-w-[367px]'>
-                    <div className='flex max-w-[367px] flex-col max_wid w-[367px] h-[320px] py-[16px] gap-[32px] rounded-[24px] backgroundThree items-center'>
-                      <h1 className='font-[700] text-nowrap w-[301px] text-[31px] leading-[48px] text-[#fff]  text-nowrap'>
-                        Frontend Web Dev...
-                      </h1>
-                      <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
-                        This 6 week prep course will not only <br />
-                        introduce you to the fundamentals like <br />
-                        Javascript, CSS and the like…
-                      </span>
-                      <div className='flex flex-col gap-[12px] items-center'>
-                        <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
-                          N250,000
-                        </h1>
-                        <div className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
-                          <span className='font-[600] text-[16px] leading-[24px]'>
-                            Enroll now
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='max-w-[367px]'>
-                    <div className='flex max-w-[367px] flex-col max_wid w-[367px] h-[320px] py-[16px] gap-[32px] rounded-[24px] backgroundFour items-center'>
-                      <h1 className='font-[700] w-[301px]  text-[31px] leading-[48px] text-[#fff]  text-nowrap'>
-                        Backend Developm..
-                      </h1>
-                      <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
-                        This 6 week prep course will not only <br />
-                        introduce you to the fundamentals like <br />
-                        Javascript, CSS and the like…
-                      </span>
-                      <div className='flex flex-col gap-[12px] items-center'>
-                        <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
-                          N250,000
-                        </h1>
-                        <div className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
-                          <span className='font-[600] text-[16px] leading-[24px]'>
-                            Enroll now
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='max-w-[367px]'>
-                    <div className='flex flex-col max-w-[367px] max_wid w-[367px] h-[320px] py-[16px] gap-[32px] rounded-[24px] backgroundTwo items-center'>
-                      <h1 className='font-[700] text-[32px] leading-[48px] text-[#fff] '>
-                        Cybersecurity
-                      </h1>
-                      <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
-                        This 6 week prep course will not only <br />
-                        introduce you to the fundamentals like <br />
-                        Javascript, CSS and the like…
-                      </span>
-                      <div className='flex flex-col gap-[12px] items-center'>
-                        <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
-                          N250,000
-                        </h1>
-                        <div className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
-                          <span className='font-[600] text-[16px] leading-[24px]'>
-                            Enroll now
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </Slider>
               </div>
             </div>
             <div className='sm:hidden xl:block xxl:hidden'>
-              <div className='ml-[30px] mt-[78px] '>
+              <div className='ml-[30px] mt-[70px] '>
                 <Slider {...settings} className=''>
                   {courses &&
                     courses.map((course, index) => (
@@ -287,10 +196,10 @@ const Courses = ({ courses }) => {
                               ? `${course?.title?.substring(0, 17) + '..'}`
                               : `${course?.title}`}
                           </h1>
-                          <span className='text-[16px] px-[24px] text-extraGray font-[500] leading-[24px] text-center'>
-                            {course?.description.length > 110
+                          <span className='text-[16px] line-clamp-3 max-w-[310px] break-words px-[24px] line-clamp-3 text-extraGray font-[500] leading-[24px] text-center'>
+                            {course?.description.length > 100
                               ? `${
-                                  course?.description.substring(0, 110) + '...'
+                                  course?.description.substring(0, 100) + '...'
                                 }`
                               : `${course?.description}`}
                           </span>
@@ -332,8 +241,8 @@ const Courses = ({ courses }) => {
                           : `${course?.title}`}
                       </h1>
                       <span className='text-[16px] px-[16px] text-extraGray font-[500] leading-[24px] text-center'>
-                        {course?.description.length > 110
-                          ? `${course?.description.substring(0, 110) + '...'}`
+                        {course?.description.length > 100
+                          ? `${course?.description.substring(0, 100) + '...'}`
                           : `${course?.description}`}
                       </span>
                       <div className='flex flex-col gap-[12px] items-center'>

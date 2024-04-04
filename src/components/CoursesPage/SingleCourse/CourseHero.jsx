@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import Next from '../../../assets/next-vector.svg';
+import Next from '../../../assets/next-vector-white.svg';
 import { Link } from 'react-router-dom';
 import { EllipseSvg, hexToRGBA } from '../../../Utils/Index';
 import Header from '../../Header/Header';
@@ -28,7 +28,11 @@ const CourseHero = ({ courseDetail }) => {
 
   return (
     <div
-      style={{ backgroundImage: `url(${courseDetail?.background_image})` }}
+      style={{
+        background: 'rgba(2, 2, 15, 0.7)',
+        backgroundBlendMode: 'darken',
+        backgroundImage: `url(${courseDetail?.background_image})`,
+      }}
       className='courseBg h-[565px] lg:h-[810px] w-full'
     >
       <Header headerCol={true} />
@@ -49,7 +53,7 @@ const CourseHero = ({ courseDetail }) => {
             to={`/courses/${courseDetail?.id}/${courseDetail?.title}/payment`}
             className='flex flex-row startLear hover:opacity-[0.9] transition duration-[300] rounded-[16px] w-[183px] lg:w-[221px] h-[56px] px-[16px] py-[8px] gap-[8px] items-center justify-center'
           >
-            <span className='text-[16px] font-[600] leading-[24px]'>
+            <span className='text-[16px] text-white font-[600] leading-[24px]'>
               Start learning
             </span>
             <img src={Next} className='mt-[6px]' alt='' />

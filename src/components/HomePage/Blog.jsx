@@ -56,7 +56,7 @@ const Blog = () => {
     nextArrow: <CustomNextArrow />,
   };
   return (
-    <div className='flex flex-col sm:mt-[120px] lg:mt-[180px] sm:px-[16px] pb-[120px]'>
+    <div className='flex flex-col sm:mt-[120px] lg:mt-[140px] sm:px-[16px] pb-[80px]'>
       <div className='flex items-center justify-center '>
         <img src={BlogText} alt='' className='' />
       </div>

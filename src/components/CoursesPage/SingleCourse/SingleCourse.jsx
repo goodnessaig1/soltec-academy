@@ -10,18 +10,22 @@ import CourseOverview from './CourseOverview';
 import CourseInstructors from './CourseInstructors';
 import CourseFaqs from './CourseFaq';
 import CourseEnroll from './CourseEnroll';
-import OtherCourses from '../ProductDesign/OtherCourses';
 import Footer from '../../Footer/Footer';
+import OtherCourses from './OtherCourses';
+import { BaseURL } from '../../../Utils/BaseUrl';
 
 const SingleCourse = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [courseDetail, setCourseDetail] = useState(null);
+  const [courses, setCourses] = useState(null);
+  const [otherCourses, setOtherCourses] = useState(null);
+
   const fetchCourseDetail = async () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://academy-wo2r.onrender.com/api/v1/courses/${id}/fetch_course_details`,
+        `${BaseURL}/courses/${id}/fetch_course_details`,
       );
       setLoading(false);
       setCourseDetail(response.data);
@@ -30,9 +34,30 @@ const SingleCourse = () => {
     }
   };
 
+  const getCourses = async () => {
+    try {
+      const response = await axios.get(
+        `${BaseURL}/courses/fetch_home_courses/`,
+      );
+      setCourses(response.data);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
   useEffect(() => {
+    getCourses();
     fetchCourseDetail();
   }, []);
+
+  useEffect(() => {
+    if (courses && courseDetail) {
+      const filteredCourses = courses.filter(
+        course => course.title !== `${courseDetail?.title}`,
+      );
+      setOtherCourses(filteredCourses);
+    }
+  }, [courses, courseDetail]);
 
   return (
     <div>
@@ -46,15 +71,15 @@ const SingleCourse = () => {
             <CourseFaqs courseDetail={courseDetail} />
           </div>
           <CourseEnroll courseDetail={courseDetail} />
-          <OtherCourses />
+          <OtherCourses otherCourses={otherCourses} />
           <Footer />
         </div>
       ) : (
         <div className='w-full h-[100vh] flex items-center justify-center'>
           <RotatingLines
             visible={true}
-            height='66'
-            width='66'
+            height='50'
+            width='50'
             strokeColor='grey'
             strokeWidth='3'
             animationDuration='0.75'

@@ -32,6 +32,7 @@ import EngineeringDashboard from './components/Engineering/Dashboard/Engineering
 import SingleCourse from './components/CoursesPage/SingleCourse/SingleCourse';
 import CoursePayment from './components/CoursesPage/SingleCourse/CoursePayment';
 import Payment from './components/CoursesPage/SingleCourse/PaymentSuccess';
+import VerifyPayment from './components/CoursesPage/SingleCourse/VerifyPayment';
 
 function App() {
   const navigate = useNavigate();
@@ -49,6 +50,10 @@ function App() {
         <Route
           path='/courses/:id/:courseTitle/payment'
           Component={CoursePayment}
+        />
+        <Route
+          path='/courses/payment/verify/:reference'
+          Component={VerifyPayment}
         />
 
         <Route path='/courses/payment' Component={Payment} />

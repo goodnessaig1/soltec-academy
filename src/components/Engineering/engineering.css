@@ -99,6 +99,7 @@
   background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/first_wCcpA3gw7.jpg?updatedAt=1711347556338');
   background-blend-mode: darken;
 }
+
 .second_bg1 {
   background: rgba(6, 4, 31, 0.8);
   background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/second_JPglMp5Pa.jpg?updatedAt=1711348613744');
@@ -211,12 +212,17 @@
   background-color: transparent; /* Adjust as needed */
   border: none;
   cursor: pointer;
-  /* opacity: 0; */
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .slider-containerr:hover .slick-prev,
 .slider-containerr:hover .slick-next {
+  opacity: 1; /* Show on hover */
+  transition: 0.2s ease-in-out;
+}
+.slick-container:hover .slick-prev,
+.slick-container:hover .slick-next {
   opacity: 1; /* Show on hover */
   transition: 0.2s ease-in-out;
 }

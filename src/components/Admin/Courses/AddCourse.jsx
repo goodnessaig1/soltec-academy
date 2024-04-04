@@ -89,38 +89,39 @@ const AddCourses = () => {
 
   const handleFileChange = event => {
     setFile(event.target.files[0]);
+    uploadVideo(event.target.files[0]);
   };
 
-  const uploadVideo = async () => {
-    if (file != null) {
-      try {
-        setVidLoading(true);
-        setVideoError(null);
-        const formData = new FormData();
-        formData.append('file', file);
-        const response = await axios.post(
-          `${BaseURL}/courses/upload_file/`,
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
+  const uploadVideo = async file => {
+    // if (file != null) {
+    try {
+      setVidLoading(true);
+      setVideoError(null);
+      const formData = new FormData();
+      formData.append('file', file);
+      const response = await axios.post(
+        `${BaseURL}/courses/upload_file/`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
           },
-        );
-        setFileUrl(response.data.file);
-        setVideoSuccess(true);
-        setVidLoading(false);
-        setTimeout(() => {
-          setVideoSuccess(false);
-        }, 6000);
-      } catch (error) {
+        },
+      );
+      setFileUrl(response.data.file);
+      setVideoSuccess(true);
+      setVidLoading(false);
+      setTimeout(() => {
         setVideoSuccess(false);
-        setVidLoading(false);
-        console.error('Error uploading file: ', error);
-      }
-    } else {
-      setVideoError('Please select a video');
+      }, 6000);
+    } catch (error) {
+      setVideoSuccess(false);
+      setVidLoading(false);
+      console.error('Error uploading file: ', error);
     }
+    // } else {
+    // setVideoError('Please select a video');
+    // }
   };
 
   const uploadBackgroundImg = async file => {
@@ -518,14 +519,7 @@ const AddCourses = () => {
                         onChange={handleFileChange}
                         className='w-full hidden outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                       />
-                      <span>
-                        {' '}
-                        {fileUrl
-                          ? fileUrl.substring(0, 50) + '..'
-                          : file
-                          ? file.name
-                          : ''}
-                      </span>
+                      <span> {file ? file.name : ''}</span>
                     </div>
                     {!vidLoading ? (
                       <>
@@ -747,11 +741,11 @@ const AddCourses = () => {
               ) : (
                 <>
                   {courseDescription.length > 120 ? (
-                    <span className='text-[500] text-[16px] items-center text-center leading-[24px] text-extraGray'>
+                    <span className='text-[500] max-w-[310px] break-words text-[16px] items-center text-center leading-[24px] text-extraGray'>
                       {`${courseDescription.substring(0, 120) + '...'}`}
                     </span>
                   ) : (
-                    <span className='text-[500] text-[16px] items-center text-center leading-[24px] text-extraGray'>
+                    <span className='text-[500] max-w-[310px] break-words text-[16px] items-center text-center leading-[24px] text-extraGray'>
                       {courseDescription}
                     </span>
                   )}
