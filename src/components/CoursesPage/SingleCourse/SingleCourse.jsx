@@ -78,9 +78,9 @@ const SingleCourse = () => {
         <div className='w-full h-[100vh] flex items-center justify-center'>
           <RotatingLines
             visible={true}
-            height='50'
-            width='50'
-            strokeColor='grey'
+            height='40'
+            width='40'
+            strokeColor='green'
             strokeWidth='3'
             animationDuration='0.75'
             ariaLabel='rotating-lines-loading'

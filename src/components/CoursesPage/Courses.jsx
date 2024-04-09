@@ -3,8 +3,7 @@ import Course from '.././../assets/COURSES.svg';
 import SearchIcon from '.././../assets/search-rounded.svg';
 import Footer from '../Footer/Footer';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-// import coursesData from './CoursesData';
+import { useNavigate } from 'react-router-dom';
 import { Emogi } from '../../Utils/Assets';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
@@ -189,134 +188,6 @@ const Courses = () => {
                             </div>
                           </div>
                         ))}
-                      <div className='flex flex-col max_wid sm:w-[343px] lg:w-[367px] py-[16px] gap-[32px] rounded-[24px] backgroundOne items-center'>
-                        <h1 className='font-[700] text-[32px] leading-[48px] text-[#fff] '>
-                          Data Analysis
-                        </h1>
-                        <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
-                          This 6 week prep course will not only <br />
-                          introduce you to the fundamentals like <br />
-                          Javascript, CSS and the like…
-                        </span>
-                        <div className='flex flex-col gap-[12px] items-center'>
-                          <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
-                            N250,000
-                          </h1>
-                          <div className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
-                            <span className='font-[600] text-[16px] leading-[24px]'>
-                              Enroll now
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className='flex flex-col max_wid sm:w-[343px] lg:w-[367px] py-[16px] gap-[32px] rounded-[24px] backgroundTwo items-center'>
-                        <h1 className='font-[700] text-[32px] leading-[48px] text-[#fff] '>
-                          Product Design
-                        </h1>
-                        <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
-                          This 6 week prep course will not only <br />
-                          introduce you to the fundamentals like <br />
-                          Javascript, CSS and the like…
-                        </span>
-                        <div className='flex flex-col gap-[12px] items-center'>
-                          <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
-                            N250,000
-                          </h1>
-                          <Link
-                            to={'/courses/product-design'}
-                            className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
-                          >
-                            <div>
-                              <span className='font-[600] text-[16px] leading-[24px]'>
-                                Enroll now
-                              </span>
-                            </div>
-                          </Link>
-                        </div>
-                      </div>
-                      <div className='flex flex-col max_wid sm:w-[343px] lg:w-[367px] py-[16px] gap-[32px] rounded-[24px] backgroundThree items-center'>
-                        <h1 className='font-[700] text_wrap2 w-[301px] text-[32px] leading-[48px] text-[#fff]  text-nowrap'>
-                          Frontend Web Dev..
-                        </h1>
-                        <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
-                          This 6 week prep course will not only <br />
-                          introduce you to the fundamentals like <br />
-                          Javascript, CSS and the like…
-                        </span>
-                        <div className='flex flex-col gap-[12px] items-center'>
-                          <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
-                            N250,000
-                          </h1>
-                          <div className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
-                            <span className='font-[600] text-[16px] leading-[24px]'>
-                              Enroll now
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className='flex flex-col max_wid sm:w-[343px] lg:w-[367px] py-[16px] gap-[32px] rounded-[24px] backgroundFour items-center'>
-                        <h1 className='font-[700] w-[301px] text-[32px] leading-[48px] text-[#fff]  text-nowrap'>
-                          Backend Develop...
-                        </h1>
-                        <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
-                          This 6 week prep course will not only <br />
-                          introduce you to the fundamentals like <br />
-                          Javascript, CSS and the like…
-                        </span>
-                        <div className='flex flex-col gap-[12px] items-center'>
-                          <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
-                            N250,000
-                          </h1>
-                          <div className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
-                            <span className='font-[600] text-[16px] leading-[24px]'>
-                              Enroll now
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className='flex flex-col max_wid sm:w-[343px] lg:w-[367px] py-[16px] gap-[32px] rounded-[24px] backgroundSix items-center'>
-                        <h1 className='font-[700] text-[32px] leading-[48px] text-[#fff] '>
-                          Cybersecurity
-                        </h1>
-                        <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
-                          This 6 week prep course will not only <br />
-                          introduce you to the fundamentals like <br />
-                          Javascript, CSS and the like…
-                        </span>
-                        <div className='flex flex-col gap-[12px] items-center'>
-                          <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
-                            N250,000
-                          </h1>
-                          <Link
-                            to={'/courses/cybersecurity'}
-                            className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
-                          >
-                            <span className='font-[600] text-[16px] leading-[24px]'>
-                              Enroll now
-                            </span>
-                          </Link>
-                        </div>
-                      </div>
-                      <div className='flex flex-col max_wid sm:w-[343px] lg:w-[367px] py-[16px] gap-[32px] rounded-[24px] backgroundFive items-center'>
-                        <h1 className='font-[700] w-[301px] text-[32px] leading-[48px] text-[#fff]  text-nowrap'>
-                          Blockchain Deve...
-                        </h1>
-                        <span className='text-[16px] text-extraGray font-[500] leading-[24px] text-center'>
-                          This 6 week prep course will not only <br />
-                          introduce you to the fundamentals like <br />
-                          Javascript, CSS and the like…
-                        </span>
-                        <div className='flex flex-col gap-[12px] items-center'>
-                          <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
-                            N250,000
-                          </h1>
-                          <div className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
-                            <span className='font-[600] text-[16px] leading-[24px]'>
-                              Enroll now
-                            </span>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   ) : (
                     <div className='flex flex-col gap-[24px'>

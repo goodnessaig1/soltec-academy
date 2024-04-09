@@ -5,13 +5,9 @@ import './App.css';
 import './components/Engineering/engineering.css';
 import Home from './components/HomePage/Home';
 import Courses from './components/CoursesPage/Courses';
-import ProductDesign from './components/CoursesPage/ProductDesign/ProductDesign';
-import CyberSecurity from './components/CoursesPage/CyberSecurity/CyberSecurity';
 import Blog from './components/Blog/Blog';
 import BlogPost from './components/Blog/BlogPost';
 import PaymentGuide from './components/Blog/PaymentGuide';
-import ProductDesignPayment from './components/CoursesPage/ProductDesign/ProductDesignPayment';
-import CyberSecurityPayment from './components/CoursesPage/CyberSecurity/CyberSecurityPayment';
 import PaymentConfirmation from './components/Payment/PaymentConfirmation';
 import AboutUs from './components/AboutUs/AboutUs';
 import WorkSpace from './components/WorkSpace/WorkSpace';
@@ -60,16 +56,6 @@ function App() {
         />
 
         <Route path='/courses/payment' Component={Payment} />
-        <Route path='/courses/product-design' Component={ProductDesign} />
-        <Route
-          path='/courses/product-design/payment'
-          Component={ProductDesignPayment}
-        />
-        <Route path='/courses/cybersecurity' Component={CyberSecurity} />
-        <Route
-          path='/courses/cybersecurity/payment'
-          Component={CyberSecurityPayment}
-        />
 
         <Route path='/book-workspace' Component={WorkSpace} />
         <Route path='/book-workspace/bookspace' Component={BookSpace} />

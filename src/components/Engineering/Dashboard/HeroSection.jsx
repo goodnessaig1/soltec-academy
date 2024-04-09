@@ -49,7 +49,7 @@ const HeroSection = () => {
           </div>
 
           <Link
-            to={'/get-quote'}
+            to={'/engineering/get-quote'}
             className='w-[146px] h-[48px] getQuote gap-[8px] rounded-[8px]  flex flex-row items-center justify-center'
           >
             <span className=''>GET QUOTE</span>

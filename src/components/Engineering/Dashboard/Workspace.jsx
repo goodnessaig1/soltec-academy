@@ -1,6 +1,7 @@
 import { Codes, Meet } from '../../../Utils/Assets';
 import Video from '../../../assets/video-svg.svg';
 import Office from '../../../assets/office.png';
+import { Link } from 'react-router-dom';
 
 const Workspace = () => {
   return (
@@ -61,9 +62,11 @@ const Workspace = () => {
             />
           </div>
         </div>
-        <button className='bg-white seeMore h-[48px] w-[141px] rounded-[4px] flex items-center justify-center text-[14px] font-[700] leading-[17px] '>
-          SEE MORE
-        </button>
+        <Link to={'/book-workspace'}>
+          <button className='bg-white hover:bg-[#E4E4E4] transition duration-300 ease-in-out seeMore h-[48px] w-[141px] rounded-[4px] flex items-center justify-center text-[14px] font-[700] leading-[17px] '>
+            SEE MORE
+          </button>
+        </Link>
       </div>
     </div>
   );

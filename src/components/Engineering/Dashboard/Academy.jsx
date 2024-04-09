@@ -6,6 +6,7 @@ import Logo from '../../../assets/academy-logo.svg';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Link } from 'react-router-dom';
 const courses = [
   {
     name: 'PRODUCT DESIGN',
@@ -194,9 +195,11 @@ const Academy = () => {
           </div>
         </div>
 
-        <button className='bg-white seeMore h-[48px] w-[141px] rounded-[4px] flex items-center justify-center text-[14px] font-[700] leading-[17px] '>
-          SEE MORE
-        </button>
+        <Link to={'/'}>
+          <button className='bg-white hover:bg-[#E4E4E4] transition duration-300 ease-in-out seeMore h-[48px] w-[141px] rounded-[4px] flex items-center justify-center text-[14px] font-[700] leading-[17px] '>
+            SEE MORE
+          </button>
+        </Link>
       </div>
     </div>
   );

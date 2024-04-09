@@ -7,6 +7,7 @@ import Menu from '../../../assets/menu.svg';
 import Menu2 from '../../../assets/menu-1.svg';
 // import Sideber from '../HOC/Sideber';
 import { useState } from 'react';
+import Sideber from '../Common/Sidebar';
 
 // eslint-disable-next-line no-unused-vars
 const Header = ({ headerCol, scrollTo, services, about, faqsRef }) => {
@@ -18,18 +19,29 @@ const Header = ({ headerCol, scrollTo, services, about, faqsRef }) => {
   return (
     <div className='contaier px-[16px] lg:px-[120px] py-[16px] lg:py-[24px]'>
       <div className={`sidebar ${showSidebar ? 'open z-3' : ''}`}>
-        {/* <Sideber showSidebar={showSidebar} toggle={toggleSidebar} /> */}
+        <Sideber
+          scrollTo={scrollTo}
+          services={services}
+          about={about}
+          faqsRef={faqsRef}
+          showSidebar={showSidebar}
+          toggle={toggleSidebar}
+        />
       </div>
       <div className=''>
         <div className='flex flex-row items-center justify-between'>
           <div className='z-5'>
             {headerCol ? (
               <Link to={'/'}>
-                <img src={Logo} className='hidden  lg:flex' alt='' />
+                <img src={Logo} className='hidden w-[216px] lg:flex' alt='' />
               </Link>
             ) : (
               <Link to={'/'}>
-                <img src={LogoEng} className='hidden lg:flex' alt='' />
+                <img
+                  src={LogoEng}
+                  className='hidden w-[216px] lg:flex'
+                  alt=''
+                />
               </Link>
             )}
             <Link to={'/'}>

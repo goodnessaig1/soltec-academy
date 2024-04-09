@@ -45,13 +45,13 @@ const ContactUs = () => {
   return (
     <div className='md:min-h-[100vh] lg:min-h-[160vh] w-full bg-[#F7F7F7]'>
       <Header />
-      <div className='flex flex-col pt-[80px] pb-[100px] items-center justify-center '>
+      <div className='flex flex-col pt-[60px] md:pt-[80px] px-[16px] pb-[100px] items-center justify-center '>
         <div className='flex flex-col gap-[16px] items-center justify-center'>
           <h1 className='font-[600] text-[24px] leading-[34px]'>CONTACT US</h1>
           <div className='yellowLine' />
         </div>
 
-        <div className='contact_uss p-[32px] mt-[90px] w-[786px] rounded-[6px] flex flex-row gap-[64px]'>
+        <div className='contact_uss px-[24px] py-[32px] md:p-[32px] mt-[60px] md:mt-[90px] w-full md:w-[600px] lg:w-[786px] rounded-[6px] flex flex-col lg:flex-row gap-[64px]'>
           <div className='w-[240px] flex flex-col gap-[32px]'>
             <img src={Logo} alt='' className='w-[156px] h-[48px]' />
             <div className='flex flex-col gap-[15px]'>
@@ -78,7 +78,7 @@ const ContactUs = () => {
             </div>
           </div>
 
-          <div className='flex flex-col w-full px-[16px] mdl:px-0 md:w-[418px] gap-[16px]'>
+          <div className='flex flex-col w-full lg:px-[16px] mdl:px-0 lg::w-[418px] gap-[16px]'>
             <Formik
               initialValues={{
                 fullName: '',

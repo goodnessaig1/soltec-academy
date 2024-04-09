@@ -117,7 +117,7 @@ const Projects = () => {
         <div className='w-full projects hidden lgl:flex items-center justify-center'>
           <div className='slick-container opacity-[1]'>
             <Slider {...settings} className=' opacity-[1]'>
-              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] first_bg1 lgl:h-[367px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer hover:bg-[#06041FCC] transition duration-300 group flex flex-col gap-[24px] first_bg12 lgl:h-[367px]'>
                 <div className='w-full py-[12px] mb-[24px] text-white  rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600]  leading-[36px]'>
                     POWER AND ENERGY
@@ -129,7 +129,7 @@ const Projects = () => {
                   sustainable energy sources available across Nigeria
                 </span>
               </div>
-              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[16px] second_bg1 lgl:h-[367px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-[16px] second_bg12 lgl:h-[367px]'>
                 <div className='w-full py-[12px] mb-[24px] text-white rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600] leading-[36px]'>
                     BUILDING AND CONSTRUCTION
@@ -142,7 +142,7 @@ const Projects = () => {
                   or structural steel.
                 </span>
               </div>
-              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] third_bg1 lgl:h-[367px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-[24px] third_bg12 lgl:h-[367px]'>
                 <div className='w-full py-[12px] mb-[24px] text-white  rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600] leading-[36px]'>
                     SMART SECURITY
@@ -153,7 +153,7 @@ const Projects = () => {
                   gives you complete protection and control - from anywhere
                 </span>
               </div>
-              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] fourth_bg1 lgl:h-[367px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-[24px] fourth_bg12 lgl:h-[367px]'>
                 <div className='w-full py-[12px] mb-[24px] text-white rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600] leading-[36px]'>
                     SOFTWARE DEVELOPMENT
@@ -166,7 +166,7 @@ const Projects = () => {
                   support,
                 </span>
               </div>
-              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] fifth_bg1 lgl:h-[367px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-[24px] fifth_bg12 lgl:h-[367px]'>
                 <div className='w-full py-[12px] mb-[24px]  text-white rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600] leading-[36px]'>
                     TEACHING COURSES
@@ -183,7 +183,7 @@ const Projects = () => {
                   </ul>
                 </span>
               </div>
-              <div className='w-1/3 p-[56px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] sixth_bg1 lgl:h-[367px]'>
+              <div className='w-1/3 p-[56px] hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-[24px] sixth_bg12 lgl:h-[367px]'>
                 <div className='w-full py-[12px] mb-[24px]  text-white rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-[600] leading-[36px]'>
                     ROBOTICS AND AUTOMATION
@@ -198,7 +198,6 @@ const Projects = () => {
             </Slider>
           </div>
         </div>
-
         <div className='w-full projects hidden  md:flex lgl:hidden items-center justify-center'>
           <div className='slick-container opacity-[1]'>
             <Slider {...mdSettings} className=' opacity-[1]'>
@@ -284,7 +283,6 @@ const Projects = () => {
             </Slider>
           </div>
         </div>
-
         <div className='w-full projects hidden sml:flex md:hidden items-center justify-center'>
           <div className='slick-container opacity-[1]'>
             <Slider {...smSettings} className=' opacity-[1]'>
@@ -370,7 +368,6 @@ const Projects = () => {
             </Slider>
           </div>
         </div>
-
         <div className='w-full projects  flex sml:hidden items-center justify-center'>
           <div className='slick-container opacity-[1]'>
             <Slider {...sSettings} className=' opacity-[1]'>
@@ -456,10 +453,9 @@ const Projects = () => {
             </Slider>
           </div>
         </div>
-
-        <button className='bg-white seeMore h-[48px] w-[141px] rounded-[4px] flex items-center justify-center text-[14px] font-[700] leading-[17px] mt-[14px]'>
+        {/* <button className='bg-white seeMore h-[48px] w-[141px] rounded-[4px] flex items-center justify-center text-[14px] font-[700] leading-[17px] mt-[14px]'>
           SEE MORE
-        </button>
+        </button> */}
       </div>
     </div>
   );

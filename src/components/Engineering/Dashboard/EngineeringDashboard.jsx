@@ -103,23 +103,32 @@ const EngineeringDashboard = () => {
     };
   }, []);
 
+  const [testimonialsData, setTestimonialsData] = useState(null);
+  const [sponsors, setSponsors] = useState(null);
+
   useEffect(() => {
     GetTestimonials();
+    GetSponsors();
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   }, []);
-  const [testimonialsData, setTestimonialsData] = useState(null);
+
+  const GetSponsors = async () => {
+    try {
+      const response = await axios.get(`${BaseURL}/sponsors/`);
+      setSponsors(response.data?.results);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
 
   const GetTestimonials = async () => {
-    // setLoading(true);
     try {
       const response = await axios.get(`${BaseURL}/testimonials/`);
       setTestimonialsData(response.data?.results);
-      // setLoading(false);
     } catch (error) {
-      // setLoading(false);
       toast.error('An error occured !', {
         position: 'top-left',
       });
@@ -168,7 +177,10 @@ const EngineeringDashboard = () => {
                 <Projects />
               </div>
             </motion.div>
-            <Testimonial testimonialsData={testimonialsData} />
+            <Testimonial
+              sponsors={sponsors}
+              testimonialsData={testimonialsData}
+            />
           </div>
           <Ceo />
           <div ref={faqsRef} className=''>

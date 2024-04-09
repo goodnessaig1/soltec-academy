@@ -118,10 +118,10 @@ const GetQuote = () => {
     }
   };
   return (
-    <div className='md:min-h-[100vh] lg:min-h-[160vh] w-full bg-[#F7F7F7]'>
+    <div className=' w-full bg-[#F7F7F7]'>
       <Header />
       {!pageLoading ? (
-        <div className='flex flex-col pt-[80px] pb-[100px] items-center justify-center '>
+        <div className='flex md:min-h-[100vh] lg:min-h-[160vh] flex-col pt-[80px] pb-[100px] items-center justify-center '>
           <div className='flex flex-col gap-[16px] items-center justify-center'>
             <h1 className='font-[600] text-[24px] leading-[34px]'>
               GET A QUOTATION
@@ -437,12 +437,12 @@ const GetQuote = () => {
           </div>
         </div>
       ) : (
-        <div className='w-full h-[90vh] flex items-center justify-center'>
+        <div className='w-full h-[80vh] flex items-center justify-center'>
           <RotatingLines
             visible={true}
-            height='50'
-            width='50'
-            strokeColor='grey'
+            height='40'
+            width='40'
+            strokeColor='green'
             strokeWidth='3'
             animationDuration='0.75'
             ariaLabel='rotating-lines-loading'

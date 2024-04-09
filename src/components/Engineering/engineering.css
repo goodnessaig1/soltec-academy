@@ -99,14 +99,28 @@
   background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/first_wCcpA3gw7.jpg?updatedAt=1711347556338');
   background-blend-mode: darken;
 }
+.first_bg12 {
+  background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/first_wCcpA3gw7.jpg?updatedAt=1711347556338');
+  background-blend-mode: darken;
+}
 
 .second_bg1 {
   background: rgba(6, 4, 31, 0.8);
   background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/second_JPglMp5Pa.jpg?updatedAt=1711348613744');
   background-blend-mode: darken;
 }
+
+.second_bg12 {
+  background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/second_JPglMp5Pa.jpg?updatedAt=1711348613744');
+  background-blend-mode: darken;
+}
+
 .third_bg1 {
   background: rgba(6, 4, 31, 0.8);
+  background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/third_rYf7aD5-S.jpg?updatedAt=1711348805225');
+  background-blend-mode: darken;
+}
+.third_bg12 {
   background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/third_rYf7aD5-S.jpg?updatedAt=1711348805225');
   background-blend-mode: darken;
 }
@@ -116,13 +130,30 @@
   background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/fourth_BI_FNOlQF.jpg?updatedAt=1711349152885');
   background-blend-mode: darken;
 }
+
+.fourth_bg12 {
+  background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/fourth_BI_FNOlQF.jpg?updatedAt=1711349152885');
+  background-blend-mode: darken;
+}
+
 .fifth_bg1 {
   background: rgba(6, 4, 31, 0.8);
   background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/fifth_QgyOfTbnE.jpg?updatedAt=1711349152585');
   background-blend-mode: darken;
 }
+
+.fifth_bg12 {
+  background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/fifth_QgyOfTbnE.jpg?updatedAt=1711349152585');
+  background-blend-mode: darken;
+}
+
 .sixth_bg1 {
   background: rgba(6, 4, 31, 0.8);
+  background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/sisth_VwsoB9fQ1.jpg?updatedAt=1711349153017');
+  background-blend-mode: darken;
+}
+
+.sixth_bg12 {
   background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/sisth_VwsoB9fQ1.jpg?updatedAt=1711349153017');
   background-blend-mode: darken;
 }

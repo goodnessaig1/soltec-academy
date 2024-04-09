@@ -1,37 +1,9 @@
 /* eslint-disable react/prop-types */
 import Profile from '../../../assets/profile.jpg';
 import Media from '../../../assets/media-1.svg';
-import Sponsor1 from '../../../assets/sponsor1.svg';
-import Sponsor2 from '../../../assets/sponsor2.svg';
-import Sponsor3 from '../../../assets/sponsor3.svg';
-import Sponsor4 from '../../../assets/sponsor4.svg';
-import Sponsor5 from '../../../assets/sponsor5.svg';
-import Sponsor6 from '../../../assets/sponsor6.svg';
 import Marquee from 'react-fast-marquee';
 
-const sponsors = [
-  {
-    logo: Sponsor1,
-  },
-  {
-    logo: Sponsor2,
-  },
-  {
-    logo: Sponsor3,
-  },
-  {
-    logo: Sponsor4,
-  },
-  {
-    logo: Sponsor6,
-  },
-  {
-    logo: Sponsor5,
-  },
-];
-
-const Testimonial = ({ testimonialsData }) => {
-  console.log(testimonialsData);
+const Testimonial = ({ testimonialsData, sponsors }) => {
   return (
     <div className='w-full bg-bg3 flex flex-col items-center pt-[60px] lg:pt-[97px] pb-[100px] lg:pb-[150px] justify-center '>
       <div className='flex flex-col gap-[16px] items-center justify-center'>
@@ -87,11 +59,12 @@ const Testimonial = ({ testimonialsData }) => {
         direction='right'
       >
         <div className='flex flex-row gap-[110px] '>
-          {sponsors.map((sponsor, index) => (
-            <div key={index}>
-              <img src={sponsor.logo} alt='' />
-            </div>
-          ))}
+          {sponsors &&
+            sponsors.map((sponsor, index) => (
+              <div key={index}>
+                <img src={sponsor.logo} alt='' />
+              </div>
+            ))}
         </div>
       </Marquee>
     </div>
