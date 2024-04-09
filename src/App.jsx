@@ -33,6 +33,9 @@ import SingleCourse from './components/CoursesPage/SingleCourse/SingleCourse';
 import CoursePayment from './components/CoursesPage/SingleCourse/CoursePayment';
 import Payment from './components/CoursesPage/SingleCourse/PaymentSuccess';
 import VerifyPayment from './components/CoursesPage/SingleCourse/VerifyPayment';
+import GetQuote from './components/Engineering/GetQuote/GetQuote';
+import ContactUs from './components/Engineering/ContactUs/ContactUs';
+import WorkspaceVerifyPayment from './components/WorkSpace/WorkspacePayment';
 
 function App() {
   const navigate = useNavigate();
@@ -70,6 +73,10 @@ function App() {
 
         <Route path='/book-workspace' Component={WorkSpace} />
         <Route path='/book-workspace/bookspace' Component={BookSpace} />
+        <Route
+          path='/book-workspace/payment/verify/:reference'
+          Component={WorkspaceVerifyPayment}
+        />
 
         <Route path='/blog' Component={Blog} />
         <Route path='/blog/post' Component={BlogPost} />
@@ -94,6 +101,8 @@ function App() {
         <Route path='/admin/payments' Component={AdminPayment} />
 
         <Route path='/engineering/dashboard' Component={EngineeringDashboard} />
+        <Route path='/engineering/get-quote' Component={GetQuote} />
+        <Route path='/engineering/contact-us' Component={ContactUs} />
       </Routes>
     </>
   );

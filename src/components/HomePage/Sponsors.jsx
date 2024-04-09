@@ -116,32 +116,40 @@ const Sponsors = () => {
                 {...settings}
                 className='flex outline-none flex-row overflow-initial'
               >
-                <div className='w-[500px] xl:w-[606px] h-[500px] xl:h-[599px] gap-[16px] flex flex-col'>
+                <div className='w-[500px] xl:w-[606px] lg:h-[500px] xl:h-[599px] gap-[16px] flex flex-col'>
                   <div className='flex flex-row gap-[8px] xl:gap-[16px]'>
                     <img
                       src={Codes}
-                      className='w-[200px] xl:w-[270px] h-[234px]'
+                      className='w-[200px] rounded-[35px] xl:w-[270px] lg:h-[180px]  xl:h-[234px]'
                       alt=''
                     />
                     <img
                       src={Meet}
-                      className='w-[220px] xl:w-[300px] h-[234px]'
+                      className='w-[220px] xl:w-[300px] rounded-[35px] lg:h-[180px] xl:h-[234px]'
                       alt=''
                     />
                   </div>
                   <div className='mt-[16px]'>
                     <img
                       src={Office}
-                      className='w-[420px] xl:w-[596px]'
+                      className='w-[420px] rounded-[35px] lg:h-[260px] xl:h-[350px] xl:w-[596px]'
                       alt=''
                     />
                   </div>
                 </div>
-                <div className='w-[540px] h-[599px]'>
-                  <img src={Video} className='' alt='' />
+                <div className='w-[540px] lg:h-[400px] xl:h-[599px]'>
+                  <img
+                    src={Video}
+                    className='lg:h-[456px] rounded-[35px] xl:h-[599px]'
+                    alt=''
+                  />
                 </div>
-                <div className='w-[606px] h-[599px]'>
-                  <img src={Video} alt='' />
+                <div className='w-[540px] lg:h-[400px] xl:h-[599px]'>
+                  <img
+                    src={Video}
+                    className='lg:h-[456px] rounded-[35px] xl:h-[599px]'
+                    alt=''
+                  />
                 </div>
               </Slider>
             </div>
@@ -151,19 +159,19 @@ const Sponsors = () => {
               <div className='flex flex-row gap-[8px]'>
                 <img
                   src={Codes}
-                  className='sm:w-[140px] lg:w-[304px] sm:h-[169px] '
+                  className='sm:w-[140px] rounded-[35px] lg:w-[304px] sm:h-[169px] '
                   alt=''
                 />
                 <img
                   src={Meet}
-                  className='sm:w-[180px] lg:w-[309px] sm:h-[169px] '
+                  className='sm:w-[180px] rounded-[35px] lg:w-[309px] sm:h-[169px] '
                   alt=''
                 />
               </div>
               <div className='mt-[6px]'>
                 <img
                   src={Office}
-                  className='sm:w-[330px] lg:w-[661px]'
+                  className='sm:w-[330px] rounded-[35px] h-[300px] lg:w-[661px]'
                   alt=''
                 />
               </div>

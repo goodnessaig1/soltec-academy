@@ -11,12 +11,23 @@ const CourseHero = ({ courseDetail }) => {
     return (
       <>
         {hasSpace ? (
-          <h1 className='text-[40px] text-nowrap lg:text-[92px] text-[#fff] font-[700] leading-[48px] lg:leading-[116px]'>
-            {firstIndex}{' '}
-            <span style={{ color: courseDetail?.color_code }} className=''>
-              {secondIndex}
-            </span>
-          </h1>
+          <>
+            {title.length > 18 ? (
+              <h1 className='text-[40px]  text-center text-nowrap lg:text-[92px] text-[#fff] font-[700] leading-[48px] lg:leading-[116px]'>
+                {firstIndex} <br className=' mdl:hidden' />
+                <span style={{ color: courseDetail?.color_code }} className=''>
+                  {secondIndex}
+                </span>
+              </h1>
+            ) : (
+              <h1 className='text-[40px] text-nowrap lg:text-[92px] text-[#fff] font-[700] leading-[48px] lg:leading-[116px]'>
+                {firstIndex}{' '}
+                <span style={{ color: courseDetail?.color_code }} className=''>
+                  {secondIndex}
+                </span>
+              </h1>
+            )}
+          </>
         ) : (
           <h1 className='text-[40px] lg:text-[92px] text-[#fff] font-[700] leading-[48px] lg:leading-[116px]'>
             {title}

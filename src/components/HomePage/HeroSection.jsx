@@ -103,13 +103,12 @@ const HeroSection = () => {
               testimonial.map((testimony, index) => (
                 <div
                   key={index}
-                  className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] sm:w-[315px] lg:w-[506px] border backg p-[20px] bg-[fff] items-center'
+                  className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] w-[506px] border backg p-[20px] bg-[fff] items-center'
                 >
                   <div className='w-[80px] h-[80px]'>
                     <img
                       src={testimony?.author_image}
                       className='w-[80px] h-[80px] rounded-[50%] object-cover'
-                      // className='sm:w-[46px] rounded-[50%] w-[61px] lg:w-[61px]  sm:h-[46px] '
                       alt=''
                     />
                   </div>
@@ -134,7 +133,7 @@ const HeroSection = () => {
                   </div>
                 </div>
               ))}
-            <div className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] sm:w-[315px] lg:w-[506px] border backg p-[20px] bg-[fff] items-center'>
+            <div className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] w-[506px] border backg p-[20px] bg-[fff] items-center'>
               <img
                 src={Profile}
                 className='sm:w-[77px] lg:w-[91px] sm:h-[76px] lg:h-auto'

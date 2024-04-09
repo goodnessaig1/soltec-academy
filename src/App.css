@@ -654,8 +654,6 @@ input[type='date'] {
 
 .toggle-input:checked + .toggle-slider {
   background: rgba(0, 67, 206, 1);
-
-  /* background-color: rgba(92, 41, 196, 1); */
 }
 
 .toggle-slider:before {
@@ -725,7 +723,7 @@ input[type='date'] {
 
 .video-player {
   position: relative;
-  max-width: 600px; /* Adjust the width as needed */
+  /* max-width: 600px;  */
   margin: 0 auto;
   border-radius: 24px;
   background: #d2d2d2;
@@ -753,4 +751,10 @@ input[type='date'] {
 .play-button:hover,
 .fast-forward-button:hover {
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+@media screen and (max-width: 780px) {
+  .react-datepicker-popper {
+    margin-left: -70px;
+  }
 }

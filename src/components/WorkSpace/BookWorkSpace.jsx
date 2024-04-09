@@ -8,6 +8,7 @@ import {
   Elipse2,
   Elipse3,
 } from '../../Utils/Assets';
+import BookMobile from '../../assets/book-mobile.svg';
 
 const BookWorkSpace = () => {
   return (
@@ -28,7 +29,12 @@ const BookWorkSpace = () => {
           <div className='pt-[24px] lg:pt-[70px] flex items-center justify-center'>
             <img
               src={BookText}
-              className='sma:w-[343px] lg:w-[543px] '
+              className='sma:w-[343px] hidden lg:block lg:w-[543px] '
+              alt=''
+            />
+            <img
+              src={BookMobile}
+              className='sma:w-[343px] lg:hidden lg:w-[543px] '
               alt=''
             />
           </div>

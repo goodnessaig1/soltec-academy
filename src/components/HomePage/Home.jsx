@@ -9,10 +9,12 @@ import HeroSection from './HeroSection';
 import Sponsors from './Sponsors';
 import axios from 'axios';
 import { BaseURL } from '../../Utils/BaseUrl';
+import NetworkError from '../../Utils/NetworkError';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [courses, setCourses] = useState(null);
+  const [networkError, setNetworkError] = useState(false);
   const getCourses = async () => {
     setLoading(true);
     try {
@@ -23,6 +25,9 @@ const Home = () => {
       setCourses(response.data);
     } catch (error) {
       console.log('error', error);
+      if (error?.code == 'ERR_NETWORK') {
+        setNetworkError(true);
+      }
     }
   };
   useEffect(() => {
@@ -30,14 +35,22 @@ const Home = () => {
   }, []);
   return (
     <div className='w-full'>
-      <HeroSection />
-      <Catalogue />
-      <Sponsors />
-      <Courses courses={courses} loading={loading} />
-      <Cohort />
-      <Blog />
-      <Faqs />
-      <Footer />
+      {!networkError ? (
+        <>
+          <HeroSection />
+          <Catalogue courses={courses} />
+          <Sponsors />
+          <Courses courses={courses} loading={loading} />
+          <Cohort />
+          <Blog />
+          <Faqs />
+          <Footer />
+        </>
+      ) : (
+        <div className=''>
+          <NetworkError />
+        </div>
+      )}
     </div>
   );
 };

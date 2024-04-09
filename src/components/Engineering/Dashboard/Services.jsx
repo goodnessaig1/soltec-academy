@@ -1,14 +1,14 @@
 const Services = () => {
   return (
-    <div className='w-full bg-bg3 flex flex-col items-center pt-[47px] justify-center '>
+    <div className='w-full bg-bg3 flex flex-col items-center pt-[24px] lg:pt-[47px] justify-center '>
       <div className='flex flex-col gap-[16px] items-center justify-center'>
         <h1 className='font-[600] text-[24px] leading-[34px]'>OUR SERVICES</h1>
         <div className='yellowLine' />
       </div>
 
-      <div className='flex flex-col w-full mt-[80px]'>
-        <div className='flex flex-row w-full'>
-          <div className='w-1/3 p-[56px] flex flex-col gap-[24px] first_bg h-[367px]'>
+      <div className='flex flex-col w-full mt-[44px] lg:mt-[80px]'>
+        <div className='grid grid-cols-1 mdl:grid-cols-2 lgl:grid-cols-3 w-full'>
+          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] first_bg h-[387px] md:h-[367px]'>
             <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
               <h1 className='text-[24px] font-[600] leading-[36px]'>
                 POWER AND ENERGY
@@ -20,7 +20,7 @@ const Services = () => {
               sources available across Nigeria
             </span>
           </div>
-          <div className='w-1/3 p-[56px] flex flex-col gap-[24px] second_bg h-[367px]'>
+          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] second_bg h-[387px] md:h-[367px]'>
             <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
               <h1 className='text-[24px] font-[600] leading-[36px]'>
                 BUILDING AND CONSTRUCTION
@@ -33,7 +33,7 @@ const Services = () => {
               steel.
             </span>
           </div>
-          <div className='w-1/3 p-[56px] flex flex-col gap-[24px] third_bg h-[367px]'>
+          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] third_bg h-[387px] md:h-[367px]'>
             <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
               <h1 className='text-[24px] font-[600] leading-[36px]'>
                 SMART SECURITY
@@ -44,9 +44,7 @@ const Services = () => {
               you complete protection and control - from anywhere
             </span>
           </div>
-        </div>
-        <div className='flex flex-row w-full'>
-          <div className='w-1/3 p-[56px] flex flex-col gap-[24px] fourth_bg h-[367px]'>
+          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] fourth_bg h-[387px] md:h-[367px]'>
             <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
               <h1 className='text-[24px] font-[600] leading-[36px]'>
                 SOFTWARE DEVELOPMENT
@@ -58,7 +56,7 @@ const Services = () => {
               from business analysis to software delivery and support,
             </span>
           </div>
-          <div className='w-1/3 p-[56px] flex flex-col gap-[24px] fifth_bg h-[367px]'>
+          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] fifth_bg h-[387px] md:h-[367px]'>
             <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
               <h1 className='text-[24px] font-[600] leading-[36px]'>
                 TEACHING COURSES
@@ -75,7 +73,7 @@ const Services = () => {
               </ul>
             </span>
           </div>
-          <div className='w-1/3 p-[56px] flex flex-col gap-[24px] sixth_bg h-[367px]'>
+          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] sixth_bg h-[387px] md:h-[367px]'>
             <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
               <h1 className='text-[24px] font-[600] leading-[36px]'>
                 ROBOTICS AND AUTOMATION

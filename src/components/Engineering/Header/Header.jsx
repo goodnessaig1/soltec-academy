@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../../assets/engineering-logo.svg';
-import Logo2 from '../../../assets/mobile-logo.svg';
+import LogoEng from '../../../assets/engin-logo.svg';
+import Logo2 from '../../../assets/mobile-log.svg';
 import Menu from '../../../assets/menu.svg';
 import Menu2 from '../../../assets/menu-1.svg';
 // import Sideber from '../HOC/Sideber';
@@ -13,6 +14,7 @@ const Header = ({ headerCol, scrollTo, services, about, faqsRef }) => {
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
+  const navigate = useNavigate();
   return (
     <div className='contaier px-[16px] lg:px-[120px] py-[16px] lg:py-[24px]'>
       <div className={`sidebar ${showSidebar ? 'open z-3' : ''}`}>
@@ -27,7 +29,7 @@ const Header = ({ headerCol, scrollTo, services, about, faqsRef }) => {
               </Link>
             ) : (
               <Link to={'/'}>
-                <img src={Logo} className='hidden lg:flex' alt='' />
+                <img src={LogoEng} className='hidden lg:flex' alt='' />
               </Link>
             )}
             <Link to={'/'}>
@@ -50,7 +52,9 @@ const Header = ({ headerCol, scrollTo, services, about, faqsRef }) => {
               <h1>HOME</h1>
             </NavLink>
             <div
-              onClick={() => scrollTo(about)}
+              onClick={() => (
+                navigate('/engineering/dashboard'), scrollTo(about)
+              )}
               id='about-us'
               className={`font-[500] hover:cursor-pointer hover:font-[700] transition duration-300 ${
                 headerCol ? 'text-[#fff]' : 'text-[#000]'
@@ -59,7 +63,9 @@ const Header = ({ headerCol, scrollTo, services, about, faqsRef }) => {
               ABOUT US
             </div>
             <div
-              onClick={() => scrollTo(services)}
+              onClick={() => (
+                navigate('/engineering/dashboard'), scrollTo(services)
+              )}
               id='services'
               className={`font-[500] hover:cursor-pointer hover:font-[700] transition duration-300 ${
                 headerCol ? 'text-[#fff] ' : 'text-[#000]'
@@ -68,7 +74,9 @@ const Header = ({ headerCol, scrollTo, services, about, faqsRef }) => {
               OUR SERVICES
             </div>
             <div
-              onClick={() => scrollTo(faqsRef)}
+              onClick={() => (
+                navigate('/engineering/dashboard'), scrollTo(faqsRef)
+              )}
               id='faqs'
               className={`font-[500] hover:cursor-pointer hover:font-[700] transition duration-300 ${
                 headerCol ? 'text-[#fff] ' : 'text-[#000]'
@@ -92,7 +100,7 @@ const Header = ({ headerCol, scrollTo, services, about, faqsRef }) => {
             </NavLink>
           </div>
           <Link
-            to={'/blog/payment-guide'}
+            to={'/engineering/get-quote'}
             className='payment_grad hidden w-[141px] h-[48px] flex items-center justify-center lg:flex zinde text-nowrap bg-[#fff] hover:bg-[#f0f0f0] rounded-[4px] hover:cursor-pointer border border-[1px] border-[#1c1c1c] p-[10px] '
           >
             <span>GET A QUOTE</span>

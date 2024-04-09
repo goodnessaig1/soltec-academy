@@ -26,6 +26,7 @@ import GrayDot from '../assets/dot-gray.svg';
 import Internet from '../assets/internet.svg';
 import InternetG from '../assets/internet-gray.svg';
 import Starlink from '../assets/Starlink.jpg';
+import StarlinkM from '../assets/starlink-m.jpg';
 import officeChair from '../assets/office-chair1.svg';
 import officeChairG from '../assets/office-chair.svg';
 import SolarPanel from '../assets/solarpan.jpg';
@@ -57,6 +58,11 @@ import Delete from '../assets/delete-b.svg';
 import CloudAdd from '../assets/cloud-add.svg';
 import DeleteRed from '../assets/delete-red.svg';
 import Dropdown from '../assets/dropdown-icon.svg';
+import Whatsapp from '../assets/whatsapp-c.svg';
+import Instagram from '../assets/instagram-c.svg';
+import Facebook from '../assets/facebook-c.svg';
+import Linkedin from '../assets/linkedin-c.svg';
+import Twitter from '../assets/twitter-c.svg';
 
 export {
   Logo,
@@ -118,4 +124,10 @@ export {
   DeleteRed,
   Dropdown,
   PrintOutlined,
+  StarlinkM,
+  Whatsapp,
+  Linkedin,
+  Facebook,
+  Instagram,
+  Twitter,
 };

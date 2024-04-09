@@ -20,7 +20,6 @@ const AddTestimonial = () => {
 
   const uploadImg = async (setFieldValue, file) => {
     setLoading(true);
-    /testimonials/;
     try {
       const formData = new FormData();
       formData.append('file', file);

@@ -10,6 +10,7 @@ import {
   PowerG,
   SolarPanel,
   Starlink,
+  StarlinkM,
   officeChair,
   officeChairG,
 } from '../../Utils/Assets';
@@ -36,10 +37,10 @@ const Features = () => {
           </div>
         </div>
 
-        {/*  */}
-        <div className='mt-[76px] px-[16px] md:px-[24px] lgl:px-[60px]'>
-          <div className='flex flex-row gap-[70px] w-full items-center'>
-            <div className='flex flex-col gap-[36px] md:gap-[75px] w-full lgl:w-[469px]'>
+        {/* Large screens */}
+        <div className='mt-[76px] hidden lgl:block px-[16px] md:px-[24px] lgl:px-[60px]'>
+          <div className='flex flex-row gap-[70px] w-full xl:items-center'>
+            <div className='flex flex-col gap-[36px] md:gap-[75px] w-full lg:w-[340px] xl:w-[469px]'>
               <div className='flex flex-col gap-[24px]'>
                 <motion.div
                   onClick={() => {
@@ -210,7 +211,7 @@ const Features = () => {
             </div>
 
             {/* Feature image */}
-            <div className='hidden lgl:block w-[555.5px]'>
+            <div className='hidden lgl:block lg:w-[440px] xl:w-[555.5px]'>
               <AnimatePresence>
                 {feature === 'Starlink' && (
                   <motion.img
@@ -248,6 +249,113 @@ const Features = () => {
                 )}
               </AnimatePresence>
             </div>
+          </div>
+        </div>
+        {/* Mobile screens */}
+
+        <div className='flex lgl:hidden mt-[76px] flex-col px-[16px] md:px-[24px] gap-[110px]'>
+          <div className='flex flex-col gap-[16px] max-w-[500px] '>
+            <div className='p-[24px] superFast  flex flex-col gap-[12px] rounded-[16px] '>
+              <img
+                src={Internet}
+                className='sm:w-[24px] mt-[4px] md:mt-0 md:w-[40px] h-[24px] md:h-[40px]'
+                alt=''
+              />
+              <div className='flex flex-col gap-[17px]'>
+                <h1
+                  className={`text-[24px] inter_ font-[600] leading-[29px] text-[#fff] 
+                `}
+                >
+                  Super fast, Unlimited Internet
+                </h1>
+
+                <span className='font-[400] text-[20px] md:leading-[30px] text-whiteOpacity'>
+                  A starlink router provides super fast internet connection to
+                  accommodate your digital needs.
+                </span>
+              </div>
+            </div>
+            <div className=''>
+              <img
+                src={StarlinkM}
+                className='max-h-[382px] w-full rounded-[16px]'
+                alt=''
+              />
+            </div>
+          </div>
+          <div className='flex flex-col gap-[16px] max-w-[500px] '>
+            <div className='p-[24px] conducive  flex flex-col gap-[12px] rounded-[16px] '>
+              <img
+                src={officeChair}
+                className='sm:w-[24px] mt-[4px] md:mt-0 md:w-[40px] h-[24px] md:h-[40px]'
+                alt=''
+              />
+              <div className='flex flex-col gap-[17px]'>
+                <h1
+                  className={`text-[24px] inter_ font-[600] leading-[29px] text-[#fff] 
+                `}
+                >
+                  Conducive, Personalized space
+                </h1>
+
+                <span className='font-[400] text-[20px] md:leading-[30px] text-whiteOpacity'>
+                  The space is spacious with desks exclusive to each indivdual
+                  with excellent fit and finish
+                </span>
+              </div>
+            </div>
+            <div className=''>
+              <img
+                src={SolarPanel}
+                className='max-h-[382px] w-full rounded-[16px]'
+                alt=''
+              />
+            </div>
+          </div>
+          <div className='flex flex-col gap-[16px] max-w-[500px] '>
+            <div className='p-[24px] solarPower  flex flex-col gap-[12px] rounded-[16px] '>
+              <img
+                src={Power}
+                className='sm:w-[24px] mt-[4px] md:mt-0 md:w-[40px] h-[24px] md:h-[40px]'
+                alt=''
+              />
+              <div className='flex flex-col gap-[17px]'>
+                <h1
+                  className={`text-[24px] inter_ font-[600] leading-[29px] text-[#fff] 
+                `}
+                >
+                  Uninterrupted Power Supply
+                </h1>
+
+                <span className='font-[400] text-[20px] md:leading-[30px] text-whiteOpacity'>
+                  Solar power ensures continuous, uninterrupted workflow.
+                </span>
+              </div>
+            </div>
+            <div className=''>
+              <img
+                src={SolarPanel}
+                className='max-h-[382px] w-full rounded-[16px]'
+                alt=''
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Time */}
+        <div className='flex lgl:hidden mt-[60px] justify-center flex-row gap-[14px] items-center'>
+          <img
+            className='w-[50px] h-[50px] md:h-[75px] md:w-[75px]'
+            src={Clock}
+            alt=''
+          />
+          <div className='flex flex-col gap-[0px] md:gap-[13px]'>
+            <h1 className='inter_ font-[500] text-[18px] md:text-[24px] leading-[29px]'>
+              MON — SAT
+            </h1>
+            <h1 className='inter_ font-[500] text-[18px] md:text-[24px] leading-[29px]'>
+              8:30AM - 6PM
+            </h1>
           </div>
         </div>
       </div>

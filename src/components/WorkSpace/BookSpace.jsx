@@ -17,11 +17,13 @@ import {
   Codes,
   Meet,
   Starlink1,
-  Vector1,
-  Vector2,
 } from '../../Utils/Assets';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { BaseURL } from '../../Utils/BaseUrl';
+import axios from 'axios';
+import moment from 'moment';
+import { RotatingLines } from 'react-loader-spinner';
 
 const BookSpace = () => {
   const [days, setDays] = useState('Daily');
@@ -35,25 +37,51 @@ const BookSpace = () => {
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState(null);
   const [isNumberValid, setIsNumberValid] = useState(true);
-  const seats = [
-    { number: '1' },
-    { number: '2' },
-    { number: '3' },
-    { number: '4' },
-  ];
+
+  const [availableSeats, setAvailableSeats] = useState(1);
+  const [planId, setPlanId] = useState(1);
+  const [planDate, setPlanDate] = useState(
+    new Date().toISOString().slice(0, 10),
+  );
+  const [plans, setPlans] = useState(null);
+
   const [selectedDate, setSelectedDate] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const numberOfSeats = parseInt(numberOfSeates, 10);
+  const seats = Array.from({ length: availableSeats }, (_, index) => ({
+    number: (index + 1).toString(),
+  }));
 
+  useEffect(() => {
+    if (selectedDate) {
+      formatDate(selectedDate);
+    }
+  }, [selectedDate, days, numberOfSeates, planDate]);
+
+  useEffect(() => {
+    if (planDate != null) {
+      GetAvailableSeats();
+    }
+  }, [planDate]);
+
+  useEffect(() => {
     if (days === 'Daily') {
-      setPrice(3000 * numberOfSeats);
+      if (plans && plans) {
+        const filteredDailyData = plans?.filter(item => item.title === 'DAILY');
+        setPrice(filteredDailyData[0].price * numberOfSeates);
+        setPlanId(filteredDailyData[0].id);
+      }
       if (selectedDate !== null) {
         setDuration(`${format(new Date(selectedDate), 'dd MMM yyyy')}`);
       }
     } else if (days === 'Weekly') {
-      setPrice(12000 * numberOfSeats);
+      if (plans && plans) {
+        const filteredWeeklyData = plans?.filter(
+          item => item.title === 'WEEKLY',
+        );
+        setPrice(filteredWeeklyData[0].price * numberOfSeates);
+        setPlanId(filteredWeeklyData[0].id);
+      }
       if (selectedDate !== null) {
         setDuration(
           `${format(new Date(selectedDate), 'dd MMM yyyy')} — ${format(
@@ -63,7 +91,13 @@ const BookSpace = () => {
         );
       }
     } else if (days === 'Monthly') {
-      setPrice(36000 * numberOfSeats);
+      if (plans && plans) {
+        const filteredMonthlyData = plans?.filter(
+          item => item.title === 'MONTHLY',
+        );
+        setPrice(filteredMonthlyData[0].price * numberOfSeates);
+        setPlanId(filteredMonthlyData[0].id);
+      }
       if (selectedDate !== null) {
         setDuration(
           `${format(new Date(selectedDate), 'dd MMM yyyy')} — ${format(
@@ -73,7 +107,7 @@ const BookSpace = () => {
         );
       }
     }
-  }, [days, numberOfSeates]);
+  }, [days, numberOfSeates, selectedDate]);
 
   const handleDateChange = date => {
     const selectedDateString = date;
@@ -138,6 +172,8 @@ const BookSpace = () => {
         numberOfSeates,
         days,
         price,
+        planId,
+        planDate,
       });
       setOpenModal(true);
     } else {
@@ -168,13 +204,47 @@ const BookSpace = () => {
     validatePhoneNumber(number);
   };
 
+  useEffect(() => {
+    GetPlans();
+  }, [selectedDate]);
+
+  function formatDate(dateString) {
+    const date = moment(dateString);
+    const newData = date.format('YYYY-MM-DD');
+    setPlanDate(newData);
+  }
+
+  const GetAvailableSeats = async () => {
+    const data = {
+      date: planDate,
+    };
+    try {
+      const response = await axios.post(
+        `${BaseURL}/workspaces/${planId}/get_available_seats_per_date/`,
+        data,
+      );
+      setAvailableSeats(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const GetPlans = async () => {
+    try {
+      const response = await axios.get(`${BaseURL}/workspaces/fetch_plans/`);
+      setPlans(response?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <Header />
       {openModal && <PaymentModal setOpenModal={setOpenModal} data={data} />}
 
       <div className='w-full px-[20px] md:px-[120px] pt-[90px] pb-[200px] justify-center flex  '>
-        <div className='flex lg:flex-row items-center justify-center  gap-[75px] w-full lg:w-[1018px] '>
+        <div className='flex lg:flex-row justify-center  gap-[75px] w-full lg:w-[1018px] '>
           <div className=' w-[56%] hidden lg:flex flex-col gap-[23px]'>
             <img src={Starlink1} alt='' />
             <div className='flex flex-row gap-[16px]'>
@@ -225,8 +295,8 @@ const BookSpace = () => {
             >
               <div className='flex flex-col w-full gap-[20px]'>
                 <div className='flex flex-col gap-[17px]'>
-                  <div className='flex flex-col lg:flex-row w-full gap-[17px]'>
-                    <div className='w-full lg:w-1/2 flex flex-col gap-[8px]'>
+                  <div className='flex flex-c flex-row w-full gap-[17px]'>
+                    <div className='w-1/2 flex flex-col gap-[8px]'>
                       <h1 className='text-[14px] sm:text-[14px] font-[600]'>
                         Select number of seats
                       </h1>
@@ -260,11 +330,11 @@ const BookSpace = () => {
                         </div>
                       )}
                     </div>
-                    <div className='w-full lg:w-1/2 flex flex-col gap-[8px]'>
+                    <div className='w-1/2 flex flex-col gap-[8px]'>
                       <h1 className='text-[10px] sm:text-[14px] font-[600]'>
                         Select Date
                       </h1>
-                      <div className='seats_bg h-[50px] hover:bg-[#f3f3f3]  hover:cursor-pointer transition duration-300 px-[16px] rounded-[12px] flex items-center justify-between'>
+                      <div className='seats_bg  h-[50px] hover:bg-[#f3f3f3]  hover:cursor-pointer transition duration-300 px-[16px] rounded-[12px] flex items-center justify-between'>
                         <DatePicker
                           ref={datePickerRef}
                           selected={selectedDate}
@@ -321,7 +391,6 @@ const BookSpace = () => {
                 </div>
                 <div className='w-full flex items-center input_cont h-[50px] rounded-[12px] '>
                   <input
-                    autoComplete='fullName'
                     type='fullName'
                     name='fullName'
                     required
@@ -334,8 +403,7 @@ const BookSpace = () => {
                 <div className='flex flex-col gap-[6px]'>
                   <div className='w-full flex items-center input_cont h-[50px] rounded-[12px] '>
                     <input
-                      autoComplete='phoneNumber'
-                      type='phoneNumber'
+                      type='text'
                       name='phoneNumber'
                       required
                       value={phoneNumber}
@@ -374,10 +442,10 @@ const BookSpace = () => {
                 </div>
 
                 <div className=' total_p  h-[50px] flex flex-row items-center justify-between'>
-                  <h1 className='font-[600] text-[16px] leading-[20.8]'>
+                  <h1 className='font-[600] text-[16px] leading-[20.8px]'>
                     Total Price
                   </h1>
-                  <h1 className='font-[600] text-[16px] leading-[20.8]'>
+                  <h1 className='font-[600] text-[16px] leading-[20.8px]'>
                     {price?.toLocaleString()}
                   </h1>
                 </div>
@@ -399,8 +467,28 @@ const BookSpace = () => {
 export default BookSpace;
 
 const PaymentModal = ({ data, setOpenModal }) => {
-  const [type, setType] = useState('Transfer');
-
+  const [loading, setLoading] = useState(false);
+  const handlePayment = async () => {
+    const values = {
+      email: data.email,
+      phone_number: data.phoneNumber,
+      full_name: data.fullName,
+      start_date: data.planDate,
+      seats: parseInt(data.numberOfSeates),
+    };
+    let planId = data.planId;
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        `${BaseURL}/workspaces/${planId}/book_workspace/`,
+        values,
+      );
+      window.location.href = response.data.url;
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
   return (
     <div className='fixed z_indd h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-transparent'>
       <div
@@ -415,36 +503,33 @@ const PaymentModal = ({ data, setOpenModal }) => {
             duration: 0.6,
             ease: [0, 0.71, 0.2, 1.01],
           }}
-          // initial={{ x: '100%', opacity: 0 }}
-          // animate={{ x: 0, opacity: 1 }}
-          // transition={{ duration: 0.5 }}
-          // exit={{ x: '100%', opacity: 0 }}
-          className='bg-white z_ind flex flex-col lg:flex-row w-[99%] sml:w-[88%] md:w-[66%] lg:w-[76%] xl:w-[62%] h-[660px] lg:h-[419px] rounded-[24px]'
+          className='bg-bg3 z_ind flex flex-col w-[471px] h-[483px] rounded-[24px] p-[32px] '
         >
-          <div className='lg:w-1/2 bg-bg3 h-full rounded-t-[24px] lg:rounded-tr-[0] lg:rounded-l-[24px] flex flex-col items-center justify-center gap-[32px] lg:gap-[56px] '>
-            <div className='flex flex-col gap-[12px] lg:gap-[25px]'>
+          <div className=' h-full rounded-[24px] flex flex-col items-center justify-center gap-[56px] '>
+            <div className='flex flex-col gap-[25px]'>
               <h1 className='text-center text-[20px] font-[600] leading-[26px] '>
                 {data?.days?.toUpperCase()} BOOKING
               </h1>
-              <div className='flex flex-col gap-[8px] lg:gap-[14px] items-center justify-center'>
-                <span className='text-[14px] lg:text-[16px] font-[600] leading-[21px]'>
+              <div className='flex flex-col gap-[14px] items-center justify-center'>
+                <span className='text-[16px] font-[600] leading-[21px]'>
                   Selected date:{' '}
                   <span className='text-mainBlue'>{data?.duration}</span>
                 </span>
-                <span className='text-[14px] lg:text-[16px] font-[600] leading-[21px]'>
+                <span className='text-[16px] font-[600] leading-[21px]'>
                   Full name:{' '}
                   <span className='font-[400]'>{data?.fullName}</span>
                 </span>
-                <span className='text-[14px] lg:text-[16px] font-[600] leading-[21px]'>
+                <span className='text-[16px] font-[600] leading-[21px]'>
                   Email address:{' '}
                   <span className='font-[400]'>{data?.email}</span>
                 </span>
-                <span className='text-[14px] lg:text-[16px] font-[600] leading-[21px]'>
+                <span className='text-[16px] font-[600] leading-[21px]'>
                   Phone number:{' '}
                   <span className='font-[400]'>{data?.phoneNumber}</span>
                 </span>
               </div>
             </div>
+
             <div className='flex flex-col gap-[2px] items-center justify-center'>
               <h1 className='text-[16px] leading-[20px] font-[400]'>
                 TOTAL PRICE
@@ -453,54 +538,29 @@ const PaymentModal = ({ data, setOpenModal }) => {
                 {data?.price?.toLocaleString()}
               </h1>
             </div>
-          </div>
-          <div className='lg:w-1/2 px-[16px] flex z-50 h-full items-center justify-center'>
-            <div className='w-[350px]'>
-              <div className='flex flex-col gap-[14px]'>
-                <div className='card p-[16px] rounded-[12px] flex flex-col gap-[8px]'>
-                  <div
-                    onClick={() => setType('Transfer')}
-                    className='flex gap-[8px] hover:cursor-pointer'
-                  >
-                    {type === 'Transfer' ? (
-                      <img src={Vector1} alt='' />
-                    ) : (
-                      <img src={Vector2} alt='' />
-                    )}
-                    <h1 className='font-[600] text-[14px]'>Bank Transfer</h1>
-                  </div>
-                </div>
-                <div className='card p-[16px] rounded-[12px] flex flex-col gap-[8px]'>
-                  <div
-                    onClick={() => setType('Paypal')}
-                    className='flex gap-[8px] hover:cursor-pointer'
-                  >
-                    {type === 'Paypal' ? (
-                      <img src={Vector1} alt='' />
-                    ) : (
-                      <img src={Vector2} alt='' />
-                    )}
-                    <h1 className='font-[600] text-[14px]'>Paypal</h1>
-                  </div>
-                </div>
-                <div className='card p-[16px] rounded-[12px] flex flex-col gap-[8px]'>
-                  <div
-                    onClick={() => setType('Card')}
-                    className='flex gap-[8px] hover:cursor-pointer '
-                  >
-                    {type === 'Card' ? (
-                      <img src={Vector1} alt='' />
-                    ) : (
-                      <img src={Vector2} alt='' />
-                    )}
-                    <h1 className='font-[600] text-[14px]'>Credit Card</h1>
-                  </div>
-                </div>
-                <div className='text-[#fff] flex items-center text-center justify-center h-[56px] rounded-[12px] bg-mainRed hover:bg-red-600 h-[56px] hover:cursor-pointer transition duration-400  font-[600]'>
-                  Make payment
-                </div>
+            {!loading ? (
+              <div
+                onClick={() => handlePayment()}
+                className='text-[#fff] flex items-center text-center justify-center w-full h-[56px] rounded-[12px] bg-mainRed hover:bg-red-600 h-[56px] hover:cursor-pointer transition duration-400  font-[600]'
+              >
+                Make payment
               </div>
-            </div>
+            ) : (
+              <div className='flex w-full h-[56px] items-center justify-center'>
+                <RotatingLines
+                  visible={true}
+                  height='36'
+                  width='36'
+                  // strokeColor='#0043CE'
+                  strokeColor='green'
+                  strokeWidth='3'
+                  animationDuration='0.75'
+                  ariaLabel='rotating-lines-loading'
+                  wrapperStyle={{}}
+                  wrapperClass=''
+                />
+              </div>
+            )}
           </div>
         </motion.div>
       </AnimatePresence>

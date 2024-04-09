@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../assets/logo.svg';
-import Logo2 from '../../assets/mobile-logo.svg';
+import Logo2 from '../../assets/mobile-log.svg';
 import LogoDark from '../../assets/soltec-d-logo.svg';
 import Menu from '../../assets/menu.svg';
 import Menu2 from '../../assets/menu-1.svg';

@@ -12,6 +12,9 @@ import Ceo from './Ceo';
 import Faq from './Faq';
 import Footer from '../../Footer/Footer';
 import { motion } from 'framer-motion';
+import axios from 'axios';
+import { BaseURL } from '../../../Utils/BaseUrl';
+import { toast } from 'react-toastify';
 
 const EngineeringDashboard = () => {
   const container1Ref = useRef(null);
@@ -100,18 +103,44 @@ const EngineeringDashboard = () => {
     };
   }, []);
 
+  useEffect(() => {
+    GetTestimonials();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+  const [testimonialsData, setTestimonialsData] = useState(null);
+
+  const GetTestimonials = async () => {
+    // setLoading(true);
+    try {
+      const response = await axios.get(`${BaseURL}/testimonials/`);
+      setTestimonialsData(response.data?.results);
+      // setLoading(false);
+    } catch (error) {
+      // setLoading(false);
+      toast.error('An error occured !', {
+        position: 'top-left',
+      });
+      console.log('error', error);
+    }
+  };
+
   return (
     <div>
-      <div className='engineeringBg w-full h-[812px]'>
-        <div className='engineeB h-full'>
-          <Header
-            about={about}
-            services={services}
-            faqsRef={faqsRef}
-            scrollTo={scrollTo}
-            headerCol={true}
-          />
-          <HeroSection />
+      <div className='flex flex-col'>
+        <div className='engineeringBg w-full h-[658px] lg:h-[812px]'>
+          <div className='engineeB  h-[658px] lg:h-full'>
+            <Header
+              about={about}
+              services={services}
+              faqsRef={faqsRef}
+              scrollTo={scrollTo}
+              headerCol={true}
+            />
+            <HeroSection />
+          </div>
         </div>
         <div ref={about}>
           <AboutUs />
@@ -139,16 +168,14 @@ const EngineeringDashboard = () => {
                 <Projects />
               </div>
             </motion.div>
-            <Testimonial />
+            <Testimonial testimonialsData={testimonialsData} />
           </div>
           <Ceo />
           <div ref={faqsRef} className=''>
             <Faq />
           </div>
-
-          <Footer />
-          {/* <Teting /> */}
         </div>
+        <Footer />
       </div>
     </div>
   );

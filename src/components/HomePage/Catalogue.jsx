@@ -1,99 +1,41 @@
-import Product from '../../assets/product.png';
+/* eslint-disable react/prop-types */
 import Tutor from '../../assets/tutor-icon.svg';
 import Industry from '../../assets/industry-icon.svg';
 import Facilities from '../../assets/stroke.svg';
 import People from '../../assets/people.svg';
 import { Link } from 'react-router-dom';
+import Marquee from 'react-fast-marquee';
 
-const Catalogue = () => {
+const Catalogue = ({ courses }) => {
   return (
     <>
-      <div className=' w-full backgroundImages2 sm:h-[2116px] md:h-[2300px] lg:h-[1563px]'>
+      <div className=' w-full backgroundImages2 sm:h-[1116px] md:h-[1200px] lg:h-[1041px]'>
         <div className='flex  items-center  justify-center'>
-          <div className=' '>
-            <div className=' '>
-              <div className='flex flex-col pt-[166px] sm:px-[16px] items-center'>
-                <div className='sm:p-[16px] lg:p-[32px]  productBg  flex sm:flex-col lg:flex-row gap-[48px] rounded-[48px] '>
-                  <div className='flex '>
-                    <span className='absolute ml-[30px] mt-[20px] text-[20px] text-[#fff] leading-[24px] '>
-                      PRODUCT DESIGN
-                    </span>
-                    <div className='sm:flex lg:block sm:w-full justify-center items-center '>
-                      <img
-                        src={Product}
-                        className='rounded-[48px] sm:w-full lg:w-[470px]  '
-                        alt=''
-                      />
-                    </div>
-                  </div>
-                  <div className='flex flex-col gap-[14px]  lg:justify-between'>
-                    <span className='font-[400] text-[15px] leading-[24px] text-lightcol text-nowrap '>
-                      Dive into the exciting world of Product Design{' '}
-                      <br className='sm:flex lg:hidden' />
-                      with our
-                      <br className='sm:hidden lg:flex' />
-                      comprehensive course! From
-                      <br className='sm:flex lg:hidden' />
-                      ideation to prototyping,
-                      <br className='sm:hidden lg:flex' />
-                      discover the principles
-                      <br className='sm:flex lg:hidden' />
-                      and tools used by industry experts.
-                      <br className='sm:hidden lg:flex' />
-                      Perfect for <br className='sm:flex lg:hidden' />
-                      beginners and aspiring designers, this course
-                      <br />
-                      blends theory with hands-on project...
-                    </span>
-                    <h2 className='font-[700] text-[16px] leading-[20px] text-lightcol'>
-                      You will learn:
-                    </h2>
-
-                    <ul className=' ml-[16px] list-disc text-[#fff] text-[16px] leading-[24px] font-[400]'>
-                      <li>The theories of design</li>
-                      <li>Wireframing</li>
-                      <li>Basic UX process</li>
-                      <li>Prototyping</li>
-                      <li>Design thinking</li>
-                    </ul>
+          <div className='flex w-full flex-col pt-[126px] sm:px-[16px] items-center'>
+            <Marquee
+              speed={36}
+              direction='left'
+              pauseOnHover
+              className=' max-w-[98%] sm:px-[6px] clip-text lg:px-[0px] sm:grid sm:grid-cols-2   gap-y-[24px] gap-x-[16px]  lg:flex lg:flex-row lg:gap-[61px]  '
+            >
+              <div className='overflow-x-hidden clip-text overflow-y-hidden'>
+                {courses &&
+                  courses.map((course, index) => (
                     <Link
-                      to={'/courses/product-design'}
-                      className=' sm:mt-[14px] hover:cursor-pointer lg:mt-[0px] lg:w-[186px] h-[48px] rounded-[50px] flex items-center justify-center bg-[#fff] hover:bg-[#f1f1f1] text-[#000] '
+                      to={`/courses/${course?.id}/${course?.title}`}
+                      key={index}
+                      className='text-[#fff]  pl-[30px] transition text-[24px] duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'
                     >
-                      <span>See more</span>
+                      {course?.title.toUpperCase()}
                     </Link>
-                  </div>
-                </div>
-                <div className='mt-[48px] sm:px-[6px] lg:px-[0px] sm:grid sm:grid-cols-2   gap-y-[24px] gap-x-[16px]  lg:flex lg:flex-row lg:gap-[61px]  '>
-                  <span className='text-[#fff] transition duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'>
-                    PRODUCT DESIGN
-                  </span>
-                  <span className='text-[#fff] transition duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'>
-                    FRONTEND WEB DEV
-                  </span>
-                  <span className='text-[#fff] transition duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'>
-                    BACKEND WEB DEV
-                  </span>
-                  <span className='text-[#fff] transition duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'>
-                    DATA ANALYSIS
-                  </span>
-                  <span className='text-[#fff] transition duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'>
-                    MOBILE APP DESIGN
-                  </span>
-                  <span className='text-[#fff] transition duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'>
-                    DEVOPS
-                  </span>
-                  <span className='text-[#fff] sm:flex lg:hidden text-nowrap transition duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'>
-                    BLOCKCHAIN DEVELOPMENT
-                  </span>
-                </div>
+                  ))}
               </div>
-            </div>
+            </Marquee>
           </div>
         </div>
         <div className='wave-line'>
-          <div className=' lg:mt-[150px] sm:px-[16px] lg:px-[0px] w-full flex items-center justify-center '>
-            <div className=' flex  sm:flex-col sm:mt-[250px] lg:mt-[0px] lg:flex-row lg:w-[1200px] xll:mt-[120px] h-[487px] items-center justify-center '>
+          <div className=' lg:mt-[140px] sm:px-[16px] lg:px-[0px] w-full flex items-center justify-center '>
+            <div className=' flex  sm:flex-col sm:mt-[160px] lg:mt-[0px] lg:flex-row lg:w-[1200px] xll:mt-[120px] h-[487px] items-center justify-center '>
               <div className='sm:f-full sm:mt-[320px] lg:mt-[0px] lg:w-1/2 flex flex-row items-center  mt-[16px] '>
                 <h1 className='text-[#fff]  sm:text-[48px] lg:text-[64px] sm:leading-[58px] lg:leading-[76px] font-[700] '>
                   Learn in <br />

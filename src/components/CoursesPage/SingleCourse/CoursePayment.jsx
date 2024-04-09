@@ -8,9 +8,9 @@ import Skeleton from 'react-loading-skeleton';
 import { BaseURL } from '../../../Utils/BaseUrl';
 import { RotatingLines } from 'react-loader-spinner';
 import { AnimatePresence, motion } from 'framer-motion';
+import { validateEmail, validatePhoneNumber } from '../../../Utils/Index';
 
 const CoursePayment = () => {
-  const [type, setType] = useState('Transfer');
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
@@ -19,6 +19,7 @@ const CoursePayment = () => {
   const [emailError, setEmailError] = useState(false);
   const [numberError, setNumberError] = useState(false);
   const [paymentRequest, setPaymentRequest] = useState(false);
+  const [isValidNumber, setisValidNumber] = useState(true);
 
   const fetchCourseDetail = async () => {
     setLoading(true);
@@ -53,6 +54,8 @@ const CoursePayment = () => {
       setEmailError('Email is Required');
     } else if (phoneNumber == '') {
       setNumberError('Phone Number is Required');
+    } else if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address.');
     } else
       try {
         setPaymentRequest(true);
@@ -60,9 +63,7 @@ const CoursePayment = () => {
           `${BaseURL}/courses/${courseData?.id}/enroll_students_to_course/`,
           data,
         );
-        console.log(response.data.reference);
         window.location.href = response.data.url;
-        setPaymentRequest(false);
       } catch (error) {
         console.log(error);
         setPaymentRequest(false);
@@ -70,21 +71,11 @@ const CoursePayment = () => {
       }
   };
 
-  const validatePhoneNumber = number => {
-    const nigeriaRegex = /^\+234\d{10}$/;
-    const otherRegex = /^(080|070|081|090|091)\d{8}$/;
-    const hasAlphabets = /[a-zA-Z]/.test(number);
-    const isValidNigeria = nigeriaRegex.test(number);
-    const isValidOther = otherRegex.test(number);
-    if (hasAlphabets || number.length > 10) {
-      setNumberError(isValidNigeria || isValidOther);
-    } else setNumberError(true);
-  };
-
   const handleInputChange = e => {
     const number = e.target.value;
     setPhoneNumber(number);
-    validatePhoneNumber(number);
+    setNumberError('');
+    validatePhoneNumber(number, setisValidNumber);
   };
 
   return (
@@ -148,12 +139,12 @@ const CoursePayment = () => {
                     </div>
                   )}
                   <AnimatePresence>
-                    {!numberError && (
+                    {!isValidNumber && (
                       <motion.h1
                         initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: '24px' }}
+                        animate={{ opacity: 1, height: '18px' }}
                         transition={{ duration: 0.3 }}
-                        className='text-red-500'
+                        className='text-red-500 text-[12px]'
                       >
                         Invalid Phone Number
                       </motion.h1>

@@ -12,16 +12,16 @@ const Faq = () => {
     setActiveIndex(prevIndex => (prevIndex === index ? -1 : index));
   };
   return (
-    <div className='flex flex-row px-[120px] py-[140px] justify-center gap-[141px] '>
+    <div className='flex flex-col lg:flex-row px-[16px] lg:px-[120px] py-[140px] justify-center gap-[32px] lg:gap-[141px] '>
       <div className='flex flex-col max-w-[436px] gap-[24px]'>
         <div className='flex flex-col gap-[25px]'>
           <div className='flex flex-col gap-[16px] justify-center'>
-            <h1 className='font-[600] text-[24px] leading-[34px]'>
+            <h1 className='font-[600] text-[20px] lg:text-[24px] leading-[28px] lg:leading-[34px]'>
               FREQUENTLY ASKED QUESTIONS
             </h1>
             <div className='yellowLine ' />
           </div>
-          <span className='font-[400] text-[18px] leading-[25.2px] text-[#545454]'>
+          <span className='font-[400] text-[14px] lg:text-[18px] leading-[20px] lg:leading-[25.2px] text-[#545454]'>
             However in Engineering, questions are often specific, and some
             answers just spun more questions. If that’s the case, please Contact
             Us, and let’s talk about your specifics. We’re happy to take a
@@ -38,7 +38,7 @@ const Faq = () => {
           <img src={Arrow_Right} alt='' />
         </Link>
       </div>
-      <div className='w-[632px] flex flex-col gap-[11px]'>
+      <div className='lg:w-[632px] flex flex-col gap-[11px]'>
         <div className='flex flex-col gap-[11px]'>
           {faqsData.map((faq, index) => (
             <div
