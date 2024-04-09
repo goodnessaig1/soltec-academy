@@ -10,11 +10,11 @@ import Workspace from './Workspace';
 import Projects from './Projects';
 import Ceo from './Ceo';
 import Faq from './Faq';
-import Footer from '../../Footer/Footer';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { BaseURL } from '../../../Utils/BaseUrl';
 import { toast } from 'react-toastify';
+import Footer from '../Common/Footer';
 
 const EngineeringDashboard = () => {
   const container1Ref = useRef(null);
