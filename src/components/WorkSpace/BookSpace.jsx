@@ -6,9 +6,10 @@ import {
   format,
   addDays,
   isValid,
-  isBefore,
+  isAfter,
   startOfMonth,
   endOfMonth,
+  isSameDay,
 } from 'date-fns';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -24,6 +25,8 @@ import { BaseURL } from '../../Utils/BaseUrl';
 import axios from 'axios';
 import moment from 'moment';
 import { RotatingLines } from 'react-loader-spinner';
+import { toast } from 'react-toastify';
+import { validatePhoneNumber } from '../../Utils/Index';
 
 const BookSpace = () => {
   const [days, setDays] = useState('Daily');
@@ -62,7 +65,7 @@ const BookSpace = () => {
     if (planDate != null) {
       GetAvailableSeats();
     }
-  }, [planDate]);
+  }, [planDate, selectedDate, days]);
 
   useEffect(() => {
     if (days === 'Daily') {
@@ -133,7 +136,11 @@ const BookSpace = () => {
       );
     }
 
-    if (isValid(parsedDate) && !isBefore(parsedDate, new Date())) {
+    const today = new Date();
+    if (
+      isValid(parsedDate) &&
+      (isAfter(parsedDate, today) || isSameDay(parsedDate, today))
+    ) {
       setSelectedDate(selectedDateString);
       setError(null);
     } else {
@@ -187,21 +194,10 @@ const BookSpace = () => {
     }
   };
 
-  const validatePhoneNumber = number => {
-    const nigeriaRegex = /^\+234\d{10}$/;
-    const otherRegex = /^(080|070|081|090|091)\d{8}$/;
-    const hasAlphabets = /[a-zA-Z]/.test(number);
-    const isValidNigeria = nigeriaRegex.test(number);
-    const isValidOther = otherRegex.test(number);
-    if (hasAlphabets || number.length > 10) {
-      setIsNumberValid(isValidNigeria || isValidOther);
-    } else setIsNumberValid(true);
-  };
-
   const handleInputChange = e => {
     const number = e.target.value;
     setPhoneNumber(number);
-    validatePhoneNumber(number);
+    validatePhoneNumber(number, setIsNumberValid);
   };
 
   useEffect(() => {
@@ -417,9 +413,9 @@ const BookSpace = () => {
                     {!isNumberValid && (
                       <motion.h1
                         initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: '24px' }}
+                        animate={{ opacity: 1, height: '16px' }}
                         transition={{ duration: 0.3 }}
-                        className='text-red-500'
+                        className='text-red-500 text-[12px]'
                       >
                         Invalid Phone Number
                       </motion.h1>
@@ -487,6 +483,9 @@ const PaymentModal = ({ data, setOpenModal }) => {
     } catch (error) {
       setLoading(false);
       console.log(error);
+      toast.error('An error occured, please try again', {
+        position: 'top-left',
+      });
     }
   };
   return (
@@ -551,8 +550,7 @@ const PaymentModal = ({ data, setOpenModal }) => {
                   visible={true}
                   height='36'
                   width='36'
-                  // strokeColor='#0043CE'
-                  strokeColor='green'
+                  strokeColor='red'
                   strokeWidth='3'
                   animationDuration='0.75'
                   ariaLabel='rotating-lines-loading'

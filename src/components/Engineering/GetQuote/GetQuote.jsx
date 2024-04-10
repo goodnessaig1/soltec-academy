@@ -442,7 +442,7 @@ const GetQuote = () => {
             visible={true}
             height='40'
             width='40'
-            strokeColor='green'
+            strokeColor='gray'
             strokeWidth='3'
             animationDuration='0.75'
             ariaLabel='rotating-lines-loading'

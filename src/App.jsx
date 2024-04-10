@@ -32,6 +32,7 @@ import VerifyPayment from './components/CoursesPage/SingleCourse/VerifyPayment';
 import GetQuote from './components/Engineering/GetQuote/GetQuote';
 import ContactUs from './components/Engineering/ContactUs/ContactUs';
 import WorkspaceVerifyPayment from './components/WorkSpace/WorkspacePayment';
+import ContactUsAcademy from './components/ContactUs/ContactUs';
 
 function App() {
   const navigate = useNavigate();
@@ -70,6 +71,8 @@ function App() {
         <Route path='/payment-confirmation' Component={PaymentConfirmation} />
 
         <Route path='/about-us' Component={AboutUs} />
+
+        <Route path='/contact-us' Component={ContactUsAcademy} />
 
         <Route path='/admin/dashboard' Component={Dashboard} />
         <Route path='/admin/courses' Component={AdminCourses} />

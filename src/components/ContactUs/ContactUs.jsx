@@ -1,44 +1,34 @@
-import Header from '../Header/Header';
-import Logo from '../../../assets/eng-log.svg';
+import Logo from '../../assets/contac-log.svg';
 import {
   Facebook,
   Instagram,
   Linkedin,
   Twitter,
   Whatsapp,
-} from '../../../Utils/Assets';
+} from '../../Utils/Assets';
 import { Form, Formik } from 'formik';
-// import { ArrowDown, CloudAdd } from '../../../Utils/Assets';
-// import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { BaseURL } from '../../../Utils/BaseUrl';
-// import { ProgressBar, RotatingLines } from 'react-loader-spinner';
+import { BaseURL } from '../../Utils/BaseUrl';
 import { AnimatePresence, motion } from 'framer-motion';
+import Header from '../Header/Header';
 
-const ContactUs = () => {
+const ContactUsAcademy = () => {
   const handleSubmit = async (values, resetForm) => {
-    // setAddLoading(true);
-    if (values?.image != '') {
-      try {
-        const response = await axios.post(`${BaseURL}/testimonials/`, values);
-        // setAddLoading(false);
-        toast.success('Success', {
-          position: 'top-right',
-        });
-        console.log(response);
-        resetForm();
-      } catch (error) {
-        console.error('Error uploading file: ', error);
-        toast.error('An error occured, please try again!', {
-          position: 'top-right',
-        });
-        // setAddLoading(false);
-      }
-    } else {
-      //   setAddLoading(false);
-      alert('Please select an image');
+    try {
+      const response = await axios.post(`${BaseURL}/testimonials/`, values);
+      toast.success('Success', {
+        position: 'top-right',
+      });
+      console.log(response);
+      resetForm();
+    } catch (error) {
+      console.error('Error uploading file: ', error);
+      toast.error('An error occured, please try again!', {
+        position: 'top-right',
+      });
+      // setAddLoading(false);
     }
   };
 
@@ -232,4 +222,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default ContactUsAcademy;

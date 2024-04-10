@@ -20,7 +20,8 @@ const CoursePayment = () => {
   const [emailError, setEmailError] = useState(false);
   const [numberError, setNumberError] = useState(false);
   const [paymentRequest, setPaymentRequest] = useState(false);
-  const [isValidNumber, setisValidNumber] = useState(true);
+  const [isNumberValid, setIsNumberValid] = useState(true);
+
   const [networkError, setNetworkError] = useState(false);
 
   const fetchCourseDetail = async () => {
@@ -80,7 +81,7 @@ const CoursePayment = () => {
     const number = e.target.value;
     setPhoneNumber(number);
     setNumberError('');
-    validatePhoneNumber(number, setisValidNumber);
+    validatePhoneNumber(number, setIsNumberValid);
   };
 
   return (
@@ -150,7 +151,7 @@ const CoursePayment = () => {
                         </div>
                       )}
                       <AnimatePresence>
-                        {!isValidNumber && (
+                        {!isNumberValid && (
                           <motion.h1
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: '18px' }}
@@ -224,7 +225,7 @@ const CoursePayment = () => {
                         visible={true}
                         height='40'
                         width='40'
-                        strokeColor='green'
+                        strokeColor='red'
                         strokeWidth='3'
                         animationDuration='0.75'
                         ariaLabel='rotating-lines-loading'

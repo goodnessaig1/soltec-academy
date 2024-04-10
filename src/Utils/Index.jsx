@@ -82,13 +82,13 @@ export const validateEmail = email => {
   return re.test(email);
 };
 
-export const validatePhoneNumber = (number, setisValidNumber) => {
+export const validatePhoneNumber = (number, setIsNumberValid) => {
   const nigeriaRegex = /^\+234\d{10}$/;
   const otherRegex = /^(080|070|081|090|091)\d{8}$/;
   const hasAlphabets = /[a-zA-Z]/.test(number);
   const isValidNigeria = nigeriaRegex.test(number);
   const isValidOther = otherRegex.test(number);
   if (hasAlphabets || number.length > 10) {
-    setisValidNumber(isValidNigeria || isValidOther);
-  } else setisValidNumber(true);
+    setIsNumberValid(isValidNigeria || isValidOther);
+  } else setIsNumberValid(true);
 };
