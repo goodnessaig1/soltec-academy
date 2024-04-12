@@ -46,7 +46,7 @@ const CoursePayment = () => {
       behavior: 'smooth',
     });
     fetchCourseDetail();
-  }, []);
+  }, [id]);
 
   const handlePayment = async () => {
     const data = {

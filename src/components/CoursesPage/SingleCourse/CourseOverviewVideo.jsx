@@ -47,7 +47,7 @@ const CourseOverviewVideo = ({ courseDetail }) => {
   return (
     <div>
       <div className='flex w-full mt-[-118px] items-center  justify-center'>
-        <div className='video-player sm:max-w-[343px] lg:max-w-[600]  lg:w-[600px]'>
+        <div className='video-player sm:max-w-[343px] lg:max-w-[600px]  '>
           <video className='rounded-[24px]' ref={videoRef} controls>
             <source src={courseDetail?.video} type='video/mp4' />
           </video>

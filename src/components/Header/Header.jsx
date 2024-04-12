@@ -43,7 +43,7 @@ const Header = ({ headerCol }) => {
       </div>
       <div className=''>
         <div className='flex flex-row items-center justify-between'>
-          <div className='z-5'>
+          <div className='z-10'>
             {headerCol ? (
               <Link to={'/'}>
                 <img src={LogoDark} className='hidden lg:flex' alt='' />

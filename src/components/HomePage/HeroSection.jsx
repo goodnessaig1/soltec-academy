@@ -83,7 +83,7 @@ const HeroSection = () => {
                     </Link>
                   </div>
                 </div>
-                <div className='sm:hidden  justify-end lg:flex lg:w-1/2'>
+                <div className='sm:hidden min-h-[370px] justify-end lg:flex lg:w-1/2'>
                   <img src={Frame} alt='' />
                 </div>
               </div>

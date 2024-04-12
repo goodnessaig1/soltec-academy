@@ -48,7 +48,7 @@ const SingleCourse = () => {
   useEffect(() => {
     getCourses();
     fetchCourseDetail();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (courses && courseDetail) {

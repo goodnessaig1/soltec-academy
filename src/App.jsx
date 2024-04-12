@@ -33,6 +33,7 @@ import GetQuote from './components/Engineering/GetQuote/GetQuote';
 import ContactUs from './components/Engineering/ContactUs/ContactUs';
 import WorkspaceVerifyPayment from './components/WorkSpace/WorkspacePayment';
 import ContactUsAcademy from './components/ContactUs/ContactUs';
+import SignIn from './components/Admin/SignIn/SignIn';
 
 function App() {
   const navigate = useNavigate();
@@ -88,6 +89,7 @@ function App() {
           Component={AddTestimonial}
         />
         <Route path='/admin/payments' Component={AdminPayment} />
+        <Route path='/admin/sign-in' Component={SignIn} />
 
         <Route path='/engineering/dashboard' Component={EngineeringDashboard} />
         <Route path='/engineering/get-quote' Component={GetQuote} />

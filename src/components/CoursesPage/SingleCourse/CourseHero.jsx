@@ -43,6 +43,8 @@ const CourseHero = ({ courseDetail }) => {
         background: 'rgba(2, 2, 15, 0.7)',
         backgroundBlendMode: 'darken',
         backgroundImage: `url(${courseDetail?.background_image})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
       }}
       className='courseBg h-[565px] lg:h-[810px] w-full'
     >

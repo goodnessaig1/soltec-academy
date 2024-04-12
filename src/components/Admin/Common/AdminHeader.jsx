@@ -4,6 +4,7 @@ import NotificationIcon from '../../../assets/Notification.svg';
 import Logout from '../../../assets/logout.svg';
 import NotificationIcon2 from '../../../assets/notification-icon.svg';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 const notifications = [
   {
     notification: 'smart.okolichiaza just made a payment for Product design',
@@ -74,12 +75,15 @@ const AdminHeader = ({ text }) => {
           <div onClick={() => setOpenNotification(true)} className=''>
             <img src={NotificationIcon} alt='' />
           </div>
-          <div className='w-[100px] h-[32px] rounded-[50px] flex flex-row gap-[6px] items-center justify-center hover:cursor-pointer logOutBtn hover:opacity-[0.5] transition duration-200'>
+          <Link
+            to={'/admin/sign-in'}
+            className='w-[100px] h-[32px] rounded-[50px] flex flex-row gap-[6px] items-center justify-center hover:cursor-pointer logOutBtn hover:opacity-[0.5] transition duration-200'
+          >
             <img src={Logout} alt='' />
             <h1 className='font-[500] text-[14px] leading-[17px] text-red-500'>
               Logout
             </h1>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

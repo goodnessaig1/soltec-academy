@@ -93,7 +93,6 @@ const AddCourses = () => {
   };
 
   const uploadVideo = async file => {
-    // if (file != null) {
     try {
       setVidLoading(true);
       setVideoError(null);
@@ -119,9 +118,6 @@ const AddCourses = () => {
       setVidLoading(false);
       console.error('Error uploading file: ', error);
     }
-    // } else {
-    // setVideoError('Please select a video');
-    // }
   };
 
   const uploadBackgroundImg = async file => {

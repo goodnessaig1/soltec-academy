@@ -59,7 +59,7 @@ const Footer = () => {
               About Us
             </Link>
             <Link
-              to={'contact-us'}
+              to={'/contact-us'}
               className='font-[400] text-footerCol text-[16px] leading-[32px]'
             >
               Contact Us

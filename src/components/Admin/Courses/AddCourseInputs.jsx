@@ -28,6 +28,8 @@ export const OverViewContainer = ({
   setOverviews,
   setOverviewDone,
 }) => {
+  const [headerError, setHeaderError] = useState(false);
+  const [bodyError, setBodyError] = useState(false);
   const isHeaderOrBodyEmpty = data => {
     return data.header.trim() === '' || data.body.trim() === '';
   };
@@ -51,7 +53,7 @@ export const OverViewContainer = ({
       overview6,
     ];
     const overviewHasEmptyHeaderOrBody = overview.some(isHeaderOrBodyEmpty);
-    console.log(overviewHasEmptyHeaderOrBody);
+
     if (!overviewHasEmptyHeaderOrBody) {
       setOverviewDone(true);
       setOpenOverview(false);
@@ -96,7 +98,11 @@ export const OverViewContainer = ({
               1
             </div>
             <div
-              onClick={() => setOverviewIndex('2')}
+              onClick={() => {
+                if (headerError !== true && bodyError !== true) {
+                  setOverviewIndex('2');
+                }
+              }}
               className={`w-[32px] h-[32px] rounded-[20px] cursor-pointer flex items-center justify-center ${
                 overviewIndex == '2' ? 'bg-extraGray' : 'hover:bg-extraGray'
               }`}
@@ -104,7 +110,11 @@ export const OverViewContainer = ({
               2
             </div>
             <div
-              onClick={() => setOverviewIndex('3')}
+              onClick={() => {
+                if (headerError !== true && bodyError !== true) {
+                  setOverviewIndex('3');
+                }
+              }}
               className={`w-[32px] h-[32px] rounded-[20px] cursor-pointer flex items-center justify-center ${
                 overviewIndex == '3' ? 'bg-extraGray' : 'hover:bg-extraGray'
               }`}
@@ -112,7 +122,11 @@ export const OverViewContainer = ({
               3
             </div>
             <div
-              onClick={() => setOverviewIndex('4')}
+              onClick={() => {
+                if (headerError !== true && bodyError !== true) {
+                  setOverviewIndex('4');
+                }
+              }}
               className={`w-[32px] h-[32px] rounded-[20px] cursor-pointer flex items-center justify-center ${
                 overviewIndex == '4' ? 'bg-extraGray' : 'hover:bg-extraGray'
               }`}
@@ -120,7 +134,11 @@ export const OverViewContainer = ({
               4
             </div>
             <div
-              onClick={() => setOverviewIndex('5')}
+              onClick={() => {
+                if (headerError !== true && bodyError !== true) {
+                  setOverviewIndex('5');
+                }
+              }}
               className={`w-[32px] h-[32px] rounded-[20px] cursor-pointer flex items-center justify-center ${
                 overviewIndex == '5' ? 'bg-extraGray' : 'hover:bg-extraGray'
               }`}
@@ -128,7 +146,11 @@ export const OverViewContainer = ({
               5
             </div>
             <div
-              onClick={() => setOverviewIndex('6')}
+              onClick={() => {
+                if (headerError !== true && bodyError !== true) {
+                  setOverviewIndex('6');
+                }
+              }}
               className={`w-[32px] h-[32px] rounded-[20px] cursor-pointer flex items-center justify-center ${
                 overviewIndex == '6' ? 'bg-extraGray' : 'hover:bg-extraGray'
               }`}
@@ -156,13 +178,22 @@ export const OverViewContainer = ({
                     name='courseOverview1'
                     required
                     value={overview1.header}
-                    onChange={e =>
-                      setOverview1({ ...overview1, header: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview1({ ...overview1, header: e.target.value });
+                      if (overview1.header.length > 20) {
+                        setHeaderError(true);
+                      } else {
+                        setHeaderError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    headerError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
                   1/20 characters
                 </span>
               </div>
@@ -181,19 +212,34 @@ export const OverViewContainer = ({
                     name='courseOverview1'
                     required
                     value={overview1.body}
-                    onChange={e =>
-                      setOverview1({ ...overview1, body: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview1({ ...overview1, body: e.target.value });
+                      if (overview1.body.length > 46) {
+                        setBodyError(true);
+                      } else {
+                        setBodyError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
-                  1/30 characters
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    bodyError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
+                  1/46 characters
                 </span>
               </div>
               <button
                 type='submit'
-                onClick={() => setOverviewIndex('2')}
+                onClick={() => {
+                  if (overview1.body == '' || overview1.header == '') {
+                    alert('Complete all felds');
+                  } else if (headerError !== true && bodyError !== true) {
+                    setOverviewIndex('2');
+                  }
+                }}
                 className='rounded-[16px] w-full h-[56px] flex items-center justify-center bg-tintBlue text-mainBlue font-[600] hover:opacity-[0.8] hover:cursor-pointer transition duration-300'
               >
                 Save
@@ -219,13 +265,22 @@ export const OverViewContainer = ({
                     name='courseOverview2'
                     required
                     value={overview2.header}
-                    onChange={e =>
-                      setOverview2({ ...overview2, header: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview2({ ...overview2, header: e.target.value });
+                      if (overview2.header.length > 20) {
+                        setHeaderError(true);
+                      } else {
+                        setHeaderError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    headerError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
                   1/20 characters
                 </span>
               </div>
@@ -244,19 +299,34 @@ export const OverViewContainer = ({
                     name='courseOverview2'
                     required
                     value={overview2.body}
-                    onChange={e =>
-                      setOverview2({ ...overview2, body: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview2({ ...overview2, body: e.target.value });
+                      if (overview2.body.length > 46) {
+                        setBodyError(true);
+                      } else {
+                        setBodyError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
-                  1/30 characters
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    bodyError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
+                  1/46 characters
                 </span>
               </div>
               <button
                 type='submit'
-                onClick={() => setOverviewIndex('3')}
+                onClick={() => {
+                  if (overview2.body == '' || overview2.header == '') {
+                    alert('Complete all felds');
+                  } else if (headerError !== true && bodyError !== true) {
+                    setOverviewIndex('3');
+                  }
+                }}
                 className='rounded-[16px] w-full h-[56px] flex items-center justify-center bg-tintBlue text-mainBlue font-[600] hover:opacity-[0.8] hover:cursor-pointer transition duration-300'
               >
                 Save
@@ -282,13 +352,22 @@ export const OverViewContainer = ({
                     name='courseOverview3'
                     required
                     value={overview3.header}
-                    onChange={e =>
-                      setOverview3({ ...overview3, header: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview3({ ...overview3, header: e.target.value });
+                      if (overview3.header.length > 20) {
+                        setHeaderError(true);
+                      } else {
+                        setHeaderError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    headerError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
                   1/20 characters
                 </span>
               </div>
@@ -307,19 +386,34 @@ export const OverViewContainer = ({
                     name='courseOverview3'
                     required
                     value={overview3.body}
-                    onChange={e =>
-                      setOverview3({ ...overview3, body: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview3({ ...overview3, body: e.target.value });
+                      if (overview3.body.length > 46) {
+                        setBodyError(true);
+                      } else {
+                        setBodyError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
-                  1/30 characters
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    bodyError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
+                  1/46 characters
                 </span>
               </div>
               <button
                 type='submit'
-                onClick={() => setOverviewIndex('4')}
+                onClick={() => {
+                  if (overview3.body == '' || overview3.header == '') {
+                    alert('Complete all felds');
+                  } else if (headerError !== true && bodyError !== true) {
+                    setOverviewIndex('4');
+                  }
+                }}
                 className='rounded-[16px] w-full h-[56px] flex items-center justify-center bg-tintBlue text-mainBlue font-[600] hover:opacity-[0.8] hover:cursor-pointer transition duration-300'
               >
                 Save
@@ -345,13 +439,22 @@ export const OverViewContainer = ({
                     name='courseOverview4'
                     required
                     value={overview4.header}
-                    onChange={e =>
-                      setOverview4({ ...overview4, header: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview4({ ...overview4, header: e.target.value });
+                      if (overview4.header.length > 20) {
+                        setHeaderError(true);
+                      } else {
+                        setHeaderError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    headerError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
                   1/20 characters
                 </span>
               </div>
@@ -370,19 +473,34 @@ export const OverViewContainer = ({
                     name='courseOverview4'
                     required
                     value={overview4.body}
-                    onChange={e =>
-                      setOverview4({ ...overview4, body: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview4({ ...overview4, body: e.target.value });
+                      if (overview4.body.length > 46) {
+                        setBodyError(true);
+                      } else {
+                        setBodyError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
-                  1/30 characters
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    bodyError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
+                  1/46 characters
                 </span>
               </div>
               <button
                 type='submit'
-                onClick={() => setOverviewIndex('5')}
+                onClick={() => {
+                  if (overview4.body == '' || overview4.header == '') {
+                    alert('Complete all felds');
+                  } else if (headerError !== true && bodyError !== true) {
+                    setOverviewIndex('5');
+                  }
+                }}
                 className='rounded-[16px] w-full h-[56px] flex items-center justify-center bg-tintBlue text-mainBlue font-[600] hover:opacity-[0.8] hover:cursor-pointer transition duration-300'
               >
                 Save
@@ -408,13 +526,22 @@ export const OverViewContainer = ({
                     name='courseOverview5'
                     required
                     value={overview5.header}
-                    onChange={e =>
-                      setOverview5({ ...overview5, header: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview5({ ...overview5, header: e.target.value });
+                      if (overview5.header.length > 20) {
+                        setHeaderError(true);
+                      } else {
+                        setHeaderError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    headerError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
                   1/20 characters
                 </span>
               </div>
@@ -433,19 +560,34 @@ export const OverViewContainer = ({
                     name='courseOverview5'
                     required
                     value={overview5.body}
-                    onChange={e =>
-                      setOverview5({ ...overview5, body: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview5({ ...overview5, body: e.target.value });
+                      if (overview5.body.length > 46) {
+                        setBodyError(true);
+                      } else {
+                        setBodyError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
-                  1/30 characters
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    bodyError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
+                  1/46 characters
                 </span>
               </div>
               <button
                 type='submit'
-                onClick={() => setOverviewIndex('6')}
+                onClick={() => {
+                  if (overview5.body == '' || overview5.header == '') {
+                    alert('Complete all felds');
+                  } else if (headerError !== true && bodyError !== true) {
+                    setOverviewIndex('6');
+                  }
+                }}
                 className='rounded-[16px] w-full h-[56px] flex items-center justify-center bg-tintBlue text-mainBlue font-[600] hover:opacity-[0.8] hover:cursor-pointer transition duration-300'
               >
                 Save
@@ -455,7 +597,13 @@ export const OverViewContainer = ({
           {overviewIndex == '6' && (
             <form
               className='flex flex-col gap-[12px]'
-              onSubmit={e => handleSubmit(e)}
+              onSubmit={e => {
+                if (overview6.body == '' || overview6.header == '') {
+                  alert('Complete all felds');
+                } else if (headerError !== true && bodyError !== true) {
+                  handleSubmit(e);
+                }
+              }}
               action=''
             >
               <div className='flex flex-col gap-[6px]'>
@@ -471,13 +619,22 @@ export const OverViewContainer = ({
                     name='courseOverview6'
                     required
                     value={overview6.header}
-                    onChange={e =>
-                      setOverview6({ ...overview6, header: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview6({ ...overview6, header: e.target.value });
+                      if (overview6.header.length > 20) {
+                        setHeaderError(true);
+                      } else {
+                        setHeaderError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    headerError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
                   1/20 characters
                 </span>
               </div>
@@ -496,14 +653,23 @@ export const OverViewContainer = ({
                     name='courseOverview6'
                     required
                     value={overview6.body}
-                    onChange={e =>
-                      setOverview6({ ...overview6, body: e.target.value })
-                    }
+                    onChange={e => {
+                      setOverview6({ ...overview6, body: e.target.value });
+                      if (overview6.body.length > 46) {
+                        setBodyError(true);
+                      } else {
+                        setBodyError(false);
+                      }
+                    }}
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                   />
                 </div>
-                <span className='font-[400] text-[12px] leading-[14px]'>
-                  1/30 characters
+                <span
+                  className={`font-[400] text-[12px] leading-[14px] ${
+                    bodyError ? 'text-red-500' : 'text-[#000]'
+                  }`}
+                >
+                  1/46 characters
                 </span>
               </div>
               <button

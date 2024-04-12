@@ -717,8 +717,11 @@ input[type='date'] {
 .courseBg {
   background: linear-gradient(180deg, #02020f 0%, #02020f 100%);
   background-blend-mode: darken !important;
-  background-size: cover;
+  /* background-size: cover; */
   max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .video-player {
@@ -757,4 +760,8 @@ input[type='date'] {
   .react-datepicker-popper {
     margin-left: -70px;
   }
+}
+
+.sign_in {
+  box-shadow: 0px 0px 20px 0px #1a31501a;
 }

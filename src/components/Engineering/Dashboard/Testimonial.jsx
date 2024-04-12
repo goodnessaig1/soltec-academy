@@ -62,7 +62,11 @@ const Testimonial = ({ testimonialsData, sponsors }) => {
           {sponsors &&
             sponsors.map((sponsor, index) => (
               <div key={index}>
-                <img src={sponsor.logo} alt='' />
+                <img
+                  src={sponsor?.logo}
+                  className='w-[198px] h-[78px]'
+                  alt=''
+                />
               </div>
             ))}
         </div>
