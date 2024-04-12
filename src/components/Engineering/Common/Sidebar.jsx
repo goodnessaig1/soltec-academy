@@ -53,7 +53,7 @@ const Sideber = ({
               <h1>CONTACT US</h1>
             </NavLink>
             <Link
-              to={'/blog/payment-guide'}
+              to={'/engineering/get-quote'}
               className='w-[159px] h-[48px] hover:bg-[#f1f1f1] flex items-center justify-center sidebarPay  rounded-[12px] p-[10px] text-[14px] text-[#000]'
             >
               <h1 className='nav-link'>GET A QUOTE</h1>
