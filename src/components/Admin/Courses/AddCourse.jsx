@@ -19,6 +19,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { Oval, ProgressBar } from 'react-loader-spinner';
 import { BaseURL } from '../../../Utils/BaseUrl';
 import { toast } from 'react-toastify';
+import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
 
 const AddCourses = () => {
   const navigate = useNavigate();
@@ -33,16 +34,18 @@ const AddCourses = () => {
   const [price, setPrice] = useState('');
   const [openOverview, setOpenOverview] = useState(false);
 
+  const [addSecondInstructor, setAddSecondInstructor] = useState(false);
   const [openInstructorInfo, setOpenInstructorInfo] = useState(false);
   const [instructorInfoIndex, setInstructorInfoIndex] = useState(1);
+  const [instructors, setInstructors] = useState([]);
   const [instructorInfo1, setInstructorInfo1] = useState({
     name: '',
-    proffession: '',
+    profession: '',
     image: '',
   });
   const [instructorInfo2, setInstructorInfo2] = useState({
     name: '',
-    proffession: '',
+    profession: '',
     image: '',
   });
 
@@ -93,52 +96,31 @@ const AddCourses = () => {
   };
 
   const uploadVideo = async file => {
+    const formData = new FormData();
+    formData.append('file', file);
     try {
       setVidLoading(true);
       setVideoError(null);
-      const formData = new FormData();
-      formData.append('file', file);
-      const response = await axios.post(
-        `${BaseURL}/courses/upload_file/`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
-      setFileUrl(response.data.file);
+      const response = await uploadFile(formData, setVidLoading);
+      setFileUrl(response?.file);
       setVideoSuccess(true);
-      setVidLoading(false);
       setTimeout(() => {
         setVideoSuccess(false);
       }, 6000);
     } catch (error) {
       setVideoSuccess(false);
-      setVidLoading(false);
-      console.error('Error uploading file: ', error);
+      console.error('Upload failed:', error);
     }
   };
 
   const uploadBackgroundImg = async file => {
-    setLoading(true);
+    const formData = new FormData();
+    formData.append('file', file);
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      const response = await axios.post(
-        `${BaseURL}/courses/upload_file/`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
-      setBackgroundImg(response.data.file);
-      setLoading(false);
+      const response = await uploadFile(formData, setLoading);
+      setBackgroundImg(response?.file);
     } catch (error) {
-      console.error('Error uploading file: ', error);
-      setLoading(false);
+      console.error('Upload failed:', error);
     }
   };
 
@@ -188,14 +170,15 @@ const AddCourses = () => {
     setOverview4({ header: '', body: '' });
     setOverview5({ header: '', body: '' });
     setOverview6({ header: '', body: '' });
+    setInstructors([]);
     setInstructorInfo1({
       name: '',
-      proffession: '',
+      profession: '',
       image: '',
     });
     setInstructorInfo2({
       name: '',
-      proffession: '',
+      profession: '',
       image: '',
     });
   };
@@ -209,7 +192,7 @@ const AddCourses = () => {
       price: price,
       video: fileUrl,
       background_image: backgroundImg,
-      instructors: [instructorInfo1, instructorInfo2],
+      instructors: instructors,
       faqs: faqs,
       overviews: overviews,
     };
@@ -227,10 +210,7 @@ const AddCourses = () => {
     if (!overviewHasEmptyHeaderOrBody && fileUrl != null) {
       setOverallLoading(true);
       try {
-        const response = await axios.post(
-          `${BaseURL}/courses/create_course/`,
-          values,
-        );
+        await apiRequest('POST', `/courses/create_course/`, values);
         setOverallLoading(false);
         clearForm();
         toast.success('Success', {
@@ -282,6 +262,10 @@ const AddCourses = () => {
             instructorInfo2={instructorInfo2}
             setInstructorInfo2={setInstructorInfo2}
             setInstructorDone={setInstructorDone}
+            setAddSecondInstructor={setAddSecondInstructor}
+            addSecondInstructor={addSecondInstructor}
+            instructors={instructors}
+            setInstructors={setInstructors}
           />
         )}
         {openFaqs && (
@@ -308,7 +292,7 @@ const AddCourses = () => {
                 ADD COURSE
               </h1>
               <span className='text-[14px] font-[600] text-mainBlue underline leading-[21px]'>
-                Preview course
+                {/* Preview course */}
               </span>
             </div>
             <form onSubmit={e => handleSubmit(e)} action=''>

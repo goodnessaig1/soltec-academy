@@ -3,15 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '../Common/Layout';
 import { BackArrow, CloudAdd } from '../../../Utils/Assets';
 import { useState } from 'react';
-import axios from 'axios';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { BaseURL } from '../../../Utils/BaseUrl';
 import { ProgressBar } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
+import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
 
 const AddTestimonial = () => {
   const navigate = useNavigate();
@@ -19,23 +18,13 @@ const AddTestimonial = () => {
   const [addLoading, setAddLoading] = useState(false);
 
   const uploadImg = async (setFieldValue, file) => {
-    setLoading(true);
+    const formData = new FormData();
+    formData.append('file', file);
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      const response = await axios.post(
-        `${BaseURL}/courses/upload_file/`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
-      setFieldValue('author_image', response.data.file);
-      setLoading(false);
+      const response = await uploadFile(formData, setLoading);
+      setFieldValue('author_image', response?.file);
     } catch (error) {
-      console.error('Error uploading file: ', error);
+      console.error('Upload failed:', error);
     }
   };
 
@@ -66,7 +55,7 @@ const AddTestimonial = () => {
     setAddLoading(true);
     if (values?.author_image != '') {
       try {
-        const response = await axios.post(`${BaseURL}/testimonials/`, values);
+        await apiRequest('POST', `/testimonials/`, values);
         setAddLoading(false);
         toast.success('Success', {
           position: 'top-right',
@@ -100,14 +89,14 @@ const AddTestimonial = () => {
             initialValues={{
               author: '',
               content: '',
-              proffession: '',
+              profession: '',
               author_image: '',
             }}
             validationSchema={Yup.object({
               author: Yup.string()
                 .max(20, 'max 20 characters')
                 .required('Required'),
-              proffession: Yup.string()
+              profession: Yup.string()
                 .max(20, 'max 20 characters')
                 .required('Required'),
               content: Yup.string()
@@ -169,15 +158,15 @@ const AddTestimonial = () => {
                   <div className='w-full course_input rounded-[12px] h-[40px] text-[14px]'>
                     <input
                       type='text'
-                      name='proffession'
+                      name='profession'
                       required
-                      onChange={handleChange('proffession')}
-                      onBlur={handleBlur('proffession')}
+                      onChange={handleChange('profession')}
+                      onBlur={handleBlur('profession')}
                       className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
                     />
                   </div>
                   <AnimatePresence>
-                    {touched.proffession && errors.proffession && (
+                    {touched.profession && errors.profession && (
                       <motion.div
                         initial={{ height: 0 }}
                         animate={{ height: 'auto' }}
@@ -185,7 +174,7 @@ const AddTestimonial = () => {
                         transition={{ duration: 0.7, ease: 'easeInOut' }}
                       >
                         <p className='text-[#2C2C2CB2] text-[#D50000]   text-[10px] font-normal md:text-base'>
-                          {errors.proffession}
+                          {errors.profession}
                         </p>
                       </motion.div>
                     )}

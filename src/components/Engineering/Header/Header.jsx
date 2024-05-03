@@ -17,7 +17,7 @@ const Header = ({ headerCol, scrollTo, services, about, faqsRef }) => {
   };
   const navigate = useNavigate();
   return (
-    <div className='contaier px-[16px] lg:px-[120px] py-[16px] lg:py-[24px]'>
+    <div className='contaier px-[16px] lgl:px-[76px] xl:px-[120px] py-[16px] lg:py-[24px]'>
       <div className={`sidebar ${showSidebar ? 'open z-3' : ''}`}>
         <Sideber
           scrollTo={scrollTo}
@@ -48,7 +48,7 @@ const Header = ({ headerCol, scrollTo, services, about, faqsRef }) => {
               <img src={Logo2} className='flex lg:hidden' alt='' />
             </Link>
           </div>
-          <div className='hidden z-10 lg:flex text-nowrap flex-row lg:gap-[36px] xxl:gap-[64px] '>
+          <div className='hidden z-10 lg:flex text-nowrap flex-row lg:gap-[24px] lgl:gap-[36px] xxl:gap-[64px] '>
             <NavLink
               className={({ isActive }) =>
                 isActive && headerCol

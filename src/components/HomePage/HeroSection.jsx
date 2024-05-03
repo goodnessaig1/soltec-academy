@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { BaseURL } from '../../Utils/BaseUrl';
 import axios from 'axios';
-import Skeleton from 'react-loading-skeleton';
 
 const HeroSection = () => {
   const [loading, setLoading] = useState(true);
@@ -50,27 +49,25 @@ const HeroSection = () => {
                 <div className='sm:flex lg:hidden w-full flex justify-end'>
                   <img src={Frame3} alt='' />
                 </div>
-                <div className='sm:pl-[16px] lg:pl-[120px] flex sm:w-full lg:w-1/2 mdl:items-center  lg:items-start xxl:items-end flex-col gap-[27px] sm:mt-[0px] lg:mt-[235px]'>
+                <div className='sm:pl-[16px] lg:pl-[76px] xl:pl-[120px] flex sm:w-full lg:w-1/2 mdl:items-center  lg:items-start xxl:items-end flex-col gap-[27px] sm:mt-[0px] lg:mt-[235px]'>
                   <div className=' flex flex-col gap-[27px]'>
-                    <h1 className='text-nowrap barlow-semi condensed-bold  font-[700] sm:text-[37px] xs:text-[32px]  lg:text-[64px] text-[#1c1c1c] sm:leading-[48px] lg:leading-[76px] '>
+                    <h1 className='text-nowrap barlow-semi condensed-bold  font-[700] sm:text-[37px] xs:text-[32px] lg:text-[48px] xl:text-[64px] text-[#1c1c1c] sm:leading-[48px] lg:leading-[76px] '>
                       Best place to learn a <br />
                       new <span className='text-[#0043ce]'>digital skill</span>
                     </h1>
                     <div className='absolute sm:ml-[300px] lg:ml-[500px] sm:mt-[60px] lg:mt-[130px]'>
                       <img src={Cursor} alt='' />
                     </div>
-                    <span className='font-[400] sm:text-[15px] lg:text-[20px] sm:leading-[24px] lg:leading-[30px] text-[#545454] '>
+                    <span className='font-[400] max-w-[400px] lg:max-w-[480px] sm:text-[15px] lg:text-[20px] sm:leading-[24px] lg:leading-[30px] text-[#545454] '>
                       Opening new frontiers for learning, one course at a{' '}
-                      <br className='sm:flex lg:hidden' />
-                      time.
-                      <br className='sm:hidden lg:flex' />
+                      {/* <br className='sm:flex lg:hidden' /> */}
+                      time. {/* <br className='sm:hidden lg:flex' /> */}
                       Soltec aims to equip every kind of individual
-                      <br className='sm:flex lg:hidden' />
-                      with their <br className='sm:hidden lg:flex' />
-                      desired skill. All that is needed from you is
-                      <br className='sm:flex lg:hidden' />
-                      drive and
-                      <br className='sm:hidden lg:flex' />
+                      {/* <br className='sm:flex lg:hidden' /> */}
+                      with their {/* <br className='sm:hidden lg:flex' /> */}
+                      desired skill. All that is needed from you is{' '}
+                      {/* <br className='sm:flex lg:hidden' /> */}
+                      drive and {/* <br className='sm:hidden lg:flex' /> */}
                       passion. We handle the rest.
                     </span>
                     <Link
@@ -103,7 +100,7 @@ const HeroSection = () => {
               testimonial.map((testimony, index) => (
                 <div
                   key={index}
-                  className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] w-[506px] border backg p-[20px] bg-[fff] items-center'
+                  className='flex flex-row mx-[20px] h-[140px] rounded-[16px] gap-[20px] w-[506px] border backg p-[20px] bg-[fff] items-center'
                 >
                   <div className='w-[80px] h-[80px]'>
                     <img
@@ -120,7 +117,7 @@ const HeroSection = () => {
                     </h1>
                     <div>
                       <span className='font-[400] text-[14px] profile_col leading-[16px]'>
-                        {testimony?.author},<p>{testimony?.proffession}</p>
+                        {testimony?.author},<p>{testimony?.profession}</p>
                       </span>
                     </div>
                   </div>
@@ -133,7 +130,7 @@ const HeroSection = () => {
                   </div>
                 </div>
               ))}
-            <div className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] w-[506px] border backg p-[20px] bg-[fff] items-center'>
+            <div className='flex flex-row mx-[20px] h-[140px] rounded-[16px] gap-[20px] w-[506px] border backg p-[20px] bg-[fff] items-center'>
               <img
                 src={Profile}
                 className='sm:w-[77px] lg:w-[91px] sm:h-[76px] lg:h-auto'
@@ -166,9 +163,9 @@ const HeroSection = () => {
             className='flex flex-row gap-[24px] '
             direction='left'
           >
-            <Skeleton className='ml-[40px]' width={365} height={192} />
-            <Skeleton className='ml-[40px]' width={365} height={192} />
-            <Skeleton className='ml-[40px]' width={365} height={192} />
+            <TestimonialLoading />
+            <TestimonialLoading />
+            <TestimonialLoading />
           </Marquee>
         )}
       </div>
@@ -177,3 +174,33 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+const TestimonialLoading = () => {
+  return (
+    <div className='flex flex-row mx-[20px] rounded-[16px] gap-[20px] w-[506px] border backg p-[20px] bg-[fff] items-center'>
+      <img
+        src={Profile}
+        className='sm:w-[77px] lg:w-[91px] sm:h-[76px] lg:h-auto'
+        alt=''
+      />
+      <div className='flex flex-col gap-[11px]'>
+        <h1 className='text-[16px] font-[500] z-10 leading-[19px] '>
+          X was a fantastic place for me to learn and put to action quickly
+        </h1>
+        <div>
+          <span className='font-[400] text-[14px] profile_col leading-[16px]'>
+            James Doe,
+            <p>UI/UX Designer,X Alumni</p>
+          </span>
+        </div>
+      </div>
+      <div className='absolute items-right top-[0] sm:ml-[230px] lg:ml-[398px] '>
+        <img
+          src={Media2}
+          className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[74px]  '
+          alt=''
+        />
+      </div>
+    </div>
+  );
+};

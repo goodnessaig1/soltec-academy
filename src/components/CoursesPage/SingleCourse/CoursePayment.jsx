@@ -92,7 +92,7 @@ const CoursePayment = () => {
           {!loading ? (
             <div className='w-full sm:px-[16px] lg:px-[120px] paym flex justify-center sm:mt-[50px] lg:mt-[80px] mb-[120px] items-center'>
               <div className=' lg:w-[964px] flex justify-center items-start lg:justify-start items-start sm:flex-col lg:flex-row gap-[89px]'>
-                <div className=' lg:w-[375px] flex flex-col sm:gap-[50px] lg:gap-[104px]'>
+                <div className=' lg:w-[375px] flex flex-col gap-[50px] lg:gap-[84px]'>
                   <div
                     style={{ background: courseData?.color_code }}
                     className='p-[32px] sm:w-[343px] lg:w-[375px] hover:cursor-pointer h-[320px] rounded-[24px] flex flex-col items-center justify-center  gap-[15px]'
@@ -225,7 +225,7 @@ const CoursePayment = () => {
                         visible={true}
                         height='40'
                         width='40'
-                        strokeColor='red'
+                        strokeColor='gray'
                         strokeWidth='3'
                         animationDuration='0.75'
                         ariaLabel='rotating-lines-loading'
@@ -244,7 +244,7 @@ const CoursePayment = () => {
                   style={{ borderRadius: '20px' }}
                   className='w-[140px]'
                   width={343}
-                  height={440}
+                  height={380}
                 />
                 <Skeleton
                   style={{ borderRadius: '20px' }}
@@ -270,19 +270,7 @@ const CoursePayment = () => {
                   style={{ borderRadius: '20px' }}
                   className='w-[140px]'
                   width={443}
-                  height={540}
-                />
-                <Skeleton
-                  style={{ borderRadius: '20px' }}
-                  className='w-[140px]'
-                  width={443}
-                  height={60}
-                />
-                <Skeleton
-                  style={{ borderRadius: '20px' }}
-                  className='w-[140px]'
-                  width={443}
-                  height={60}
+                  height={340}
                 />
               </div>
             </div>

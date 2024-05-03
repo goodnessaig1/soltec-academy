@@ -7,7 +7,7 @@ const Services = () => {
       </div>
 
       <div className='flex flex-col w-full mt-[44px] lg:mt-[80px]'>
-        <div className='grid grid-cols-1 mdl:grid-cols-2 lgl:grid-cols-3 w-full'>
+        <div className='grid grid-cols-1 mdl:grid-cols-2 lgx:grid-cols-3 w-full'>
           <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] first_bg h-[387px] md:h-[367px]'>
             <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
               <h1 className='text-[24px] font-[600] leading-[36px]'>

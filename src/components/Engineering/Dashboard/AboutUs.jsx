@@ -4,7 +4,7 @@ import Whatsapp from '../../../assets/whatsapp.svg';
 const AboutUs = () => {
   return (
     <div className='w-full md:h-[974px] lg:h-[780px] xl:h-[707px] flex flex-col lg:flex-row'>
-      <div className='w-full lg:w-1/2 px-[20px] lg:pl-[80px] lg:pr-[60] xl:px-[120px] py-[52px] lg:py-[84px] flex flex-col gap-[48px] aboutBg h-full'>
+      <div className='w-full lg:w-1/2 px-[20px] lg:pl-[40px] lg:pr-[60] xl:px-[100px] xll:px-[120px] py-[52px] lg:py-[64px] xlx:py-[64px] flex flex-col gap-[48px] aboutBg h-full'>
         <div className='flex flex-col gap-[26px]'>
           <h1 className='font-[700] text-[18px] lg:text-[24px] leading-[30px] text-white'>
             ABOUT US

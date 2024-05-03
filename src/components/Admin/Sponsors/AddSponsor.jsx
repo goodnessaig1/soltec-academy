@@ -8,33 +8,23 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
-import { BaseURL } from '../../../Utils/BaseUrl';
 import { toast } from 'react-toastify';
 import { ProgressBar } from 'react-loader-spinner';
+import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
+
 const AddSponsor = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [addLoading, setAddLoading] = useState(false);
 
   const uploadImg = async (setFieldValue, file) => {
-    setLoading(true);
+    const formData = new FormData();
+    formData.append('file', file);
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      const response = await axios.post(
-        'https://academy-wo2r.onrender.com/api/v1/courses/upload_file/',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
-      setFieldValue('logo', response.data.file);
-      setLoading(false);
+      const response = await uploadFile(formData, setLoading);
+      setFieldValue('logo', response?.file);
     } catch (error) {
-      console.error('Error uploading file: ', error);
+      console.error('Upload failed:', error);
     }
   };
 
@@ -65,7 +55,7 @@ const AddSponsor = () => {
     setAddLoading(true);
     if (values?.logo != '') {
       try {
-        await axios.post(`${BaseURL}/sponsors/`, values);
+        await apiRequest('POST', `/sponsors/`, values);
         setAddLoading(false);
         toast.success('Success', {
           position: 'top-right',
@@ -73,7 +63,6 @@ const AddSponsor = () => {
         resetForm();
         setFieldValue('name', '');
       } catch (error) {
-        console.error('Error uploading file: ', error);
         toast.error('An error occured, please try again!', {
           position: 'top-right',
         });
@@ -84,6 +73,7 @@ const AddSponsor = () => {
       alert('Please select an image');
     }
   };
+
   return (
     <Layout text='Sponsors'>
       <div className='w-full inter__ flex flex-col gap-[36px] px-[36px] pb-[140px]'>

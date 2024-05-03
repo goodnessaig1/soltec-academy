@@ -57,7 +57,7 @@ const SingleCourse = () => {
       );
       setOtherCourses(filteredCourses);
     }
-  }, [courses, courseDetail]);
+  }, [courses, courseDetail, id]);
 
   return (
     <div>

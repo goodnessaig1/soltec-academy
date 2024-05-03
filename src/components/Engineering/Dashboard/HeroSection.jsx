@@ -27,7 +27,7 @@ const HeroSection = () => {
   return (
     <div>
       <div className='flex flex-col gap-[36px]'>
-        <div className='flex flex-col gap-[24px] lg:gap-[36px] px-[16px] lg:px-[120px]'>
+        <div className='flex flex-col gap-[24px] lg:gap-[36px] px-[16px] lg:px-[80px] lgl:px-[120px]'>
           <div className='flex flex-col gap-[28px]'>
             <div className='flex flex-col gap-[8px] mt-[80px]'>
               <h1 className='engYellow font-[700] text-[12px] lg:text-[16px] leading-[23px]'>
@@ -38,7 +38,7 @@ const HeroSection = () => {
                 Engineering in Africa
               </h1>
             </div>
-            <span className='inter__ font-[400] text-[14px] lg:text-[20px] leading-[30px] text-white opacity-[0.8]'>
+            <span className='inter__ max-w-[630px] font-[400] text-[14px] lg:text-[20px] leading-[30px] text-white opacity-[0.8]'>
               Our mission is to revolutionize engineering in Africa through
               timely
               <br className='hidden lg:block' />

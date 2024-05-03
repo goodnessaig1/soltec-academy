@@ -12,7 +12,7 @@ const Faq = () => {
     setActiveIndex(prevIndex => (prevIndex === index ? -1 : index));
   };
   return (
-    <div className='flex flex-col lg:flex-row px-[16px] lg:px-[120px] py-[140px] justify-center gap-[32px] lg:gap-[141px] '>
+    <div className='flex flex-col lg:flex-row px-[16px] lg:px-[120px] py-[140px] justify-center gap-[32px] xl:gap-[141px] '>
       <div className='flex flex-col max-w-[436px] gap-[24px]'>
         <div className='flex flex-col gap-[25px]'>
           <div className='flex flex-col gap-[16px] justify-center'>

@@ -37,7 +37,7 @@ const Header = ({ headerCol }) => {
     },
   ];
   return (
-    <div className='contaier px-[16px] lg:px-[120px] py-[16px] lg:py-[24px]'>
+    <div className='contaier px-[16px] lgl:px-[76px] xl:px-[120px] py-[16px] lg:py-[24px]'>
       <div className={`sidebar ${showSidebar ? 'open z-3' : ''}`}>
         <Sideber showSidebar={showSidebar} toggle={toggleSidebar} />
       </div>

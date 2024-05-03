@@ -9,7 +9,7 @@ const CoreValues = () => {
         <div className='yellowLine' />
       </div>
 
-      <div className='flex flex-col lg:flex-row  items-center justify-center gap-[22px] mt-[60px] lg:mt-[120px]'>
+      <div className='flex flex-col lgl:flex-row  items-center justify-center gap-[22px] mt-[60px] lg:mt-[120px]'>
         <div className='valueItem w-[319px] h-[256px] lg:h-[370px] py-[70px] px-[39px] bg-white rounded-[16px] flex flex-col items-center justify-center gap-[24px] '>
           <img src={Safety} alt='' />
           <div className='flex flex-col gap-[17px] items-center'>

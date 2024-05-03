@@ -172,7 +172,7 @@ const WorkspaceVerifyPayment = () => {
             visible={true}
             height='50'
             width='50'
-            strokeColor='red'
+            strokeColor='gray'
             strokeWidth='3'
             animationDuration='0.75'
             ariaLabel='rotating-lines-loading'

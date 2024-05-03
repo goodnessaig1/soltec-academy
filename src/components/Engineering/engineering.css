@@ -175,6 +175,7 @@
   background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/space1_ShqLGT9Xk.jpg?updatedAt=1711362662543');
   background-size: cover;
   /* width: 100%; */
+  background-position: center;
 }
 
 .whiteLine {
@@ -269,6 +270,8 @@
 .ceo {
   background-image: url('../../assets/ceo.jpg');
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .ceoBg {
   background: linear-gradient(180deg, #0f0f29 0%, #00000e 100%);

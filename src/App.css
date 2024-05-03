@@ -765,3 +765,17 @@ input[type='date'] {
 .sign_in {
   box-shadow: 0px 0px 20px 0px #1a31501a;
 }
+
+.rendered-content ol {
+  list-style: decimal;
+  margin-left: 40px !important;
+}
+
+.rendered-content ul {
+  list-style-type: disc !important;
+  margin-left: 24px !important;
+}
+
+.boxShad {
+  box-shadow: 0px 0px 0px 0px #e1e7ed;
+}

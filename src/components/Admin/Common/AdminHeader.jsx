@@ -5,6 +5,7 @@ import Logout from '../../../assets/logout.svg';
 import NotificationIcon2 from '../../../assets/notification-icon.svg';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../Context/AuthContext';
 const notifications = [
   {
     notification: 'smart.okolichiaza just made a payment for Product design',
@@ -30,7 +31,7 @@ const notifications = [
 
 const AdminHeader = ({ text }) => {
   const [openNotification, setOpenNotification] = useState(false);
-
+  const { user } = useAuth();
   return (
     <div className='h-[60px] bg-[#fff] z_main w-full AdminHeader flex'>
       <div className='px-[36px] flex flex-row w-full items-center justify-between'>
@@ -71,9 +72,16 @@ const AdminHeader = ({ text }) => {
         <div className='font-[700] text-[20px] leading-[24px] text-dotCol'>
           {text}
         </div>
-        <div className='flex flex-row items-center gap-[32px]'>
-          <div onClick={() => setOpenNotification(true)} className=''>
-            <img src={NotificationIcon} alt='' />
+        <div className='flex flex-row items-center gap-[24px]'>
+          <div className='flex flex-row items-center gap-[16px]'>
+            <div onClick={() => setOpenNotification(true)} className=''>
+              <img src={NotificationIcon} alt='' />
+            </div>
+            {user && user.full_name && (
+              <div className='w-[36px] uppercase h-[36px] rounded-[50px] bg-purple-100 flex items-center justify-center'>
+                {user?.full_name.trim().charAt(0)}
+              </div>
+            )}
           </div>
           <Link
             to={'/admin/sign-in'}

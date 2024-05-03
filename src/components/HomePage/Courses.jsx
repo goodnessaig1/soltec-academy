@@ -137,7 +137,7 @@ const Courses = ({ courses }) => {
               </div>
             </div>
             <div className='sm:hidden lg:block xl:hidden xxl:hidden'>
-              <div className='ml-[30px] mt-[70px] '>
+              <div className='ml-[4px] mt-[70px] '>
                 <Slider {...mdSettings} className=''>
                   {courses &&
                     courses.map((course, index) => (
@@ -226,25 +226,26 @@ const Courses = ({ courses }) => {
                 </Slider>
               </div>
             </div>
-            <div className='sm:block lg:hidden'>
-              <div className='flex px-[16px] flex-col items-center w-full gap-[24px] mt-[36px]'>
+            <div className='flex flex-col items-center justify-center w-full  lg:hidden'>
+              <div className='flex px-[16px] flex-col items-center gap-[24px] mt-[36px]'>
                 {courses &&
                   courses.map((course, index) => (
                     <div
                       key={index}
                       style={{ backgroundColor: course?.color_code }}
-                      className='flex flex-col max_wid w-[343px]  py-[20px] gap-[20px] rounded-[24px] backgroundOne boxSha1 items-center'
+                      className='flex flex-col max_wid max-w-[343px] w-[343px] py-[20px] gap-[20px] rounded-[24px] boxSha1 items-center'
                     >
                       <h1 className='font-[700] text-[24px] leading-[36px] text-[#fff] '>
                         {course?.title.length > 17
                           ? `${course?.title?.substring(0, 17) + '..'}`
                           : `${course?.title}`}
                       </h1>
-                      <span className='text-[16px] px-[16px] text-extraGray font-[500] leading-[24px] text-center'>
+                      <span className='text-[16px] line-clamp-3 max-w-[310px] break-words px-[16px] text-extraGray font-[500] leading-[24px] text-center'>
                         {course?.description.length > 100
                           ? `${course?.description.substring(0, 100) + '...'}`
                           : `${course?.description}`}
                       </span>
+
                       <div className='flex flex-col gap-[12px] items-center'>
                         <h1 className='font-[700px] text-center text-[#fff] text-[20px] leading-[30px] '>
                           N{parseFloat(course?.price).toLocaleString()}

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
 import { motion } from 'framer-motion';
 import {
   Clock,
@@ -211,43 +210,51 @@ const Features = () => {
             </div>
 
             {/* Feature image */}
-            <div className='hidden lgl:block lg:w-[440px] xl:w-[555.5px]'>
-              <AnimatePresence>
-                {feature === 'Starlink' && (
-                  <motion.img
+            <div className='hidden  lgl:block lg:w-[440px] xl:w-[555.5px]'>
+              {/* <AnimatePresence> */}
+              {feature === 'Starlink' && (
+                <div className='flex flex-row gap-0 items-center'>
+                  {/* <motion.img */}
+                  <img
                     key='image'
                     src={Starlink}
                     alt='Your Image'
-                    initial={{ x: '100%', opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.5 }}
+                    // initial={{ x: '100%', opacity: 0 }}
+                    // animate={{ x: 0, opacity: 1 }}
+                    // transition={{ duration: 0.5 }}
                   />
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {feature === 'Conducive' && (
-                  <motion.img
+                  <div className='bg-[#EEEEEE] h-[465px] rounded-r-[16px] w-[41px]' />
+                </div>
+              )}
+              {/* </AnimatePresence> */}
+              {feature === 'Conducive' && (
+                <div className='flex flex-row gap-0 items-center'>
+                  <img
                     key='image'
                     src={SolarPanel}
                     alt='Your Image'
-                    initial={{ x: '100%', opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.5 }}
+                    // initial={{ x: '100%', opacity: 0 }}
+                    // animate={{ x: 0, opacity: 1 }}
+                    // transition={{ duration: 0.5 }}
                   />
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {feature === 'Power' && (
-                  <motion.img
+                  <div className='bg-[#EEEEEE] h-[465px] rounded-r-[16px] w-[41px]' />
+                </div>
+              )}
+              {/* <AnimatePresence> */}
+              {feature === 'Power' && (
+                <div className='flex flex-row gap-0 items-center'>
+                  <img
                     key='image'
                     src={SolarPanel}
                     alt='Your Image'
-                    initial={{ x: '100%', opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.5 }}
+                    // initial={{ x: '100%', opacity: 0 }}
+                    // animate={{ x: 0, opacity: 1 }}
+                    // transition={{ duration: 0.5 }}
                   />
-                )}
-              </AnimatePresence>
+                  <div className='bg-[#EEEEEE] h-[465px] rounded-r-[16px] w-[41px]' />
+                </div>
+              )}
+              {/* </AnimatePresence> */}
             </div>
           </div>
         </div>

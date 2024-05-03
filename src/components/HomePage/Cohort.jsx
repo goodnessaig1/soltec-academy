@@ -33,7 +33,7 @@ const Cohort = () => {
             placeholder='Enter email address'
             className='font-[400] outtline-none py-[8px] bg-transparent text-[#fff] text-[16px] w-full focus:outline-none placeholder-[#fff] focus:border-none leading-[16px]'
           />
-          <div className='bg-[#fff] w-[93px] h-[48px] rounded-[16px] flex items-center justify-center '>
+          <div className='bg-[#fff] hover:cursor-pointer w-[93px] h-[48px] rounded-[16px] flex items-center justify-center '>
             <div className='span'>Sign up</div>
           </div>
         </div>

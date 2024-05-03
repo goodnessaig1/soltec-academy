@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import { DeleteRed, EditIcon, PlusW, SearchGray } from '../../../Utils/Assets';
 import Layout from '../Common/Layout';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { BaseURL } from '../../../Utils/BaseUrl';
 import { toast } from 'react-toastify';
 import Skeleton from 'react-loading-skeleton';
 import { RiDeleteBin5Line } from 'react-icons/ri';
+import { apiRequest } from '../../../Utils/ApiRequest';
 
 const AdminTestimonials = () => {
   const [data, setData] = useState(null);
@@ -21,9 +20,8 @@ const AdminTestimonials = () => {
     });
   }, []);
   const GetTestimonials = async () => {
-    setLoading(true);
     try {
-      const response = await axios.get(`${BaseURL}/testimonials/`);
+      const response = await apiRequest('GET', `/testimonials/`);
       setData(response.data?.results);
       setLoading(false);
     } catch (error) {
@@ -39,7 +37,7 @@ const AdminTestimonials = () => {
     const updatedData = data.filter(item => item.id !== id);
     setData(updatedData);
     try {
-      await axios.delete(`${BaseURL}/testimonials/${id}`);
+      await apiRequest('GET', `/testimonials/${id}`);
       toast.success('Successfully deleted', {
         position: 'top-right',
       });
@@ -148,7 +146,7 @@ const AdminTestimonials = () => {
                       <div>
                         <span className='font-[400] text-[14px] profile_col leading-[16px]'>
                           {testimonial?.author}
-                          <p>{testimonial?.proffession}</p>
+                          <p>{testimonial?.profession}</p>
                         </span>
                       </div>
                     </div>

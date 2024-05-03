@@ -13,7 +13,7 @@ import Marquee from 'react-fast-marquee';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BaseURL } from '../../Utils/BaseUrl';
-import Skeleton from 'react-loading-skeleton';
+import { sponsorsPlaceHolder } from '../../Utils/Index';
 
 const CustomPrevArrow = props => {
   return (
@@ -85,31 +85,16 @@ const Sponsors = () => {
           </div>
         ) : (
           <div className='flex flex-row mt-[140px] justify-center gap-[65px] sm:ml-[40px] lg:ml-[px] items-center '>
-            <div className='flex flex-col gap-[8px]'>
-              <Skeleton height={78} width={198} />
-              <Skeleton height={38} width={98} />
-            </div>
-            <div className='flex flex-col gap-[8px]'>
-              <Skeleton height={78} width={198} />
-              <Skeleton height={38} width={98} />
-            </div>
-            <div className='flex flex-col gap-[8px]'>
-              <Skeleton height={78} width={198} />
-              <Skeleton height={38} width={98} />
-            </div>
-            <div className='flex flex-col gap-[8px]'>
-              <Skeleton height={78} width={198} />
-              <Skeleton height={38} width={98} />
-            </div>
-            <div className='flex flex-col gap-[8px]'>
-              <Skeleton height={78} width={198} />
-              <Skeleton height={38} width={98} />
-            </div>
+            {sponsorsPlaceHolder.map((sponsor, index) => (
+              <div key={index} className=''>
+                <img className='w-[198px] h-[78px]' src={sponsor.logo} alt='' />
+              </div>
+            ))}
           </div>
         )}
       </Marquee>
       <div className='container_'>
-        <div className=' sm:mt-[80px] lg:mt-[130px] sm:px-[16px] lg:px-0 sm:ml-[0] lg:ml-[130px]'>
+        <div className=' sm:mt-[80px] lg:mt-[130px] sm:px-[16px] lg:px-0 sm:ml-[0] lg:ml-[66px] lgl:ml-[130px]'>
           <div className=' sm:hidden lg:block'>
             <div className='slider-container '>
               <Slider

@@ -14,11 +14,12 @@ import Invoice from '../../../assets/invoice.svg';
 import Invoice2 from '../../../assets/invoice1.svg';
 import Settings from '../../../assets/settings.svg';
 import Settings2 from '../../../assets/settings1.svg';
+import { useAuth } from '../../Context/AuthContext';
 
 const AdminSidebar = () => {
   const location = useLocation();
+  const { user } = useAuth();
   const currentPath = location.pathname;
-  // console.log(currentPath);
   const navLinks = [
     {
       name: 'Dashboard',
@@ -56,13 +57,16 @@ const AdminSidebar = () => {
       icon: Invoice,
       linkTo: '/admin/payments',
     },
-    {
+  ];
+
+  if (user?.is_super_admin == true) {
+    navLinks.push({
       name: 'Settings',
       activeIcon: Settings2,
       icon: Settings,
       linkTo: '/admin/settings',
-    },
-  ];
+    });
+  }
   return (
     <div className='w-[262px] py-[15px] px-[10px] min-h-[100vh] bg-sideBarBg '>
       <img src={Logo} className='w-[115px] h-[42px] ' alt='' />

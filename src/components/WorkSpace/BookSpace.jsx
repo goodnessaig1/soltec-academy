@@ -550,7 +550,7 @@ const PaymentModal = ({ data, setOpenModal }) => {
                   visible={true}
                   height='36'
                   width='36'
-                  strokeColor='red'
+                  strokeColor='gray'
                   strokeWidth='3'
                   animationDuration='0.75'
                   ariaLabel='rotating-lines-loading'

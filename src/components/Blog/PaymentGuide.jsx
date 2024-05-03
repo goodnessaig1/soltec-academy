@@ -2,15 +2,33 @@
 import Header from '../Header/Header';
 import OtherBlogPost from './OtherBlogPosts';
 import Footer from '../Footer/Footer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { PaymentGuide1 } from '../../Utils/Assets';
+import { BaseURL } from '../../Utils/BaseUrl';
+import axios from 'axios';
 const PaymentGuide = () => {
+  const [blogs, setBlogs] = useState(null);
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   }, []);
+
+  useEffect(() => {
+    getBlogs();
+  }, []);
+
+  const getBlogs = async () => {
+    try {
+      const response = await axios.get(`${BaseURL}/blogs/`);
+      setBlogs(response?.data?.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className='w-full'>
       <Header headerCol={false} />
@@ -146,7 +164,7 @@ const PaymentGuide = () => {
           </div>
         </div>
       </div>
-      <OtherBlogPost />
+      {blogs && blogs.length > 0 && <OtherBlogPost otherBlogs={blogs} />}
       <Footer />
     </div>
   );

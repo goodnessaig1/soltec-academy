@@ -10,6 +10,7 @@ import Skeleton from 'react-loading-skeleton';
 import * as Yup from 'yup';
 import { ProgressBar, RotatingLines } from 'react-loader-spinner';
 import { AnimatePresence, motion } from 'framer-motion';
+import { uploadFile } from '../../../Utils/ApiRequest';
 
 const categories = [
   { name: 'POWER AND ENERGY' },
@@ -51,23 +52,13 @@ const GetQuote = () => {
   };
 
   const uploadImg = async (setFieldValue, file) => {
-    setLoading(true);
+    const formData = new FormData();
+    formData.append('file', file);
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      const response = await axios.post(
-        `${BaseURL}/courses/upload_file/`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
-      setFieldValue('image', response.data.file);
-      setLoading(false);
+      const response = await uploadFile(formData, setLoading);
+      setFieldValue('image', response?.file);
     } catch (error) {
-      console.error('Error uploading file: ', error);
+      console.error('Upload failed:', error);
     }
   };
 
@@ -149,7 +140,7 @@ const GetQuote = () => {
                           />
                         </div>
                         <span className='flex flex-col gap-[8px] font-[400] text-[14px] profile_col leading-[16px]'>
-                          {testimony?.author},<p>{testimony?.proffession}</p>
+                          {testimony?.author},<p>{testimony?.profession}</p>
                         </span>
                       </div>
                     </div>

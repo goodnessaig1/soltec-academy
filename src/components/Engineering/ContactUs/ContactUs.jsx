@@ -14,7 +14,6 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { BaseURL } from '../../../Utils/BaseUrl';
-// import { ProgressBar, RotatingLines } from 'react-loader-spinner';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const ContactUs = () => {

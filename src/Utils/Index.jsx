@@ -4,6 +4,13 @@ import RedCheck from '../assets/red-check.svg';
 import BlueCheck from '../assets/blue-check.svg';
 import YellowCheck from '../assets/yellow-check.svg';
 
+import Sponsor1 from '../assets/nike.jpg';
+import Sponsor2 from '../assets/aws.svg';
+import Sponsor3 from '../assets/linguere.jpg';
+import Sponsor4 from '../assets/oracle.jpg';
+import Sponsor5 from '../assets/IBM.jpg';
+import Sponsor6 from '../assets/Imasoft.jpg';
+
 export function hexToRGBA(hex, opacity) {
   hex = hex.replace('#', '');
 
@@ -92,3 +99,12 @@ export const validatePhoneNumber = (number, setIsNumberValid) => {
     setIsNumberValid(isValidNigeria || isValidOther);
   } else setIsNumberValid(true);
 };
+
+export const sponsorsPlaceHolder = [
+  { logo: Sponsor1 },
+  { logo: Sponsor2 },
+  { logo: Sponsor3 },
+  { logo: Sponsor4 },
+  { logo: Sponsor5 },
+  { logo: Sponsor6 },
+];

@@ -63,6 +63,7 @@ import Instagram from '../assets/instagram-c.svg';
 import Facebook from '../assets/facebook-c.svg';
 import Linkedin from '../assets/linkedin-c.svg';
 import Twitter from '../assets/twitter-c.svg';
+import Unavailable from '../assets/unavailable.jpeg';
 
 export {
   Logo,
@@ -130,4 +131,5 @@ export {
   Facebook,
   Instagram,
   Twitter,
+  Unavailable,
 };

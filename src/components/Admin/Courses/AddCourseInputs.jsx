@@ -8,6 +8,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { BaseURL } from '../../../Utils/BaseUrl';
 import { IoMdClose } from 'react-icons/io';
+import { uploadFile } from '../../../Utils/ApiRequest';
 
 export const OverViewContainer = ({
   setOpenOverview,
@@ -180,7 +181,7 @@ export const OverViewContainer = ({
                     value={overview1.header}
                     onChange={e => {
                       setOverview1({ ...overview1, header: e.target.value });
-                      if (overview1.header.length > 20) {
+                      if (overview1.header.length > 44) {
                         setHeaderError(true);
                       } else {
                         setHeaderError(false);
@@ -194,7 +195,7 @@ export const OverViewContainer = ({
                     headerError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/20 characters
+                  1/44 characters
                 </span>
               </div>
 
@@ -214,7 +215,7 @@ export const OverViewContainer = ({
                     value={overview1.body}
                     onChange={e => {
                       setOverview1({ ...overview1, body: e.target.value });
-                      if (overview1.body.length > 46) {
+                      if (overview1.body.length > 100) {
                         setBodyError(true);
                       } else {
                         setBodyError(false);
@@ -228,7 +229,7 @@ export const OverViewContainer = ({
                     bodyError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/46 characters
+                  1/100 characters
                 </span>
               </div>
               <button
@@ -267,7 +268,7 @@ export const OverViewContainer = ({
                     value={overview2.header}
                     onChange={e => {
                       setOverview2({ ...overview2, header: e.target.value });
-                      if (overview2.header.length > 20) {
+                      if (overview2.header.length > 44) {
                         setHeaderError(true);
                       } else {
                         setHeaderError(false);
@@ -281,7 +282,7 @@ export const OverViewContainer = ({
                     headerError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/20 characters
+                  1/44 characters
                 </span>
               </div>
 
@@ -301,7 +302,7 @@ export const OverViewContainer = ({
                     value={overview2.body}
                     onChange={e => {
                       setOverview2({ ...overview2, body: e.target.value });
-                      if (overview2.body.length > 46) {
+                      if (overview2.body.length > 100) {
                         setBodyError(true);
                       } else {
                         setBodyError(false);
@@ -315,7 +316,7 @@ export const OverViewContainer = ({
                     bodyError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/46 characters
+                  1/100 characters
                 </span>
               </div>
               <button
@@ -354,7 +355,7 @@ export const OverViewContainer = ({
                     value={overview3.header}
                     onChange={e => {
                       setOverview3({ ...overview3, header: e.target.value });
-                      if (overview3.header.length > 20) {
+                      if (overview3.header.length > 44) {
                         setHeaderError(true);
                       } else {
                         setHeaderError(false);
@@ -368,7 +369,7 @@ export const OverViewContainer = ({
                     headerError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/20 characters
+                  1/44 characters
                 </span>
               </div>
 
@@ -388,7 +389,7 @@ export const OverViewContainer = ({
                     value={overview3.body}
                     onChange={e => {
                       setOverview3({ ...overview3, body: e.target.value });
-                      if (overview3.body.length > 46) {
+                      if (overview3.body.length > 100) {
                         setBodyError(true);
                       } else {
                         setBodyError(false);
@@ -402,7 +403,7 @@ export const OverViewContainer = ({
                     bodyError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/46 characters
+                  1/100 characters
                 </span>
               </div>
               <button
@@ -441,7 +442,7 @@ export const OverViewContainer = ({
                     value={overview4.header}
                     onChange={e => {
                       setOverview4({ ...overview4, header: e.target.value });
-                      if (overview4.header.length > 20) {
+                      if (overview4.header.length > 40) {
                         setHeaderError(true);
                       } else {
                         setHeaderError(false);
@@ -455,7 +456,7 @@ export const OverViewContainer = ({
                     headerError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/20 characters
+                  1/44 characters
                 </span>
               </div>
 
@@ -475,7 +476,7 @@ export const OverViewContainer = ({
                     value={overview4.body}
                     onChange={e => {
                       setOverview4({ ...overview4, body: e.target.value });
-                      if (overview4.body.length > 46) {
+                      if (overview4.body.length > 100) {
                         setBodyError(true);
                       } else {
                         setBodyError(false);
@@ -489,7 +490,7 @@ export const OverViewContainer = ({
                     bodyError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/46 characters
+                  1/100 characters
                 </span>
               </div>
               <button
@@ -528,7 +529,7 @@ export const OverViewContainer = ({
                     value={overview5.header}
                     onChange={e => {
                       setOverview5({ ...overview5, header: e.target.value });
-                      if (overview5.header.length > 20) {
+                      if (overview5.header.length > 44) {
                         setHeaderError(true);
                       } else {
                         setHeaderError(false);
@@ -542,7 +543,7 @@ export const OverViewContainer = ({
                     headerError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/20 characters
+                  1/44 characters
                 </span>
               </div>
 
@@ -562,7 +563,7 @@ export const OverViewContainer = ({
                     value={overview5.body}
                     onChange={e => {
                       setOverview5({ ...overview5, body: e.target.value });
-                      if (overview5.body.length > 46) {
+                      if (overview5.body.length > 100) {
                         setBodyError(true);
                       } else {
                         setBodyError(false);
@@ -576,7 +577,7 @@ export const OverViewContainer = ({
                     bodyError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/46 characters
+                  1/100 characters
                 </span>
               </div>
               <button
@@ -621,7 +622,7 @@ export const OverViewContainer = ({
                     value={overview6.header}
                     onChange={e => {
                       setOverview6({ ...overview6, header: e.target.value });
-                      if (overview6.header.length > 20) {
+                      if (overview6.header.length > 44) {
                         setHeaderError(true);
                       } else {
                         setHeaderError(false);
@@ -635,7 +636,7 @@ export const OverViewContainer = ({
                     headerError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/20 characters
+                  1/44 characters
                 </span>
               </div>
 
@@ -655,7 +656,7 @@ export const OverViewContainer = ({
                     value={overview6.body}
                     onChange={e => {
                       setOverview6({ ...overview6, body: e.target.value });
-                      if (overview6.body.length > 46) {
+                      if (overview6.body.length > 100) {
                         setBodyError(true);
                       } else {
                         setBodyError(false);
@@ -669,7 +670,7 @@ export const OverViewContainer = ({
                     bodyError ? 'text-red-500' : 'text-[#000]'
                   }`}
                 >
-                  1/46 characters
+                  1/100 characters
                 </span>
               </div>
               <button
@@ -695,21 +696,39 @@ export const InstructorInfo = ({
   instructorInfo2,
   setInstructorInfo2,
   setInstructorDone,
+  addSecondInstructor,
+  setAddSecondInstructor,
+  setInstructors,
+  instructors,
 }) => {
   const IsFieldEmpty = data => {
     return (
       data.name.trim() === '' ||
       data.image.trim() === '' ||
-      data.proffession.trim() === ''
+      data.profession.trim() === ''
     );
   };
   const handleSubmit = e => {
     e.preventDefault();
+    const data = [instructorInfo1];
+    const check = data.some(IsFieldEmpty);
+    if (!check) {
+      setInstructors([instructorInfo1]);
+      setInstructorDone(true);
+      setOpenInstructorInfo(false);
+    } else {
+      setInstructorDone(false);
+      alert('complet all fields');
+      console.log('overview has');
+    }
+  };
+  const handleSubmit2 = e => {
+    e.preventDefault();
     const data = [instructorInfo1, instructorInfo2];
     const check = data.some(IsFieldEmpty);
-    console.log(check);
     if (!check) {
       setInstructorDone(true);
+      setInstructors([instructorInfo1, instructorInfo2]);
       setOpenInstructorInfo(false);
     } else {
       setInstructorDone(false);
@@ -720,49 +739,30 @@ export const InstructorInfo = ({
   const [loading, setLoading] = useState(false);
 
   const uploadImg = async file => {
-    setLoading(true);
+    const formData = new FormData();
+    formData.append('file', file);
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      const response = await axios.post(
-        `${BaseURL}/courses/upload_file/`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
+      const response = await uploadFile(formData, setLoading);
       setInstructorInfo1({
         ...instructorInfo1,
-        image: response.data.file,
+        image: response?.file,
       });
-      setLoading(false);
     } catch (error) {
-      console.error('Error uploading file: ', error);
+      console.error('Upload failed:', error);
     }
   };
+
   const uploadImg2 = async file => {
-    setLoading(true);
+    const formData = new FormData();
+    formData.append('file', file);
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      const response = await axios.post(
-        `${BaseURL}/courses/upload_file/`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
+      const response = await uploadFile(formData, setLoading);
       setInstructorInfo2({
         ...instructorInfo2,
-        image: response.data.file,
+        image: response?.file,
       });
-      setLoading(false);
     } catch (error) {
-      console.error('Error uploading file: ', error);
+      console.error('Upload failed:', error);
     }
   };
 
@@ -849,22 +849,35 @@ export const InstructorInfo = ({
             >
               1
             </div>
-            <div
-              onClick={() => setInstructorInfoIndex('2')}
-              className={`w-[32px] h-[32px] rounded-[20px] cursor-pointer flex items-center justify-center ${
-                instructorInfoIndex == '2'
-                  ? 'bg-extraGray'
-                  : 'hover:bg-extraGray'
-              }`}
-            >
-              2
-            </div>
+            {addSecondInstructor ? (
+              <div
+                onClick={() => setInstructorInfoIndex('2')}
+                className={`w-[32px] h-[32px] rounded-[20px] cursor-pointer flex items-center justify-center ${
+                  instructorInfoIndex == '2'
+                    ? 'bg-extraGray'
+                    : 'hover:bg-extraGray'
+                }`}
+              >
+                2
+              </div>
+            ) : (
+              <div
+                className='course_input rounded-[50px] w-[32px] h-[32px] cursor-pointer flex text-mainBlue items-center justify-center hover:bg-extraGray text-[30px]'
+                onClick={() => {
+                  setInstructorInfoIndex('2');
+                  setAddSecondInstructor(true);
+                }}
+              >
+                <span className='mt-[-6px]'>+</span>
+              </div>
+            )}
           </div>
 
           {instructorInfoIndex == '1' && (
             <form
               className='flex flex-col gap-[12px]'
-              onSubmit={e => e.preventDefault()}
+              // onSubmit={e => e.preventDefault()}
+              onSubmit={e => handleSubmit(e)}
               action=''
             >
               <div className='flex flex-col gap-[6px]'>
@@ -906,11 +919,11 @@ export const InstructorInfo = ({
                     type='text'
                     name='description'
                     required
-                    value={instructorInfo1.proffession}
+                    value={instructorInfo1.profession}
                     onChange={e =>
                       setInstructorInfo1({
                         ...instructorInfo1,
-                        proffession: e.target.value,
+                        profession: e.target.value,
                       })
                     }
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
@@ -998,8 +1011,18 @@ export const InstructorInfo = ({
               </div>
               <button
                 type='submit'
-                onClick={() => setInstructorInfoIndex('2')}
-                className='rounded-[16px] w-full h-[56px] flex items-center justify-center bg-tintBlue text-mainBlue font-[600] hover:opacity-[0.8] hover:cursor-pointer transition duration-300'
+                disabled={
+                  instructorInfo1.name == '' ||
+                  instructorInfo1.profession == '' ||
+                  instructorInfo1.image == ''
+                }
+                className={`rounded-[16px] w-full h-[56px] flex items-center justify-center ${
+                  instructorInfo1.name == '' ||
+                  instructorInfo1.profession == '' ||
+                  instructorInfo1.image == ''
+                    ? 'bg-white border-[1px] border-[#eeeeee] '
+                    : 'bg-tintBlue'
+                } text-mainBlue font-[600] hover:opacity-[0.8] hover:cursor-pointer transition duration-300`}
               >
                 Save
               </button>
@@ -1008,7 +1031,7 @@ export const InstructorInfo = ({
           {instructorInfoIndex == '2' && (
             <form
               className='flex flex-col gap-[12px]'
-              onSubmit={e => handleSubmit(e)}
+              onSubmit={e => handleSubmit2(e)}
               action=''
             >
               <div className='flex flex-col gap-[6px]'>
@@ -1050,11 +1073,11 @@ export const InstructorInfo = ({
                     type='text'
                     name='profession'
                     required
-                    value={instructorInfo2.proffession}
+                    value={instructorInfo2.profession}
                     onChange={e =>
                       setInstructorInfo2({
                         ...instructorInfo2,
-                        proffession: e.target.value,
+                        profession: e.target.value,
                       })
                     }
                     className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
@@ -1142,7 +1165,19 @@ export const InstructorInfo = ({
               </div>
               <button
                 type='submit'
-                className='rounded-[16px] w-full h-[56px] flex items-center justify-center bg-tintBlue text-mainBlue font-[600] hover:opacity-[0.8] hover:cursor-pointer transition duration-300'
+                disabled={
+                  instructorInfo2.name == '' ||
+                  instructorInfo2.profession == '' ||
+                  instructorInfo2.image == ''
+                }
+                // onClick={() => setInstructorInfoIndex('2')}
+                className={`rounded-[16px] w-full h-[56px] flex items-center justify-center ${
+                  instructorInfo2.name == '' ||
+                  instructorInfo2.profession == '' ||
+                  instructorInfo2.image == ''
+                    ? 'bg-white border-[1px] border-[#eeeeee] '
+                    : 'bg-tintBlue'
+                } text-mainBlue font-[600] hover:opacity-[0.8] hover:cursor-pointer transition duration-300`}
               >
                 Save
               </button>

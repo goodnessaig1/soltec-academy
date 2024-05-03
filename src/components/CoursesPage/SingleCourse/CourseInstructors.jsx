@@ -25,7 +25,7 @@ const CourseInstructors = ({ courseDetail }) => {
                 {instructor?.name}
               </div>
               <p className='font-[400] sm:text-[12px] text-center lg:text-[16px] leading-[20px] mb-[10px] text-opacityWhite'>
-                {instructor?.proffession}
+                {instructor?.profession}
               </p>
             </div>
           ))}

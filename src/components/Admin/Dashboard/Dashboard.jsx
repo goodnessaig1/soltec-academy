@@ -2,11 +2,36 @@ import Layout from '../Common/Layout';
 import Graph from '../../../assets/Graph.svg';
 import Sort from '../../../assets/sort.svg';
 import Check from '../../../assets/check.svg';
-import { coursePurchase, newsLetter } from './coursesInvoice';
+import { newsLetter } from './coursesInvoice';
 import { Link } from 'react-router-dom';
 import { BlogP, FrontendImg, Profile } from '../../../Utils/Assets';
+import { useEffect, useState } from 'react';
+import moment from 'moment';
+import { LoadingFetching } from '../Courses/LoadingFetching';
+import { apiRequest } from '../../../Utils/ApiRequest';
 
 const Dashboard = () => {
+  const [loading, setLoading] = useState(true);
+  const [paymentData, setPaymentData] = useState(null);
+
+  const getCoursesPurchases = async () => {
+    try {
+      const response = await apiRequest(
+        'GET',
+        `/courses/course_purchases/?year=2024`,
+      );
+      setLoading(false);
+      setPaymentData(response.data?.results);
+    } catch (error) {
+      setLoading(false);
+      console.log('error', error);
+    }
+  };
+
+  useEffect(() => {
+    getCoursesPurchases();
+  }, []);
+
   return (
     <Layout text='Dashboard'>
       <div className='w-full inter_ flex flex-col gap-[48px] px-[36px]'>
@@ -20,7 +45,7 @@ const Dashboard = () => {
                 129
               </h1>
             </div>
-            <div className='absolute flex flex-row gap-[8px] items-center mt-[70px] pl-[60px] '>
+            <div className='absolute w-[15%] flex flex-row gap-[8px] items-center mt-[70px] justify-end pr-[2px] '>
               <img src={Graph} alt='' />
               <span className='font-[400] text-higherCol text-[12px] leading-[15px] inter_'>
                 24% higher than yesterday
@@ -64,93 +89,102 @@ const Dashboard = () => {
           <h1 className='text-[14px] font-[500] leading-[17px]'>
             COURSE PURCHASES
           </h1>
-          <div className='w-full flex flex-col coursesP rounded-[12px]'>
-            {/* Head */}
-            <div className='flex flex-row w-full mb-[10px] items-center'>
-              <div className='w-[15%]'>
-                <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
-                  <h1 className='text-[14px] font-[600] leading-[17px]'>
-                    TIME
-                  </h1>
-                  <img src={Sort} alt='' />
-                </div>
-              </div>
-              <div className='w-[21%]'>
-                <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
-                  <h1 className='text-[14px] font-[600] leading-[17px]'>
-                    EMAIL
-                  </h1>
-                  <img src={Sort} alt='' />
-                </div>
-              </div>
-              <div className='w-[17%]'>
-                <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
-                  <h1 className='text-[14px] font-[600] leading-[17px]'>
-                    PHONE NUMBER
-                  </h1>
-                </div>
-              </div>
-              <div className='w-[8%]'>
-                <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
-                  <h1 className='text-[14px] font-[600] leading-[17px]'>
-                    COUPON
-                  </h1>
-                </div>
-              </div>
-              <div className='w-[18%]'>
-                <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
-                  <h1 className='text-[14px] font-[600] leading-[17px]'>
-                    COURSE
-                  </h1>
-                </div>
-              </div>
-              <div className='w-[17%]'>
-                <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
-                  <h1 className='text-[14px] font-[600] leading-[17px]'>
-                    PAYMENT METHOD
-                  </h1>
-                </div>
-              </div>
-            </div>
-            {/* Data */}
-            {coursePurchase.map((item, index) => (
-              <div
-                key={index}
-                className='flex flex-row w-full items-start w-full min-h-[48px]'
-              >
+          {!loading ? (
+            <div className='w-full flex flex-col coursesP rounded-[12px]'>
+              {/* Head */}
+              <div className='flex flex-row w-full mb-[10px] items-center'>
                 <div className='w-[15%]'>
-                  <h1 className='text-[14px] font-[400] py-[10px] px-[12px] leading-[17px]'>
-                    {item.date}
-                  </h1>
+                  <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
+                    <h1 className='text-[14px] font-[600] leading-[17px]'>
+                      TIME
+                    </h1>
+                    <img src={Sort} alt='' />
+                  </div>
                 </div>
-                <div className='w-[21%] whitespace-normal'>
-                  <h1 className='text-[14px] font-[400] py-[10px] px-[12px] leading-[17px] break-all'>
-                    {item.email}
-                  </h1>
+                <div className='w-[21%]'>
+                  <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
+                    <h1 className='text-[14px] font-[600] leading-[17px]'>
+                      EMAIL
+                    </h1>
+                    <img src={Sort} alt='' />
+                  </div>
                 </div>
                 <div className='w-[17%]'>
-                  <h1 className='text-[14px] font-[400] py-[10px] px-[12px] leading-[17px]'>
-                    {item.phoneNumber}
-                  </h1>
+                  <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
+                    <h1 className='text-[14px] font-[600] leading-[17px]'>
+                      PHONE NUMBER
+                    </h1>
+                  </div>
                 </div>
                 <div className='w-[8%]'>
                   <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
-                    {item.cupon == true ? <img src={Check} alt='' /> : null}
+                    <h1 className='text-[14px] font-[600] leading-[17px]'>
+                      COUPON
+                    </h1>
                   </div>
                 </div>
                 <div className='w-[18%]'>
-                  <h1 className='text-[14px] font-[400] py-[10px] px-[12px] leading-[17px]'>
-                    {item.course}
-                  </h1>
+                  <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
+                    <h1 className='text-[14px] font-[600] leading-[17px]'>
+                      COURSE
+                    </h1>
+                  </div>
                 </div>
                 <div className='w-[17%]'>
-                  <h1 className='text-[14px] font-[400] py-[10px] px-[12px] leading-[17px]'>
-                    {item.paymentMethod}
-                  </h1>
+                  <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
+                    <h1 className='text-[14px] font-[600] leading-[17px]'>
+                      PAYMENT METHOD
+                    </h1>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
+              {/* Data */}
+              {paymentData &&
+                paymentData.map((item, index) => (
+                  <div
+                    key={index}
+                    className='flex flex-row w-full items-start w-full min-h-[48px]'
+                  >
+                    <div className='w-[15%]'>
+                      <h1 className='text-[12px] font-[400] py-[10px] px-[12px] leading-[17px]'>
+                        {moment(item?.date_paid).format('DD MMM YYYY, hh:mmA')}
+                      </h1>
+                    </div>
+                    <div className='w-[21%] whitespace-normal'>
+                      <h1 className='text-[14px] font-[400] py-[10px] px-[12px] leading-[17px] break-all'>
+                        {item?.email}
+                      </h1>
+                    </div>
+                    <div className='w-[17%]'>
+                      <h1 className='text-[14px] font-[400] py-[10px] px-[12px] leading-[17px]'>
+                        {item?.phone_number}
+                      </h1>
+                    </div>
+                    <div className='w-[8%]'>
+                      <div className='flex flex-row items-center gap-[10px] py-[10px] px-[12px]'>
+                        {item?.coupon == true ? (
+                          <img src={Check} alt='' />
+                        ) : (
+                          <div className=''>null</div>
+                        )}
+                      </div>
+                    </div>
+                    <div className='w-[18%]'>
+                      <h1 className='text-[14px] font-[400] py-[10px] px-[12px] leading-[17px]'>
+                        {item?.course}
+                      </h1>
+                    </div>
+                    <div className='w-[17%]'>
+                      <h1 className='text-[14px] font-[400] py-[10px] px-[12px] leading-[17px]'>
+                        {item?.payment_method}
+                      </h1>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          ) : (
+            <LoadingFetching />
+          )}
         </div>
 
         {/* News letter */}
@@ -218,7 +252,7 @@ const Dashboard = () => {
                   <img
                     src={Profile}
                     alt=''
-                    className='rounded-[100%] w-[32px]'
+                    className='rounded-[100%] h-[32px] w-[32px]'
                   />
                   <div className='flex flex-col'>
                     <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
@@ -255,7 +289,7 @@ const Dashboard = () => {
                   <img
                     src={Profile}
                     alt=''
-                    className='rounded-[100%] w-[32px]'
+                    className='rounded-[100%] h-[32px] w-[32px]'
                   />
                   <div className='flex flex-col'>
                     <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>

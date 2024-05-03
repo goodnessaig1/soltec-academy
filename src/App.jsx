@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './App.css';
@@ -34,6 +34,12 @@ import ContactUs from './components/Engineering/ContactUs/ContactUs';
 import WorkspaceVerifyPayment from './components/WorkSpace/WorkspacePayment';
 import ContactUsAcademy from './components/ContactUs/ContactUs';
 import SignIn from './components/Admin/SignIn/SignIn';
+import SingleBlogPost from './components/Blog/SingleBlogPost';
+import Settings from './components/Admin/Settings/Settings';
+import Register from './components/Admin/Register/Register';
+import AuthRoutes from './components/Auth/AuthRoute';
+import { useAuth } from './components/Context/AuthContext';
+import EditCourse from './components/Admin/Courses/EditCourse';
 
 function App() {
   const navigate = useNavigate();
@@ -41,7 +47,7 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [navigate]);
-
+  const { user } = useAuth();
   return (
     <>
       <Routes>
@@ -68,6 +74,7 @@ function App() {
 
         <Route path='/blog' Component={Blog} />
         <Route path='/blog/post' Component={BlogPost} />
+        <Route path='/blog/:id/:author/:title' Component={SingleBlogPost} />
         <Route path='/blog/payment-guide' Component={PaymentGuide} />
         <Route path='/payment-confirmation' Component={PaymentConfirmation} />
 
@@ -75,21 +82,40 @@ function App() {
 
         <Route path='/contact-us' Component={ContactUsAcademy} />
 
-        <Route path='/admin/dashboard' Component={Dashboard} />
-        <Route path='/admin/courses' Component={AdminCourses} />
-        <Route path='/admin/courses/add-course' Component={AddCourses} />
-        <Route path='/admin/blogs' Component={BlogManagement} />
-        <Route path='/admin/blogs/post' Component={BlogPostAdmin} />
-        <Route path='/admin/blogs/add-blog' Component={AddBlog} />
-        <Route path='/admin/sponsors' Component={AdminSponsors} />
-        <Route path='/admin/sponsors/add-sponsor' Component={AddSponsor} />
-        <Route path='/admin/testimonials' Component={AdminTestimonials} />
+        <Route element={<AuthRoutes />}>
+          <Route element={<Dashboard />} path='/admin/dashboard' exact />
+          <Route path='/admin/courses' Component={AdminCourses} />
+          <Route path='/admin/courses/add-course' Component={AddCourses} />
+          <Route
+            path='/admin/courses/edit-course/:id/:title'
+            Component={EditCourse}
+          />
+          <Route path='/admin/blogs' Component={BlogManagement} />
+          <Route path='/admin/blogs/post' Component={BlogPostAdmin} />
+          <Route path='/admin/blogs/add-blog' Component={AddBlog} />
+          <Route path='/admin/sponsors' Component={AdminSponsors} />
+          <Route path='/admin/sponsors/add-sponsor' Component={AddSponsor} />
+          <Route path='/admin/testimonials' Component={AdminTestimonials} />
+          <Route
+            path='/admin/testimonials/add-testimonial'
+            Component={AddTestimonial}
+          />
+          <Route path='/admin/payments' Component={AdminPayment} />
+          <Route path='/admin/create-admin' Component={Register} />
+
+          <Route path='/admin/settings' Component={Settings} />
+        </Route>
+
         <Route
-          path='/admin/testimonials/add-testimonial'
-          Component={AddTestimonial}
+          path='/admin/sign-in'
+          element={
+            user !== null ? (
+              <Navigate to='/admin/dashboard' replace />
+            ) : (
+              <SignIn />
+            )
+          }
         />
-        <Route path='/admin/payments' Component={AdminPayment} />
-        <Route path='/admin/sign-in' Component={SignIn} />
 
         <Route path='/engineering/dashboard' Component={EngineeringDashboard} />
         <Route path='/engineering/get-quote' Component={GetQuote} />

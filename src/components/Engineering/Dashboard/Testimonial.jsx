@@ -37,7 +37,7 @@ const Testimonial = ({ testimonialsData, sponsors }) => {
                       />
                     </div>
                     <span className='flex flex-col gap-[8px] font-[400] text-[14px] profile_col leading-[16px]'>
-                      {testimony?.author},<p>{testimony?.proffession}</p>
+                      {testimony?.author},<p>{testimony?.profession}</p>
                     </span>
                   </div>
                 </div>
