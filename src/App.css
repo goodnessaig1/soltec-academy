@@ -779,3 +779,23 @@ input[type='date'] {
 .boxShad {
   box-shadow: 0px 0px 0px 0px #e1e7ed;
 }
+.rendered-content > p strong {
+}
+
+.rdw-image-modal-upload-option-label {
+  max-width: 180px !important;
+  overflow: hidden;
+  padding: 12px !important;
+}
+
+.answer_ {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0, 1, 0, 1);
+}
+
+.answer_.show_answer {
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.3s cubic-bezier(1, 0, 1, 0);
+}

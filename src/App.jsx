@@ -40,6 +40,11 @@ import Register from './components/Admin/Register/Register';
 import AuthRoutes from './components/Auth/AuthRoute';
 import { useAuth } from './components/Context/AuthContext';
 import EditCourse from './components/Admin/Courses/EditCourse';
+import EditBlogPost from './components/Admin/Blog/EditBlogPost';
+import EditTestimonial from './components/Admin/Testimonials/EditTestimonial';
+import EditSponsor from './components/Admin/Sponsors/EditSponsor';
+import Cohorts from './components/Admin/Courses/Cohorts';
+import Newsletter from './components/Admin/Newsletter/Newsletter';
 
 function App() {
   const navigate = useNavigate();
@@ -85,6 +90,7 @@ function App() {
         <Route element={<AuthRoutes />}>
           <Route element={<Dashboard />} path='/admin/dashboard' exact />
           <Route path='/admin/courses' Component={AdminCourses} />
+          <Route path='/admin/courses/cohorts' Component={Cohorts} />
           <Route path='/admin/courses/add-course' Component={AddCourses} />
           <Route
             path='/admin/courses/edit-course/:id/:title'
@@ -93,14 +99,25 @@ function App() {
           <Route path='/admin/blogs' Component={BlogManagement} />
           <Route path='/admin/blogs/post' Component={BlogPostAdmin} />
           <Route path='/admin/blogs/add-blog' Component={AddBlog} />
+          <Route path='/admin/blogs/edit-blog/:id' Component={EditBlogPost} />
           <Route path='/admin/sponsors' Component={AdminSponsors} />
           <Route path='/admin/sponsors/add-sponsor' Component={AddSponsor} />
+          <Route
+            path='/admin/sponsors/edit-sponsor/:id'
+            Component={EditSponsor}
+          />
           <Route path='/admin/testimonials' Component={AdminTestimonials} />
           <Route
             path='/admin/testimonials/add-testimonial'
             Component={AddTestimonial}
           />
+          <Route
+            path='/admin/testimonials/edit-testimonial/:id'
+            Component={EditTestimonial}
+          />
+          <Route path='/admin/newsletter' Component={Newsletter} />
           <Route path='/admin/payments' Component={AdminPayment} />
+
           <Route path='/admin/create-admin' Component={Register} />
 
           <Route path='/admin/settings' Component={Settings} />
@@ -109,7 +126,7 @@ function App() {
         <Route
           path='/admin/sign-in'
           element={
-            user !== null ? (
+            user && user !== null ? (
               <Navigate to='/admin/dashboard' replace />
             ) : (
               <SignIn />

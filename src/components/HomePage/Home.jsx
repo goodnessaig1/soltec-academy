@@ -15,6 +15,8 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [courses, setCourses] = useState(null);
   const [networkError, setNetworkError] = useState(false);
+  const [currentCohort, setCurrentCohort] = useState('');
+
   const getCourses = async () => {
     setLoading(true);
     try {
@@ -30,8 +32,24 @@ const Home = () => {
       }
     }
   };
+  const getCurrentCohort = async () => {
+    try {
+      const response = await axios.get(
+        `${BaseURL}/cohort/check_for_current_cohorts/`,
+      );
+      setCurrentCohort(response?.data);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
   useEffect(() => {
     getCourses();
+    getCurrentCohort();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, []);
   return (
     <div className='w-full'>
@@ -41,7 +59,7 @@ const Home = () => {
           <Catalogue courses={courses} />
           <Sponsors />
           <Courses courses={courses} loading={loading} />
-          <Cohort />
+          <Cohort startDate={currentCohort?.end_date} />
           <Blog />
           <Faqs />
           <Footer />

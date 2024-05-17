@@ -4,8 +4,9 @@ import NotificationIcon from '../../../assets/Notification.svg';
 import Logout from '../../../assets/logout.svg';
 import NotificationIcon2 from '../../../assets/notification-icon.svg';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
+import Cookies from 'js-cookie';
 const notifications = [
   {
     notification: 'smart.okolichiaza just made a payment for Product design',
@@ -31,7 +32,15 @@ const notifications = [
 
 const AdminHeader = ({ text }) => {
   const [openNotification, setOpenNotification] = useState(false);
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    setUser(null);
+    await Cookies.remove('access_token');
+    await Cookies.remove('refresh_token');
+    navigate('/admin/sign-in');
+  };
+
   return (
     <div className='h-[60px] bg-[#fff] z_main w-full AdminHeader flex'>
       <div className='px-[36px] flex flex-row w-full items-center justify-between'>
@@ -83,15 +92,15 @@ const AdminHeader = ({ text }) => {
               </div>
             )}
           </div>
-          <Link
-            to={'/admin/sign-in'}
+          <div
+            onClick={handleLogout}
             className='w-[100px] h-[32px] rounded-[50px] flex flex-row gap-[6px] items-center justify-center hover:cursor-pointer logOutBtn hover:opacity-[0.5] transition duration-200'
           >
             <img src={Logout} alt='' />
             <h1 className='font-[500] text-[14px] leading-[17px] text-red-500'>
               Logout
             </h1>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

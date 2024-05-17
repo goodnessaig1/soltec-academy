@@ -5,8 +5,6 @@ import Layout from '../Common/Layout';
 import BlogTextEditor from './BlogTextEditor';
 import { useState } from 'react';
 import { EditorState, convertToRaw } from 'draft-js';
-import axios from 'axios';
-import { BaseURL } from '../../../Utils/BaseUrl';
 import Skeleton from 'react-loading-skeleton';
 import { toast } from 'react-toastify';
 import { Oval, ProgressBar } from 'react-loader-spinner';
@@ -369,7 +367,7 @@ const AddBlog = () => {
                   Add
                 </button>
               ) : (
-                <div className='w-full flex items-center justify-center h-[48px]'>
+                <div className='w-[505px] flex items-center justify-center h-[48px]'>
                   <ProgressBar
                     visible={true}
                     height='80'

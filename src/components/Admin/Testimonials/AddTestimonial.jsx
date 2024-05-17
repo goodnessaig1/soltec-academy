@@ -79,12 +79,14 @@ const AddTestimonial = () => {
       <div className='w-full inter__ flex flex-col gap-[36px] px-[36px] pb-[140px]'>
         <div
           onClick={() => navigate(-1)}
-          className='w-[39px] h-[39px] flex items-center justify-center bg-backBg rounded-[50%]'
+          className='w-[39px] hover:cursor-pointer hover:bg-extraGray transition duration-300 h-[39px] flex items-center justify-center bg-backBg rounded-[50%]'
         >
           <img src={BackArrow} alt='' />
         </div>
         <div className='flex flex-col gap-[24px] max-w-[505px]'>
-          <h1 className='font-[500] text-[14px] leading-[17px]'>ADD SPONSOR</h1>
+          <h1 className='font-[500] text-[14px] leading-[17px]'>
+            ADD TESTIMONIAL
+          </h1>
           <Formik
             initialValues={{
               author: '',

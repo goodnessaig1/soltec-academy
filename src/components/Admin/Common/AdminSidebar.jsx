@@ -57,6 +57,12 @@ const AdminSidebar = () => {
       icon: Invoice,
       linkTo: '/admin/payments',
     },
+    {
+      name: 'Newsletter',
+      activeIcon: Invoice2,
+      icon: Invoice,
+      linkTo: '/admin/newsletter',
+    },
   ];
 
   if (user?.is_super_admin == true) {

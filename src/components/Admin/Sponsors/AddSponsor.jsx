@@ -79,7 +79,7 @@ const AddSponsor = () => {
       <div className='w-full inter__ flex flex-col gap-[36px] px-[36px] pb-[140px]'>
         <div
           onClick={() => navigate(-1)}
-          className='w-[39px] h-[39px] flex items-center justify-center bg-backBg rounded-[50%]'
+          className='w-[39px] h-[39px] hover:cursor-pointer hover:bg-extraGray transition duration-300 flex items-center justify-center bg-backBg rounded-[50%]'
         >
           <img src={BackArrow} alt='' />
         </div>

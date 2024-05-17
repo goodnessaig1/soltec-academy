@@ -4,11 +4,10 @@ import FaqsText from '../../assets/FAQs.svg';
 import Minus from '../../assets/minus.svg';
 import Plus from '../../assets/plus.svg';
 import { faqsData } from './FaqsData';
-import { motion } from 'framer-motion';
 const Faqs = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const toggleFAQ = index => {
-    setActiveIndex(prevIndex => (prevIndex === index ? -1 : index));
+    setActiveIndex(prevIndex => (prevIndex == index ? -1 : index));
   };
 
   return (
@@ -40,20 +39,13 @@ const Faqs = () => {
                 </div>
               </div>
 
-              {activeIndex === index && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.1,
-                    ease: [0, 1, 1, 0],
-                  }}
-                  className='font-[400] sm:text-[14px] lg:text-[16px] leading-[24px] '
-                >
-                  {faq.answer}
-                </motion.div>
-              )}
+              <div
+                className={`font-[400] ${
+                  activeIndex == index ? 'show_answer answer_' : 'answer_'
+                } sm:text-[14px] lg:text-[16px] leading-[24px] `}
+              >
+                {faq.answer}
+              </div>
             </div>
           </div>
         ))}

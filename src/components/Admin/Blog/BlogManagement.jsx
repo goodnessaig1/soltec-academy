@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   DeleteRed,
   EditIcon,
@@ -14,10 +14,12 @@ import NetworkError from '../../../Utils/NetworkError';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { apiRequest } from '../../../Utils/ApiRequest';
 const BlogManagement = () => {
+  const navigate = useNavigate();
   const [blogs, setBlogs] = useState(null);
   const [loading, setLoading] = useState(true);
   const [networkError, setNetworkError] = useState(false);
   const [markedItems, setMarkedItems] = useState([]);
+  const [ids, setIds] = useState([]);
 
   useEffect(() => {
     getBlogs();
@@ -58,18 +60,39 @@ const BlogManagement = () => {
     }
   };
 
-  const toggleMarked = index => {
+  const deleteMultiple = async () => {
+    const data = {
+      ids,
+    };
+    try {
+      await apiRequest('DELETE', `/blogs/delete-multiple/`, data);
+      toast.success('Successfully deleted', {
+        position: 'top-right',
+      });
+      setMarkedItems([]);
+      setIds([]);
+    } catch (error) {
+      toast.error('An error occured !', {
+        position: 'top-left',
+      });
+      console.log('error', error);
+    }
+  };
+
+  const toggleMarked = (index, blog) => {
     if (markedItems.includes(index)) {
+      setIds(ids.filter(id => id !== blog?.id));
       setMarkedItems(markedItems.filter(item => item !== index));
     } else {
+      setIds([...ids, blog?.id]);
       setMarkedItems([...markedItems, index]);
     }
   };
 
   const deleteMarkedItems = () => {
+    deleteMultiple(markedItems);
     const newData = blogs.filter((_, index) => !markedItems.includes(index));
     setBlogs(newData);
-    setMarkedItems([]);
   };
 
   return (
@@ -119,7 +142,12 @@ const BlogManagement = () => {
                           } transition duration-300 group-hover:block ml-[206px] mt-[14px]`}
                         >
                           <div className='w-[126px] h-[40px] rounded-[50px] flex gap-[13px] bg-white items-center justify-center'>
-                            <div className=''>
+                            <div
+                              onClick={() =>
+                                navigate(`/admin/blogs/edit-blog/${blog?.id}`)
+                              }
+                              className=''
+                            >
                               <img src={EditIcon} alt='' />
                             </div>
                             <div
@@ -133,7 +161,7 @@ const BlogManagement = () => {
                                 type='checkbox'
                                 className='form-checkbox h-4 w-4 text-indigo-600'
                                 checked={markedItems.includes(index)}
-                                onChange={() => toggleMarked(index)}
+                                onChange={() => toggleMarked(index, blog)}
                               />
                             </div>
                           </div>

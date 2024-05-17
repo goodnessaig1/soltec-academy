@@ -15,8 +15,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowDown,
   Calendar,
-  Codes,
-  Meet,
+  Shorts2,
+  Shorts3,
   Starlink1,
 } from '../../Utils/Assets';
 import DatePicker from 'react-datepicker';
@@ -245,8 +245,8 @@ const BookSpace = () => {
             <img src={Starlink1} alt='' />
             <div className='flex flex-row gap-[16px]'>
               <img src={Starlink1} className='w-[31%] rounded-[16px]' alt='' />
-              <img src={Meet} className='w-[31%] rounded-[16px]' alt='' />
-              <img src={Codes} className='w-[31%] rounded-[16px]' alt='' />
+              <img src={Shorts2} className='w-[31%] rounded-[16px]' alt='' />
+              <img src={Shorts3} className='w-[31%] rounded-[16px]' alt='' />
             </div>
           </div>
 

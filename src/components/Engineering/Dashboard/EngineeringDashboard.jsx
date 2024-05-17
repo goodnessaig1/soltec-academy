@@ -104,25 +104,14 @@ const EngineeringDashboard = () => {
   }, []);
 
   const [testimonialsData, setTestimonialsData] = useState(null);
-  const [sponsors, setSponsors] = useState(null);
 
   useEffect(() => {
     GetTestimonials();
-    GetSponsors();
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   }, []);
-
-  const GetSponsors = async () => {
-    try {
-      const response = await axios.get(`${BaseURL}/sponsors/`);
-      setSponsors(response.data?.results);
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
 
   const GetTestimonials = async () => {
     try {
@@ -178,10 +167,7 @@ const EngineeringDashboard = () => {
                 <Projects />
               </div>
             </motion.div>
-            <Testimonial
-              sponsors={sponsors}
-              testimonialsData={testimonialsData}
-            />
+            <Testimonial testimonialsData={testimonialsData} />
           </div>
           <Ceo />
           <div ref={faqsRef} className=''>

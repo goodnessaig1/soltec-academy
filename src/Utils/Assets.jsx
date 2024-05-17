@@ -20,7 +20,6 @@ import Print from '../assets/ic_round-print.svg';
 import PrintOutlined from '../assets/printer.svg';
 import Emogi from '../assets/emogi.svg';
 import PlusW from '../assets/plus-w.svg';
-import Office from '../assets/office.jpg';
 import NextArrow from '../assets/next-arr.svg';
 import GrayDot from '../assets/dot-gray.svg';
 import Internet from '../assets/internet.svg';
@@ -40,8 +39,6 @@ import Elipse1 from '../assets/red-ellipse.svg';
 import Elipse2 from '../assets/yellow-ellips.svg';
 import Elipse3 from '../assets/blue-ellipse.svg';
 import Starlink1 from '../assets/starlink1.jpg';
-import Codes from '../assets/codes.png';
-import Meet from '../assets/meet.png';
 import ArrowDown from '../assets/arrow-down.svg';
 import BackArrow from '../assets/back-arrow.svg';
 import AddRound from '../assets/add-rounded.svg';
@@ -65,6 +62,16 @@ import Linkedin from '../assets/linkedin-c.svg';
 import Twitter from '../assets/twitter-c.svg';
 import Unavailable from '../assets/unavailable.jpeg';
 
+import First from '../assets/first.jpg';
+import Second from '../assets/second.jpg';
+import Third from '../assets/third.jpg';
+import Fourth from '../assets/fourth.jpg';
+
+import Shorts1 from '../assets/shorts1.jpg';
+import Shorts2 from '../assets/shorts2.jpg';
+import Shorts3 from '../assets/shorts3.jpg';
+import Shorts4 from '../assets/shorts4.jpg';
+
 export {
   Logo,
   BlogTex,
@@ -87,7 +94,6 @@ export {
   Print,
   Emogi,
   PlusW,
-  Office,
   NextArrow,
   GrayDot,
   Internet,
@@ -106,8 +112,6 @@ export {
   Elipse2,
   Elipse3,
   Starlink1,
-  Codes,
-  Meet,
   ArrowDown,
   BackArrow,
   AddRound,
@@ -132,4 +136,12 @@ export {
   Instagram,
   Twitter,
   Unavailable,
+  First,
+  Second,
+  Third,
+  Fourth,
+  Shorts1,
+  Shorts2,
+  Shorts3,
+  Shorts4,
 };

@@ -32,8 +32,8 @@ const Header = ({ headerCol }) => {
       link: '/blog',
     },
     {
-      name: 'ABOUT US',
-      link: '/about-us',
+      name: 'CONTACT US',
+      link: '/contact-us',
     },
   ];
   return (
@@ -47,7 +47,6 @@ const Header = ({ headerCol }) => {
             {headerCol ? (
               <Link to={'/'}>
                 <img src={LogoDark} className='hidden lg:flex' alt='' />
-                {/* <img src={Logo} className='hidden  lg:flex' alt='' /> */}
               </Link>
             ) : (
               <Link to={'/'}>

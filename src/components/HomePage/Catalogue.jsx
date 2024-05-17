@@ -9,32 +9,33 @@ import Marquee from 'react-fast-marquee';
 const Catalogue = ({ courses }) => {
   return (
     <>
-      <div className=' w-full backgroundImages2 sm:h-[1116px] md:h-[1200px] lg:h-[1041px]'>
+      <div className=' w-full backgroundImages2 sm:h-[1116px] md:h-[1200px] lg:h-[990px]'>
         <div className='flex  items-center  justify-center'>
-          <div className='flex w-full flex-col pt-[126px] sm:px-[16px] items-center'>
+          <div className='flex w-full flex-col pt-[100px] sm:px-[16px] items-center'>
             <Marquee
               speed={36}
               direction='left'
               pauseOnHover
-              className=' max-w-[98%] sm:px-[6px] clip-text lg:px-[0px] sm:grid sm:grid-cols-2   gap-y-[24px] gap-x-[16px]  lg:flex lg:flex-row lg:gap-[61px]  '
+              className='max-w-[98%] clip-text '
+              // className=' max-w-[98%] sm:px-[6px] clip-text lg:px-[0px] sm:grid sm:grid-cols-2   gap-y-[24px] gap-x-[16px]  lg:flex lg:flex-row lg:gap-[61px]  '
             >
-              <div className='overflow-x-hidden clip-text overflow-y-hidden'>
-                {courses &&
-                  courses.map((course, index) => (
-                    <Link
-                      to={`/courses/${course?.id}/${course?.title}`}
-                      key={index}
-                      className='text-[#fff]  pl-[30px] transition text-[24px] duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'
-                    >
-                      {course?.title.toUpperCase()}
-                    </Link>
-                  ))}
-              </div>
+              {/* <div className='overflow-x-hidden clip-text overflow-y-hidden'> */}
+              {courses &&
+                courses.map((course, index) => (
+                  <Link
+                    to={`/courses/${course?.id}/${course?.title}`}
+                    key={index}
+                    className='text-[#fff] lg:pr-[48px]  xl:pr-[120px] transition text-[24px] duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'
+                  >
+                    {course?.title.toUpperCase()}
+                  </Link>
+                ))}
+              {/* </div> */}
             </Marquee>
           </div>
         </div>
         <div className='wave-line'>
-          <div className=' lg:mt-[140px] sm:px-[16px] lg:px-[0px] w-full flex items-center justify-center '>
+          <div className=' lg:mt-[94px] sm:px-[16px] lg:px-[0px] w-full flex items-center justify-center '>
             <div className=' flex  sm:flex-col sm:mt-[160px] lg:mt-[0px] lg:flex-row lg:w-[1200px] xll:mt-[120px] h-[487px] items-center justify-center '>
               <div className='sm:f-full sm:mt-[320px] lg:mt-[0px] lg:w-1/2 flex flex-row items-center  mt-[16px] '>
                 <h1 className='text-[#fff]  sm:text-[48px] lg:text-[64px] sm:leading-[58px] lg:leading-[76px] font-[700] '>

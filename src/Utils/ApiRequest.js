@@ -3,11 +3,9 @@ import axios from 'axios';
 import { BaseURL } from './BaseUrl';
 import Cookies from 'js-cookie';
 
-const token = `${Cookies.get('access_token')}`;
-
 const defaultHeaders = {
   'Content-Type': 'application/json',
-  Authorization: `Bearer ${token}`,
+  Authorization: `Bearer ${Cookies.get('access_token')}`,
 };
 
 export async function apiRequest(method, path, data, headers = defaultHeaders) {
@@ -19,7 +17,7 @@ export async function apiRequest(method, path, data, headers = defaultHeaders) {
       data: data,
       headers: {
         ...headers,
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${Cookies.get('access_token')}`,
       },
     });
     return request;
@@ -30,17 +28,14 @@ export async function apiRequest(method, path, data, headers = defaultHeaders) {
 
 export const uploadFile = async (formData, setLoading) => {
   const url = 'https://academy-wo2r.onrender.com/api/v1/courses/upload_file/';
-
   setLoading(true);
-
   const config = {
     method: 'POST',
     body: formData,
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${Cookies.get('access_token')}`,
     },
   };
-
   try {
     const response = await fetch(url, config);
     if (!response.ok) {
@@ -53,5 +48,18 @@ export const uploadFile = async (formData, setLoading) => {
     console.error('Error:', error);
     setLoading(false);
     throw error;
+  }
+};
+
+export const getAdminDetail = async setUser => {
+  try {
+    const response = await axios.get(`${BaseURL}/users/me/`, {
+      headers: {
+        Authorization: `Bearer ${Cookies.get('access_token')}`,
+      },
+    });
+    setUser(response.data);
+  } catch (error) {
+    console.log(error);
   }
 };

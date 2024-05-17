@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { DeleteRed, EditIcon, PlusW, SearchGray } from '../../../Utils/Assets';
 import Layout from '../Common/Layout';
 import { useEffect, useState } from 'react';
@@ -9,9 +9,12 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import { apiRequest } from '../../../Utils/ApiRequest';
 
 const AdminTestimonials = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [markedItems, setMarkedItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [ids, setIds] = useState([]);
+
   useEffect(() => {
     GetTestimonials();
     window.scrollTo({
@@ -49,18 +52,39 @@ const AdminTestimonials = () => {
     }
   };
 
-  const toggleMarked = index => {
+  const deleteMultiple = async () => {
+    const data = {
+      ids,
+    };
+    try {
+      setMarkedItems([]);
+      await apiRequest('DELETE', `/testimonials/delete-multiple/`, data);
+      toast.success('Successfully deleted', {
+        position: 'top-right',
+      });
+      setIds([]);
+    } catch (error) {
+      toast.error('An error occured !', {
+        position: 'top-left',
+      });
+      console.log('error', error);
+    }
+  };
+
+  const toggleMarked = (index, testimonial) => {
     if (markedItems.includes(index)) {
+      setIds(ids.filter(id => id !== testimonial?.id));
       setMarkedItems(markedItems.filter(item => item !== index));
     } else {
+      setIds([...ids, testimonial?.id]);
       setMarkedItems([...markedItems, index]);
     }
   };
 
   const deleteMarkedItems = () => {
+    deleteMultiple();
     const newData = data.filter((_, index) => !markedItems.includes(index));
     setData(newData);
-    setMarkedItems([]);
   };
 
   return (
@@ -110,7 +134,14 @@ const AdminTestimonials = () => {
                       } ml-[214px] mt-[54px]`}
                     >
                       <div className='w-[126px] h-[40px] rounded-[50px] flex gap-[13px] bg-whiteW items-center justify-center'>
-                        <div className=''>
+                        <div
+                          onClick={() =>
+                            navigate(
+                              `/admin/testimonials/edit-testimonial/${testimonial?.id}`,
+                            )
+                          }
+                          className=''
+                        >
                           <img src={EditIcon} alt='' />
                         </div>
                         <div
@@ -125,7 +156,7 @@ const AdminTestimonials = () => {
                             type='checkbox'
                             className='form-checkbox h-4 w-4 text-indigo-600'
                             checked={markedItems.includes(index)}
-                            onChange={() => toggleMarked(index)}
+                            onChange={() => toggleMarked(index, testimonial)}
                           />
                         </div>
                       </div>

@@ -42,21 +42,22 @@ const CourseFaqs = ({ courseDetail }) => {
                       {activeIndex == index ? '-' : <img src={PlusW} alt='' />}
                     </span>
                   </div>
-                  {activeIndex == index && (
-                    <div
-                      // <motion.div
-                      //   initial={{ opacity: 0, height: 0 }}
-                      //   animate={{ opacity: 1, height: 'auto' }}
-                      //   transition={{ duration: 0.2 }}
-                      //   exit={{ opacity: 0, height: 0 }}
-                      className='py-[10px] lg:py-[25px] px-[10px] lg:px-[16px] bg-bgOpacity rounded-[16px]'
-                    >
+
+                  <div
+                    // py-[10px]
+                    className={`
+                     ${
+                       activeIndex == index ? 'show_answer answer_' : 'answer_'
+                     } 
+                    `}
+                    //
+                  >
+                    <div className='lg:py-[25px] px-[10px] lg:px-[16px] bg-bgOpacity rounded-[16px] py-[10px]'>
                       <span className='text-lightcol text-[14px] lg:text-[16px] opacity-1'>
                         {faq?.answer}
                       </span>
-                      {/* </motion.div> */}
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
           </div>

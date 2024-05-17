@@ -349,7 +349,7 @@ const EditCourse = () => {
           )}
           <div
             onClick={() => navigate(-1)}
-            className='w-[39px] h-[39px] flex items-center justify-center bg-backBg rounded-[50%]'
+            className='w-[39px] hover:cursor-pointer hover:bg-extraGray transition duration-300 h-[39px] flex items-center justify-center bg-backBg rounded-[50%]'
           >
             <img src={BackArrow} alt='' />
           </div>

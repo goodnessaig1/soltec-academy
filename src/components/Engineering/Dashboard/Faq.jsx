@@ -3,9 +3,8 @@ import Arrow_Right from '../../../assets/keyboard-arrow-right.svg';
 import { Link } from 'react-router-dom';
 import Minus from '../../../assets/minus.svg';
 import Plus from '../../../assets/plus.svg';
-// import { faqsData } from './FaqsData';
-import { motion } from 'framer-motion';
-import { faqsData } from '../../HomePage/FaqsData';
+import { faqsData } from './faqsData';
+
 const Faq = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const toggleFAQ = index => {
@@ -66,17 +65,14 @@ const Faq = () => {
                     )}
                   </div>
                 </div>
-                {activeIndex === index && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    transition={{ duration: 0.2 }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className='font-[400] sm:text-[14px] lg:text-[16px] leading-[24px] '
-                  >
-                    {faq.answer}
-                  </motion.div>
-                )}
+
+                <div
+                  className={`font-[400]  ${
+                    activeIndex == index ? 'show_answer answer_' : 'answer_'
+                  }  sm:text-[14px] lg:text-[16px] leading-[24px] `}
+                >
+                  {faq.answer}
+                </div>
               </div>
             </div>
           ))}

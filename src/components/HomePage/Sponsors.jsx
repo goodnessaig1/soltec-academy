@@ -1,10 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import Slider from 'react-slick';
-import Codes from '../../assets/codes.png';
-import Meet from '../../assets/meet.png';
-import Office from '../../assets/office.png';
-import Video from '../../assets/video-svg.svg';
 import Prev from '../../assets/prev.svg';
 import Next from '../../assets/next.svg';
 import 'slick-carousel/slick/slick.css';
@@ -14,6 +10,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BaseURL } from '../../Utils/BaseUrl';
 import { sponsorsPlaceHolder } from '../../Utils/Index';
+import { First, Fourth, Second, Third } from '../../Utils/Assets';
 
 const CustomPrevArrow = props => {
   return (
@@ -99,24 +96,24 @@ const Sponsors = () => {
             <div className='slider-container '>
               <Slider
                 {...settings}
-                className='flex outline-none flex-row overflow-initial'
+                className='flex outline-none flex-row max-h-[599px] overflow-initial'
               >
                 <div className='w-[500px] xl:w-[606px] lg:h-[500px] xl:h-[599px] gap-[16px] flex flex-col'>
                   <div className='flex flex-row gap-[8px] xl:gap-[16px]'>
                     <img
-                      src={Codes}
+                      src={First}
                       className='w-[200px] rounded-[35px] xl:w-[270px] lg:h-[180px]  xl:h-[234px]'
                       alt=''
                     />
                     <img
-                      src={Meet}
+                      src={Second}
                       className='w-[220px] xl:w-[300px] rounded-[35px] lg:h-[180px] xl:h-[234px]'
                       alt=''
                     />
                   </div>
                   <div className='mt-[16px]'>
                     <img
-                      src={Office}
+                      src={Third}
                       className='w-[420px] rounded-[35px] lg:h-[260px] xl:h-[350px] xl:w-[596px]'
                       alt=''
                     />
@@ -124,14 +121,14 @@ const Sponsors = () => {
                 </div>
                 <div className='w-[540px] lg:h-[400px] xl:h-[599px]'>
                   <img
-                    src={Video}
+                    src={Fourth}
                     className='lg:h-[456px] rounded-[35px] xl:h-[599px]'
                     alt=''
                   />
                 </div>
                 <div className='w-[540px] lg:h-[400px] xl:h-[599px]'>
                   <img
-                    src={Video}
+                    src={Fourth}
                     className='lg:h-[456px] rounded-[35px] xl:h-[599px]'
                     alt=''
                   />
@@ -143,19 +140,19 @@ const Sponsors = () => {
             <div className=' gap-[8px] w-[343px] flex flex-col'>
               <div className='flex flex-row gap-[8px]'>
                 <img
-                  src={Codes}
+                  src={First}
                   className='sm:w-[140px] rounded-[35px] lg:w-[304px] sm:h-[169px] '
                   alt=''
                 />
                 <img
-                  src={Meet}
+                  src={Second}
                   className='sm:w-[180px] rounded-[35px] lg:w-[309px] sm:h-[169px] '
                   alt=''
                 />
               </div>
               <div className='mt-[6px]'>
                 <img
-                  src={Office}
+                  src={Third}
                   className='sm:w-[330px] rounded-[35px] h-[300px] lg:w-[661px]'
                   alt=''
                 />

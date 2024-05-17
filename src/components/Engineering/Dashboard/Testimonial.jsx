@@ -3,7 +3,7 @@ import Profile from '../../../assets/profile.jpg';
 import Media from '../../../assets/media-1.svg';
 import Marquee from 'react-fast-marquee';
 
-const Testimonial = ({ testimonialsData, sponsors }) => {
+const Testimonial = ({ testimonialsData }) => {
   return (
     <div className='w-full bg-bg3 flex flex-col items-center pt-[60px] lg:pt-[97px] pb-[100px] lg:pb-[150px] justify-center '>
       <div className='flex flex-col gap-[16px] items-center justify-center'>
@@ -51,24 +51,6 @@ const Testimonial = ({ testimonialsData, sponsors }) => {
               </div>
             ))}
           <Testimonials />
-        </div>
-      </Marquee>
-      <Marquee
-        speed={35}
-        className='flex flex-row mt-[80px] lg:mt-[140px] gap-[24px] '
-        direction='right'
-      >
-        <div className='flex flex-row gap-[110px] '>
-          {sponsors &&
-            sponsors.map((sponsor, index) => (
-              <div key={index}>
-                <img
-                  src={sponsor?.logo}
-                  className='w-[198px] h-[78px]'
-                  alt=''
-                />
-              </div>
-            ))}
         </div>
       </Marquee>
     </div>

@@ -1,64 +1,51 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from 'react';
-import {
-  AddRound,
-  BackArrow,
-  Calendar,
-  Edit,
-  Trahs,
-} from '../../../Utils/Assets';
+import { AddRound, BackArrow, Edit, Trahs } from '../../../Utils/Assets';
 import Layout from '../Common/Layout';
 import Sort from '../../../assets/sort.svg';
-
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { isValid, isBefore, startOfMonth, endOfMonth } from 'date-fns';
-import { useNavigate } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { isValid, isBefore } from 'date-fns';
+import { Link, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { toast } from 'react-toastify';
-import { Oval } from 'react-loader-spinner';
 import { LoadingFetching } from './LoadingFetching';
 import { apiRequest } from '../../../Utils/ApiRequest';
+import { CreateCohort, OpenDeletePop, OpenToggleModal } from './CoursesModals';
 
 const AdminCourses = () => {
   const [isChecked, setIsChecked] = useState(true);
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [error, setError] = useState(null);
-
   const [openDeletePop, setOpenDeletePop] = useState(false);
   const [course, setCourse] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [courses, setCourses] = useState(null);
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [toggleClick, setToggleClick] = useState(false);
+  const [openCreateCohort, setOpenCreateCohort] = useState(false);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   const handleToggle = () => {
-    setIsChecked(prev => !prev);
+    if (isChecked) {
+      setToggleClick(true);
+    } else {
+      setIsChecked(prev => !prev);
+    }
   };
   const navigate = useNavigate();
-  const today = new Date();
-  const firstDayOfMonth = startOfMonth(today);
-  const lastDayOfMonth = endOfMonth(today);
 
-  const handleDateChange = date => {
+  const handleDateChange = (date, setFieldValue, setFieldError) => {
     const selectedDateString = date;
     const parsedDate = new Date(selectedDateString);
 
     if (isValid(parsedDate) && !isBefore(parsedDate, new Date())) {
-      setSelectedDate(selectedDateString);
-      setError(null);
+      setFieldValue(selectedDateString);
+      setFieldError(null);
     } else {
-      setError('You can only select future dates.');
-      setSelectedDate(null);
+      setFieldError('You can only select future dates.');
+      setFieldValue(null);
     }
   };
-
-  const datePickerRef = useRef(null);
-  const openCalendar = () => {
-    if (datePickerRef.current) {
-      datePickerRef.current.setOpen(true);
-    }
-  };
-  const [loading, setLoading] = useState(true);
-  const [courses, setCourses] = useState(null);
 
   const getCourses = async () => {
     setLoading(true);
@@ -75,7 +62,6 @@ const AdminCourses = () => {
     getCourses();
   }, []);
 
-  const [deleteLoading, setDeleteLoading] = useState(false);
   const handleDelete = async () => {
     setDeleteLoading(true);
     try {
@@ -133,6 +119,23 @@ const AdminCourses = () => {
             handleDelete={handleDelete}
           />
         )}
+        {toggleClick && (
+          <OpenToggleModal
+            isChecked={isChecked}
+            setToggleClick={setToggleClick}
+            deleteLoading={deleteLoading}
+          />
+        )}
+        {openCreateCohort && (
+          <CreateCohort
+            setOpenCreateCohort={setOpenCreateCohort}
+            startDate={startDate}
+            setStartDate={setStartDate}
+            endDate={endDate}
+            setEndDate={setEndDate}
+            handleDateChange={handleDateChange}
+          />
+        )}
         <div className='flex flex-row justify-between items-center '>
           <div className='w-[39px] h-[39px] flex items-center justify-center bg-backBg rounded-[50%]'>
             <img src={BackArrow} alt='' />
@@ -148,11 +151,18 @@ const AdminCourses = () => {
           </div>
         </div>
         <div className='flex flex-col cohotBg w-[397px] h-[134px] p-[16px] rounded-[12px] gap-[18px]'>
-          <h1 className='font-[500] inter__ text-[14px] leading-[17px]'>
-            NEXT COHORT
-          </h1>
-          <div className='flex flex-row w-full gap-[10px]'>
-            <div className='flex flex-col gap-[6px] w-[43%]'>
+          <div className='flex flex-row items-center justify-between'>
+            <h1 className='font-[500] inter__ text-[14px] leading-[17px]'>
+              NEXT COHORT
+            </h1>
+            <Link to={'/admin/courses/cohorts'} className=''>
+              <h1 className='font-bold text-[14px] leading-[17px] text-mainBlue underline underline-mainBlue'>
+                Cohort history
+              </h1>
+            </Link>
+          </div>
+          <div className='flex flex-row w-full justify-between gap-[10px]'>
+            <div className='flex flex-col gap-[16px] w-[43%]'>
               <div className='font-[600] text-[14px] leading-[21px]'>
                 Toggle ON/OFF
               </div>
@@ -166,23 +176,20 @@ const AdminCourses = () => {
                 <span className='toggle-slider'></span>
               </label>
             </div>
-            <div className='flex flex-col gap-[6px] w-[56%]'>
+            <div className='flex flex-col gap-[6px] w-[159px]'>
               <h1 className='font-[600] text-[14px] leading-[21px]'>
-                Set date
+                {/* Set date */}
               </h1>
-              <div className='seats_bg bg-[#fff] h-[50px] hover:bg-[#f3f3f3]  hover:cursor-pointer transition duration-300 px-[16px] rounded-[12px] flex items-center justify-between'>
-                <DatePicker
-                  ref={datePickerRef}
-                  selected={selectedDate}
-                  onChange={handleDateChange}
-                  minDate={firstDayOfMonth}
-                  maxDate={lastDayOfMonth}
-                  onFocus={e => {
-                    e.currentTarget.readOnly = true;
-                  }}
-                  className='outline-none bg-transparent w-full'
-                />
-                <img src={Calendar} onClick={openCalendar} alt='' />
+              <div className='seats_bg bg-[#fff] h-[50px] hover:bg-[#f3f3f3]  hover:cursor-pointer transition duration-300 rounded-[12px] flex items-center justify-center'>
+                <div
+                  onClick={() => setOpenCreateCohort(true)}
+                  className='flex flex-row items-center justify-center gap-[8px]'
+                >
+                  <img src={AddRound} alt='' />
+                  <span className='font-semibold leading-[24px] text-nowrap'>
+                    Create cohort
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -319,80 +326,3 @@ const AdminCourses = () => {
 };
 
 export default AdminCourses;
-
-const OpenDeletePop = ({
-  setOpenDeletePop,
-  course,
-  setCourse,
-  handleDelete,
-  deleteLoading,
-}) => {
-  return (
-    <div className='fixed z_indd h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-transparent'>
-      <div
-        onClick={() => setOpenDeletePop(false)}
-        className='w-full z_indd fixed hover:cursor-pointer h-screen top-0 left-0 right-0 bottom-0 px-[28px] md:px-0 flex  items-center justify-center bg-dOverlay '
-      ></div>
-      <AnimatePresence className='z_ind'>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.2 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            duration: 0.6,
-            ease: [0, 0.71, 0.2, 1.01],
-          }}
-          className='bg-bg3 z_ind flex flex-col w-[420px] h-[300px] bg-white rounded-[8px] p-[32px] '
-        >
-          <div className='flex flex-col items-center'>
-            <div className='flex flex-col  gap-[8px]'>
-              <h1 className='text-[24px] text-center font-bold'>
-                Are you sure you want to delete this course
-              </h1>
-              <span className=''>
-                This action will permanently delete{' '}
-                <strong>{course?.title}</strong> from courses and cannot be
-                undone.
-              </span>
-            </div>
-
-            <div className=' mt-[46px] flex flex-row gap-[16px]'>
-              <div
-                onClick={() => {
-                  setOpenDeletePop(false);
-                  setCourse(null);
-                }}
-                className='w-[150px] h-[56px] hover:bg-[#F5F7F9] cursor-pointer transition ease-in-out duration-300  rounded-[8px] border-[2px] border bg-white flex items-center justify-center '
-              >
-                Cancel
-              </div>
-              <div
-                onClick={() => {
-                  handleDelete();
-                }}
-                className={`w-[150px] h-[56px]  ${
-                  !deleteLoading ? 'bg-mainRed hover:bg-red-600' : 'bg-red-200'
-                } cursor-pointer transition ease-in-out duration-300  rounded-[8px] ed text-white flex items-center justify-center `}
-              >
-                {!deleteLoading ? (
-                  <span>Delete</span>
-                ) : (
-                  <div className='flex items-center justify-center'>
-                    <Oval
-                      visible={true}
-                      height='30'
-                      width='30'
-                      color='#fff'
-                      ariaLabel='oval-loading'
-                      wrapperStyle={{}}
-                      wrapperClass=''
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-};
