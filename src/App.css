@@ -766,6 +766,16 @@ input[type='date'] {
   box-shadow: 0px 0px 20px 0px #1a31501a;
 }
 
+.rendered-content p {
+  line-height: 24px;
+}
+
+.rendered-content img {
+  max-height: 300px;
+  object-fit: cover;
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
 .rendered-content ol {
   list-style: decimal;
   margin-left: 40px !important;

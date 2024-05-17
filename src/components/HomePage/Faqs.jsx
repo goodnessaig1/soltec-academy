@@ -11,11 +11,11 @@ const Faqs = () => {
   };
 
   return (
-    <div className='sm:px-[16px] lg:px-[120px] flex flex-col gap-[50px] mt-[20px] mb-[130px]'>
+    <div className='sm:px-[16px] lg:px-[120px] flex flex-col gap-[90px] mt-[20px] mb-[130px]'>
       <div className='flex items-center justify-center'>
         <img src={FaqsText} alt='' />
       </div>
-      <div className='flex flex-col gap-[14px]'>
+      <div className='flex flex-col  gap-[14px]'>
         {faqsData.map((faq, index) => (
           <div
             key={index}

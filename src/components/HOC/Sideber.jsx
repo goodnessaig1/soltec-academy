@@ -17,8 +17,8 @@ const Sideber = ({ toggle, showSidebar }) => {
       link: '/blog',
     },
     {
-      name: 'ABOUT US',
-      link: '/about-us',
+      name: 'CONTACT US',
+      link: '/contact-us',
     },
     {
       name: 'BOOK WORKSPACE',
