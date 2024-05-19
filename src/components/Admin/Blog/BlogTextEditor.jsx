@@ -3,26 +3,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 window.global = window;
-// window.global ||= window;
-import { convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import draftToHtml from 'draftjs-to-html';
-import { Fragment } from 'react';
 import { uploadFile } from '../../../Utils/ApiRequest';
 import { useState } from 'react';
-import { EditorState, ContentState, Modifier } from 'draft-js';
-import { convertToHTML } from 'draft-convert';
+import { convertToRaw } from 'draft-js';
 
-const CustomToolbar = ({ addSpacer }) => {
-  return (
-    <div>
-      <div className='text-white bg-mainRed' onClick={addSpacer}>
-        space
-      </div>
-    </div>
-  );
-};
 export default function BlogTextEditor({ setEditorState, editorState }) {
   const onEditorStateChange = function (editorState) {
     setEditorState(editorState);
@@ -36,10 +23,13 @@ export default function BlogTextEditor({ setEditorState, editorState }) {
         const formData = new FormData();
         formData.append('file', file);
         const response = await uploadFile(formData, setLoading);
-        const imageUrl = response?.file; // Adjust this according to your response structure
+        const imageUrl = response?.file;
         console.log(imageUrl);
         resolve({ data: { link: imageUrl } });
       } catch (error) {
+        alert(
+          'An error occured, please upload the image again or try another media',
+        );
         console.error('Upload failed:', error);
         reject(error);
       }
@@ -48,33 +38,13 @@ export default function BlogTextEditor({ setEditorState, editorState }) {
 
   const contentState = editorState.getCurrentContent();
   const rawContentState = convertToRaw(contentState);
-  // Convert raw JSON to HTML
   const html = draftToHtml(rawContentState);
-
-  const convertContentToHTML = () => {
-    return convertToHTML(editorState.getCurrentContent());
-  };
-  const addSpacer = () => {
-    const contentState = editorState.getCurrentContent();
-    const selectionState = editorState.getSelection();
-    const newContentState = Modifier.insertText(
-      contentState,
-      selectionState,
-      '\n',
-    );
-    const newEditorState = EditorState.push(
-      editorState,
-      newContentState,
-      'insert-characters',
-    );
-    setEditorState(newEditorState);
-  };
 
   return (
     <>
       <div
         className='rendered-content'
-        dangerouslySetInnerHTML={{ __html: convertContentToHTML() }}
+        dangerouslySetInnerHTML={{ __html: html }}
       />
       <Editor
         editorState={editorState}
@@ -88,7 +58,6 @@ export default function BlogTextEditor({ setEditorState, editorState }) {
             alt: { present: true, mandatory: false },
           },
         }}
-        toolbarCustomButtons={[<CustomToolbar addSpacer={addSpacer} />]}
         mention={{
           separator: ' ',
           trigger: '@',

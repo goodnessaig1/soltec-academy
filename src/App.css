@@ -792,6 +792,21 @@ input[type='date'] {
 .rendered-content > p strong {
 }
 
+.rendered-content > h1 {
+  margin: 16px 0 8px 0;
+  font-weight: 700;
+}
+
+.rendered-content > h2 {
+  margin: 16px 0 8px 0;
+  font-weight: 600;
+}
+
+.rendered-content > h3 {
+  margin: 16px 0 8px 0;
+  font-weight: 500;
+}
+
 .rdw-image-modal-upload-option-label {
   max-width: 180px !important;
   overflow: hidden;
@@ -809,3 +824,5 @@ input[type='date'] {
   max-height: 9999px;
   transition: all 0.3s cubic-bezier(1, 0, 1, 0);
 }
+
+/* */

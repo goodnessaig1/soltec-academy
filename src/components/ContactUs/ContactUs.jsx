@@ -47,15 +47,18 @@ const ContactUsAcademy = () => {
             <div className='flex flex-col gap-[15px]'>
               <div className='flex flex-row w-full gap-[10px] text-[16px] font-[400] leading-[20px]  '>
                 <div className='w-1/2'>Phone:</div>
-                <div className='w-1/2'>+2344646421</div>
+                <div className='w-1/2'>+2348039814257</div>
               </div>
               <div className='flex flex-row w-full gap-[10px] text-[16px] font-[400] leading-[20px]  '>
                 <div className='w-1/2'>Address:</div>
-                <div className='w-1/2'>xxxxx</div>
+                <div className='w-1/2'>
+                  #27 Billy Okoye Boulevard, <br />
+                  Agu-Awka
+                </div>
               </div>
               <div className='flex flex-row w-full gap-[10px] text-[16px] font-[400] leading-[20px]  '>
                 <div className='w-1/2'>Email:</div>
-                <div className='w-1/2'>xxxxxx</div>
+                <div className='w-1/2'>info@solteceng.com</div>
               </div>
             </div>
 

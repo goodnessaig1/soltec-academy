@@ -20,7 +20,14 @@ import { convertFromHTML } from 'draft-js';
 const EditBlogPost = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  // const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [editorState, setEditorState] = useState(
+    EditorState.createWithContent(
+      ContentState.createFromText(
+        'Old text\n\nNew Heading\nNew text after heading',
+      ),
+    ),
+  );
   const [loading, setLoading] = useState(false);
   const [addLoading, setAddLoading] = useState(false);
   const [image, setImage] = useState(null);
