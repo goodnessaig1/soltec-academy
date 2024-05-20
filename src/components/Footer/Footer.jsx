@@ -37,13 +37,14 @@ const Footer = () => {
           </span>
           <div className='flex flex-col gap-[10px]'>
             <span className='font-[400] text-footerCol text-[16px] leading-[32px]'>
-              Phone: +2348194338475
+              Phone: +2348039814257
             </span>
             <span className='font-[400] text-footerCol text-[16px] leading-[32px]'>
-              Email: soltecacademy@gmail.com
+              Email: info@solteceng.com
             </span>
             <span className='font-[400] text-footerCol text-[16px] leading-[32px]'>
-              Address: xxxxxxx
+              Address: #27 Billy Okoye Boulevard, <br />
+              Agu-Awka
             </span>
           </div>
         </div>
