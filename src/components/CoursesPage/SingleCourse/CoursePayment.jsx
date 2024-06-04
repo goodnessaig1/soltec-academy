@@ -238,8 +238,8 @@ const CoursePayment = () => {
               </div>
             </div>
           ) : (
-            <div className='w-full flex flex-row items-cente justify-center py-[120px] sm:px-[16px] lg:px-[120px] gap-[80px]'>
-              <div className='flex flex-col gap-[12px]'>
+            <div className='w-full flex flex-col lg:flex-row items-cente justify-center py-[120px] sm:px-[16px] lg:px-[120px] gap-[80px]'>
+              <div className='flex flex-col w-full lg:w-auto items-center lg:items-start gap-[12px]'>
                 <Skeleton
                   style={{ borderRadius: '20px' }}
                   className='w-[140px]'
@@ -265,7 +265,7 @@ const CoursePayment = () => {
                   height={60}
                 />
               </div>
-              <div className='flex flex-col gap-[12px]'>
+              <div className='hidden lg:flex flex-col gap-[12px]'>
                 <Skeleton
                   style={{ borderRadius: '20px' }}
                   className='w-[140px]'

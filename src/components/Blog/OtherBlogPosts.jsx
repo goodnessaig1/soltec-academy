@@ -249,9 +249,13 @@ const OtherBlogPost = ({ otherBlogs }) => {
           otherBlogs.map((blog, index) => (
             <div
               key={index}
-              className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '
+              className='blog-card2 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '
             >
-              <img src={blog?.featured_image} alt='' className='borderR' />
+              <img
+                src={blog?.featured_image}
+                alt=''
+                className='borderR w-[395px] h-[180px] lg:h-[233px] rounded-t-[35px]'
+              />
               <div className='px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
                 <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                   {blog?.title.length > 36
