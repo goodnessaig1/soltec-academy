@@ -47,11 +47,7 @@ const Courses = ({ courses }) => {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     swipeToSlide: true,
-    afterChange: function (index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`,
-      );
-    },
+    // afterChange: function () {},
   };
   var mdSettings = {
     dots: false,
@@ -62,11 +58,7 @@ const Courses = ({ courses }) => {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     swipeToSlide: true,
-    afterChange: function (index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`,
-      );
-    },
+    // afterChange: function () {},
   };
   var settings = {
     dots: false,
@@ -77,11 +69,7 @@ const Courses = ({ courses }) => {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     swipeToSlide: true,
-    afterChange: function (index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`,
-      );
-    },
+    // afterChange: function () {},
   };
   return (
     <div className='w-full'>
@@ -268,7 +256,10 @@ const Courses = ({ courses }) => {
 
             <div className='w-full flex items-center  sm:mt-[64px] lg:mt-[80px] justify-center'>
               <div className='w-[228px] h-[48px] flex items-center justify-center rounded-[16px] hover:bg-[#f1f1f1] hover:cursor-pointer transition duration-200 borderCol bg-[#fff]  '>
-                <Link to={'/courses'} className='flex flex-row gap-[8px]'>
+                <Link
+                  to={'/courses'}
+                  className='flex w-full text-center flex items-center justify-center flex-row gap-[8px]'
+                >
                   <span className='font-[600] text-[16px] leading-[24px] '>
                     All courses
                   </span>

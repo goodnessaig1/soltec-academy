@@ -16,7 +16,6 @@ const WorkspaceVerifyPayment = () => {
   const [paymentData, setPaymentData] = useState(null);
 
   const { reference } = useParams();
-  console.log(reference);
 
   const verifyWorkspacePayment = async () => {
     try {

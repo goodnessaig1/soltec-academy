@@ -89,12 +89,11 @@ const GetQuote = () => {
     setAddLoading(true);
     if (values?.image != '') {
       try {
-        const response = await axios.post(`${BaseURL}/testimonials/`, values);
+        await axios.post(`${BaseURL}/testimonials/`, values);
         setAddLoading(false);
         toast.success('Success', {
           position: 'top-right',
         });
-        console.log(response);
         resetForm();
       } catch (error) {
         console.error('Error uploading file: ', error);

@@ -35,9 +35,7 @@ const EngineeringDashboard = () => {
     const observer1 = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          console.log('Container 1 is in view!');
           setBackgroundC('#02003E');
-          // Do something when container 1 is in view
         }
       },
       {
@@ -50,13 +48,10 @@ const EngineeringDashboard = () => {
     if (container1Ref.current) {
       observer1.observe(container1Ref.current);
     }
-    // second
     const observer2 = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setBackgroundC('#D2070C');
-          console.log('Container 2 is in view!');
-          // Do something when container 2 is in view
         }
       },
       {
@@ -75,7 +70,6 @@ const EngineeringDashboard = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setBackgroundC('#FEC910');
-          console.log('Container 3 is in view!');
         }
       },
       {

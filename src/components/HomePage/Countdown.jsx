@@ -43,6 +43,7 @@ const Countdown = ({ startDate }) => {
           <h1 className='font-[900] text-[36px] leading-[44px] text-[#fff]'>
             :
           </h1>
+          <img src={Stroke} alt='' />
         </div>
       )}
     </>

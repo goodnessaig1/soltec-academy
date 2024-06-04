@@ -43,11 +43,7 @@ const OtherCourses = ({ otherCourses }) => {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     swipeToSlide: true,
-    afterChange: function (index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`,
-      );
-    },
+    afterChange: function () {},
   };
   var settings = {
     dots: false,
@@ -58,11 +54,7 @@ const OtherCourses = ({ otherCourses }) => {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     swipeToSlide: true,
-    afterChange: function (index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`,
-      );
-    },
+    afterChange: function () {},
   };
   var mdSettings = {
     dots: false,
@@ -73,11 +65,7 @@ const OtherCourses = ({ otherCourses }) => {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     swipeToSlide: true,
-    afterChange: function (index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`,
-      );
-    },
+    afterChange: function () {},
   };
 
   return (

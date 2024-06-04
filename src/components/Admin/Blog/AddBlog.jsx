@@ -55,7 +55,6 @@ const AddBlog = () => {
       console.error('Upload failed:', error);
     }
   };
-  // console.log(authorImage);
 
   const handleAuthorImgChange = async e => {
     const selectedFile = e.target.files[0];
@@ -91,7 +90,6 @@ const AddBlog = () => {
 
   const contentState = editorState.getCurrentContent();
   const rawContentState = convertToRaw(contentState);
-  // Convert raw JSON to HTML
   const html = draftToHtml(rawContentState);
 
   const handleSubmit = async e => {

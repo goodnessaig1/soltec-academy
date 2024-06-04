@@ -24,7 +24,6 @@ export default function BlogTextEditor({ setEditorState, editorState }) {
         formData.append('file', file);
         const response = await uploadFile(formData, setLoading);
         const imageUrl = response?.file;
-        console.log(imageUrl);
         resolve({ data: { link: imageUrl } });
       } catch (error) {
         alert(

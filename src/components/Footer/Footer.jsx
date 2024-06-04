@@ -53,12 +53,12 @@ const Footer = () => {
             INFORMATION
           </h1>
           <div className='flex flex-col gap-[12px]'>
-            <Link
+            {/* <Link
               to={'about-us'}
               className='font-[400] text-footerCol text-[16px] leading-[32px]'
             >
               About Us
-            </Link>
+            </Link> */}
             <Link
               to={'/contact-us'}
               className='font-[400] text-footerCol text-[16px] leading-[32px]'

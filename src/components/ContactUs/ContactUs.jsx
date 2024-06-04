@@ -17,18 +17,16 @@ import Header from '../Header/Header';
 const ContactUsAcademy = () => {
   const handleSubmit = async (values, resetForm) => {
     try {
-      const response = await axios.post(`${BaseURL}/testimonials/`, values);
+      await axios.post(`${BaseURL}/testimonials/`, values);
       toast.success('Success', {
         position: 'top-right',
       });
-      console.log(response);
       resetForm();
     } catch (error) {
       console.error('Error uploading file: ', error);
       toast.error('An error occured, please try again!', {
         position: 'top-right',
       });
-      // setAddLoading(false);
     }
   };
 

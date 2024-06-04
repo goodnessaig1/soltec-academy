@@ -18,25 +18,20 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 const ContactUs = () => {
   const handleSubmit = async (values, resetForm) => {
-    // setAddLoading(true);
     if (values?.image != '') {
       try {
-        const response = await axios.post(`${BaseURL}/testimonials/`, values);
-        // setAddLoading(false);
+        await axios.post(`${BaseURL}/testimonials/`, values);
         toast.success('Success', {
           position: 'top-right',
         });
-        console.log(response);
         resetForm();
       } catch (error) {
         console.error('Error uploading file: ', error);
         toast.error('An error occured, please try again!', {
           position: 'top-right',
         });
-        // setAddLoading(false);
       }
     } else {
-      //   setAddLoading(false);
       alert('Please select an image');
     }
   };

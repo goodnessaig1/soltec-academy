@@ -60,7 +60,6 @@ const Dashboard = () => {
     }
   };
 
-  console.log(blogs);
   return (
     <Layout text='Dashboard'>
       <div className='w-full inter_ flex flex-col gap-[48px] px-[36px]'>

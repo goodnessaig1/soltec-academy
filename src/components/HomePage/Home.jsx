@@ -59,7 +59,7 @@ const Home = () => {
           <Catalogue courses={courses} />
           <Sponsors />
           <Courses courses={courses} loading={loading} />
-          <Cohort startDate={currentCohort?.end_date} />
+          <Cohort startDate={currentCohort?.start_date} />
           <Blog />
           <Faqs />
           <Footer />

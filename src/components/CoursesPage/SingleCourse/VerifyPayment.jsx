@@ -15,7 +15,6 @@ const VerifyPayment = () => {
   const [paymentData, setPaymentData] = useState(null);
 
   const { reference } = useParams();
-  console.log(reference);
 
   const verifyCourseEnrollment = async () => {
     try {

@@ -269,7 +269,6 @@ const EditCourse = () => {
       setOverviewError(null);
     } else {
       setOverviewError('Some fields for overview are empty');
-      return console.log('overview has');
     }
     if (fileUrl === null) {
       setVideoError('Please select and upload a video');

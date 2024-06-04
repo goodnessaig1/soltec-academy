@@ -183,8 +183,7 @@ export const CreateCohort = ({
           start_date: startDate?.toISOString(),
           end_date: endDate?.toISOString(),
         };
-        const response = await apiRequest('POST', `/cohort/`, data);
-        console.log(response?.data);
+        await apiRequest('POST', `/cohort/`, data);
         setLoading(false);
         toast.success('Success', {
           position: 'top-right',

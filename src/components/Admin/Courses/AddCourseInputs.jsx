@@ -60,7 +60,6 @@ export const OverViewContainer = ({
       setOpenOverview(false);
     } else {
       setOverviewDone(false);
-      console.log('overview has');
     }
   };
 
@@ -719,7 +718,6 @@ export const InstructorInfo = ({
     } else {
       setInstructorDone(false);
       alert('complet all fields');
-      console.log('overview has');
     }
   };
   const handleSubmit2 = e => {
@@ -733,7 +731,6 @@ export const InstructorInfo = ({
     } else {
       setInstructorDone(false);
       alert('complet all fields');
-      console.log('overview has');
     }
   };
   const [loading, setLoading] = useState(false);
