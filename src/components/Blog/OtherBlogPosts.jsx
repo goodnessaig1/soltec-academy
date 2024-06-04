@@ -257,7 +257,7 @@ const OtherBlogPost = ({ otherBlogs }) => {
                 className='borderR w-[395px] h-[180px] lg:h-[233px] rounded-t-[35px]'
               />
               <div className='px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
-                <h1 className='font-[600]  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
+                <h1 className='font-[600] line-clamp-1 text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                   {blog?.title.length > 36
                     ? `${blog?.title?.substring(0, 36) + '..'}`
                     : `${blog?.title}`}
