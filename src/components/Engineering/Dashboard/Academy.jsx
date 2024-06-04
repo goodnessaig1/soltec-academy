@@ -104,17 +104,19 @@ const Academy = () => {
           marketable in no time.
         </span>
         <div className='flex flex-col gap-[22px]'>
-          <div className=' slck-contai fle pl-[16px] flex-row h-[57x] rounded-[50px] w-full hidden lg:flex items-center justify-center slider-container'>
+          <div className=' slck-contai flex flex-row h-[57x] rounded-[50px] w-full hidden lg:flex items-center justify-center slider-container'>
             <Slider
               {...settings}
-              className='w-[940px] lg:w-[1015px] rounded-[50px] px-[20px] slider-containerr bg-opacityC h-[57px] items-center justify-center  flex'
+              className='w-[940px] text-nowrap rounded-[50px] px-[20px] slider-containerr bg-opacityC h-[57px] items-center justify-center  flex'
             >
               {courses.map((course, i) => (
                 <div
                   key={i}
-                  className='text-white slick-item  font-[600] text-[20px] leading-[24px]'
+                  className='text-white slick-item pr-[8px] font-[600] text-[20px] leading-[24px]'
                 >
-                  {course.name}
+                  {course?.name.length > 12
+                    ? `${course.name.substring(0, 12)}..`
+                    : `${course.name}`}
                 </div>
               ))}
             </Slider>

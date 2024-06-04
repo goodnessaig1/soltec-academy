@@ -50,15 +50,9 @@ const Header = ({ headerCol, scrollTo, services, about, faqsRef }) => {
           </div>
           <div className='hidden z-10 lg:flex text-nowrap flex-row lg:gap-[24px] lgl:gap-[36px] xxl:gap-[64px] '>
             <NavLink
-              className={({ isActive }) =>
-                isActive && headerCol
-                  ? 'text-[#fff] nav-link'
-                  : isActive
-                  ? 'nav-link'
-                  : !isActive && headerCol
-                  ? ' transition duration-200 hover:text-[#fff]'
-                  : ' hover:text-[#000]'
-              }
+              className={`font-[500] hover:cursor-pointer hover:font-[700] transition duration-300 ${
+                headerCol ? 'text-[#fff]' : 'text-[#000]'
+              }`}
               to={'/engineering/dashboard'}
             >
               <h1>HOME</h1>

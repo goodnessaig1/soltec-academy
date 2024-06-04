@@ -46,7 +46,7 @@ const WorkSpaceImages = () => {
       <div className='lgl:h-[378px] '>
         <img
           src={Shorts3}
-          className='lgl:w-[461px] rounded-[42px] h-[300px] lgl:h-[378px]'
+          className='w-[343px] lgl:w-[461px] rounded-[42px] h-[300px] lgl:h-[378px]'
           alt=''
         />
       </div>
