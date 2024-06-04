@@ -11,21 +11,19 @@ const Catalogue = ({ courses }) => {
     <>
       <div className=' w-full backgroundImages2 sm:h-[1116px] md:h-[1200px] lg:h-[990px]'>
         <div className='flex  items-center  justify-center'>
-          <div className='flex w-full flex-col pt-[100px] sm:px-[16px] items-center'>
+          <div className='flex w-full flex-col pt-[100px] lg:px-[16px] items-center'>
             <Marquee
               speed={36}
               direction='left'
               pauseOnHover
               className='max-w-[98%] clip-text '
-              // className=' max-w-[98%] sm:px-[6px] clip-text lg:px-[0px] sm:grid sm:grid-cols-2   gap-y-[24px] gap-x-[16px]  lg:flex lg:flex-row lg:gap-[61px]  '
             >
-              {/* <div className='overflow-x-hidden clip-text overflow-y-hidden'> */}
               {courses &&
                 courses.map((course, index) => (
                   <Link
                     to={`/courses/${course?.id}/${course?.title}`}
                     key={index}
-                    className='text-[#fff] lg:pr-[48px]  xl:pr-[120px] transition text-[24px] duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'
+                    className='text-[#fff] pr-[16px] lg:pr-[48px]  xl:pr-[120px] transition text-[24px] duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'
                   >
                     {course?.title.toUpperCase()}
                   </Link>
