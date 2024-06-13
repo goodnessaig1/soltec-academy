@@ -371,31 +371,37 @@ const Projects = () => {
         <div className='w-full projects  flex sml:hidden items-center justify-center'>
           <div className='slick-container opacity-[1]'>
             <Slider {...sSettings} className=' opacity-[1]'>
-              <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] first_bg1 h-[367px]'>
-                <div className='w-full py-[12px] mb-[24px] text-white  rounded-[4px]'>
-                  <h1 className='text-[24px] ] text-nowrap   leading-[36px]'>
-                    POWER AND ENERGY
-                  </h1>
+              <div className='w-1/3  hover:cursor-pointer transition curation-300 group first_bg1 h-[367px]'>
+                {/* <div className='sixth_bg h-[387px] md:h-[367px]'> */}
+                <div className='p-[40px] flex flex-col gap-[24px] bg-[#06041F20] h-full w-full'>
+                  <div className='w-full py-[12px] mb-[24px] text-white  rounded-[4px]'>
+                    <h1 className='text-[24px] ] text-nowrap   leading-[36px]'>
+                      POWER AND ENERGY
+                    </h1>
+                  </div>
+                  <span className='inter__  opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white '>
+                    Solar installation and all kinds of activities, works and
+                    services relating to the business of environmentally
+                    sustainable energy sources available across Nigeria
+                  </span>
                 </div>
-                <span className='inter__  opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white '>
-                  Solar installation and all kinds of activities, works and
-                  services relating to the business of environmentally
-                  sustainable energy sources available across Nigeria
-                </span>
               </div>
-              <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[16px] lgl:gap-[24px] second_bg1 h-[367px]'>
-                <div className='w-full py-[12px] mb-[24px] text-white rounded-[4px]'>
-                  <h1 className='text-[24px] text-nowrap font-[600] leading-[26px] lgl:leading-[36px]'>
-                    BUILDING AND <br className='lgl:hidden' />
-                    CONSTRUCTION
-                  </h1>
+              {/* <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[16px] lgl:gap-[24px] second_bg1 h-[367px]'> */}
+              <div className='w-1/3  hover:cursor-pointer transition curation-300 group second_bg1 h-[367px]'>
+                <div className='p-[40px] flex flex-col gap-[16px] bg-[#06041F20] h-full w-full'>
+                  <div className='w-full py-[12px] mb-[24px] text-white rounded-[4px]'>
+                    <h1 className='text-[24px] text-nowrap font-[600] leading-[26px] lgl:leading-[36px]'>
+                      BUILDING AND <br className='lgl:hidden' />
+                      CONSTRUCTION
+                    </h1>
+                  </div>
+                  <span className='inter__ opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white'>
+                    Includes lab or field testing, analysis and monitoring of
+                    structures, and building materials such as foundations,
+                    drainage systems, pavements, concrete, soils and reinforcing
+                    or structural steel.
+                  </span>
                 </div>
-                <span className='inter__ opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white'>
-                  Includes lab or field testing, analysis and monitoring of
-                  structures, and building materials such as foundations,
-                  drainage systems, pavements, concrete, soils and reinforcing
-                  or structural steel.
-                </span>
               </div>
               <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] third_bg1 h-[367px]'>
                 <div className='w-full py-[12px] mb-[24px] text-white  rounded-[4px]'>
