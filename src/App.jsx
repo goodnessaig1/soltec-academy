@@ -56,36 +56,42 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' exact Component={Home} />
-        <Route path='/courses' Component={Courses} />
-        <Route path='/courses/:id/:courseTitle' Component={SingleCourse} />
+        <Route path='/academy' exact Component={Home} />
+        <Route path='/academy/courses' Component={Courses} />
         <Route
-          path='/courses/:id/:courseTitle/payment'
+          path='/academy/courses/:id/:courseTitle'
+          Component={SingleCourse}
+        />
+        <Route
+          path='/academy/courses/:id/:courseTitle/payment'
           Component={CoursePayment}
         />
         <Route
-          path='/courses/payment/verify/:reference'
+          path='/academy/courses/payment/verify/:reference'
           Component={VerifyPayment}
         />
 
-        <Route path='/courses/payment' Component={Payment} />
+        <Route path='/academy/courses/payment' Component={Payment} />
 
-        <Route path='/book-workspace' Component={WorkSpace} />
-        <Route path='/book-workspace/bookspace' Component={BookSpace} />
+        <Route path='/academy/book-workspace' Component={WorkSpace} />
+        <Route path='/academy/book-workspace/bookspace' Component={BookSpace} />
         <Route
-          path='/book-workspace/payment/verify/:reference'
+          path='/academy/book-workspace/payment/verify/:reference'
           Component={WorkspaceVerifyPayment}
         />
 
-        <Route path='/blog' Component={Blog} />
-        <Route path='/blog/post' Component={BlogPost} />
-        <Route path='/blog/:id/:author/:title' Component={SingleBlogPost} />
-        <Route path='/blog/payment-guide' Component={PaymentGuide} />
-        <Route path='/payment-confirmation' Component={PaymentConfirmation} />
+        <Route path='/academy/blog' Component={Blog} />
+        <Route path='/academy/blog/post' Component={BlogPost} />
+        <Route
+          path='/academy/blog/:id/:author/:title'
+          Component={SingleBlogPost}
+        />
+        <Route path='/academy/blog/payment-guide' Component={PaymentGuide} />
 
+        <Route path='/payment-confirmation' Component={PaymentConfirmation} />
         <Route path='/about-us' Component={AboutUs} />
 
-        <Route path='/contact-us' Component={ContactUsAcademy} />
+        <Route path='/academy/contact-us' Component={ContactUsAcademy} />
 
         <Route element={<AuthRoutes />}>
           <Route element={<Dashboard />} path='/admin/dashboard' exact />
@@ -134,9 +140,9 @@ function App() {
           }
         />
 
-        <Route path='/engineering/dashboard' Component={EngineeringDashboard} />
-        <Route path='/engineering/get-quote' Component={GetQuote} />
-        <Route path='/engineering/contact-us' Component={ContactUs} />
+        <Route path='/' Component={EngineeringDashboard} />
+        <Route path='/get-quote' Component={GetQuote} />
+        <Route path='/contact-us' Component={ContactUs} />
       </Routes>
     </>
   );

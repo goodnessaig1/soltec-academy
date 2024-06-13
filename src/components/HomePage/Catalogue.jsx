@@ -21,7 +21,7 @@ const Catalogue = ({ courses }) => {
               {courses &&
                 courses.map((course, index) => (
                   <Link
-                    to={`/courses/${course?.id}/${course?.title}`}
+                    to={`/academy/courses/${course?.id}/${course?.title}`}
                     key={index}
                     className='text-[#fff] pr-[16px] lg:pr-[48px]  xl:pr-[120px] transition text-[24px] duration-200 leading-[24px] font-[700px] hover:text-mainyellow hover:cursor-pointer'
                   >

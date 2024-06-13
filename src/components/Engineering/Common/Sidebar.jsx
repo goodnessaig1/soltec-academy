@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Close from '../../../assets/ic_round-close.svg';
 const Sideber = ({
   toggle,
@@ -11,6 +11,15 @@ const Sideber = ({
   faqsRef,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const handleScroll = path => {
+    if (location.pathname == '/') {
+      scrollTo(path);
+      toggle();
+    } else {
+      navigate('/');
+    }
+  };
   return (
     <div className='overflow-hidden static'>
       {showSidebar && (
@@ -19,41 +28,39 @@ const Sideber = ({
             <img src={Close} alt='' />
           </div>
           <div className='mt-[110px] flex flex-col gap-[48px] ml-[24px]'>
-            <NavLink className='nav-link' to={'/engineering/dashboard'}>
+            <NavLink className='nav-link text-nowrap' onClick={toggle} to={'/'}>
               <h1>HOME</h1>
             </NavLink>
             <div
-              onClick={() => (
-                navigate('/engineering/dashboard'), scrollTo(about)
-              )}
+              onClick={() => handleScroll(about)}
               id='about-us'
-              className='nav-link'
+              className='nav-link text-nowrap'
             >
               ABOUT US
             </div>
             <div
-              onClick={() => (
-                navigate('/engineering/dashboard'), scrollTo(services)
-              )}
+              onClick={() => handleScroll(services)}
               id='services'
-              className='nav-link'
+              className='nav-link text-nowrap'
             >
               OUR SERVICES
             </div>
             <div
-              onClick={() => (
-                navigate('/engineering/dashboard'), scrollTo(faqsRef)
-              )}
+              onClick={() => handleScroll(faqsRef)}
               id='faqs'
-              className='nav-link'
+              className='nav-link text-nowrap'
             >
               FAQS
             </div>
-            <NavLink className='nav-link' to={'/engineering/contact-us'}>
+            <NavLink
+              className='nav-link text-nowrap'
+              onClick={toggle}
+              to={'/contact-us'}
+            >
               <h1>CONTACT US</h1>
             </NavLink>
             <Link
-              to={'/engineering/get-quote'}
+              to={'/get-quote'}
               className='w-[159px] h-[48px] hover:bg-[#f1f1f1] flex items-center justify-center sidebarPay  rounded-[12px] p-[10px] text-[14px] text-[#000]'
             >
               <h1 className='nav-link'>GET A QUOTE</h1>

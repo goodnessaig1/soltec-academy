@@ -100,7 +100,9 @@ const OtherCourses = ({ otherCourses }) => {
                         </h1>
                         <div
                           onClick={() =>
-                            navigate(`/courses/${course?.id}/${course?.title}`)
+                            navigate(
+                              `/academy/courses/${course?.id}/${course?.title}`,
+                            )
                           }
                           className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
                         >
@@ -126,7 +128,7 @@ const OtherCourses = ({ otherCourses }) => {
                     N250,000
                   </h1>
                   <Link
-                    to={'/courses/cybersecurity'}
+                    to={'/academy/courses/cybersecurity'}
                     className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
                   >
                     <span className='font-[600] text-[16px] leading-[24px]'>
@@ -164,7 +166,9 @@ const OtherCourses = ({ otherCourses }) => {
                         </h1>
                         <div
                           onClick={() =>
-                            navigate(`/courses/${course?.id}/${course?.title}`)
+                            navigate(
+                              `/academy/courses/${course?.id}/${course?.title}`,
+                            )
                           }
                           className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
                         >
@@ -205,7 +209,9 @@ const OtherCourses = ({ otherCourses }) => {
                         </h1>
                         <div
                           onClick={() =>
-                            navigate(`/courses/${course?.id}/${course?.title}`)
+                            navigate(
+                              `/academy/courses/${course?.id}/${course?.title}`,
+                            )
                           }
                           className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
                         >
@@ -247,7 +253,9 @@ const OtherCourses = ({ otherCourses }) => {
                     </h1>
                     <div
                       onClick={() =>
-                        navigate(`/courses/${course?.id}/${course?.title}`)
+                        navigate(
+                          `/academy/courses/${course?.id}/${course?.title}`,
+                        )
                       }
                       className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
                     >

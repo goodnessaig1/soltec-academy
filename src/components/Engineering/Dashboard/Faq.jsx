@@ -28,7 +28,7 @@ const Faq = () => {
           </span>
         </div>
         <Link
-          to={'/engineering/contact-us'}
+          to={'/contact-us'}
           className='w-[180px] h-[48px] getQuote bg-[#FEC910] gap-[8px] rounded-[8px]  flex flex-row items-center justify-center'
         >
           <span className='font-[600] text-[16px] leading-[24px]'>

@@ -14,26 +14,27 @@ const Header = ({ headerCol }) => {
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
+
   const navLinks = [
     {
       name: 'HOME',
-      link: '/',
+      link: '/academy',
     },
     {
       name: 'COURSES',
-      link: '/courses',
+      link: '/academy/courses',
     },
     {
       name: 'BOOK WORKSPACE',
-      link: '/book-workspace',
+      link: '/academy/book-workspace',
     },
     {
       name: 'BLOG',
-      link: '/blog',
+      link: '/academy/blog',
     },
     {
       name: 'CONTACT US',
-      link: '/contact-us',
+      link: '/academy/contact-us',
     },
   ];
   return (
@@ -45,15 +46,15 @@ const Header = ({ headerCol }) => {
         <div className='flex flex-row items-center justify-between'>
           <div className='z-10'>
             {headerCol ? (
-              <Link to={'/'}>
+              <Link to={'/academy'}>
                 <img src={LogoDark} className='hidden lg:flex' alt='' />
               </Link>
             ) : (
-              <Link to={'/'}>
+              <Link to={'/academy'}>
                 <img src={Logo} className='hidden lg:flex' alt='' />
               </Link>
             )}
-            <Link to={'/'}>
+            <Link to={'/academy'}>
               <img src={Logo2} className='flex lg:hidden' alt='' />
             </Link>
           </div>
@@ -70,6 +71,7 @@ const Header = ({ headerCol }) => {
                     ? 'unselected transition duration-200 hover:text-[#fff]'
                     : 'unselected hover:text-[#000]'
                 }
+                end={link.link === '/academy'}
                 to={link.link}
               >
                 <h1>{link.name}</h1>
@@ -77,7 +79,7 @@ const Header = ({ headerCol }) => {
             ))}
           </div>
           <Link
-            to={'/blog/payment-guide'}
+            to={'/academy/blog/payment-guide'}
             className='payment_grad hidden lg:flex zinde text-nowrap bg-[#fff] hover:bg-[#f0f0f0] rounded-[16px] hover:cursor-pointer border border-[1px] border-[#1c1c1c] p-[10px] '
           >
             <span>Payment Guide</span>

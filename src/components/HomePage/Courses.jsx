@@ -108,7 +108,7 @@ const Courses = ({ courses }) => {
                             <div
                               onClick={() =>
                                 navigate(
-                                  `/courses/${course?.id}/${course?.title}`,
+                                  `/academy/courses/${course?.id}/${course?.title}`,
                                 )
                               }
                               className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
@@ -153,7 +153,7 @@ const Courses = ({ courses }) => {
                             <div
                               onClick={() =>
                                 navigate(
-                                  `/courses/${course?.id}/${course?.title}`,
+                                  `/academy/courses/${course?.id}/${course?.title}`,
                                 )
                               }
                               className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
@@ -198,7 +198,7 @@ const Courses = ({ courses }) => {
                             <div
                               onClick={() =>
                                 navigate(
-                                  `/courses/${course?.id}/${course?.title}`,
+                                  `/academy/courses/${course?.id}/${course?.title}`,
                                 )
                               }
                               className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
@@ -240,7 +240,9 @@ const Courses = ({ courses }) => {
                         </h1>
                         <div
                           onClick={() =>
-                            navigate(`/courses/${course?.id}/${course?.title}`)
+                            navigate(
+                              `/academy/courses/${course?.id}/${course?.title}`,
+                            )
                           }
                           className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
                         >
@@ -257,7 +259,7 @@ const Courses = ({ courses }) => {
             <div className='w-full flex items-center  sm:mt-[64px] lg:mt-[80px] justify-center'>
               <div className='w-[228px] h-[48px] flex items-center justify-center rounded-[16px] hover:bg-[#f1f1f1] hover:cursor-pointer transition duration-200 borderCol bg-[#fff]  '>
                 <Link
-                  to={'/courses'}
+                  to={'/academy/courses'}
                   className='flex w-full text-center flex items-center justify-center flex-row gap-[8px]'
                 >
                   <span className='font-[600] text-[16px] leading-[24px] '>

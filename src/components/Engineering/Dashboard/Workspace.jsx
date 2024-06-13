@@ -19,7 +19,7 @@ const Workspace = () => {
           have registered to take courses.
         </span>
         <WorkSpaceImages />
-        <Link to={'/book-workspace'}>
+        <Link to={'/academy/book-workspace'}>
           <button className='bg-white hover:bg-[#E4E4E4] transition duration-300 ease-in-out seeMore h-[48px] w-[141px] rounded-[4px] flex items-center justify-center text-[14px] font-[700] leading-[17px] '>
             SEE MORE
           </button>

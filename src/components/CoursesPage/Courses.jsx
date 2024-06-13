@@ -117,7 +117,7 @@ const Courses = () => {
                             key={index}
                             onClick={() =>
                               navigate(
-                                `/courses/${course?.id}/${course?.title}`,
+                                `/academy/courses/${course?.id}/${course?.title}`,
                               )
                             }
                             className='px-[16px] py-[2px] hover:cursor-pointer w-full hover:bg-[#f1f1f1]'
@@ -176,7 +176,7 @@ const Courses = () => {
                               <div
                                 onClick={() =>
                                   navigate(
-                                    `/courses/${course?.id}/${course?.title}`,
+                                    `/academy/courses/${course?.id}/${course?.title}`,
                                   )
                                 }
                                 className='w-[301px] h-[48px] bg-[#fff] flex items-center justify-center rounded-[16px] border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '

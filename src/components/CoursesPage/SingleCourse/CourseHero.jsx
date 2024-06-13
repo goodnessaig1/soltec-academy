@@ -63,7 +63,7 @@ const CourseHero = ({ courseDetail }) => {
                 0.5,
               )}`,
             }}
-            to={`/courses/${courseDetail?.id}/${courseDetail?.title}/payment`}
+            to={`/academy/courses/${courseDetail?.id}/${courseDetail?.title}/payment`}
             className='flex flex-row startLear hover:opacity-[0.9] transition duration-[300] rounded-[16px] w-[183px] lg:w-[221px] h-[56px] px-[16px] py-[8px] gap-[8px] items-center justify-center'
           >
             <span className='text-[16px] text-white font-[600] leading-[24px]'>

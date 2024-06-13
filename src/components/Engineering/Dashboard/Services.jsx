@@ -8,7 +8,16 @@ const Services = () => {
 
       <div className='flex flex-col w-full mt-[44px] lg:mt-[80px]'>
         <div className='grid grid-cols-1 mdl:grid-cols-2 lgx:grid-cols-3 w-full'>
-          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] first_bg h-[387px] md:h-[367px]'>
+          <div
+            style={{
+              background: 'rgba(6, 4, 31, 0.8)',
+              border: '1px solid rgba(255, 255, 255, 0.5)',
+              backgroundImage:
+                "url('https://ik.imagekit.io/nz8zngrxv/amazon-image/first_wCcpA3gw7.jpg?updatedAt=1711347556338')",
+              backgroundBlendMode: 'darken',
+            }}
+            className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] h-[387px] md:h-[367px]'
+          >
             <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
               <h1 className='text-[24px] font-[600] leading-[36px]'>
                 POWER AND ENERGY

@@ -268,7 +268,7 @@ const Blog = () => {
       </div>
       <div className='w-full flex items-center sm:mt-[64px] lg:mt-[80px] justify-center'>
         <Link
-          to={'/blog'}
+          to={'/academy/blog'}
           className='w-[228px] h-[48px] flex items-center justify-center rounded-[16px] hover:bg-[#f1f1f1] hover:cursor-pointer transition duration-200 borderCol bg-[#fff]  '
         >
           <div className='flex flex-row gap-[8px]'>

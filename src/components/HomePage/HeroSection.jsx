@@ -71,7 +71,7 @@ const HeroSection = () => {
                       passion. We handle the rest.
                     </span>
                     <Link
-                      to={'/courses'}
+                      to={'/academy/courses'}
                       className='sm:w-[132px] lg:w-[182px] h-[48px] custom-gradient  rounded-[16px] flex items-center justify-center '
                     >
                       <span className='text-[#fff] text-[700] text-[16px] '>

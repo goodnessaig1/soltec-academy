@@ -52,7 +52,7 @@ const BookWorkSpace = () => {
                 </h1>
               </div>
               <Link
-                to={'/book-workspace/bookspace'}
+                to={'/academy/book-workspace/bookspace'}
                 className='book_now text-[#fff] w-[221px] h-[56px] rounded-[16px] flex flex-row gap-[8px] items-center justify-center hover:opacity-[0.8] transition ease-in-out duration-200 hover:cursor-pointer'
               >
                 <h1 className='font-[600] text-[16px] leading-[24px] text-[#fff]'>
@@ -75,7 +75,7 @@ const BookWorkSpace = () => {
                 </h1>
               </div>
               <Link
-                to={'/book-workspace/bookspace'}
+                to={'/academy/book-workspace/bookspace'}
                 className='book_now text-[#fff] w-[221px] h-[56px] rounded-[16px] flex flex-row gap-[8px] items-center justify-center hover:opacity-[0.8] transition ease-in-out duration-200 hover:cursor-pointer'
               >
                 <h1 className='font-[600] text-[16px] leading-[24px] text-[#fff]'>
@@ -98,7 +98,7 @@ const BookWorkSpace = () => {
                 </h1>
               </div>
               <Link
-                to={'/book-workspace/bookspace'}
+                to={'/academy/book-workspace/bookspace'}
                 className='book_now text-[#fff] w-[221px] h-[56px] rounded-[16px] flex flex-row gap-[8px] items-center justify-center hover:opacity-[0.8] transition ease-in-out duration-200 hover:cursor-pointer'
               >
                 <h1 className='font-[600] text-[16px] leading-[24px] text-[#fff]'>

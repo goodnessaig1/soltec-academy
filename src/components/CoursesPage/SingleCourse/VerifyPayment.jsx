@@ -138,7 +138,7 @@ const VerifyPayment = () => {
                             </div>
                           </div>
                           <Link
-                            to={'/courses'}
+                            to={'/academy/courses'}
                             className='bg-mainRed flex justify-center items-center cursor-pointer hover:bg-mainDRed transition duration-200 h-[56px] py-[8px] px-[16px] text-[#fff] text-[16px] rounded-[12px] text-center  font-[600]'
                           >
                             Back to courses

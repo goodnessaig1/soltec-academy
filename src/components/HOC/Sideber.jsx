@@ -6,23 +6,23 @@ const Sideber = ({ toggle, showSidebar }) => {
   const navLinks = [
     {
       name: 'HOME',
-      link: '/',
+      link: '/academy',
     },
     {
       name: 'COURSES',
-      link: '/courses',
+      link: '/academy/courses',
     },
     {
       name: 'BLOG',
-      link: '/blog',
+      link: '/academy/blog',
     },
     {
       name: 'CONTACT US',
-      link: '/contact-us',
+      link: '/academy/contact-us',
     },
     {
       name: 'BOOK WORKSPACE',
-      link: '/book-workspace',
+      link: '/academy/book-workspace',
     },
   ];
   return (
@@ -37,8 +37,9 @@ const Sideber = ({ toggle, showSidebar }) => {
               <NavLink
                 key={index}
                 className={({ isActive }) =>
-                  isActive ? 'nav-link' : 'unselected'
+                  isActive ? 'nav-link text-nowrap' : 'unselected text-nowrap'
                 }
+                end={link.link === '/academy'}
                 to={link.link}
               >
                 <h1>{link.name}</h1>
@@ -46,7 +47,7 @@ const Sideber = ({ toggle, showSidebar }) => {
             ))}
 
             <Link
-              to={'/blog/payment-guide'}
+              to={'/academy/blog/payment-guide'}
               className='w-[159px] h-[48px] hover:bg-[#f1f1f1] flex items-center justify-center sidebarPay  rounded-[12px] p-[10px] text-[14px] text-[#000]'
             >
               <h1 className='text-[14px]'>Payment Guide</h1>

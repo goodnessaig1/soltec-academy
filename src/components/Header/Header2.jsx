@@ -25,11 +25,11 @@ const Header2 = ({ headerCol }) => {
     },
     {
       name: 'BOOK WORKSPACE',
-      link: '/book-workspace',
+      link: '/academy/book-workspace',
     },
     {
       name: 'BLOG',
-      link: '/blog',
+      link: '/academy/blog',
     },
     {
       name: 'ABOUT US',
@@ -78,7 +78,7 @@ const Header2 = ({ headerCol }) => {
             ))}
           </div>
           <Link
-            to={'/blog/payment-guide'}
+            to={'/academy/blog/payment-guide'}
             className='payment_grad hidden lg:flex z-10 bg-[#fff] hover:bg-[#f0f0f0] rounded-[16px] hover:cursor-pointer border border-[1px] border-[#1c1c1c] p-[10px] '
           >
             <span>Payment Guide</span>

@@ -53,14 +53,8 @@ const Footer = () => {
             INFORMATION
           </h1>
           <div className='flex flex-col gap-[12px]'>
-            {/* <Link
-              to={'about-us'}
-              className='font-[400] text-footerCol text-[16px] leading-[32px]'
-            >
-              About Us
-            </Link> */}
             <Link
-              to={'/contact-us'}
+              to={'/academy/contact-us'}
               className='font-[400] text-footerCol text-[16px] leading-[32px]'
             >
               Contact Us
@@ -79,7 +73,7 @@ const Footer = () => {
               {courses &&
                 courses.slice(0, 6).map((course, index) => (
                   <Link
-                    to={`/courses/${course?.id}/${course?.title}`}
+                    to={`/academy/courses/${course?.id}/${course?.title}`}
                     key={index}
                     className='font-[400] text-footerCol text-[16px] leading-[32px]'
                   >

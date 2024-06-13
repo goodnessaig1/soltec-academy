@@ -11,7 +11,7 @@ const WorkSpaceHero = () => {
             Book a <span className='text-yello2'>workspace</span>
           </h1>
           <Link
-            to={'/book-workspace/bookspace'}
+            to={'/academy/book-workspace/bookspace'}
             className='flex mt-[44px] font-[600] text-[16px] leading-[24px] items-center justify-center gap-[8px] rounded-[16px]  h-[56px] w-[221px] bookSp '
           >
             <span className=''>BOOK A SPACE NOW</span>

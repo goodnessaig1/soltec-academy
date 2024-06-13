@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Logo from '../../../assets/logo2.svg';
 
 const Footer = () => {
@@ -33,9 +34,12 @@ const Footer = () => {
             <span className='font-[400] text-footerCol text-[16px] leading-[32px]'>
               About Us
             </span>
-            <span className='font-[400] text-footerCol text-[16px] leading-[32px]'>
+            <Link
+              to={'/contact-us'}
+              className='font-[400] text-footerCol text-[16px] leading-[32px]'
+            >
               Contact Us
-            </span>
+            </Link>
             <span className='font-[400] text-footerCol text-[16px] leading-[32px]'>
               Terms & Conditions
             </span>
