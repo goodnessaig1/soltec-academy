@@ -388,7 +388,7 @@ const Projects = () => {
               </div>
               {/* <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[16px] lgl:gap-[24px] second_bg1 h-[367px]'> */}
               <div className='w-1/3  hover:cursor-pointer transition curation-300 group second_bg1 h-[367px]'>
-                <div className='p-[40px] flex flex-col gap-[16px] bg-[#06041F20] h-full w-full'>
+                <div className='p-[40px] flex flex-col gap-[16px] bg-blue-900 bg-opacity-30 h-full w-full'>
                   <div className='w-full py-[12px] mb-[24px] text-white rounded-[4px]'>
                     <h1 className='text-[24px] text-nowrap font-[600] leading-[26px] lgl:leading-[36px]'>
                       BUILDING AND <br className='lgl:hidden' />
