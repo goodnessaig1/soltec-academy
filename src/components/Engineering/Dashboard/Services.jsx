@@ -22,70 +22,86 @@ const Services = () => {
               </span>
             </div>
           </div>
-          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] second_bg h-[387px] md:h-[367px]'>
-            <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
-              <h1 className='text-[24px] font-[600] leading-[36px]'>
-                BUILDING AND CONSTRUCTION
-              </h1>
+          {/* <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] second_bg h-[387px] md:h-[367px]'> */}
+          <div className='second_bg h-[387px] md:h-[367px]'>
+            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
+              <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
+                <h1 className='text-[24px] font-[600] leading-[36px]'>
+                  BUILDING AND CONSTRUCTION
+                </h1>
+              </div>
+              <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                Includes lab or field testing, analysis and monitoring of
+                structures, and building materials such as foundations, drainage
+                systems, pavements, concrete, soils and reinforcing or
+                structural steel.
+              </span>
             </div>
-            <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
-              Includes lab or field testing, analysis and monitoring of
-              structures, and building materials such as foundations, drainage
-              systems, pavements, concrete, soils and reinforcing or structural
-              steel.
-            </span>
           </div>
-          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] third_bg h-[387px] md:h-[367px]'>
-            <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
-              <h1 className='text-[24px] font-[600] leading-[36px]'>
-                SMART SECURITY
-              </h1>
+          {/* <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] third_bg h-[387px] md:h-[367px]'> */}
+          <div className='third_bg h-[387px] md:h-[367px]'>
+            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
+              <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
+                <h1 className='text-[24px] font-[600] leading-[36px]'>
+                  SMART SECURITY
+                </h1>
+              </div>
+              <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                We provide and install a comprehensive security network that
+                gives you complete protection and control - from anywhere
+              </span>
             </div>
-            <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
-              We provide and install a comprehensive security network that gives
-              you complete protection and control - from anywhere
-            </span>
           </div>
-          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] fourth_bg h-[387px] md:h-[367px]'>
-            <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
-              <h1 className='text-[24px] font-[600] leading-[36px]'>
-                SOFTWARE DEVELOPMENT
-              </h1>
+          {/* <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] fourth_bg h-[387px] md:h-[367px]'> */}
+          <div className='fourth_bg h-[387px] md:h-[367px]'>
+            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
+              <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
+                <h1 className='text-[24px] font-[600] leading-[36px]'>
+                  SOFTWARE DEVELOPMENT
+                </h1>
+              </div>
+              <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                Plan, design, develop, integrate, test, manage and evolve
+                software solutions. offer end-to-end development that covers
+                everything from business analysis to software delivery and
+                support,
+              </span>
             </div>
-            <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
-              Plan, design, develop, integrate, test, manage and evolve software
-              solutions. offer end-to-end development that covers everything
-              from business analysis to software delivery and support,
-            </span>
           </div>
-          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] fifth_bg h-[387px] md:h-[367px]'>
-            <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
-              <h1 className='text-[24px] font-[600] leading-[36px]'>
-                TEACHING COURSES
-              </h1>
+          {/* <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] fifth_bg h-[387px] md:h-[367px]'> */}
+          <div className='fifth_bg h-[387px] md:h-[367px]'>
+            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
+              <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
+                <h1 className='text-[24px] font-[600] leading-[36px]'>
+                  TEACHING COURSES
+                </h1>
+              </div>
+              <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                <ul className='list-disc ml-[20px] '>
+                  <li>Front, Back and Fullstack Web Development</li>
+                  <li>Mobile App Development</li>
+                  <li>Product Design</li>
+                  <li>Blockchain Development</li>
+                  <li>Cybersecurity</li>
+                  <li>Game Development</li>
+                </ul>
+              </span>
             </div>
-            <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
-              <ul className='list-disc ml-[20px] '>
-                <li>Front, Back and Fullstack Web Development</li>
-                <li>Mobile App Development</li>
-                <li>Product Design</li>
-                <li>Blockchain Development</li>
-                <li>Cybersecurity</li>
-                <li>Game Development</li>
-              </ul>
-            </span>
           </div>
-          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] sixth_bg h-[387px] md:h-[367px]'>
-            <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
-              <h1 className='text-[24px] font-[600] leading-[36px]'>
-                ROBOTICS AND AUTOMATION
-              </h1>
+          {/* <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] sixth_bg h-[387px] md:h-[367px]'> */}
+          <div className='sixth_bg h-[387px] md:h-[367px]'>
+            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
+              <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
+                <h1 className='text-[24px] font-[600] leading-[36px]'>
+                  ROBOTICS AND AUTOMATION
+                </h1>
+              </div>
+              <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                All kinds of activities, works and services relating to the
+                business of environmentally sustainable energy sources available
+                across Nigeria
+              </span>
             </div>
-            <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
-              All kinds of activities, works and services relating to the
-              business of environmentally sustainable energy sources available
-              across Nigeria
-            </span>
           </div>
         </div>
       </div>
