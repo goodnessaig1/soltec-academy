@@ -24,7 +24,7 @@ const Services = () => {
           </div>
           {/* <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] second_bg h-[387px] md:h-[367px]'> */}
           <div className='second_bg h-[387px] md:h-[367px]'>
-            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041F7A] h-full w-full'>
+            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
               <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
                 <h1 className='text-[24px] font-[600] leading-[36px]'>
                   BUILDING AND CONSTRUCTION
@@ -40,7 +40,7 @@ const Services = () => {
           </div>
           {/* <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] third_bg h-[387px] md:h-[367px]'> */}
           <div className='third_bg h-[387px] md:h-[367px]'>
-            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041F7A]  h-full w-full'>
+            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
               <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
                 <h1 className='text-[24px] font-[600] leading-[36px]'>
                   SMART SECURITY
@@ -54,7 +54,7 @@ const Services = () => {
           </div>
           {/* <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] fourth_bg h-[387px] md:h-[367px]'> */}
           <div className='fourth_bg h-[387px] md:h-[367px]'>
-            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041F7A] h-full w-full'>
+            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
               <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
                 <h1 className='text-[24px] font-[600] leading-[36px]'>
                   SOFTWARE DEVELOPMENT
@@ -70,7 +70,7 @@ const Services = () => {
           </div>
           {/* <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] fifth_bg h-[387px] md:h-[367px]'> */}
           <div className='fifth_bg h-[387px] md:h-[367px]'>
-            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041F7A] h-full w-full'>
+            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
               <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
                 <h1 className='text-[24px] font-[600] leading-[36px]'>
                   TEACHING COURSES
@@ -90,7 +90,7 @@ const Services = () => {
           </div>
           {/* <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] sixth_bg h-[387px] md:h-[367px]'> */}
           <div className='sixth_bg h-[387px] md:h-[367px]'>
-            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041F7A] h-full w-full'>
+            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
               <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
                 <h1 className='text-[24px] font-[600] leading-[36px]'>
                   ROBOTICS AND AUTOMATION
