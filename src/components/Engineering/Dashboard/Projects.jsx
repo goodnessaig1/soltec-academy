@@ -372,8 +372,7 @@ const Projects = () => {
           <div className='slick-container opacity-[1]'>
             <Slider {...sSettings} className=' opacity-[1]'>
               <div className='w-1/3  hover:cursor-pointer transition curation-300 group first_bg1 h-[367px]'>
-                {/* <div className='sixth_bg h-[387px] md:h-[367px]'> */}
-                <div className='p-[40px] flex flex-col gap-[24px] bg-[#06041F20] h-full w-full'>
+                <div className='p-[40px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
                   <div className='w-full py-[12px] mb-[24px] text-white  rounded-[4px]'>
                     <h1 className='text-[24px] ] text-nowrap   leading-[36px]'>
                       POWER AND ENERGY
@@ -386,7 +385,6 @@ const Projects = () => {
                   </span>
                 </div>
               </div>
-              {/* <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[16px] lgl:gap-[24px] second_bg1 h-[367px]'> */}
               <div className='w-1/3  hover:cursor-pointer transition curation-300 group second_bg1 h-[367px]'>
                 <div className='p-[40px] flex flex-col gap-[16px] bg-[#06041FCC] h-full w-full'>
                   <div className='w-full py-[12px] mb-[24px] text-white rounded-[4px]'>
@@ -403,58 +401,68 @@ const Projects = () => {
                   </span>
                 </div>
               </div>
-              <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] third_bg1 h-[367px]'>
-                <div className='w-full py-[12px] mb-[24px] text-white  rounded-[4px]'>
-                  <h1 className='text-[24px] text-nowrap font-[600] leading-[36px]'>
-                    SMART SECURITY
-                  </h1>
+              <div className='w-1/3  hover:cursor-pointer transition curation-300 group third_bg1 h-[367px]'>
+                <div className='p-[40px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
+                  <div className='w-full py-[12px] mb-[24px] text-white  rounded-[4px]'>
+                    <h1 className='text-[24px] text-nowrap font-[600] leading-[36px]'>
+                      SMART SECURITY
+                    </h1>
+                  </div>
+                  <span className='inter__ opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white'>
+                    We provide and install a comprehensive security network that
+                    gives you complete protection and control - from anywhere
+                  </span>
                 </div>
-                <span className='inter__ opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white'>
-                  We provide and install a comprehensive security network that
-                  gives you complete protection and control - from anywhere
-                </span>
               </div>
-              <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] fourth_bg1 h-[367px]'>
-                <div className='w-full py-[12px] mb-[24px] text-white rounded-[4px]'>
-                  <h1 className='text-[24px] text-nowrap  font-[600] leading-[36px]'>
-                    SOFTWARE DEVELOPMENT
-                  </h1>
+              <div className='w-1/3  hover:cursor-pointer transition curation-300 group fourth_bg1 h-[367px]'>
+                <div className='p-[40px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
+                  <div className='w-full py-[12px] mb-[24px] text-white rounded-[4px]'>
+                    <h1 className='text-[24px] text-nowrap  font-[600] leading-[36px]'>
+                      SOFTWARE DEVELOPMENT
+                    </h1>
+                  </div>
+                  <span className='inter__ opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white '>
+                    Plan, design, develop, integrate, test, manage and evolve
+                    software solutions. offer end-to-end development that covers
+                    everything from business analysis to software delivery and
+                    support,
+                  </span>
                 </div>
-                <span className='inter__ opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white '>
-                  Plan, design, develop, integrate, test, manage and evolve
-                  software solutions. offer end-to-end development that covers
-                  everything from business analysis to software delivery and
-                  support,
-                </span>
               </div>
-              <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] fifth_bg1 h-[367px]'>
-                <div className='w-full py-[12px] mb-[24px]  text-white rounded-[4px]'>
-                  <h1 className='text-[24px] text-nowrap   font-[600] leading-[36px]'>
-                    TEACHING COURSES
-                  </h1>
+              {/* <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] fifth_bg1 h-[367px]'> */}
+              <div className='w-1/3  hover:cursor-pointer transition curation-300 group fifth_bg1 h-[367px]'>
+                <div className='p-[40px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
+                  <div className='w-full py-[12px] mb-[24px]  text-white rounded-[4px]'>
+                    <h1 className='text-[24px] text-nowrap   font-[600] leading-[36px]'>
+                      TEACHING COURSES
+                    </h1>
+                  </div>
+                  <span className='inter__ opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white '>
+                    <ul className='list-disc ml-[20px] '>
+                      <li>Front, Back and Fullstack Web Development</li>
+                      <li>Mobile App Development</li>
+                      <li>Product Design</li>
+                      <li>Blockchain Development</li>
+                      <li>Cybersecurity</li>
+                      <li>Game Development</li>
+                    </ul>
+                  </span>
                 </div>
-                <span className='inter__ opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white '>
-                  <ul className='list-disc ml-[20px] '>
-                    <li>Front, Back and Fullstack Web Development</li>
-                    <li>Mobile App Development</li>
-                    <li>Product Design</li>
-                    <li>Blockchain Development</li>
-                    <li>Cybersecurity</li>
-                    <li>Game Development</li>
-                  </ul>
-                </span>
               </div>
-              <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] sixth_bg1 h-[367px]'>
-                <div className='w-full py-[12px] mb-[24px]  text-white rounded-[4px]'>
-                  <h1 className='text-[24px] text-nowrap  ease-in-out font-[600] leading-[36px]'>
-                    ROBOTICS AND AUTOMATION
-                  </h1>
+              {/* <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-[24px] sixth_bg1 h-[367px]'> */}
+              <div className='w-1/3  hover:cursor-pointer transition curation-300 group sixth_bg1 h-[367px]'>
+                <div className='p-[40px] flex flex-col gap-[24px] bg-[#06041FCC] h-full w-full'>
+                  <div className='w-full py-[12px] mb-[24px]  text-white rounded-[4px]'>
+                    <h1 className='text-[24px] text-nowrap  ease-in-out font-[600] leading-[36px]'>
+                      ROBOTICS AND AUTOMATION
+                    </h1>
+                  </div>
+                  <span className='inter__ opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white'>
+                    All kinds of activities, works and services relating to the
+                    business of environmentally sustainable energy sources
+                    available across Nigeria
+                  </span>
                 </div>
-                <span className='inter__ opacity-[0.8] font-[500] text-[18px] leading-[27px] text-white'>
-                  All kinds of activities, works and services relating to the
-                  business of environmentally sustainable energy sources
-                  available across Nigeria
-                </span>
               </div>
             </Slider>
           </div>
