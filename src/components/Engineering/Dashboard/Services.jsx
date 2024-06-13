@@ -10,7 +10,7 @@ const Services = () => {
         <div className='grid grid-cols-1 mdl:grid-cols-2 lgx:grid-cols-3 w-full'>
           <div
             style={{
-              background: 'rgba(6, 4, 31, 0.8)',
+              backgroundColor: 'rgba(6, 4, 31, 0.8)',
               border: '1px solid rgba(255, 255, 255, 0.5)',
               backgroundImage:
                 "url('https://ik.imagekit.io/nz8zngrxv/amazon-image/first_wCcpA3gw7.jpg?updatedAt=1711347556338')",
