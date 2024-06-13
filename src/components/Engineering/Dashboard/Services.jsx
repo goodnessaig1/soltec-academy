@@ -8,17 +8,19 @@ const Services = () => {
 
       <div className='flex flex-col w-full mt-[44px] lg:mt-[80px]'>
         <div className='grid grid-cols-1 mdl:grid-cols-2 lgx:grid-cols-3 w-full'>
-          <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-[#06041FCC] first_bg h-[387px] md:h-[367px]'>
-            <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
-              <h1 className='text-[24px] font-[600] leading-[36px]'>
-                POWER AND ENERGY
-              </h1>
+          <div className='first_bg h-[387px] md:h-[367px]'>
+            <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] bg-red-500 h-full w-full'>
+              <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
+                <h1 className='text-[24px] font-[600] leading-[36px]'>
+                  POWER AND ENERGY
+                </h1>
+              </div>
+              <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
+                Solar installation and all kinds of activities, works and
+                services relating to the business of environmentally sustainable
+                energy sources available across Nigeria
+              </span>
             </div>
-            <span className='inter__ font-[500] text-[18px] leading-[27px] text-white opacity-[0.8]'>
-              Solar installation and all kinds of activities, works and services
-              relating to the business of environmentally sustainable energy
-              sources available across Nigeria
-            </span>
           </div>
           <div className='p-[24px] py-[42px] mdl:p-[56px] flex flex-col gap-[24px] second_bg h-[387px] md:h-[367px]'>
             <div className='w-full px-[20px] py-[12px] text-white bg-opacityC rounded-[4px]'>
