@@ -63,7 +63,7 @@
 }
 
 .first_bg {
-  background: rgba(6, 4, 31, 0.8);
+  /* background: rgba(6, 4, 31, 0.8); */
   border: 1px solid rgba(255, 255, 255, 0.5);
   background-image: url('https://ik.imagekit.io/nz8zngrxv/amazon-image/first_wCcpA3gw7.jpg?updatedAt=1711347556338');
   background-blend-mode: darken;
