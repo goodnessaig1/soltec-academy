@@ -1,0 +1,37 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+input:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-image: none !important;
+  background-color: transparent !important;
+  color: fieldtext !important;
+}
+
+.outline-none {
+  outline: none !important;
+  outline-offset: 0 !important;
+}
+
+input:focus {
+  outline: none !important;
+}
+:focus-visible {
+  outline: none !important;
+}
+
+.input_:not(:placeholder-shown) {
+  background-color: transparent;
+}
+
+input:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-image: none !important;
+  background-color: transparent !important;
+  color: fieldtext !important;
+}
+
+input:-webkit-autofill {
+  transition-delay: 9999s;
+}
