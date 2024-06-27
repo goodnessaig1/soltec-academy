@@ -13,11 +13,9 @@ import {
 } from './AddCourseInputs';
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import axios from 'axios';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Oval, ProgressBar } from 'react-loader-spinner';
-import { BaseURL } from '../../../Utils/BaseUrl';
 import { toast } from 'react-toastify';
 import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
 

@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import axios from 'axios';
 import { BaseURL } from './BaseUrl';
 import Cookies from 'js-cookie';
 
@@ -54,12 +53,8 @@ export const uploadFile = async (formData, setLoading) => {
 
 export const getAdminDetail = async setUser => {
   try {
-    const response = await axios.get(`${BaseURL}/users/me/`, {
-      headers: {
-        Authorization: `Bearer ${Cookies.get('access_token')}`,
-      },
-    });
-    setUser(response.data);
+    const response = await apiRequest('GET', `/users/me/`, {});
+    setUser(response);
   } catch (error) {
     console.log(error);
   }

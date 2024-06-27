@@ -3,10 +3,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { UploadFile } from '../../../Utils/Assets';
-import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { BaseURL } from '../../../Utils/BaseUrl';
 import { IoMdClose } from 'react-icons/io';
 import { uploadFile } from '../../../Utils/ApiRequest';
 

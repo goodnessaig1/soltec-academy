@@ -6,10 +6,9 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Arrow, Next, Prev } from '../../Utils/Assets';
+import { Arrow, Next, Prev, Unavailable } from '../../Utils/Assets';
 import { apiRequest } from '../../Utils/ApiRequest';
 import { toast } from 'react-toastify';
-import { Unavailable } from '../../../../src/Utils/Assets';
 import { blogDummyData } from '../DummyData/blogData';
 
 const CustomPrevArrow = props => {

@@ -8,8 +8,6 @@ import {
   UploadIcon,
 } from '../../../Utils/Assets';
 import Layout from '../Common/Layout';
-import axios from 'axios';
-import { BaseURL } from '../../../Utils/BaseUrl';
 import { useEffect, useRef, useState } from 'react';
 import { Oval, ProgressBar, RotatingLines } from 'react-loader-spinner';
 import {
@@ -87,11 +85,12 @@ const EditCourse = () => {
   const fetchCourseDetail = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        `${BaseURL}/courses/${id}/fetch_course_details`,
+      const response = await apiRequest(
+        'GET',
+        `/courses/${id}/fetch_course_details`,
       );
       setLoading(false);
-      setCourse(response.data);
+      setCourse(response);
     } catch (error) {
       console.log('error', error);
     }

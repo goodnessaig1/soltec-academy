@@ -25,7 +25,7 @@ const Dashboard = () => {
         `/courses/course_purchases/?year=2024`,
       );
       setLoading(false);
-      setPaymentData(response.data?.results);
+      setPaymentData(response?.results);
     } catch (error) {
       setLoading(false);
       console.log('error', error);
@@ -37,7 +37,7 @@ const Dashboard = () => {
         'GET',
         `/workspaces/workspace_bookings/?year=2024`,
       );
-      setWorkspaceBookings(response.data?.results);
+      setWorkspaceBookings(response.results);
     } catch (error) {
       console.log('error', error);
     }
@@ -54,7 +54,7 @@ const Dashboard = () => {
     setLoading(true);
     try {
       const response = await apiRequest('GET', `/blogs/`);
-      setBlogs(response?.data?.results);
+      setBlogs(response?.results);
     } catch (error) {
       console.log(error);
     }

@@ -22,7 +22,7 @@ const AdminPayment = () => {
         `/courses/course_purchases/?year=2024`,
       );
       setLoading(false);
-      setPaymentData(response.data?.results);
+      setPaymentData(response?.results);
     } catch (error) {
       setLoading(false);
       console.log('error', error);
@@ -37,7 +37,7 @@ const AdminPayment = () => {
         `/courses/payment_stats/?year=2024`,
       );
       setLoadStats(false);
-      setPaymentStats(response.data);
+      setPaymentStats(response);
     } catch (error) {
       setLoadStats(false);
       console.log('error', error);

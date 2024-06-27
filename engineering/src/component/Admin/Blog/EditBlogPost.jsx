@@ -5,8 +5,6 @@ import Layout from '../Common/Layout';
 import BlogTextEditor from './BlogTextEditor';
 import { useEffect, useState } from 'react';
 import { ContentState, EditorState, convertToRaw } from 'draft-js';
-import axios from 'axios';
-import { BaseURL } from '../../../Utils/BaseUrl';
 import Skeleton from 'react-loading-skeleton';
 import { toast } from 'react-toastify';
 import { Oval, ProgressBar } from 'react-loader-spinner';
@@ -20,7 +18,6 @@ import { convertFromHTML } from 'draft-js';
 const EditBlogPost = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  // const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [editorState, setEditorState] = useState(
     EditorState.createWithContent(
       ContentState.createFromText(
@@ -68,15 +65,14 @@ const EditBlogPost = () => {
   const getBlogPost = async () => {
     setPageLoading(true);
     try {
-      const response = await axios.get(`${BaseURL}/blogs/${id}/`);
+      const response = await apiRequest('GET', `/blogs/${id}/`);
       setPageLoading(false);
-      setBlog(response?.data);
+      setBlog(response);
     } catch (error) {
       setPageLoading(false);
       toast.error('An error occured, please try again', {
         position: 'top-left',
       });
-      console.log(error);
     }
   };
 

@@ -2,8 +2,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { DeleteRed, EditIcon, PlusW, SearchGray } from '../../../Utils/Assets';
 import Layout from '../Common/Layout';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { BaseURL } from '../../../Utils/BaseUrl';
 import Skeleton from 'react-loading-skeleton';
 import { apiRequest } from '../../../Utils/ApiRequest';
 import { toast } from 'react-toastify';
@@ -17,17 +15,18 @@ const AdminSponsors = () => {
   const [ids, setIds] = useState([]);
 
   useEffect(() => {
-    GetSponsors();
+    getSponsors();
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   }, []);
-  const GetSponsors = async () => {
+
+  const getSponsors = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${BaseURL}/sponsors/`);
-      setSponsors(response?.data.results);
+      const response = await apiRequest('GET', `/sponsors/`);
+      setSponsors(response.results);
       setLoading(false);
       setLoading(false);
     } catch (error) {

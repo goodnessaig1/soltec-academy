@@ -3,9 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { RotatingLines } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { BaseURL } from '../../../Utils/BaseUrl';
 import Cookies from 'js-cookie';
+import { apiRequest } from '../../../Utils/ApiRequest';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -22,8 +21,8 @@ const SignIn = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     setSubmitting(true);
     try {
-      const response = await axios.post(`${BaseURL}/users/login/`, values);
-      const { token } = response.data;
+      const response = await apiRequest('POST', `/users/login/`, values);
+      const { token } = response;
       Cookies.set('access_token', token.access);
       Cookies.set('refresh_token', token.refresh);
       navigate('/admin/dashboard');

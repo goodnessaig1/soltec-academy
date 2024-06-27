@@ -46,7 +46,7 @@ const EditTestimonial = () => {
   const getTestimonial = async () => {
     try {
       const response = await apiRequest('GET', `/testimonials/${id}/`);
-      setData(response.data);
+      setData(response);
       setPageLoading(false);
     } catch (error) {
       setPageLoading(false);

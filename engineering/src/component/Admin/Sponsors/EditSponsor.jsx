@@ -8,8 +8,6 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from 'react-toastify';
 import { ProgressBar } from 'react-loader-spinner';
 import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
-import axios from 'axios';
-import { BaseURL } from '../../../Utils/BaseUrl';
 
 const EditSponsor = () => {
   const { id } = useParams();
@@ -39,8 +37,8 @@ const EditSponsor = () => {
   const getSponsor = async () => {
     setPageLoading(true);
     try {
-      const response = await axios.get(`${BaseURL}/sponsors/${id}/`);
-      setData(response?.data);
+      const response = await apiRequest('GET', `/sponsors/${id}/`);
+      setData(response);
       setPageLoading(false);
     } catch (error) {
       setPageLoading(false);

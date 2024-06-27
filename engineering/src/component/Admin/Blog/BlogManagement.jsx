@@ -13,6 +13,7 @@ import { Oval } from 'react-loader-spinner';
 import NetworkError from '../../../Utils/NetworkError';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { apiRequest } from '../../../Utils/ApiRequest';
+
 const BlogManagement = () => {
   const navigate = useNavigate();
   const [blogs, setBlogs] = useState(null);
@@ -30,7 +31,7 @@ const BlogManagement = () => {
     try {
       const response = await apiRequest('GET', `/blogs/`);
       setLoading(false);
-      setBlogs(response?.data?.results);
+      setBlogs(response?.results);
     } catch (error) {
       setLoading(false);
       if (error?.code == 'ERR_NETWORK') {

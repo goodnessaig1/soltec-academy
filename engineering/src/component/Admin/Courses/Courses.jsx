@@ -52,7 +52,7 @@ const AdminCourses = () => {
     try {
       const response = await apiRequest('GET', `/courses/all/`);
       setLoading(false);
-      setCourses(response.data);
+      setCourses(response);
     } catch (error) {
       setLoading(false);
       console.log('error', error);

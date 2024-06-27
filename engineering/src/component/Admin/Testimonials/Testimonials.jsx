@@ -25,7 +25,7 @@ const AdminTestimonials = () => {
   const GetTestimonials = async () => {
     try {
       const response = await apiRequest('GET', `/testimonials/`);
-      setData(response.data?.results);
+      setData(response?.results);
       setLoading(false);
     } catch (error) {
       setLoading(false);

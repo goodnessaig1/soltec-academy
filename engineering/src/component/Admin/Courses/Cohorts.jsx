@@ -47,7 +47,7 @@ const Cohorts = () => {
   const getCohorts = async () => {
     try {
       const response = await apiRequest('GET', `/cohort/`);
-      setCohorts(response.data?.results);
+      setCohorts(response.results);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -61,7 +61,7 @@ const Cohorts = () => {
         'GET',
         `/cohort/check_for_current_cohorts/`,
       );
-      setCurrentCohort(response.data);
+      setCurrentCohort(response);
     } catch (error) {
       console.log(error);
     }
