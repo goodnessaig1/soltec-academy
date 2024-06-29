@@ -5,7 +5,7 @@ const CourseInstructors = ({ courseDetail }) => {
   const instructors = courseDetail?.instructors;
   return (
     <div className='w-full'>
-      <div className='flex flex-col px-4 pt-20 pb-[260px] items-center gap-42 justify-center text-white'>
+      <div className='flex flex-col px-4 pt-20 pb-[260px] items-center gap-4 justify-center text-white'>
         <img src={Text} className='sm:w-[216px] lg:w-[323px]' alt='' />
         <div className='flex flex-row gap-3 lg:gap-9'>
           {instructors.map((instructor, index) => (

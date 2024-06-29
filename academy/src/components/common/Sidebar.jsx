@@ -34,7 +34,7 @@ const Sideber = ({ toggle, showSidebar }) => {
           <div className='flex justify-end' onClick={toggle}>
             <img src={Close} alt='' />
           </div>
-          <div className='mt-[100px] flex flex-col gap-42 ml-6'>
+          <div className='mt-[100px] flex flex-col gap-5 smm:gap-6 ml-1'>
             {navLinks.map((link, index) => (
               <NavLink
                 key={index}
@@ -47,7 +47,7 @@ const Sideber = ({ toggle, showSidebar }) => {
               </NavLink>
             ))}
 
-            <div className='flex flex-col gap-4'>
+            <div className='flex flex-col gap-6'>
               <Link
                 to={'/blog/payment-guide'}
                 className='w-[159px] h-12 hover:bg-[#f1f1f1] flex items-center justify-center sidebarPay rounded-xl p-2.5 text-sm text-[#000]'

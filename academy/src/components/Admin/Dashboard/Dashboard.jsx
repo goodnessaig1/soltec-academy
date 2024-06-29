@@ -61,7 +61,7 @@ const Dashboard = () => {
 
   return (
     <Layout text='Dashboard'>
-      <div className='w-full inter_ flex flex-col gap-42 px-9'>
+      <div className='w-full inter_ flex flex-col gap-4 px-9'>
         <div className='flex flex-row w-full gap-3.5'>
           <div className='flex flex-col w-[24%] gap-4 p-6 rounded-[12px] bg-bg3 h-[110px] justify-center '>
             <div className='flex flex-col gap-4'>

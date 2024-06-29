@@ -104,18 +104,21 @@ const GetQuote = () => {
     }
   };
   return (
-    <div className=' w-full h-screen bg-[#F7F7F7]'>
-      <Header />
+    <div className='w-full h-full bg-[#F7F7F7]'>
+      <div className=''>
+        <Header />
+      </div>
+
       {!pageLoading ? (
-        <div className='flex md:min-h-[100vh] lg:min-h-[160vh] flex-col pt-[40px] pb-[100px] items-center justify-center '>
-          <div className='flex flex-col gap-[16px] items-center justify-center'>
-            <h1 className='font-[600] text-[24px] leading-[34px]'>
+        <div className='flex flex-col pt-10 pb-[100px] items-center justify-center '>
+          <div className='flex flex-col gap-4 items-center justify-center'>
+            <h1 className='font-semibold text-[24px] leading-[34px]'>
               GET A QUOTATION
             </h1>
             <div className='yellowLine' />
           </div>
           <div className='flex flex-col justify-center md:flex-row w-full mt-[56px] gap-[64px]'>
-            <div className='w-[429px] hidden lg:flex flex-col gap-[16px] '>
+            <div className='w-[429px] hidden lg:flex flex-col gap-4 '>
               {testimonialsData ? (
                 <Testimonials testimonialsData={testimonialsData} />
               ) : (
@@ -123,9 +126,9 @@ const GetQuote = () => {
               )}
             </div>
 
-            <div className='flex flex-col w-full px-[16px] mdl:px-0 md:w-[418px] gap-[16px]'>
-              <div className='flex items-center justify-center bg-[#DDEAFF] border border-[1px] border-[#0043CE] rounded-[16px] p-[10px]'>
-                <span className='text-center font-[400] text-[14px] mdl:text-[16px] leading-[24px]'>
+            <div className='flex flex-col w-full px-[16px] mdl:px-0 md:w-[418px] gap-4'>
+              <div className='flex items-center justify-center bg-[#DDEAFF] border border-[1px] border-[#0043CE] rounded-[16px] p-2.5'>
+                <span className='text-center font-normal text-[14px] mdl:text-[16px] leading-[24px]'>
                   We aim to provide quotes within three business days
                 </span>
               </div>
@@ -156,10 +159,10 @@ const GetQuote = () => {
                   touched,
                   setFieldValue,
                 }) => (
-                  <Form className='flex flex-col gap-[16px] ' action=''>
-                    <div className='flex flex-col gap-[6px]'>
+                  <Form className='flex flex-col gap-4 ' action=''>
+                    <div className='flex flex-col gap-1.5'>
                       <label
-                        className='font-[600] text-[14px] leading-[21px] text-[#1C1C1C]'
+                        className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
                         htmlFor='description'
                       >
                         Describe your project
@@ -172,7 +175,7 @@ const GetQuote = () => {
                           required
                           onChange={handleChange('description')}
                           onBlur={handleBlur('description')}
-                          className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
+                          className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
                         />
                       </div>
                       <AnimatePresence>
@@ -183,16 +186,16 @@ const GetQuote = () => {
                             exit={{ height: 0 }}
                             transition={{ duration: 0.7, ease: 'easeInOut' }}
                           >
-                            <p className='text-[#2C2C2CB2] text-[#D50000]   text-[10px] font-normal md:text-base'>
+                            <p className='text-[#2C2C2CB2] text-[#D50000] text-[10px] font-normal md:text-base'>
                               {errors.description}
                             </p>
                           </motion.div>
                         )}
                       </AnimatePresence>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-1.5'>
                       <label
-                        className='font-[600] text-[14px] leading-[21px] text-[#1C1C1C]'
+                        className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
                         htmlFor='description'
                       >
                         Project category
@@ -220,7 +223,7 @@ const GetQuote = () => {
                                 setSelectedCategory(category.name),
                                 setOpenCategories(false)
                               )}
-                              className='hover:bg-blue-600 hover:text-[#fff] hover:cursor-pointer transition duration-200 ease-in-out px-[12px] rounded-[8px] py-[6px]'
+                              className='hover:bg-blue-600 hover:text-white hover:cursor-pointer transition duration-200 ease-in-out px-[12px] rounded-[8px] py-[6px]'
                             >
                               {category.name}
                             </div>
@@ -228,9 +231,9 @@ const GetQuote = () => {
                         </div>
                       )}
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-1.5'>
                       <label
-                        className='font-[600] text-[14px] leading-[21px] text-[#1C1C1C]'
+                        className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
                         htmlFor='description'
                       >
                         Upload relevant documents
@@ -239,7 +242,7 @@ const GetQuote = () => {
                         <>
                           {!values.image ? (
                             <div
-                              className='dropZone w-full h-[192px] rounded-[12px] flex flex-col gap-[16px] py-[24px] items-center'
+                              className='dropZone w-full h-[192px] rounded-[12px] flex flex-col gap-4 py-6 items-center'
                               onDrop={e => handleDrop(e, setFieldValue)}
                               onDragOver={handleDragOver}
                             >
@@ -261,16 +264,16 @@ const GetQuote = () => {
                                 src={CloudAdd}
                                 alt=''
                               />
-                              <div className='flex flex-col gap-[8px] items-center justify-center'>
-                                <h1 className='inter__ font-[500] text-[14px]'>
+                              <div className='flex flex-col gap-2 items-center justify-center'>
+                                <h1 className='inter__ font-medium text-[14px]'>
                                   Choose a file or drag & drop it here
                                 </h1>
-                                <span className='font-[500] inter__ text-[12px] leading-[15px] text-fileCol'>
+                                <span className='font-medium inter__ text-[12px] leading-[15px] text-fileCol'>
                                   JPEG, PNG, and PDG formats, up to 50MB
                                 </span>
                               </div>
                               <div
-                                className='course_input w-[104px] h-[40px] flex items-center justify-center font-[500] text-mainBlue rounded-[12px] text-[14px] hover:cursor-pointer hover:opacity-[0.9] transition duration-300 '
+                                className='course_input w-[104px] h-10 flex items-center justify-center font-medium text-mainBlue rounded-[12px] text-[14px] hover:cursor-pointer hover:opacity-[0.9] transition duration-300 '
                                 onClick={() =>
                                   document.getElementById('fileInput').click()
                                 }
@@ -280,10 +283,10 @@ const GetQuote = () => {
                             </div>
                           ) : (
                             <div className='w-full  rounded-[12px]'>
-                              <div className='absolute justify-end mt-[4px] ml-[376px] mdl:ml-[466px] flex items-end'>
+                              <div className='absolute justify-end mt-1 ml-[376px] mdl:ml-[466px] flex items-end'>
                                 <div
                                   onClick={() => setFieldValue('file', '')}
-                                  className='bg-extraGray w-[30px] h-[30px] hover:bg-[#fff] transition duration-300 hover:cursor-pointer flex items-center justify-center rounded-[50px]'
+                                  className='bg-extraGray w-[30px] h-[30px] hover:bg-white transition duration-300 hover:cursor-pointer flex items-center justify-center rounded-[50px]'
                                 >
                                   X
                                 </div>
@@ -302,9 +305,9 @@ const GetQuote = () => {
                         </div>
                       )}
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-1.5'>
                       <label
-                        className='font-[600] text-[14px] leading-[21px] text-[#1C1C1C]'
+                        className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
                         htmlFor='phoneNumber'
                       >
                         Phone number
@@ -316,7 +319,7 @@ const GetQuote = () => {
                           required
                           onChange={handleChange('phoneNumber')}
                           onBlur={handleBlur('phoneNumber')}
-                          className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
+                          className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
                         />
                       </div>
                       <AnimatePresence>
@@ -334,9 +337,9 @@ const GetQuote = () => {
                         )}
                       </AnimatePresence>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-1.5'>
                       <label
-                        className='font-[600] text-[14px] leading-[21px] text-[#1C1C1C]'
+                        className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
                         htmlFor='email'
                       >
                         Email address
@@ -348,7 +351,7 @@ const GetQuote = () => {
                           required
                           onChange={handleChange('email')}
                           onBlur={handleBlur('email')}
-                          className='outline-none pt-[8px] pl-[16px] p-[10px] bg-transparent w-full'
+                          className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
                         />
                       </div>
                       <AnimatePresence>
@@ -370,7 +373,7 @@ const GetQuote = () => {
                     {!addLoading ? (
                       <button
                         type='submit'
-                        className='text-[16px] hover:opacity-[0.9] text-black bg-[#FEC910] rounded-[8px] font-[600] w-full h-[48px] flex items-center justify-center '
+                        className='text-[16px] hover:opacity-[0.9] text-black bg-[#FEC910] rounded-[8px] font-semibold w-full h-[48px] flex items-center justify-center '
                       >
                         GET QUOTE
                       </button>
@@ -422,10 +425,10 @@ const Testimonials = ({ testimonialsData }) => {
       {testimonialsData.map((testimony, index) => (
         <div
           key={index}
-          className='flex flex-col mx-[20px] rounded-[16px] gap-[20px] w-[429px] border backg p-[20px] bg-[#fff] items-center'
+          className='flex flex-col mx-[20px] rounded-[16px] gap-[20px] w-[429px] border backg p-[20px] bg-white items-center'
         >
           <div className='flex flex-col gap-[11px]'>
-            <h1 className='text-[18px] font-[400] z-1 leading-[27px] '>
+            <h1 className='text-[18px] font-normal z-1 leading-[27px] '>
               {testimony?.content}
             </h1>
             <div className='flex flex-row gap-[12px] items-center'>
@@ -436,7 +439,7 @@ const Testimonials = ({ testimonialsData }) => {
                   alt=''
                 />
               </div>
-              <span className='flex flex-col gap-[8px] font-[400] text-[14px] profile_col leading-[16px]'>
+              <span className='flex flex-col gap-2 font-normal text-[14px] profile_col leading-[16px]'>
                 {testimony?.author},<p>{testimony?.profession}</p>
               </span>
             </div>
