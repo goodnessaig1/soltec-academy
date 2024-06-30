@@ -10,7 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { toast } from 'react-toastify';
 import { LoadingFetching } from './LoadingFetching';
-import { apiRequest } from '../../../Utils/ApiRequest';
+import { adminApiRequest, apiRequest } from '../../../Utils/ApiRequest';
 import { CreateCohort, OpenDeletePop, OpenToggleModal } from './CoursesModals';
 
 const AdminCourses = () => {
@@ -64,7 +64,7 @@ const AdminCourses = () => {
   const handleDelete = async () => {
     setDeleteLoading(true);
     try {
-      await apiRequest('DELETE', `/courses/${course.id}/`);
+      await adminApiRequest('DELETE', `/courses/${course.id}/`);
       const filteredCourses = courses.filter(
         item => item.id != `${course?.id}`,
       );
@@ -90,7 +90,7 @@ const AdminCourses = () => {
       return newCourses;
     });
     try {
-      await apiRequest('POST', `/courses/${item.id}/toggle_active/`);
+      await adminApiRequest('POST', `/courses/${item.id}/toggle_active/`);
       toast.success('Successfully deleted', {
         position: 'top-right',
       });

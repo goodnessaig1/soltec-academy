@@ -7,7 +7,11 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from 'react-toastify';
 import { ProgressBar } from 'react-loader-spinner';
-import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
+import {
+  adminApiRequest,
+  apiRequest,
+  uploadFile,
+} from '../../../Utils/ApiRequest';
 
 const EditSponsor = () => {
   const { id } = useParams();
@@ -94,7 +98,7 @@ const EditSponsor = () => {
     };
     if (logo != '') {
       try {
-        await apiRequest('PUT', `/sponsors/${id}/`, values);
+        await adminApiRequest('PUT', `/sponsors/${id}/`, values);
         setAddLoading(false);
         toast.success('Success', {
           position: 'top-right',

@@ -10,7 +10,7 @@ import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { ProgressBar } from 'react-loader-spinner';
-import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
+import { adminApiRequest, uploadFile } from '../../../Utils/ApiRequest';
 
 const AddSponsor = () => {
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ const AddSponsor = () => {
     setAddLoading(true);
     if (values?.logo != '') {
       try {
-        await apiRequest('POST', `/sponsors/`, values);
+        await adminApiRequest('POST', `/sponsors/`, values);
         setAddLoading(false);
         toast.success('Success', {
           position: 'top-right',

@@ -74,7 +74,7 @@ const Courses = ({ courses }) => {
             <div className='w-full items-center justify-center flex'>
               <img src={Text} className='w-[311px] lg:w-[400px] ' alt='' />
             </div>
-            {courses ? (
+            {courses && courses.length >= 1 ? (
               <>
                 <div className='sm:hidden lg:hidden xxl:block'>
                   <div className='ml-[30px] mt-[70px] '>

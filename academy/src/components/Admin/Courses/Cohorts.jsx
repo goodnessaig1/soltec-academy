@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { AddRound, BackArrow } from '../../../Utils/Assets';
 import { isValid, isBefore } from 'date-fns';
 import { LoadingFetching } from './LoadingFetching';
-import { apiRequest } from '../../../Utils/ApiRequest';
+import { adminApiRequest, apiRequest } from '../../../Utils/ApiRequest';
 import Layout from '../Common/Layout';
 import { useNavigate } from 'react-router-dom';
 import { CreateCohort } from './CoursesModals';
@@ -46,7 +46,7 @@ const Cohorts = () => {
 
   const getCohorts = async () => {
     try {
-      const response = await apiRequest('GET', `/cohort/`);
+      const response = await adminApiRequest('GET', `/cohort/`);
       setCohorts(response.results);
       setLoading(false);
     } catch (error) {
@@ -66,6 +66,7 @@ const Cohorts = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getCohorts();
     getCurrentCohort();

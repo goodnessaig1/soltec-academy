@@ -20,6 +20,7 @@ const AdminSidebar = () => {
   const location = useLocation();
   const { user } = useAuth();
   const currentPath = location.pathname;
+
   const navLinks = [
     {
       name: 'Dashboard',
@@ -73,6 +74,7 @@ const AdminSidebar = () => {
       linkTo: '/admin/settings',
     });
   }
+
   return (
     <div className='w-[262px] py-[15px] px-2.5 min-h-[100vh] bg-sideBarBg '>
       <img src={Logo} className='w-[115px] h-[42px] ' alt='' />

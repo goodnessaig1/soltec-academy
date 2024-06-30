@@ -2,6 +2,7 @@
 import Profile from '../../assets/profile.jpg';
 import Media from '../../assets/media-1.svg';
 import Marquee from 'react-fast-marquee';
+import { testimonialDummyData } from '../DummyData/testimonialData';
 
 const Testimonial = ({ testimonialsData }) => {
   return (
@@ -17,41 +18,11 @@ const Testimonial = ({ testimonialsData }) => {
         className='flex flex-row mt-[60px] lg:mt-20 gap-4 '
         direction='left'
       >
-        <div className='flex flex-row '>
-          {testimonialsData &&
-            testimonialsData.map((testimony, index) => (
-              <div
-                key={index}
-                className='flex flex-col mx-5 rounded-[16px] gap-5 w-[429px] border backg p-5 bg-white items-center'
-              >
-                <div className='flex flex-col gap-[11px]'>
-                  <h1 className='text-[18px] font-normal z-10 leading-[27px] '>
-                    {testimony?.content}
-                  </h1>
-                  <div className='flex flex-row gap-[12px] items-center'>
-                    <div>
-                      <img
-                        src={testimony?.author_image}
-                        className='w-[49px] h-[49px] rounded-[50%]'
-                        alt=''
-                      />
-                    </div>
-                    <span className='flex flex-col gap-4 font-normal text-[14px] profile_col leading-[16px]'>
-                      {testimony?.author},<p>{testimony?.profession}</p>
-                    </span>
-                  </div>
-                </div>
-                <div className='absolute items-right mt-[-1px] ml-[300px] '>
-                  <img
-                    src={Media}
-                    className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[51px]   '
-                    alt=''
-                  />
-                </div>
-              </div>
-            ))}
-          <Testimonials />
-        </div>
+        {testimonialsData && testimonialsData.length >= 1 ? (
+          <Testimonies testimonialsData={testimonialsData} />
+        ) : (
+          <Testimonies testimonialsData={testimonialDummyData} />
+        )}
       </Marquee>
     </div>
   );
@@ -59,6 +30,45 @@ const Testimonial = ({ testimonialsData }) => {
 
 export default Testimonial;
 
+const Testimonies = ({ testimonialsData }) => {
+  return (
+    <div className='flex flex-row '>
+      {testimonialsData &&
+        testimonialsData.map((testimony, index) => (
+          <div
+            key={index}
+            className='flex flex-col mx-5 rounded-[16px] gap-5 w-[429px] border backg p-5 bg-white items-center'
+          >
+            <div className='flex flex-col gap-[11px]'>
+              <h1 className='text-[18px] font-normal z-10 leading-[27px] '>
+                {testimony?.content}
+              </h1>
+              <div className='flex flex-row gap-[12px] items-center'>
+                <div>
+                  <img
+                    src={testimony?.author_image}
+                    className='w-[49px] h-[49px] rounded-[50%]'
+                    alt=''
+                  />
+                </div>
+                <span className='flex flex-col gap-4 font-normal text-[14px] profile_col leading-[16px]'>
+                  {testimony?.author},<p>{testimony?.profession}</p>
+                </span>
+              </div>
+            </div>
+            <div className='absolute items-right mt-[-1px] ml-[300px] '>
+              <img
+                src={Media}
+                className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[51px]   '
+                alt=''
+              />
+            </div>
+          </div>
+        ))}
+      <Testimonials />
+    </div>
+  );
+};
 const Testimonials = () => {
   return (
     <div className='flex flex-col mx-5 rounded-[16px] gap-5 w-[429px] border backg p-5 bg-white items-center'>

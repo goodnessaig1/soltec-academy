@@ -94,15 +94,11 @@ const Blog = () => {
               <div className='w-[384px] bg-lightGray h-[60px] rounded-[20px] flex items-center py-[6px] pl-[20px] pr-[6px] justify-between '>
                 <input
                   type='text'
-                  // placeholder='Search...'
                   placeholder='Search a blog post'
                   value={searchTerm}
                   className='text-[16px] text-footerCol  bg-transparent focus:outline-none focus:shadow-outline '
                   onChange={handleInputChange}
                 />
-                {/* <input
-                    type='text'
-                  /> */}
                 <div className='w-[48px] h-[48px] rounded-[16px] flex items-center justify-center bg-[#000]'>
                   <img src={SearchIcon} alt='' />
                 </div>
@@ -155,7 +151,7 @@ const Blog = () => {
               <>
                 {!loading ? (
                   <>
-                    {blogs ? (
+                    {blogs && blogs.length >= 1 ? (
                       <SingleBlog blogs={blogs} />
                     ) : (
                       <SingleBlog blogs={blogDummyData} isDummy={true} />

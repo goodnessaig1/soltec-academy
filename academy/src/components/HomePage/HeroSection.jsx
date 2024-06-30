@@ -7,7 +7,6 @@ import { apiRequest } from '../../Utils/ApiRequest';
 import { testimonialDummyData } from '../DummyData/testimonialData';
 
 const HeroSection = () => {
-  const [loading, setLoading] = useState(true);
   const [testimonial, setTestimonial] = useState(null);
 
   useEffect(() => {
@@ -19,13 +18,10 @@ const HeroSection = () => {
   }, []);
 
   const getTestimonials = async () => {
-    setLoading(true);
     try {
       const response = await apiRequest('GET', `/testimonials/`);
       setTestimonial(response?.results);
-      setLoading(false);
     } catch (error) {
-      setLoading(false);
       console.log('error', error);
     }
   };
@@ -81,7 +77,7 @@ const HeroSection = () => {
       </div>
 
       <div className='relative sm:mt-[800px] md:mt-[940px] sm:mb-[110px] lg:mb-[120px] lg:mt-[640px]'>
-        {testimonial ? (
+        {testimonial && testimonial.length >= 2 ? (
           <Marquee speed={55} className='flex flex-row gap-4' direction='left'>
             {testimonial &&
               testimonial.map((testimony, index) => (

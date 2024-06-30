@@ -11,7 +11,11 @@ import { Oval, ProgressBar } from 'react-loader-spinner';
 import draftToHtml from 'draftjs-to-html';
 import { FaPlus } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
-import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
+import {
+  adminApiRequest,
+  apiRequest,
+  uploadFile,
+} from '../../../Utils/ApiRequest';
 
 import { convertFromHTML } from 'draft-js';
 
@@ -160,7 +164,7 @@ const EditBlogPost = () => {
       if (!isEditorEmpty()) {
         try {
           setAddLoading(true);
-          await apiRequest('PUT', `/blogs/${id}/`, values);
+          await adminApiRequest('PUT', `/blogs/${id}/`, values);
           setAddLoading(false);
           toast.success('Success', {
             position: 'top-right',

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useContext, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { apiRequest } from '../../Utils/ApiRequest';
+import { adminApiRequest } from '../../Utils/ApiRequest';
 
 const AuthContext = React.createContext();
 
@@ -25,7 +25,7 @@ export function AuthProvider(props) {
 
   const getAdminDetail = async () => {
     try {
-      const response = await apiRequest('GET', '/users/me/');
+      const response = await adminApiRequest('GET', '/users/me/');
       setUser(response);
     } catch (error) {
       console.log(error);

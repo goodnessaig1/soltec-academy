@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import { RotatingLines } from 'react-loader-spinner';
 import { AnimatePresence, motion } from 'framer-motion';
 import { validateEmail, validatePhoneNumber } from '../../../Utils/Index';
-// import NetworkError from '../../../Utils/NetworkError';
 import { apiRequest } from '../../../Utils/ApiRequest';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
@@ -20,8 +19,6 @@ const CoursePayment = () => {
   const [numberError, setNumberError] = useState(false);
   const [paymentRequest, setPaymentRequest] = useState(false);
   const [isNumberValid, setIsNumberValid] = useState(true);
-
-  const [networkError, setNetworkError] = useState(false);
 
   const fetchCourseDetail = async () => {
     setLoading(true);
@@ -84,7 +81,6 @@ const CoursePayment = () => {
 
   return (
     <div className='w-full'>
-      {/* {!networkError ? ( */}
       <>
         <Header />
         {!loading ? (
@@ -273,11 +269,6 @@ const CoursePayment = () => {
         )}
         <Footer />
       </>
-      {/* // ) : (
-      //   <div className=''>
-      //     <NetworkError />
-      //   </div>
-      // )} */}
     </div>
   );
 };

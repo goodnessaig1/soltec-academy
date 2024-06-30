@@ -11,7 +11,7 @@ import { Oval, ProgressBar } from 'react-loader-spinner';
 import draftToHtml from 'draftjs-to-html';
 import { FaPlus } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
-import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
+import { adminApiRequest, uploadFile } from '../../../Utils/ApiRequest';
 
 const AddBlog = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -108,7 +108,7 @@ const AddBlog = () => {
       if (!isEditorEmpty()) {
         try {
           setAddLoading(true);
-          await apiRequest('POST', `/blogs/`, values);
+          await adminApiRequest('POST', `/blogs/`, values);
           setAddLoading(false);
           toast.success('Success', {
             position: 'top-right',
@@ -118,7 +118,6 @@ const AddBlog = () => {
           toast.error('An error occured, please try again', {
             position: 'top-left',
           });
-          console.log(error);
         }
       } else {
         alert('Fill the blog content, it cannot be empty');

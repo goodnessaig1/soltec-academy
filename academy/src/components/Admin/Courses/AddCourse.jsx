@@ -22,7 +22,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Oval, ProgressBar } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
-import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
+import { adminApiRequest, uploadFile } from '../../../Utils/ApiRequest';
 
 const AddCourses = () => {
   const navigate = useNavigate();
@@ -212,7 +212,7 @@ const AddCourses = () => {
     if (!overviewHasEmptyHeaderOrBody && fileUrl != null) {
       setOverallLoading(true);
       try {
-        await apiRequest('POST', `/courses/create_course/`, values);
+        await adminApiRequest('POST', `/courses/create_course/`, values);
         setOverallLoading(false);
         clearForm();
         toast.success('Success', {

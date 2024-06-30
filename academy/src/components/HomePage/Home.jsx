@@ -13,7 +13,6 @@ import Footer from '../common/Footer';
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [courses, setCourses] = useState(null);
-  const [networkError, setNetworkError] = useState(false);
   const [currentCohort, setCurrentCohort] = useState('');
 
   const getCourses = async () => {
@@ -24,9 +23,6 @@ const Home = () => {
       setCourses(response);
     } catch (error) {
       console.log('error', error);
-      if (error?.code == 'ERR_NETWORK') {
-        setNetworkError(true);
-      }
     }
   };
   const getCurrentCohort = async () => {
@@ -52,7 +48,6 @@ const Home = () => {
 
   return (
     <div className='w-full'>
-      {/* {!networkError ? ( */}
       <>
         <HeroSection />
         <Catalogue courses={courses} />
@@ -63,11 +58,6 @@ const Home = () => {
         <Faqs />
         <Footer />
       </>
-      {/* ) : (
-        <div className=''>
-          <NetworkError />
-        </div>
-      )} */}
     </div>
   );
 };

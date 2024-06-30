@@ -10,7 +10,7 @@ import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { ProgressBar } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
-import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
+import { adminApiRequest, uploadFile } from '../../../Utils/ApiRequest';
 
 const AddTestimonial = () => {
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ const AddTestimonial = () => {
     setAddLoading(true);
     if (values?.author_image != '') {
       try {
-        await apiRequest('POST', `/testimonials/`, values);
+        await adminApiRequest('POST', `/testimonials/`, values);
         setAddLoading(false);
         toast.success('Success', {
           position: 'top-right',

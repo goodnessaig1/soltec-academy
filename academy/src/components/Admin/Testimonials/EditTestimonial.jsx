@@ -7,7 +7,11 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { ProgressBar, RotatingLines } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
-import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
+import {
+  adminApiRequest,
+  apiRequest,
+  uploadFile,
+} from '../../../Utils/ApiRequest';
 
 const EditTestimonial = () => {
   const { id } = useParams();
@@ -100,7 +104,7 @@ const EditTestimonial = () => {
     };
     if (authorImage != '') {
       try {
-        await apiRequest('PUT', `/testimonials/${id}/`, values);
+        await adminApiRequest('PUT', `/testimonials/${id}/`, values);
         setAddLoading(false);
         toast.success('Success', {
           position: 'top-right',

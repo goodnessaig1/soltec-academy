@@ -64,7 +64,7 @@ const Sponsors = () => {
       <Marquee speed={55}>
         {!loading ? (
           <div className='flex flex-row mt-[140px] justify-center gap-[65px] sm:ml-10 lg:ml-[px] items-center '>
-            {sponsors &&
+            {sponsors && sponsors.length >= 2 ? (
               sponsors.map((sponsor, index) => (
                 <div key={index} className=''>
                   <div className='flex flex-col gap-4'>
@@ -75,7 +75,20 @@ const Sponsors = () => {
                     />
                   </div>
                 </div>
-              ))}
+              ))
+            ) : (
+              <div className='flex flex-row mt-[140px] justify-center gap-46 sm:ml-10 lg:ml-[px] items-center '>
+                {sponsorsPlaceHolder.map((sponsor, index) => (
+                  <div key={index} className=''>
+                    <img
+                      className='w-[198px] h-[78px]'
+                      src={sponsor.logo}
+                      alt=''
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         ) : (
           <div className='flex flex-row mt-[140px] justify-center gap-46 sm:ml-10 lg:ml-[px] items-center '>

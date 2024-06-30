@@ -11,12 +11,12 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Oval } from 'react-loader-spinner';
 import { RiDeleteBin5Line } from 'react-icons/ri';
-import { apiRequest } from '../../../Utils/ApiRequest';
+import { adminApiRequest, apiRequest } from '../../../Utils/ApiRequest';
+
 const BlogManagement = () => {
   const navigate = useNavigate();
   const [blogs, setBlogs] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [networkError, setNetworkError] = useState(false);
   const [markedItems, setMarkedItems] = useState([]);
   const [ids, setIds] = useState([]);
 
@@ -42,7 +42,7 @@ const BlogManagement = () => {
     const updatedData = blogs.filter(item => item.id !== id);
     setBlogs(updatedData);
     try {
-      await apiRequest('DELETE', `/blogs/${id}`);
+      await adminApiRequest('DELETE', `/blogs/${id}`);
       toast.success('Successfully deleted', {
         position: 'top-right',
       });
@@ -59,7 +59,7 @@ const BlogManagement = () => {
       ids,
     };
     try {
-      await apiRequest('DELETE', `/blogs/delete-multiple/`, data);
+      await adminApiRequest('DELETE', `/blogs/delete-multiple/`, data);
       toast.success('Successfully deleted', {
         position: 'top-right',
       });

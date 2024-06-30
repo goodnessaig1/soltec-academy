@@ -16,8 +16,6 @@ const SingleBlogPost = () => {
   const [otherBlogs, setOtherBlogs] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // const { pathname } = useLocation();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
@@ -121,7 +119,7 @@ const SingleBlogPost = () => {
           </div>
         )}
       </>
-      {!loading && (
+      {!loading && otherBlogs.length >= 1 && (
         <div className=''>
           <OtherBlogPost otherBlogs={otherBlogs} />
         </div>

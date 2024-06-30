@@ -17,7 +17,7 @@ const Catalogue = ({ courses }) => {
               pauseOnHover
               className='max-w-[98%] clip-text '
             >
-              {courses ? (
+              {courses && courses.length > 5 ? (
                 <>
                   {courses &&
                     courses.slice(0, 6).map((course, index) => (

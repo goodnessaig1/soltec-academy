@@ -59,7 +59,7 @@ const Blog = () => {
       <div className='flex items-center justify-center '>
         <img src={BlogText} alt='' className='' />
       </div>
-      {blogs ? (
+      {blogs && blogs.length >= 1 ? (
         <Blogs isDummy={false} blogs={blogs} />
       ) : (
         <Blogs isDummy={true} blogs={blogDummyData} />

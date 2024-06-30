@@ -9,7 +9,11 @@ import { useEffect, useState } from 'react';
 import moment from 'moment';
 import { LoadingFetching } from '../Courses/LoadingFetching';
 import { useAuth } from '../../Context/AuthContext';
-import { apiRequest, getAdminDetail } from '../../../Utils/ApiRequest';
+import {
+  adminApiRequest,
+  apiRequest,
+  getAdminDetail,
+} from '../../../Utils/ApiRequest';
 
 const Dashboard = () => {
   const { setUser } = useAuth();
@@ -20,7 +24,7 @@ const Dashboard = () => {
 
   const getCoursesPurchases = async () => {
     try {
-      const response = await apiRequest(
+      const response = await adminApiRequest(
         'GET',
         `/courses/course_purchases/?year=2024`,
       );
@@ -32,7 +36,7 @@ const Dashboard = () => {
   };
   const getWorkspaceBookings = async () => {
     try {
-      const response = await apiRequest(
+      const response = await adminApiRequest(
         'GET',
         `/workspaces/workspace_bookings/?year=2024`,
       );
@@ -383,6 +387,7 @@ const Dashboard = () => {
           </h1>
           <div className='flex flex-row w-ful gap-[28px]'>
             {blogs &&
+              blogs.length >= 2 &&
               blogs.slice(0, 2).map((blog, index) => (
                 <div
                   key={index}

@@ -84,7 +84,7 @@ const ContactUsAcademy = () => {
                 email: Yup.string().required('Required'),
               })}
               onSubmit={(values, { resetForm }) => {
-                handleSubmit(values, resetForm);
+                // handleSubmit(values, resetForm);
               }}
             >
               {({ handleChange, handleBlur, errors, touched }) => (
@@ -146,7 +146,7 @@ const ContactUsAcademy = () => {
                           exit={{ height: 0 }}
                           transition={{ duration: 0.7, ease: 'easeInOut' }}
                         >
-                          <p className='text-[#2C2C2CB2] text-[#D50000]   text-[10px] font-normal md:text-base'>
+                          <p className='text-[#2C2C2CB2] text-[#D50000] text-[10px] font-normal md:text-base'>
                             {errors.email}
                           </p>
                         </motion.div>

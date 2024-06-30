@@ -62,7 +62,7 @@ const BookSpace = () => {
 
   useEffect(() => {
     if (planDate != null) {
-      GetAvailableSeats();
+      getAvailableSeats();
     }
   }, [planDate, selectedDate, days]);
 
@@ -200,7 +200,7 @@ const BookSpace = () => {
   };
 
   useEffect(() => {
-    GetPlans();
+    getPlans();
   }, [selectedDate]);
 
   function formatDate(dateString) {
@@ -209,7 +209,7 @@ const BookSpace = () => {
     setPlanDate(newData);
   }
 
-  const GetAvailableSeats = async () => {
+  const getAvailableSeats = async () => {
     const data = {
       date: planDate,
     };
@@ -225,7 +225,7 @@ const BookSpace = () => {
     }
   };
 
-  const GetPlans = async () => {
+  const getPlans = async () => {
     try {
       const response = await apiRequest('GET', `/workspaces/fetch_plans/`);
       setPlans(response);
@@ -396,7 +396,7 @@ const BookSpace = () => {
                     className='w-full outline-none px-4 bg-transparent focus:outline-none'
                   />
                 </div>
-                <div className='flex flex-col gap-[6px]'>
+                <div className='flex flex-col gap-1.5'>
                   <div className='w-full flex items-center input_cont h-[50px] rounded-2xl '>
                     <input
                       type='text'
@@ -483,7 +483,6 @@ const PaymentModal = ({ data, setOpenModal }) => {
       window.location.href = response.url;
     } catch (error) {
       setLoading(false);
-      console.log(error);
       toast.error('An error occured, please try again', {
         position: 'top-left',
       });

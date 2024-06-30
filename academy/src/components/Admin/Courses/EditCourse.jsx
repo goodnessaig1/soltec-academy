@@ -19,7 +19,11 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { SketchPicker } from 'react-color';
 import Skeleton from 'react-loading-skeleton';
 import Good from '../../../assets/good.png';
-import { apiRequest, uploadFile } from '../../../Utils/ApiRequest';
+import {
+  adminApiRequest,
+  apiRequest,
+  uploadFile,
+} from '../../../Utils/ApiRequest';
 import { toast } from 'react-toastify';
 
 const EditCourse = () => {
@@ -275,7 +279,7 @@ const EditCourse = () => {
     if (!overviewHasEmptyHeaderOrBody && fileUrl != null) {
       setOverallLoading(true);
       try {
-        await apiRequest('POST', `/courses/create_course/`, values);
+        await adminApiRequest('POST', `/courses/create_course/`, values);
         setOverallLoading(false);
         clearForm();
         toast.success('Success', {
@@ -460,7 +464,7 @@ const EditCourse = () => {
                         }}
                         className='rounded-[50%] z_ind h-[37px] hover:cursor-pointer w-[37px] '
                       />
-                      <div className=''>{background?.slice(1)}</div>
+                      {/* <div className=''>{background?.slice(1)}</div> */}
                     </div>
                     {openColor && (
                       <SketchPicker

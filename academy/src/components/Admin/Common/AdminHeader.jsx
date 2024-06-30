@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
 import Cookies from 'js-cookie';
+
 const notifications = [
   {
     notification: 'smart.okolichiaza just made a payment for Product design',
@@ -34,6 +35,7 @@ const AdminHeader = ({ text }) => {
   const [openNotification, setOpenNotification] = useState(false);
   const { user, setUser } = useAuth();
   const navigate = useNavigate();
+
   const handleLogout = async () => {
     setUser(null);
     await Cookies.remove('access_token');

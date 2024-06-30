@@ -69,7 +69,9 @@ const SingleCourse = () => {
             <CourseFaqs courseDetail={courseDetail} />
           </div>
           <CourseEnroll courseDetail={courseDetail} />
-          <OtherCourses otherCourses={otherCourses} />
+          {otherCourses.length >= 1 && (
+            <OtherCourses otherCourses={otherCourses} />
+          )}
           <Footer />
         </div>
       ) : (

@@ -15,6 +15,28 @@ export async function apiRequest(method, path, data, headers = defaultHeaders) {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
+      },
+    };
+    const response = await fetch(url, config);
+    const responseData = await response.json();
+    return responseData;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+export async function adminApiRequest(
+  method,
+  path,
+  data,
+  headers = defaultHeaders,
+) {
+  try {
+    let url = `${BaseURL}${path}`;
+    const config = {
+      method: method,
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${Cookies.get('access_token')}`,
       },
     };
@@ -53,7 +75,7 @@ export const uploadFile = async (formData, setLoading) => {
 
 export const getAdminDetail = async setUser => {
   try {
-    const response = await apiRequest('GET', `/users/me/`, {});
+    const response = await adminApiRequest('GET', `/users/me/`, {});
     setUser(response);
   } catch (error) {
     console.log(error);

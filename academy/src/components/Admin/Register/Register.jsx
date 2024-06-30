@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { RotatingLines } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
-import { apiRequest } from '../../../Utils/ApiRequest';
+import { adminApiRequest } from '../../../Utils/ApiRequest';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Register = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     setSubmitting(true);
     try {
-      await apiRequest('POST', '/users/create-admin/', values);
+      await adminApiRequest('POST', '/users/create-admin/', values);
       navigate('/admin/sign-in');
       setSubmitting(true);
     } catch (error) {

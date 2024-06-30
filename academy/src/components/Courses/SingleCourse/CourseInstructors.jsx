@@ -3,6 +3,7 @@ import Text from '../../../assets/Instructors-text.svg';
 
 const CourseInstructors = ({ courseDetail }) => {
   const instructors = courseDetail?.instructors;
+
   return (
     <div className='w-full'>
       <div className='flex flex-col px-4 pt-20 pb-[260px] items-center gap-4 justify-center text-white'>

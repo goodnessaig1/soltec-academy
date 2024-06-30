@@ -9,10 +9,12 @@ const Footer = () => {
     try {
       const response = await apiRequest('GET', `/courses/fetch_home_courses/`);
       setCourses(response);
+      console.log('response from courses', response);
     } catch (error) {
       console.log('error', error);
     }
   };
+  // console.log(c)
   useEffect(() => {
     getCourses();
   }, []);
@@ -61,10 +63,10 @@ const Footer = () => {
           <h1 className='font-semibold text-[16px] leading-[21px] text-white'>
             COURSES
           </h1>
-          {courses ? (
+          {courses && courses.length > 5 ? (
             <div className='flex flex-col gap-3'>
               {courses &&
-                courses.slice(0, 6).map((course, index) => (
+                courses.slice(0, 5).map((course, index) => (
                   <Link
                     to={`/courses/${course?.id}/${course?.title}`}
                     key={index}
@@ -75,23 +77,7 @@ const Footer = () => {
                 ))}
             </div>
           ) : (
-            <div className='flex flex-col gap-3'>
-              <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
-                Product design
-              </span>
-              <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
-                Blockchain Developments
-              </span>
-              <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
-                Data Analysis
-              </span>
-              <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
-                Cybersecurity
-              </span>
-              <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
-                Frontend Web Development
-              </span>
-            </div>
+            <FooterCourses />
           )}
         </div>
         <div className='flex flex-col gap-4'>
@@ -125,3 +111,25 @@ const Footer = () => {
 };
 
 export default Footer;
+
+const FooterCourses = () => {
+  return (
+    <div className='flex flex-col gap-3'>
+      <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
+        Product design
+      </span>
+      <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
+        Blockchain Developments
+      </span>
+      <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
+        Data Analysis
+      </span>
+      <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
+        Cybersecurity
+      </span>
+      <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
+        Frontend Web Development
+      </span>
+    </div>
+  );
+};

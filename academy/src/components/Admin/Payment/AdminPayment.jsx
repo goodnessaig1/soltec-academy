@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { LoadingFetching } from '../Courses/LoadingFetching';
 import Skeleton from 'react-loading-skeleton';
 import moment from 'moment';
-import { apiRequest } from '../../../Utils/ApiRequest';
+import { adminApiRequest } from '../../../Utils/ApiRequest';
 
 const AdminPayment = () => {
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ const AdminPayment = () => {
   const getCoursesPurchases = async () => {
     setLoading(true);
     try {
-      const response = await apiRequest(
+      const response = await adminApiRequest(
         'GET',
         `/courses/course_purchases/?year=2024`,
       );
@@ -33,7 +33,7 @@ const AdminPayment = () => {
   const getPaymentStats = async () => {
     setLoadStats(true);
     try {
-      const response = await apiRequest(
+      const response = await adminApiRequest(
         'GET',
         `/courses/payment_stats/?year=2024`,
       );

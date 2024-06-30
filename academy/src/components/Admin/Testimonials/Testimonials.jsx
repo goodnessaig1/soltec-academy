@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Skeleton from 'react-loading-skeleton';
 import { RiDeleteBin5Line } from 'react-icons/ri';
-import { apiRequest } from '../../../Utils/ApiRequest';
+import { adminApiRequest, apiRequest } from '../../../Utils/ApiRequest';
 
 const AdminTestimonials = () => {
   const navigate = useNavigate();
@@ -16,13 +16,13 @@ const AdminTestimonials = () => {
   const [ids, setIds] = useState([]);
 
   useEffect(() => {
-    GetTestimonials();
+    getTestimonials();
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   }, []);
-  const GetTestimonials = async () => {
+  const getTestimonials = async () => {
     try {
       const response = await apiRequest('GET', `/testimonials/`);
       setData(response.results);
@@ -39,7 +39,7 @@ const AdminTestimonials = () => {
     const updatedData = data.filter(item => item.id !== id);
     setData(updatedData);
     try {
-      await apiRequest('GET', `/testimonials/${id}`);
+      await adminApiRequest('GET', `/testimonials/${id}`);
       toast.success('Successfully deleted', {
         position: 'top-right',
       });
@@ -57,7 +57,7 @@ const AdminTestimonials = () => {
     };
     try {
       setMarkedItems([]);
-      await apiRequest('DELETE', `/testimonials/delete-multiple/`, data);
+      await adminApiRequest('DELETE', `/testimonials/delete-multiple/`, data);
       toast.success('Successfully deleted', {
         position: 'top-right',
       });
@@ -66,7 +66,6 @@ const AdminTestimonials = () => {
       toast.error('An error occured !', {
         position: 'top-left',
       });
-      console.log('error', error);
     }
   };
 

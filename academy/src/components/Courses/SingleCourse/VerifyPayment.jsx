@@ -59,7 +59,7 @@ const VerifyPayment = () => {
                             Thank You For Your Payment!
                           </h1>
                           <span className='font-normal text-[20px] leading-[26px] text-center'>
-                            Class begins on 24th April 2022
+                            Class begins on 12th July 2022
                           </span>
                           <p className='font-normal text-[14px] leading-[21px] text-center'>
                             We sent an email to{' '}

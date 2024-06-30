@@ -14,7 +14,7 @@ const Courses = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [courses, setCourses] = useState(null);
-  const [networkError, setNetworkError] = useState(false);
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -36,9 +36,11 @@ const Courses = () => {
       console.log('error', error);
     }
   };
+
   useEffect(() => {
     getCourses();
   }, []);
+
   const handleSearch = e => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
@@ -55,14 +57,17 @@ const Courses = () => {
       setSearchResults([]);
     }
   };
+
   const handleKeyPress = e => {
     if (e.key === 'Enter') {
       console.log('Submitted search term:', searchTerm);
     }
   };
+
   const handleOutsideClick = () => {
     setSearchTerm('');
   };
+
   return (
     <div className='w-full'>
       <>
@@ -135,7 +140,7 @@ const Courses = () => {
               <div className='w-full flex items-center justify-center mt-[60px]'>
                 {!loading ? (
                   <>
-                    {courses ? (
+                    {courses && courses.length >= 1 ? (
                       <Course courses={courses} />
                     ) : (
                       <Course courses={courseDummyData} isDummy={true} />
@@ -175,7 +180,7 @@ const Course = ({ courses, isDummy }) => {
   const navigate = useNavigate();
 
   return (
-    <div className='sm:flex sm:flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-4-8 sm:gap-y-[21px] lg:gap-y-8'>
+    <div className='sm:flex sm:flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-8 sm:gap-y-[21px] lg:gap-y-8'>
       {courses &&
         courses.map((course, index) => (
           <div

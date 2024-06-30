@@ -3,7 +3,7 @@ import { DeleteRed, EditIcon, PlusW, SearchGray } from '../../../Utils/Assets';
 import Layout from '../Common/Layout';
 import { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { apiRequest } from '../../../Utils/ApiRequest';
+import { adminApiRequest, apiRequest } from '../../../Utils/ApiRequest';
 import { toast } from 'react-toastify';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 
@@ -38,7 +38,7 @@ const AdminSponsors = () => {
     const updatedData = sponsors.filter(item => item.id !== id);
     setSponsors(updatedData);
     try {
-      await apiRequest('DELETE', `/sponsors/${id}/`);
+      await adminApiRequest('DELETE', `/sponsors/${id}/`);
       toast.success('Successfully deleted', {
         position: 'top-right',
       });
@@ -56,7 +56,7 @@ const AdminSponsors = () => {
     };
     try {
       setMarkedItems([]);
-      await apiRequest('DELETE', `/sponsors/delete-multiple/`, data);
+      await adminApiRequest('DELETE', `/sponsors/delete-multiple/`, data);
       toast.success('Successfully deleted', {
         position: 'top-right',
       });
