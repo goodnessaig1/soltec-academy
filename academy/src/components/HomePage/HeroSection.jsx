@@ -43,7 +43,7 @@ const HeroSection = () => {
                   <img
                     src={Frame3}
                     loading='lazy'
-                    className='min-h-[360px]'
+                    className='min-h-[420px]'
                     alt=''
                   />
                 </div>

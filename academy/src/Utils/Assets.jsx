@@ -5,7 +5,10 @@ import Menu from '../assets/menu.svg';
 import Menu2 from '../assets/menu-1.svg';
 import Close from '../assets/ic_round-close.svg';
 import Frame from '../assets/frame.svg';
-import Frame3 from '../assets/frame3.png';
+// import Frame3 from '../assets/frame3.png';
+const Frame3 =
+  'https://ik.imagekit.io/nz8zngrxv/amazon-image/frame3_filLvFbZP.png?updatedAt=1720063506071';
+// import Frame3 from '../assets/frame3.png';
 import Gradient from '../assets/gradient.svg';
 import Profile from '../assets/profile.jpg';
 import Media from '../assets/media.svg';
