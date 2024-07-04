@@ -34,7 +34,7 @@ const Sideber = ({ toggle, showSidebar }) => {
           <div className='flex justify-end' onClick={toggle}>
             <img src={Close} alt='' />
           </div>
-          <div className='mt-[100px] flex flex-col gap-5 smm:gap-6 ml-1'>
+          <div className='mt-[100px] flex flex-col gap-5 smm:gap-7 ml-1'>
             {navLinks.map((link, index) => (
               <NavLink
                 key={index}
