@@ -42,16 +42,22 @@ const Header = ({ headerCol }) => {
           </div>
           <div className='hidden z-10 lg:flex text-nowrap flex-row lg:gap-4 lgl:gap-9 xxl:gap-46 '>
             <NavLink
-              className={`font-medium hover:cursor-pointer hover:font-bold transition duration-300 ${
-                headerCol ? 'text-white' : 'text-black'
-              }`}
+              className={({ isActive }) =>
+                isActive && headerCol
+                  ? 'text-white nav-lnk font-bold'
+                  : isActive
+                  ? 'nav-lik text-black font-bold'
+                  : !isActive && headerCol
+                  ? 'unselected transition font-medium duration-300 hover:font-bold hover:text-white'
+                  : 'unselected hover:text-black transition duration-300 hover:font-semibold font-medium'
+              }
               to={'/'}
             >
               <h1>HOME</h1>
             </NavLink>
             <RouterLink
               to='/#about-us'
-              className={`font-medium hover:cursor-pointer hover:font-bold transition duration-300 ${
+              className={`font-medium hover:cursor-pointer hover:font-semibold transition duration-300 ${
                 headerCol ? 'text-white' : 'text-black'
               }`}
             >
@@ -59,7 +65,7 @@ const Header = ({ headerCol }) => {
             </RouterLink>
             <RouterLink
               to='/#services'
-              className={`font-medium hover:cursor-pointer hover:font-bold transition duration-300 ${
+              className={`font-medium hover:cursor-pointer hover:font-semibold transition duration-300 ${
                 headerCol ? 'text-white ' : 'text-black'
               }`}
             >
@@ -67,16 +73,22 @@ const Header = ({ headerCol }) => {
             </RouterLink>
             <RouterLink
               to='/#faqs'
-              className={`font-medium hover:cursor-pointer hover:font-bold transition duration-300 ${
+              className={`font-medium hover:cursor-pointer hover:font-semibold transition duration-300 ${
                 headerCol ? 'text-white ' : 'text-black'
               }`}
             >
               FAQS
             </RouterLink>
             <NavLink
-              className={`font-medium hover:cursor-pointer hover:font-bold transition duration-300 ${
-                headerCol ? 'text-white ' : 'text-black'
-              }`}
+              className={({ isActive }) =>
+                isActive && headerCol
+                  ? 'text-white nav-lnk font-bold'
+                  : isActive
+                  ? 'nav-lik text-black font-bold'
+                  : !isActive && headerCol
+                  ? 'unselected transition font-medium duration-300 hover:font-bold hover:text-white'
+                  : 'unselected hover:text-black transition duration-300 hover:font-semibold font-medium'
+              }
               to={'/contact-us'}
             >
               <h1>CONTACT US</h1>

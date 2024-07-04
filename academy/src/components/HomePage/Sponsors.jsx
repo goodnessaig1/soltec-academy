@@ -61,45 +61,19 @@ const Sponsors = () => {
   };
   return (
     <div className='w-full w-full'>
-      <Marquee speed={55}>
+      <div>
         {!loading ? (
-          <div className='flex flex-row mt-[140px] justify-center gap-[65px] sm:ml-10 lg:ml-[px] items-center '>
-            {sponsors && sponsors.length >= 2 ? (
-              sponsors.map((sponsor, index) => (
-                <div key={index} className=''>
-                  <div className='flex flex-col gap-4'>
-                    <img
-                      src={sponsor?.logo}
-                      className='w-[198px] h-[78px]'
-                      alt=''
-                    />
-                  </div>
-                </div>
-              ))
+          <>
+            {sponsors && sponsors.length > 3 ? (
+              <SponsorsLogo logo={sponsors} />
             ) : (
-              <div className='flex flex-row mt-[140px] justify-center gap-46 sm:ml-10 lg:ml-[px] items-center '>
-                {sponsorsPlaceHolder.map((sponsor, index) => (
-                  <div key={index} className=''>
-                    <img
-                      className='w-[198px] h-[78px]'
-                      src={sponsor.logo}
-                      alt=''
-                    />
-                  </div>
-                ))}
-              </div>
+              <SponsorsLogo logo={sponsorsPlaceHolder} />
             )}
-          </div>
+          </>
         ) : (
-          <div className='flex flex-row mt-[140px] justify-center gap-46 sm:ml-10 lg:ml-[px] items-center '>
-            {sponsorsPlaceHolder.map((sponsor, index) => (
-              <div key={index} className=''>
-                <img className='w-[198px] h-[78px]' src={sponsor.logo} alt='' />
-              </div>
-            ))}
-          </div>
+          <SponsorsLogo logo={sponsorsPlaceHolder} />
         )}
-      </Marquee>
+      </div>
       <div className='container_'>
         <div className=' sm:mt-20 lg:mt-[130px] sm:px-4 lg:px-0 sm:ml-0 lg:ml-[66px] lgl:ml-[130px]'>
           <div className=' sm:hidden lg:block'>
@@ -176,3 +150,17 @@ const Sponsors = () => {
 };
 
 export default Sponsors;
+
+const SponsorsLogo = ({ logo }) => {
+  return (
+    <div className='w-full mt-24'>
+      <Marquee className='clip-text ' speed={50}>
+        {logo.map((sponsor, index) => (
+          <div key={index} className='pr-10'>
+            <img className='w-[198px] h-[78px]' src={sponsor.logo} alt='' />
+          </div>
+        ))}
+      </Marquee>
+    </div>
+  );
+};
