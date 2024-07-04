@@ -9,7 +9,6 @@ const Footer = () => {
     try {
       const response = await apiRequest('GET', `/courses/fetch_home_courses/`);
       setCourses(response);
-      console.log('response from courses', response);
     } catch (error) {
       console.log('error', error);
     }

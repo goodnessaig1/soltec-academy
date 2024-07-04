@@ -3,6 +3,9 @@ import Slider from 'react-slick';
 import WorkSpaceImages from './WorkSpaceImages';
 import { AcademyLogo, Next, Prev } from '../../Utils/assets';
 import { AcademyUrl } from '../../Utils/apiRequest';
+import Marquee from 'react-fast-marquee';
+import { Link } from 'react-router-dom';
+import { courseDummyData } from '../DummyData/coursesDummyData';
 
 const courses = [
   {
@@ -101,54 +104,82 @@ const Academy = () => {
           <br className='hidden lg:block' />
           marketable in no time.
         </span>
-        <div className='flex flex-col gap-[22px]'>
-          <div className='slck-contai flex flex-row h-14 rounded-[50px] w-full hidden lg:flex items-center justify-center slider-container'>
-            <Slider
-              {...settings}
-              className='w-[940px] text-nowrap rounded-[50px] px-5 slider-containerr bg-opacityC h-[57px] items-center justify-center flex'
+        <div className='flex flex-col px-2  w-full items-center gap-[22px]'>
+          {/* <div className='slck-contai flex flex-row h-14 rounded-[50px] w-full hidden lg:flex items-center justify-center slider-container'> */}
+          {/* <div className='w-[940px] text-nowrap rounded-[50px] px-5 slider-containerr bg-opacityC h-[57px] items-center justify-center flex'> */}
+
+          <div
+            className='flex w-full lgl:w-[980px] flex-c px-2 mx-2 items-center bg-opacityC rounded-[50px] h-12 items-center'
+            // className='bg-opacityC rounded-[50px] h-14 flex items-center px-2 lg:w-[78%]'
+          >
+            <Marquee
+              speed={36}
+              direction='left'
+              pauseOnHover
+              className='max-w-[98%] clip-text '
             >
-              {courses.map((course, i) => (
-                <div
-                  key={i}
-                  className='text-white slick-item pr-2 font-semibold text-[20px] leading-[24px]'
-                >
-                  {course?.name.length > 12
-                    ? `${course.name.substring(0, 12)}..`
-                    : `${course.name}`}
-                </div>
-              ))}
-            </Slider>
+              {courseDummyData && courseDummyData.length > 5 ? (
+                <>
+                  {courseDummyData &&
+                    courseDummyData.slice(0, 6).map((course, index) => (
+                      <Link
+                        to={`/academy/courses/${course?.id}/${course?.title}`}
+                        key={index}
+                        className='text-white uppercase pr-4 lg:pr-12  xl:pr-[120px] transition text-[24px] duration-200 leading-[24px] font-medium hover:text-mainyellow hover:cursor-pointer'
+                      >
+                        {course?.title}
+                      </Link>
+                    ))}
+                </>
+              ) : (
+                <>
+                  {courseDummyData.map((course, index) => (
+                    <span
+                      key={index}
+                      className='text-white uppercase pr-4 lg:pr-12  xl:pr-[120px] transition text-[24px] duration-200 leading-[24px] font-medium hover:text-mainyellow hover:cursor-pointer'
+                    >
+                      {course?.title}
+                    </span>
+                  ))}
+                </>
+              )}
+            </Marquee>
           </div>
-          <div className='slck-contai flex pl-4 flex-row h-14 rounded-[50px] w-full hidden md:flex lg:hidden items-center justify-center slider-container'>
-            <Slider
-              {...mdSettings}
-              className='md:w-[600px] rounded-[50px] px-5 slider-containerr bg-opacityC h-[57px] items-center justify-center  flex'
+
+          {/* <div className='bg-red-500 lg:bg-opacityC rounded-[50px] h-14 flex items-center px-2 lg:w-[78%]'>
+            <Marquee
+              speed={36}
+              direction='left'
+              pauseOnHover
+              // className='max-w-[98%] clip-text '
             >
-              {courses.map((course, i) => (
-                <div
-                  key={i}
-                  className='text-white slick-item  font-semibold text-[16px] leading-[24px]'
-                >
-                  {course.name}
-                </div>
-              ))}
-            </Slider>
-          </div>
-          <div className='slck-contai flex-row  h-14 rounded-[50px] w-full flex md:hidden items-center justify-center slider-container'>
-            <Slider
-              {...smSettings}
-              className='w-[320px] smm:w-[344px] rounded-[50px] px-5 slider-containerr bg-opacityC h-[50px] items-center justify-between  flex'
-            >
-              {courses.map((course, i) => (
-                <div
-                  key={i}
-                  className='text-white ml-[6px] slick-item  font-semibold text-[16px] leading-[20px]'
-                >
-                  {course.name}
-                </div>
-              ))}
-            </Slider>
-          </div>
+              {courseDummyData && courseDummyData.length > 5 ? (
+                <>
+                  {courseDummyData &&
+                    courseDummyData.slice(0, 6).map((course, index) => (
+                      <Link
+                        to={`/academy/courses/${course?.id}/${course?.title}`}
+                        key={index}
+                        // className='text-white pr-4 lg:pr-12  xl:pr-[120px] transition text-[24px] duration-200 leading-[24px] font-medium hover:text-mainyellow hover:cursor-pointer'
+                      >
+                        {course?.title}
+                      </Link>
+                    ))}
+                </>
+              ) : (
+                <>
+                  {courseDummyData.map((course, index) => (
+                    <span
+                      key={index}
+                      className='text-white pr-4 lg:pr-12  xl:pr-[120px] transition text-[24px] duration-200 leading-[24px] font-medium hover:text-mainyellow hover:cursor-pointer'
+                    >
+                      {course?.title.toUpperCase()}
+                    </span>
+                  ))}
+                </>
+              )}
+            </Marquee>
+          </div> */}
 
           <WorkSpaceImages />
         </div>

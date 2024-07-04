@@ -45,7 +45,10 @@ const HomeDashboard = () => {
     const observer2 = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setBackgroundC('#D2070C');
+          setBackgroundC('#6c5ce7');
+          // setBackgroundC('#6c5ce7');
+          // setBackgroundC('#6c5ce7');
+          // setBackgroundC('#D2070C');
         }
       },
       {

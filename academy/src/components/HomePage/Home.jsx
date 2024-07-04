@@ -31,7 +31,9 @@ const Home = () => {
         'GET',
         `/cohort/check_for_current_cohorts/`,
       );
-      setCurrentCohort(response);
+      if (response && response?.start_date) {
+        setCurrentCohort(response);
+      }
     } catch (error) {
       console.log('error', error);
     }

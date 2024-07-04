@@ -40,7 +40,12 @@ const HeroSection = () => {
             <div className='hero_se'>
               <div className='flex sm:flex-col lg:flex-row w-full justify-between'>
                 <div className='sm:flex lg:hidden w-full flex justify-end'>
-                  <img src={Frame3} alt='' />
+                  <img
+                    src={Frame3}
+                    loading='lazy'
+                    className='min-h-[360px]'
+                    alt=''
+                  />
                 </div>
                 <div className='sm:pl-4 lg:pl-[76px] xl:pl-[120px] flex sm:w-full lg:w-1/2 mdl:items-center  lg:items-start xxl:items-end flex-col gap-7 sm:mt-0 lg:mt-[235px]'>
                   <div className=' flex flex-col gap-7'>
