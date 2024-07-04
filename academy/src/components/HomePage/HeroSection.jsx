@@ -42,8 +42,8 @@ const HeroSection = () => {
                 <div className='sm:flex lg:hidden w-full flex justify-end'>
                   <img
                     src={Frame3}
-                    loading='lazy'
-                    className='min-h-[420px]'
+                    // loading='lazy'
+                    // className='min-h-[420px]'
                     alt=''
                   />
                 </div>
