@@ -1,21 +1,29 @@
 import { Cursor, Frame, Frame3, Gradient } from '../../Utils/Assets';
 import { Link } from 'react-router-dom';
+import Group1 from '../../assets/grpup1.png';
+import Group2 from '../../assets/group2.png';
+import Group3 from '../../assets/group3.png';
+import Group4 from '../../assets/group4.png';
 import Header from '../common/Header';
 import Slider from 'react-slick';
 
 const images = [
   { img: Frame },
   {
-    img: 'https://ik.imagekit.io/nz8zngrxv/amazon-image/Group%2021%20(6)_VrilbkK0p.png?updatedAt=1720179797313',
+    img: Group1,
+    // img: 'https://ik.imagekit.io/nz8zngrxv/amazon-image/Group%2021%20(6)_VrilbkK0p.png?updatedAt=1720179797313',
   },
   {
-    img: 'https://ik.imagekit.io/nz8zngrxv/amazon-image/Group%2021%20(2)_zX1L_UqB3.png?updatedAt=1720170378819',
+    img: Group2,
+    // img: 'https://ik.imagekit.io/nz8zngrxv/amazon-image/Group%2021%20(2)_zX1L_UqB3.png?updatedAt=1720170378819',
   },
   {
-    img: 'https://ik.imagekit.io/nz8zngrxv/amazon-image/Group%2021%20(4)_D5x0Nw45_.png?updatedAt=1720170378713',
+    img: Group3,
+    // img: 'https://ik.imagekit.io/nz8zngrxv/amazon-image/Group%2021%20(4)_D5x0Nw45_.png?updatedAt=1720170378713',
   },
   {
-    img: 'https://ik.imagekit.io/nz8zngrxv/amazon-image/Group%2021%20(3)_SOqmIEenw.png?updatedAt=1720170377531',
+    img: Group4,
+    // img: 'https://ik.imagekit.io/nz8zngrxv/amazon-image/Group%2021%20(3)_SOqmIEenw.png?updatedAt=1720170377531',
   },
 ];
 
