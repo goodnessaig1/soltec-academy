@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Logo } from '../../Utils/assets';
+import { FIcon, IGIcon, IIcon, Logo, WIcon, XIcon } from '../../Utils/assets';
 
 const Footer = () => {
   return (
@@ -13,7 +13,7 @@ const Footer = () => {
           <span className='sm:block lg:hidden font-normal text-footerCol text-[16px] leading-[24px]'>
             Soltec Engineering
           </span>
-          <div className='flex flex-col gap-4.5'>
+          <div className='flex flex-col gap-4'>
             <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
               Phone: +2348039814257
             </span>
@@ -24,6 +24,13 @@ const Footer = () => {
               Address: #27 Billy Okoye Boulevard, <br />
               Agu-Awka
             </span>
+            <div className='flex flex-row items-center gap-4'>
+              <img src={WIcon} alt='' />
+              <img src={IGIcon} alt='' />
+              <img src={FIcon} alt='' />
+              <img src={IIcon} alt='' />
+              <img src={XIcon} alt='' />
+            </div>
           </div>
         </div>
         <div className='flex flex-col gap-4'>

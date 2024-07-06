@@ -8,11 +8,12 @@ import { format } from 'date-fns';
 import { apiRequest } from '../../Utils/ApiRequest';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
+import { useAuth } from '../Context/AuthContext';
 
 const SingleBlogPost = () => {
   const { id } = useParams();
+  const { blogs } = useAuth();
   const [blogDetail, setBlogDetail] = useState(null);
-  const [blogs, setBlogs] = useState(null);
   const [otherBlogs, setOtherBlogs] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -21,7 +22,6 @@ const SingleBlogPost = () => {
   }, [id]);
 
   useEffect(() => {
-    getBlogs();
     getBlogPost();
   }, [id || blogDetail !== null]);
 
@@ -40,15 +40,6 @@ const SingleBlogPost = () => {
     }
   };
 
-  const getBlogs = async () => {
-    try {
-      const response = await apiRequest('GET', `/blogs/`);
-      setBlogs(response.results);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
     if (blogs && blogDetail) {
       const filteredBlogs = blogs.filter(
@@ -63,7 +54,7 @@ const SingleBlogPost = () => {
       <>
         <Header headerCol={false} />
         {!loading ? (
-          <div className='flex fontTyp flex-col mt-[44px] lg:mt-[60px] px-[16px] lg:px-[120px] items-center'>
+          <div className='flex fontTyp flex-col mt-[44px] lg:mt-[60px] px-[16px] mb-10 lg:mb-20 lg:px-[120px] items-center'>
             <div className='lg:w-[708px]'>
               <div className='flex flex-col gap-[8px]'>
                 <h1 className='font-[900] w-[90%] text-[24px] lg:text-[32px] leading-[30px] lg:leading-[38px] '>
@@ -119,7 +110,7 @@ const SingleBlogPost = () => {
           </div>
         )}
       </>
-      {!loading && otherBlogs.length >= 1 && (
+      {!loading && otherBlogs && otherBlogs.length >= 1 && (
         <div className=''>
           <OtherBlogPost otherBlogs={otherBlogs} />
         </div>

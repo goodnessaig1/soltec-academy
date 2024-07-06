@@ -388,7 +388,7 @@ const AddCourses = () => {
 
                   <div
                     onClick={() => setOpenColor(true)}
-                    className='flex flex-row z-3 course_input w-[121px] cursor-pointer items-center gap-4.5 px-[6px] rounded-[50px] h-[50px] '
+                    className='flex flex-row z-3 course_input w-[121px] cursor-pointer items-center gap-4 px-[6px] rounded-[50px] h-[50px] '
                   >
                     <div
                       style={{
@@ -497,6 +497,7 @@ const AddCourses = () => {
                       <input
                         name='video'
                         type='file'
+                        accept='.mp4, video/mp4'
                         ref={fileInputRef}
                         onChange={handleFileChange}
                         className='w-full hidden outline-none pt-[8px] pl-4 p-2.5 bg-transparent w-full'
@@ -659,7 +660,7 @@ const AddCourses = () => {
                     Gradient background for final CTA
                   </label>
 
-                  <div className='flex flex-row course_input w-[172px] cursor-pointer items-center gap-4.5 px-[6px] rounded-[50px] h-[50px] '>
+                  <div className='flex flex-row course_input w-[172px] cursor-pointer items-center gap-4 px-[6px] rounded-[50px] h-[50px] '>
                     <img src={CircleGradient} alt='' />
                     <div className='text-[14px]'>Linear Gradient</div>
                   </div>

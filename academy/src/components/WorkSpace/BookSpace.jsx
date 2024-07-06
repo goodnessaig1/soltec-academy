@@ -504,7 +504,7 @@ const PaymentModal = ({ data, setOpenModal }) => {
           }}
           className='bg-bg3 z_ind flex flex-col w-[471px] h-[483px] rounded-[24px] p-8'
         >
-          <div className=' h-full rounded-[24px] flex flex-col items-center justify-center gap-44 '>
+          <div className=' h-full rounded-[24px] flex flex-col items-center justify-center gap-10 '>
             <div className='flex flex-col gap-4'>
               <h1 className='text-center text-[20px] font-semibold leading-[26px] '>
                 {data?.days?.toUpperCase()} BOOKING

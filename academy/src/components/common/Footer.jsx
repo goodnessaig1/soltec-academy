@@ -1,22 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { apiRequest } from '../../Utils/ApiRequest';
-import { LogoFooter } from '../../Utils/Assets';
+import {
+  FIcon,
+  IGIcon,
+  IIcon,
+  LogoFooter,
+  WIcon,
+  XIcon,
+} from '../../Utils/Assets';
+import { useAuth } from '../Context/AuthContext';
 
 const Footer = () => {
-  const [courses, setCourses] = useState(null);
-  const getCourses = async () => {
-    try {
-      const response = await apiRequest('GET', `/courses/fetch_home_courses/`);
-      setCourses(response);
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
-  // console.log(c)
-  useEffect(() => {
-    getCourses();
-  }, []);
+  const { courses } = useAuth();
 
   return (
     <div className='footer-bg sm:px-4 lg:px-[120px] py-[130px] sm:pt-[120px] lg:pt-[140px] '>
@@ -29,7 +25,7 @@ const Footer = () => {
           <span className='sm:block lg:hidden font-normal text-footerCol text-[16px] leading-[24px]'>
             Soltec Academy
           </span>
-          <div className='flex flex-col gap-4.5'>
+          <div className='flex flex-col gap-4'>
             <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
               Phone: +2348039814257
             </span>
@@ -40,6 +36,13 @@ const Footer = () => {
               Address: #27 Billy Okoye Boulevard, <br />
               Agu-Awka
             </span>
+            <div className='flex flex-row items-center gap-4'>
+              <img src={WIcon} alt='' />
+              <img src={IGIcon} alt='' />
+              <img src={FIcon} alt='' />
+              <img src={IIcon} alt='' />
+              <img src={XIcon} alt='' />
+            </div>
           </div>
         </div>
         <div className='flex flex-col gap-4'>

@@ -90,14 +90,14 @@ const Projects = () => {
 
   return (
     <div className=' w-full flex flex-col pt-[100px] pb-[130px] w-full'>
-      <div className='flex flex-col items-center justify-center w-full gap-[62px]'>
+      <div className='flex flex-col items-center justify-center w-full gap-16'>
         <div className='flex flex-col gap-3 items-center justify-center'>
-          <h1 className='text-black font-semibold text-[24px] leading-[34px]'>
+          <h1 className='text-white font-semibold text-[24px] leading-[34px]'>
             OUR PROJECTS
           </h1>
-          <div className='whiteLine bg-black' />
+          <div className='whiteLine bg-white' />
         </div>
-        <span className='text-[18px] font-medium leading-[26px] text-center text-black'>
+        <span className='text-[18px] font-medium leading-[26px] text-center text-white'>
           Some awesome projects we’ve worked on with delighted and satisfied
           customers. Reel showing what we’re capable of. Work <br />
           with us today and join our ever growing list of satisfied customers

@@ -33,7 +33,7 @@ const ContactUsAcademy = () => {
   return (
     <div className='min-h-screen w-full bg-[#F7F7F7]'>
       <Header />
-      <div className='flex flex-col pt-10 md:pt-3 px-4 pb-14 items-center justify-center'>
+      <div className='flex flex-col pt-5 md:pt-3 px-4 pb-14 items-center justify-center'>
         <div className='flex flex-col gap-4 items-center justify-center'>
           <h1 className='font-semibold text-[24px] leading-[34px]'>
             CONTACT US
@@ -41,22 +41,22 @@ const ContactUsAcademy = () => {
           <div className='yellowLine' />
         </div>
 
-        <div className='contact_uss px-[24px] py-8 md:p-8 mt-[60px] md:mt-10 w-full md:w-[600px] lg:w-[786px] rounded-[6px] flex flex-col lg:flex-row gap-[64px]'>
+        <div className='contact_uss px-[24px] py-8 md:p-8 mt-9 md:mt-10 w-full md:w-[600px] lg:w-[786px] rounded-[6px] flex flex-col lg:flex-row gap-[64px]'>
           <div className='w-[240px] flex flex-col gap-8'>
             <img src={Logo} alt='' className='w-[156px] h-12' />
             <div className='flex flex-col gap-[15px]'>
-              <div className='flex flex-row w-full gap-4.5 text-[16px] font-normal leading-[20px]  '>
+              <div className='flex flex-row w-full gap-4 text-[16px] font-normal leading-[20px]  '>
                 <div className='w-1/2'>Phone:</div>
                 <div className='w-1/2'>+2348039814257</div>
               </div>
-              <div className='flex flex-row w-full gap-4.5 text-[16px] font-normal leading-[20px]  '>
+              <div className='flex flex-row w-full gap-4 text-[16px] font-normal leading-[20px]  '>
                 <div className='w-1/2'>Address:</div>
                 <div className='w-1/2'>
                   #27 Billy Okoye Boulevard, <br />
                   Agu-Awka
                 </div>
               </div>
-              <div className='flex flex-row w-full gap-4.5 text-[16px] font-normal leading-[20px]  '>
+              <div className='flex flex-row w-full gap-4 text-[16px] font-normal leading-[20px]  '>
                 <div className='w-1/2'>Email:</div>
                 <div className='w-1/2'>info@solteceng.com</div>
               </div>

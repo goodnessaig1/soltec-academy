@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import OtherBlogPost from './OtherBlogPosts';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { PaymentGuide1 } from '../../Utils/Assets';
-import { apiRequest } from '../../Utils/ApiRequest';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
+import { useAuth } from '../Context/AuthContext';
 
 const PaymentGuide = () => {
-  const [blogs, setBlogs] = useState(null);
+  const { blogs } = useAuth();
 
   useEffect(() => {
     window.scrollTo({
@@ -15,19 +15,6 @@ const PaymentGuide = () => {
       behavior: 'smooth',
     });
   }, []);
-
-  useEffect(() => {
-    getBlogs();
-  }, []);
-
-  const getBlogs = async () => {
-    try {
-      const response = await apiRequest('GET', `/blogs/`);
-      setBlogs(response.results);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className='w-full'>

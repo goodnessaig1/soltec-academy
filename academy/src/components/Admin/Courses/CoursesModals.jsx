@@ -4,7 +4,7 @@ import { Oval, ProgressBar } from 'react-loader-spinner';
 import { startOfMonth } from 'date-fns';
 import { Calendar } from '../../../Utils/Assets';
 import DatePicker from 'react-datepicker';
-import { apiRequest } from '../../../Utils/ApiRequest';
+import { adminApiRequest, apiRequest } from '../../../Utils/ApiRequest';
 import { toast } from 'react-toastify';
 import { useRef, useState } from 'react';
 
@@ -183,7 +183,7 @@ export const CreateCohort = ({
           start_date: startDate?.toISOString(),
           end_date: endDate?.toISOString(),
         };
-        await apiRequest('POST', `/cohort/`, data);
+        await adminApiRequest('POST', `/cohort/`, data);
         setLoading(false);
         toast.success('Success', {
           position: 'top-right',
@@ -225,7 +225,7 @@ export const CreateCohort = ({
               className='w-full flex flex-col gap-[22px]'
               onSubmit={e => e.preventDefault()}
             >
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-4'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor='start_date'
@@ -253,7 +253,7 @@ export const CreateCohort = ({
                   </div>
                 )}
               </div>
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-4'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor='start_date'

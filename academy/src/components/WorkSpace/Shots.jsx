@@ -3,7 +3,7 @@ import { Shorts1, Shorts2, Shorts3, Shorts4 } from '../../Utils/Assets';
 const Shots = () => {
   return (
     <div className='bg-extraGray py-[100px] md:py-[130px] px-4 md:px-[70px] w-full'>
-      <div className='w-full flex flex-col gap-40 items-center justify-center'>
+      <div className='w-full flex flex-col gap-20 items-center justify-center'>
         <div className='flex flex-col gap-4 items-center justify-center'>
           <h1 className='font-bold text-[32px] leading-[38px]'>SHOTS</h1>
           <div className='redLine' />

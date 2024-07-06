@@ -11,14 +11,17 @@ import CourseInstructors from './CourseInstructors';
 import CourseFaqs from './CourseFaq';
 import CourseEnroll from './CourseEnroll';
 import OtherCourses from './OtherCourses';
+import NetworkError from '../../../Utils/NetworkError';
 import Footer from '../../common/Footer';
+import { useAuth } from '../../Context/AuthContext';
 
 const SingleCourse = () => {
   const { id } = useParams();
+  const { courses } = useAuth();
   const [loading, setLoading] = useState(true);
   const [courseDetail, setCourseDetail] = useState(null);
-  const [courses, setCourses] = useState(null);
   const [otherCourses, setOtherCourses] = useState(null);
+  const [networkError, setNetworkError] = useState(false);
 
   const fetchCourseDetail = async () => {
     setLoading(true);
@@ -30,21 +33,12 @@ const SingleCourse = () => {
       setLoading(false);
       setCourseDetail(response);
     } catch (error) {
-      console.log('error', error);
-    }
-  };
-
-  const getCourses = async () => {
-    try {
-      const response = await apiRequest('GET', `/courses/fetch_home_courses/`);
-      setCourses(response);
-    } catch (error) {
-      console.log('error', error);
+      setLoading(false);
+      setNetworkError(true);
     }
   };
 
   useEffect(() => {
-    getCourses();
     fetchCourseDetail();
   }, [id]);
 
@@ -59,34 +53,42 @@ const SingleCourse = () => {
 
   return (
     <div>
-      {!loading ? (
-        <div className=''>
-          <div className='mainpBg flex flex-col'>
-            <CourseHero courseDetail={courseDetail} />
-            <CourseOverviewVideo courseDetail={courseDetail} />
-            <CourseOverview courseDetail={courseDetail} />
-            <CourseInstructors courseDetail={courseDetail} />
-            <CourseFaqs courseDetail={courseDetail} />
-          </div>
-          <CourseEnroll courseDetail={courseDetail} />
-          {otherCourses.length >= 1 && (
-            <OtherCourses otherCourses={otherCourses} />
+      {!networkError ? (
+        <>
+          {!loading ? (
+            <div className=''>
+              <div className='mainpBg flex flex-col'>
+                <CourseHero courseDetail={courseDetail} />
+                <CourseOverviewVideo courseDetail={courseDetail} />
+                <CourseOverview courseDetail={courseDetail} />
+                <CourseInstructors courseDetail={courseDetail} />
+                <CourseFaqs courseDetail={courseDetail} />
+              </div>
+              <CourseEnroll courseDetail={courseDetail} />
+              {otherCourses && otherCourses.length > 0 && (
+                <OtherCourses otherCourses={otherCourses} />
+              )}
+              <Footer />
+            </div>
+          ) : (
+            <div className='w-full h-[100vh] flex items-center justify-center'>
+              <RotatingLines
+                visible={true}
+                height='40'
+                width='40'
+                strokeColor='gray'
+                strokeWidth='3'
+                animationDuration='0.75'
+                ariaLabel='rotating-lines-loading'
+                wrapperStyle={{}}
+                wrapperClass=''
+              />
+            </div>
           )}
-          <Footer />
-        </div>
+        </>
       ) : (
-        <div className='w-full h-[100vh] flex items-center justify-center'>
-          <RotatingLines
-            visible={true}
-            height='40'
-            width='40'
-            strokeColor='gray'
-            strokeWidth='3'
-            animationDuration='0.75'
-            ariaLabel='rotating-lines-loading'
-            wrapperStyle={{}}
-            wrapperClass=''
-          />
+        <div>
+          <NetworkError />
         </div>
       )}
     </div>

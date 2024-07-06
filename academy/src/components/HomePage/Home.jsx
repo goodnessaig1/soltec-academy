@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from 'react';
-import { apiRequest } from '../../Utils/ApiRequest';
+import { useEffect } from 'react';
 import HeroSection from './HeroSection';
 import Catalogue from './Catalogue';
 import Sponsors from './Sponsors';
@@ -9,39 +8,13 @@ import Cohort from './Cohort';
 import Blog from './Blog';
 import Faqs from './Faqs';
 import Footer from '../common/Footer';
+import Testimonial from './Testimonial';
+import { useAuth } from '../Context/AuthContext';
 
 const Home = () => {
-  const [loading, setLoading] = useState(true);
-  const [courses, setCourses] = useState(null);
-  const [currentCohort, setCurrentCohort] = useState('');
-
-  const getCourses = async () => {
-    setLoading(true);
-    try {
-      const response = await apiRequest('GET', `/courses/fetch_home_courses/`);
-      setLoading(false);
-      setCourses(response);
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
-  const getCurrentCohort = async () => {
-    try {
-      const response = await apiRequest(
-        'GET',
-        `/cohort/check_for_current_cohorts/`,
-      );
-      if (response && response?.start_date) {
-        setCurrentCohort(response);
-      }
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
+  const { courses, currentCohort } = useAuth();
 
   useEffect(() => {
-    getCourses();
-    getCurrentCohort();
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -54,9 +27,10 @@ const Home = () => {
         <HeroSection />
         <Catalogue courses={courses} />
         <Sponsors />
-        <Courses courses={courses} loading={loading} />
+        <Courses />
         <Cohort startDate={currentCohort?.start_date} />
         <Blog />
+        <Testimonial />
         <Faqs />
         <Footer />
       </>

@@ -19,7 +19,7 @@ const Faqs = () => {
         {faqsData.map((faq, index) => (
           <div
             key={index}
-            className='flex flex-row items-center gap-4.5 justify-between rounded-[24px] sm:p-4 lg:p-6 faqs '
+            className='flex flex-row items-center gap-4 justify-between rounded-[24px] sm:p-4 lg:p-6 faqs '
           >
             <div className='flex flex-col w-full sm:gap-3.5 lg:gap-5'>
               <div className='flex flex-row w-full justify-between'>

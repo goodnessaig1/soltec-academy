@@ -27,8 +27,18 @@ import Instagram from '../assets/instagram-c.svg';
 import Linkedin from '../assets/linkedin-c.svg';
 import Twitter from '../assets/twitter-c.svg';
 import WhatsappC from '../assets/whatsapp-c.svg';
+import IIcon from '../assets/i-icon.png';
+import FIcon from '../assets/f-icon.png';
+import IGIcon from '../assets/ig-icon.png';
+import WIcon from '../assets/w-icon.png';
+import XIcon from '../assets/x-icon.png';
 
 export {
+  XIcon,
+  IIcon,
+  FIcon,
+  IGIcon,
+  WIcon,
   Facebook,
   Instagram,
   Linkedin,

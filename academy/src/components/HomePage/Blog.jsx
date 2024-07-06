@@ -5,11 +5,9 @@ import BlogText from '../../assets/Blog.svg';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { Arrow, Next, Prev, Unavailable } from '../../Utils/Assets';
-import { apiRequest } from '../../Utils/ApiRequest';
-import { toast } from 'react-toastify';
 import { blogDummyData } from '../DummyData/blogData';
+import { useAuth } from '../Context/AuthContext';
 
 const CustomPrevArrow = props => {
   return (
@@ -37,22 +35,7 @@ const CustomNextArrow = props => {
   );
 };
 const Blog = () => {
-  const [blogs, setBlogs] = useState(null);
-
-  useEffect(() => {
-    getBlogs();
-  }, []);
-
-  const getBlogs = async () => {
-    try {
-      const response = await apiRequest('GET', `/blogs/`);
-      setBlogs(response?.results);
-    } catch (error) {
-      toast.error('An error occured, please try again', {
-        position: 'top-left',
-      });
-    }
-  };
+  const { blogs } = useAuth();
 
   return (
     <div className='flex flex-col mt-[120px] sm:px-4 pb-20'>

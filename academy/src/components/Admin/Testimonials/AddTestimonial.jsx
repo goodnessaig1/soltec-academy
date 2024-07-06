@@ -118,7 +118,7 @@ const AddTestimonial = () => {
               setFieldValue,
             }) => (
               <Form className='flex flex-col gap-[22px] w-full'>
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-4'>
                   <label
                     className='font-semibold text-[14px] leading-[21px]'
                     htmlFor='author'
@@ -150,7 +150,7 @@ const AddTestimonial = () => {
                     )}
                   </AnimatePresence>
                 </div>
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-4'>
                   <label
                     className='font-semibold text-[14px] leading-[21px]'
                     htmlFor='title'
@@ -182,7 +182,7 @@ const AddTestimonial = () => {
                     )}
                   </AnimatePresence>
                 </div>
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-4'>
                   <label
                     className='font-semibold text-[14px] leading-[21px]'
                     htmlFor='content'
@@ -215,7 +215,7 @@ const AddTestimonial = () => {
                   </AnimatePresence>
                 </div>
 
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-4'>
                   <label
                     className='font-semibold text-[14px] leading-[21px]'
                     htmlFor=''

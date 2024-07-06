@@ -18,8 +18,11 @@ export async function apiRequest(method, path, data, headers = defaultHeaders) {
       },
     };
     const response = await fetch(url, config);
-    const responseData = await response.json();
-    return responseData;
+    if (response.ok) {
+      const responseData = await response.json();
+
+      return responseData;
+    }
   } catch (error) {
     throw new Error(error);
   }
@@ -75,7 +78,7 @@ export const uploadFile = async (formData, setLoading) => {
 
 export const getAdminDetail = async setUser => {
   try {
-    const response = await adminApiRequest('GET', `/users/me/`, {});
+    const response = await adminApiRequest('GET', `/users/me/`);
     setUser(response);
   } catch (error) {
     console.log(error);

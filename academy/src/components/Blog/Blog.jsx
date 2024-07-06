@@ -7,44 +7,24 @@ import {
   Unavailable,
 } from '.././../Utils/Assets';
 import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 import Skeleton from 'react-loading-skeleton';
 import { apiRequest } from '../../Utils/ApiRequest';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import { blogDummyData } from '../DummyData/blogData';
+import { useAuth } from '../Context/AuthContext';
 
 const Blog = () => {
   const navigate = useNavigate();
-  const [blogs, setBlogs] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [searchLoading, setSearchLoading] = useState(false);
+  const { blogs, blogsLoading } = useAuth();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  useEffect(() => {
-    getBlogs();
-  }, []);
-
-  const getBlogs = async () => {
-    setLoading(true);
-    try {
-      const response = await apiRequest('GET', `/blogs/`);
-      setLoading(false);
-      setBlogs(response.results);
-    } catch (error) {
-      setLoading(false);
-      toast.error('An error occured, please try again', {
-        position: 'top-left',
-      });
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     const search = async () => {
@@ -58,7 +38,6 @@ const Blog = () => {
       } catch (error) {
         console.error('Error searching:', error);
       }
-      setLoading(false);
     };
 
     if (searchTerm.trim() !== '') {
@@ -82,7 +61,7 @@ const Blog = () => {
       <>
         <Header headerCol={false} />
         <div className='container_ w-full'>
-          <div className='flex px-[16px] w-full lg:px-[100px] xl:px-[60px] xll:px-[120px] pb-[160px] flex-col'>
+          <div className='flex px-4 w-full lg:px-16 lgl:px-[100px] xl:px-[60px] xll:px-[120px] pb-[160px] flex-col'>
             <div className='flex flex-col gap-[16px] mt-[60px] items-center justify-center'>
               <img src={BlogTex} className='lg:block hidden' alt='' />
               <img src={BlogMobile} className='block lg:hidden' alt='' />
@@ -149,7 +128,7 @@ const Blog = () => {
               </div>
             ) : (
               <>
-                {!loading ? (
+                {!blogsLoading ? (
                   <>
                     {blogs && blogs.length >= 1 ? (
                       <SingleBlog blogs={blogs} />
@@ -189,27 +168,30 @@ export default Blog;
 
 const SingleBlog = ({ blogs, isDummy }) => {
   return (
-    <div className='mt-[80px] items-center  flex flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-4-[32px] sm:gap-y-[27px] lg:gap-y-[32px]'>
+    <div className='mt-[80px] items-center  flex flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 sm:gap-y-7 lg:gap-y-8'>
+      {/* <div className='mt-[80px] items-center flex flex-wrap items-center justify-center gap-7 lg:gap-8'> */}
       {blogs &&
         blogs.map((blog, index) => (
           <div
             key={index}
-            className='blog-card2 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-[16px] pb-[20px] rounded-[36px] '
+            className='blog-card2 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-4 pb-5 rounded-[36px] '
           >
-            <img
-              src={blog?.featured_image}
-              alt=''
-              className='rounded-t-[36px] w-[395px] h-[180px] lg:h-[233px]'
-            />
+            <div className='w-full h-[180px] lg:h-[212px]'>
+              <img
+                src={blog?.featured_image}
+                alt=''
+                className='rounded-t-[34px] w-full h-[180px] lg:h-[220px]'
+              />
+            </div>
             <div className='px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
-              <h1 className='font-[600] line-clamp-1 text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
+              <h1 className='font-semibold line-clamp-1 text-nowrap   sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 {blog?.title.length > 36
                   ? `${blog?.title?.substring(0, 36) + '..'}`
                   : `${blog?.title}`}
               </h1>
               <span className='font-[400] line-clamp-3 text-[14px] leading-[21px] text-lightB'>
-                {blog?.short_description.length > 120
-                  ? `${blog?.short_description?.substring(0, 120) + '..'}`
+                {blog?.short_description.length > 140
+                  ? `${blog?.short_description?.substring(0, 140) + '..'}`
                   : `${blog?.short_description}`}
               </span>
             </div>

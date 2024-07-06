@@ -11,7 +11,7 @@ import Layout from '../Common/Layout';
 import { useEffect, useRef, useState } from 'react';
 import { Oval, ProgressBar, RotatingLines } from 'react-loader-spinner';
 import {
-  FAQInputContainer,
+  FAQInputContainerEdit,
   InstructorInfo,
   OverViewContainer,
 } from './AddCourseInputs';
@@ -279,7 +279,7 @@ const EditCourse = () => {
     if (!overviewHasEmptyHeaderOrBody && fileUrl != null) {
       setOverallLoading(true);
       try {
-        await adminApiRequest('POST', `/courses/create_course/`, values);
+        await adminApiRequest('PUT', `/courses/create_course/${id}`, values);
         setOverallLoading(false);
         clearForm();
         toast.success('Success', {
@@ -339,7 +339,7 @@ const EditCourse = () => {
             />
           )}
           {openFaqs && (
-            <FAQInputContainer
+            <FAQInputContainerEdit
               openFaqs={openFaqs}
               setOpenFaqs={setOpenFaqs}
               faqs={faqs}
@@ -367,7 +367,7 @@ const EditCourse = () => {
               </div>
               <form onSubmit={e => handleSubmit(e)} action=''>
                 <div className='flex flex-col gap-[22px]'>
-                  <div className='flex flex-col gap-4.5'>
+                  <div className='flex flex-col gap-4'>
                     <label
                       className='font-semibold text-[14px] leading-[21px]'
                       htmlFor=''
@@ -406,7 +406,7 @@ const EditCourse = () => {
                       )}
                     </AnimatePresence>
                   </div>
-                  <div className='flex flex-col gap-4.5 '>
+                  <div className='flex flex-col gap-4 '>
                     <label
                       className='font-semibold text-[14px] leading-[21px]'
                       htmlFor='description'
@@ -425,7 +425,7 @@ const EditCourse = () => {
                       />
                     </div>
                   </div>
-                  <div className='flex flex-col gap-4.5 '>
+                  <div className='flex flex-col gap-4 '>
                     <label
                       className='font-semibold text-[14px] leading-[21px]'
                       htmlFor='price'
@@ -446,7 +446,7 @@ const EditCourse = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='flex z-3 flex-col gap-4.5 w-[242px] '>
+                  <div className='flex z-3 flex-col gap-4 w-[242px] '>
                     <label
                       className='font-semibold  text-[14px] leading-[21px]'
                       htmlFor='color'
@@ -456,7 +456,7 @@ const EditCourse = () => {
 
                     <div
                       onClick={() => setOpenColor(true)}
-                      className='flex flex-row z-3 course_input w-[121px] cursor-pointer items-center gap-4.5 px-1.5 rounded-[50px] h-[50px] '
+                      className='flex flex-row z-3 course_input w-[121px] cursor-pointer items-center gap-4 px-1.5 rounded-[50px] h-[50px] '
                     >
                       <div
                         style={{
@@ -474,7 +474,7 @@ const EditCourse = () => {
                     )}
                   </div>
 
-                  <div className='flex flex-col gap-4.5'>
+                  <div className='flex flex-col gap-4'>
                     <label
                       className='font-semibold text-[14px] leading-[21px]'
                       htmlFor=''
@@ -546,14 +546,14 @@ const EditCourse = () => {
                     )}
                   </div>
 
-                  <div className='flex flex-col gap-4.5 '>
+                  <div className='flex flex-col gap-4 '>
                     <label
                       className='font-semibold text-[14px] leading-[21px]'
                       htmlFor=''
                     >
                       Upload video
                     </label>
-                    <div className='flex flex-row gap-4.5 items-center w-full'>
+                    <div className='flex flex-row gap-4 items-center w-full'>
                       <div
                         onClick={handleFileClick}
                         className='flex w-full flex-row gap-3 items-center course_input rounded-[12px] h-10 text-[14px]'
@@ -641,7 +641,7 @@ const EditCourse = () => {
                   </div>
 
                   <div className='flex flex-row items-center gap-3'>
-                    <div className='flex flex-col  gap-4.5'>
+                    <div className='flex flex-col  gap-4'>
                       <div
                         onClick={() => setOpenOverview(true)}
                         className='w-[208px] px-2 gap-4 flex items-center hover:bg-[#f1f1f1] hover:cursor-pointer transitiion duration-300 course_input rounded-[12px] h-12 text-[14px]'
@@ -719,7 +719,7 @@ const EditCourse = () => {
                     )}
                   </div>
 
-                  <div className='flex flex-col gap-4.5 w-[242px] '>
+                  <div className='flex flex-col gap-4 w-[242px] '>
                     <label
                       className='font-semibold  text-[14px] leading-[21px]'
                       htmlFor='color'
@@ -727,7 +727,7 @@ const EditCourse = () => {
                       Gradient background for final CTA
                     </label>
 
-                    <div className='flex flex-row course_input w-[172px] cursor-pointer items-center gap-4.5 px-1.5 rounded-[50px] h-[50px] '>
+                    <div className='flex flex-row course_input w-[172px] cursor-pointer items-center gap-4 px-1.5 rounded-[50px] h-[50px] '>
                       <img src={CircleGradient} alt='' />
                       <div className='text-[14px]'>Linear Gradient</div>
                     </div>

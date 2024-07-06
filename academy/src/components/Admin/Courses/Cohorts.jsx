@@ -94,7 +94,7 @@ const Cohorts = () => {
           </div>
           <div
             onClick={() => setOpenCreateCohort(true)}
-            className='w-[150px] h-12 flex flex-row items-center justify-center px-4 py-[18px] hover:bg-[#f1f1f1] hover:cursor-pointer transition duration-300 rounded-[16px] gap-[8px] addCourse'
+            className='w-[150px] h-12 flex flex-row items-center justify-center px-4 py-[18px] hover:bg-[#f1f1f1] hover:cursor-pointer transition duration-300 rounded-[16px] gap-2 addCourse'
           >
             <img src={AddRound} alt='' />
             <h1 className='font-semibold text-nowrap text-[16px] leading-[24px]  '>
@@ -106,7 +106,7 @@ const Cohorts = () => {
           <>
             {cohorts && (
               <div className='flex flex-col gap-4'>
-                <div className='flex flex-row items-center gap-4.5'>
+                <div className='flex flex-row items-center gap-4'>
                   <div className='w-[266px] h-[110px] bg-[#F7F7F7] rounded-[12px] p-6 gap-4 flex flex-col'>
                     <h1 className='inter_ font-medium text-[14px] leading-[17px]'>
                       NO OF BOOTCAMPS
@@ -144,7 +144,7 @@ const Cohorts = () => {
                   <div className='w-full flex flex-col coursesP rounded-[12px]'>
                     <div className='flex flex-row w-full mb-2.5 items-center'>
                       <div className='w-[20%]'>
-                        <div className='flex flex-row items-center gap-4.5 py-2.5 px-3'>
+                        <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                           <h1 className='text-[14px] font-semibold leading-[17px]'>
                             TIME
                           </h1>
@@ -152,14 +152,14 @@ const Cohorts = () => {
                         </div>
                       </div>
                       <div className='w-[27%]'>
-                        <div className='flex flex-row items-center gap-4.5 py-2.5 px-3'>
+                        <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                           <h1 className='text-[14px] font-semibold leading-[17px]'>
                             TIMEFRAME
                           </h1>
                         </div>
                       </div>
                       <div className='w-[20%]'>
-                        <div className='flex flex-row items-center gap-4.5 py-2.5 px-3'>
+                        <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                           <h1 className='text-[14px] font-semibold leading-[17px]'>
                             DATE ENDED
                           </h1>
@@ -167,7 +167,7 @@ const Cohorts = () => {
                         </div>
                       </div>
                       <div className='w-[32%]'>
-                        <div className='flex flex-row items-center gap-4.5 py-2.5 px-3'>
+                        <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                           <h1 className='text-[14px] font-semibold leading-[17px]'>
                             NUMBER OF ENROLLMENTS
                           </h1>

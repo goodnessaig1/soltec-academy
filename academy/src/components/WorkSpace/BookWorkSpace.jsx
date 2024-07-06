@@ -17,10 +17,10 @@ const BookWorkSpace = () => {
         <div className='w-full flex flex-col px-4'>
           <div className='pt-[90px] lg:pt-14 flex flex-col gap-4 items-center justify-center'>
             <h1 className='font-medium text-[20px] lg:text-[24px] leading-[36px] text-opacityWhite'>
-              TIRED OF NEPA?
+              TIRED OF EPILLEPTIC POWER SUPPLY?
             </h1>
             <h1 className='font-medium text-[20px] lg:text-[24px] leading-[36px] text-opacityWhite'>
-              TIRED OF MTN, AIRTEL AND GLO?
+              TIRED OF INTERNET SERVICE PROVIDERS?
             </h1>
             <h1 className='font-medium text-[20px] lg:text-[24px] text-center leading-[36px] text-opacityWhite'>
               EVER WANTED TO JUST...GET OUT AND MEET OTHER PEOPLE?
@@ -39,7 +39,7 @@ const BookWorkSpace = () => {
             />
           </div>
 
-          <div className='w-full flex flex-col lg:flex-row gap-40 mt-[4px] lg:mt-[48px] justify-center items-center'>
+          <div className='w-full flex flex-col lg:flex-row gap-10 mt-[4px] lg:mt-[48px] justify-center items-center'>
             <motion.div
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.1 }}

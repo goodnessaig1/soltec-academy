@@ -14,7 +14,7 @@ const CourseFaqs = ({ courseDetail }) => {
   return (
     <div className='w-full '>
       <div className='productdesign_faqs'>
-        <div className='flex px-4 sm:mt-[-60px] pb-[120px] flex-col items-center justify-center text-white'>
+        <div className='flex px-4 sm:mt-[-60px] lg:mt-6 pb-[120px] flex-col items-center justify-center text-white'>
           <img src={Text} className='w-[52px] lg:w-[77px]' alt='' />
           <p className='text-white mt-4 opacity-[0.8] text-[16px] text-center lg:text-[20px] leading-[24px] lg:leading-[30px]'>
             Have a question that is not answered? You can contact us at

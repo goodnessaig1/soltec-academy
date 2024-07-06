@@ -8,7 +8,7 @@ import { courseDummyData } from '../DummyData/coursesData';
 const Catalogue = ({ courses }) => {
   return (
     <>
-      <div className=' w-full backgroundImages2 sm:h-[1116px] md:h-[1200px] lg:h-[990px]'>
+      <div className='relative w-full backgroundImages2 sm:h-[1116px] md:h-[1100px] lg:h-[840px]'>
         <div className='flex  items-center  justify-center'>
           <div className='flex w-full flex-col pt-[100px] lg:px-4 items-center'>
             <Marquee
@@ -62,7 +62,7 @@ const Catalogue = ({ courses }) => {
                   <div className='bg-white sm:px-4 lg:px-5 h-[87px] w-[106px] flex items-center justify-center rounded-[16px] '>
                     <img src={Tutor} alt='' />
                   </div>
-                  <div className='flex flex-col gap-4.5'>
+                  <div className='flex flex-col gap-4'>
                     <h1 className='font-bold sm:text-[18px] lg:text-[24px] sm:leading-[21px] lg:leading-[28px] text-white group-hover:text-black'>
                       Experienced Tutors
                     </h1>
@@ -76,7 +76,7 @@ const Catalogue = ({ courses }) => {
                   <div className='bg-white sm:px-4 lg:px-5 h-[87px] w-[116px] flex items-center justify-center rounded-[16px] '>
                     <img src={Industry} alt='' />
                   </div>
-                  <div className='flex flex-col gap-4.5'>
+                  <div className='flex flex-col gap-4'>
                     <h1 className='font-bold sm:text-[18px] lg:text-[24px] sm:leading-[21px] lg: text-white group-hover:text-black '>
                       Industry Standard Curriculum
                     </h1>
@@ -90,7 +90,7 @@ const Catalogue = ({ courses }) => {
                   <div className='bg-white sm:px-4 lg:px-5 h-[87px] w-[106px] flex items-center justify-center rounded-[16px] '>
                     <img src={Facilities} alt='' />
                   </div>
-                  <div className='flex flex-col gap-4.5'>
+                  <div className='flex flex-col gap-4'>
                     <h1 className='font-bold sm:text-[18px] lg:text-[24px] sm:leading-[21px] lg: text-white group-hover:text-black '>
                       State-of-the-Art Facilities
                     </h1>
@@ -104,7 +104,7 @@ const Catalogue = ({ courses }) => {
                   <div className='bg-white sm:px-4 lg:px-5 h-[87px] w-[106px] flex items-center justify-center rounded-[16px] '>
                     <img src={People} alt='' />
                   </div>
-                  <div className='flex flex-col gap-4.5'>
+                  <div className='flex flex-col gap-4'>
                     <h1 className='font-bold sm:text-[18px] lg:text-[24px] sm:leading-[21px] lg: text-white group-hover:text-black '>
                       Networking Opportunities:
                     </h1>

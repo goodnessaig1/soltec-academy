@@ -57,7 +57,8 @@ const OtherBlogPost = ({ otherBlogs }) => {
     nextArrow: <CustomNextArrow />,
   };
   return (
-    <div className='flex flex-col sm:mt-[90px] lg:mt-[120px] sm:px-4 pb-[120px]'>
+    <div className='flex flex-col sm:mt-[50px] lg:mt-[40px] sm:px-4 pb-[120px]'>
+      {/* <div className='flex flex-col sm:mt-[90px] lg:mt-[120px] sm:px-4 pb-[120px]'> */}
       <div className='flex items-center sm:justify-center lg:justify-start lg:ml-[60px] xl:ml-[100px] '>
         <img src={BlogText} alt='' className='' />
       </div>

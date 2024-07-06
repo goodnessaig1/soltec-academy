@@ -84,8 +84,22 @@ import EditIcon from '../assets/edit-icon.svg';
 import PlusW from '../assets/plus-w.svg';
 import PrintOutlined from '../assets/printer.svg';
 import Dropdown from '../assets/dropdown-icon.svg';
+import TestimonialText from '../assets/tetimonial.svg';
+import TestimonialI from '../assets/Testimonials-icon.svg';
+import IIcon from '../assets/i-icon.png';
+import FIcon from '../assets/f-icon.png';
+import IGIcon from '../assets/ig-icon.png';
+import WIcon from '../assets/w-icon.png';
+import XIcon from '../assets/x-icon.png';
 
 export {
+  XIcon,
+  IIcon,
+  FIcon,
+  IGIcon,
+  WIcon,
+  TestimonialI,
+  TestimonialText,
   Dropdown,
   PrintOutlined,
   PlusW,

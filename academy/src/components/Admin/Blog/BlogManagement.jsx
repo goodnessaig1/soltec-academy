@@ -119,103 +119,117 @@ const BlogManagement = () => {
           </div>
 
           {!loading ? (
-            <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[16px]'>
-              {blogs &&
-                blogs.map((blog, index) => (
-                  <div
-                    key={index}
-                    className='w-[350px] h-[412px] blog_p rounded-[36px] gap-[18px]'
-                  >
-                    <div className='mt-[-2px] group cursor-pointer transition duration-300'>
+            <>
+              {blogs && blogs.length > 0 ? (
+                <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[16px]'>
+                  {blogs &&
+                    blogs.map((blog, index) => (
                       <div
-                        className={`absolute ${
-                          markedItems.includes(index)
-                            ? ''
-                            : 'hidden group-hover:block'
-                        } transition duration-300 group-hover:block ml-[206px] mt-[14px]`}
+                        key={index}
+                        className='w-[350px] h-[412px] blog_p rounded-[36px] gap-[18px]'
                       >
-                        <div className='w-[126px] h-10 rounded-[50px] flex gap-3.5 bg-white items-center justify-center'>
+                        <div className='mt-[-2px] group cursor-pointer transition duration-300'>
                           <div
-                            onClick={() =>
-                              navigate(`/admin/blogs/edit-blog/${blog?.id}`)
-                            }
-                            className=''
+                            className={`absolute ${
+                              markedItems.includes(index)
+                                ? ''
+                                : 'hidden group-hover:block'
+                            } transition duration-300 group-hover:block ml-[206px] mt-[14px]`}
                           >
-                            <img src={EditIcon} alt='' />
-                          </div>
-                          <div
-                            onClick={() => handleDelete(blog?.id)}
-                            className='hover:text-mainRed transition duration-300 cursor-pointer'
-                          >
-                            <RiDeleteBin5Line size={22} />
-                          </div>
-                          <div className=''>
-                            <input
-                              type='checkbox'
-                              className='form-checkbox h-4 w-4 text-indigo-600'
-                              checked={markedItems.includes(index)}
-                              onChange={() => toggleMarked(index, blog)}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <img
-                        src={blog?.featured_image}
-                        className='h-[223px] w-full  rounded-t-[38px]'
-                        alt=''
-                      />
-                    </div>
-                    <Link
-                      to={`/academy/blog/${blog?.id}/${
-                        blog.author_name
-                      }/${blog?.title.substring(0, 20)}`}
-                    >
-                      <div className='w-full px-[16px] mt-2 gap-4'>
-                        <div className='flex flex-col gap-3.5'>
-                          <h1 className='font-[600] text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px]'>
-                            {blog?.title.length > 28
-                              ? `${blog?.title?.substring(0, 28) + '..'}`
-                              : `${blog?.title}`}
-                          </h1>
-                          <span className='text-[14px] font-normal leading-[21px] text-lightB'>
-                            {blog?.short_description.length > 120
-                              ? `${
-                                  blog?.short_description?.substring(0, 120) +
-                                  '..'
-                                }`
-                              : `${blog?.short_description}`}
-                          </span>
-                          <div className='flex flex-row justify-between  mt-[16px] items-center'>
-                            <div className='flex flex-row gap-4 '>
-                              {blog?.author_image ? (
-                                <img
-                                  src={blog?.author_image}
-                                  alt=''
-                                  className='rounded-[100%] w-8 h-8'
+                            <div className='w-[126px] h-10 rounded-[50px] flex gap-3.5 bg-white items-center justify-center'>
+                              <div
+                                onClick={() =>
+                                  navigate(`/admin/blogs/edit-blog/${blog?.id}`)
+                                }
+                                className=''
+                              >
+                                <img src={EditIcon} alt='' />
+                              </div>
+                              <div
+                                onClick={() => handleDelete(blog?.id)}
+                                className='hover:text-mainRed transition duration-300 cursor-pointer'
+                              >
+                                <RiDeleteBin5Line size={22} />
+                              </div>
+                              <div className=''>
+                                <input
+                                  type='checkbox'
+                                  className='form-checkbox h-4 w-4 text-indigo-600'
+                                  checked={markedItems.includes(index)}
+                                  onChange={() => toggleMarked(index, blog)}
                                 />
-                              ) : (
-                                <img
-                                  src={Unavailable}
-                                  alt=''
-                                  className='rounded-[100%] w-8 h-8'
-                                />
-                              )}
-                              <div className='flex flex-col'>
-                                <h3 className='text-[14px] font-medium leading-[17px] text-lightB'>
-                                  {blog?.author_name}
-                                </h3>
-                                <h3 className='text-[12px] font-normal leading-[14px] text-lightB'>
-                                  5 min read
-                                </h3>
                               </div>
                             </div>
                           </div>
+                          <img
+                            src={blog?.featured_image}
+                            className='h-[223px] w-full  rounded-t-[38px]'
+                            alt=''
+                          />
                         </div>
+                        <Link
+                          to={`/academy/blog/${blog?.id}/${
+                            blog.author_name
+                          }/${blog?.title.substring(0, 20)}`}
+                        >
+                          <div className='w-full px-[16px] mt-2 gap-4'>
+                            <div className='flex flex-col gap-3.5'>
+                              <h1 className='font-[600] text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px]'>
+                                {blog?.title.length > 28
+                                  ? `${blog?.title?.substring(0, 28) + '..'}`
+                                  : `${blog?.title}`}
+                              </h1>
+                              <span className='text-[14px] font-normal leading-[21px] text-lightB'>
+                                {blog?.short_description.length > 120
+                                  ? `${
+                                      blog?.short_description?.substring(
+                                        0,
+                                        120,
+                                      ) + '..'
+                                    }`
+                                  : `${blog?.short_description}`}
+                              </span>
+                              <div className='flex flex-row justify-between  mt-[16px] items-center'>
+                                <div className='flex flex-row gap-4 '>
+                                  {blog?.author_image ? (
+                                    <img
+                                      src={blog?.author_image}
+                                      alt=''
+                                      className='rounded-[100%] w-8 h-8'
+                                    />
+                                  ) : (
+                                    <img
+                                      src={Unavailable}
+                                      alt=''
+                                      className='rounded-[100%] w-8 h-8'
+                                    />
+                                  )}
+                                  <div className='flex flex-col'>
+                                    <h3 className='text-[14px] font-medium leading-[17px] text-lightB'>
+                                      {blog?.author_name}
+                                    </h3>
+                                    <h3 className='text-[12px] font-normal leading-[14px] text-lightB'>
+                                      5 min read
+                                    </h3>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </Link>
                       </div>
-                    </Link>
-                  </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+              ) : (
+                <div className='h-[54vh] flex flex-col gap-3 w-full items-center justify-center '>
+                  <img
+                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKZHRIXeq8ByuIl_I6f0soTdzg6Egh5vyP2Q&s'
+                    alt=''
+                  />
+                  <h1 className='font-medium'>No blog post</h1>
+                </div>
+              )}
+            </>
           ) : (
             <div className='flex w-full h-[400px] items-center justify-center'>
               <Oval

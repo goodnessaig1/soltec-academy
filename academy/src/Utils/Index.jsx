@@ -21,52 +21,6 @@ export function hexToRGBA(hex, opacity) {
   return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
 
-export const EllipseSvg = ({ color }) => {
-  return (
-    <svg
-      width='682'
-      height='311'
-      viewBox='0 0 682 311'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-    >
-      <g filter='url(#filter0_f_156_2194)'>
-        <ellipse
-          cx='341'
-          cy='-24.764'
-          rx='140.412'
-          ry='134.846'
-          fill={`${color}`}
-          fill-opacity='0.5'
-        />
-      </g>
-      <defs>
-        <filter
-          id='filter0_f_156_2194'
-          x='0.587891'
-          y='-359.61'
-          width='680.824'
-          height='669.693'
-          filterUnits='userSpaceOnUse'
-          color-interpolation-filters='sRGB'
-        >
-          <feFlood flood-opacity='0' result='BackgroundImageFix' />
-          <feBlend
-            mode='normal'
-            in='SourceGraphic'
-            in2='BackgroundImageFix'
-            result='shape'
-          />
-          <feGaussianBlur
-            stdDeviation='100'
-            result='effect1_foregroundBlur_156_2194'
-          />
-        </filter>
-      </defs>
-    </svg>
-  );
-};
-
 export const OverviewNewColumn = data => {
   const sharedData = [
     RedCheck,
@@ -122,3 +76,51 @@ export const calculateTimeLeft = startDate => {
   }
   return timeLeft;
 };
+
+export const CustomSvg = ({ fillColor }) => {
+  return (
+    <svg
+      width='682'
+      height='311'
+      viewBox='0 0 682 311'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <g filter='url(#filter0_f_167_4854)'>
+        <ellipse
+          cx='341'
+          cy='-24.764'
+          rx='140.412'
+          ry='134.846'
+          fill={fillColor}
+          fillOpacity='0.5'
+        />
+      </g>
+      <defs>
+        <filter
+          id='filter0_f_167_4854'
+          x='0.587891'
+          y='-359.61'
+          width='680.824'
+          height='669.693'
+          filterUnits='userSpaceOnUse'
+          colorInterpolationFilters='sRGB'
+        >
+          <feFlood floodOpacity='0' result='BackgroundImageFix' />
+          <feBlend
+            mode='normal'
+            in='SourceGraphic'
+            in2='BackgroundImageFix'
+            result='shape'
+          />
+          <feGaussianBlur
+            stdDeviation='100'
+            result='effect1_foregroundBlur_167_4854'
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+};
+
+export default CustomSvg;

@@ -21,8 +21,7 @@ const CourseEnroll = ({ courseDetail }) => {
         </h1>
         <Link
           style={{
-            boxShadow: `box-shadow: 0px 10px 50px 0px #E79A2766;
-`,
+            boxShadow: `0px 10px 50px 0px ${courseDetail?.color_code}`,
           }}
           to={`/courses/${courseDetail?.id}/${courseDetail?.title}/payment`}
           className='w-[221px] h-14 hover:bg-white hover:text-black text-white  transition duration-300 border border-white border-[2px] rounded-[16px] flex flex-row items-center justify-center gap-4'

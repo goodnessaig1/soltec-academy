@@ -47,9 +47,17 @@ const CourseOverviewVideo = ({ courseDetail }) => {
   return (
     <div>
       <div className='flex w-full mt-[-118px] items-center  justify-center'>
-        <div className='video-player sm:max-w-[343px] lg:max-w-[600px]  '>
-          <video className='rounded-3xl' ref={videoRef} controls>
-            <source src={courseDetail?.video} type='video/mp4' />
+        <div className='video-player sm:max-w-[343px] smm:min-w-[343px] lg:min-w-[500px] lg:max-w-[600px]  '>
+          <video
+            className='rounded-3xl smm:min-w-[343px] lg:min-w-[500px]'
+            ref={videoRef}
+            controls
+          >
+            <source
+              src={courseDetail?.video}
+              className='smm:min-w-[343px] lg:min-w-[500px]'
+              type='video/mp4'
+            />
           </video>
           {showPlayButton && (
             <button

@@ -4,10 +4,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Marquee from 'react-fast-marquee';
-import { useEffect, useState } from 'react';
 import { sponsorsPlaceHolder } from '../../Utils/Index';
 import { First, Fourth, Next, Prev, Second, Third } from '../../Utils/Assets';
-import { apiRequest } from '../../Utils/ApiRequest';
+import { useAuth } from '../Context/AuthContext';
 
 const CustomPrevArrow = props => {
   return (
@@ -33,6 +32,8 @@ const CustomNextArrow = props => {
 };
 
 const Sponsors = () => {
+  const { sponsors, sponsorsLoading } = useAuth();
+
   var settings = {
     dots: false,
     infinite: true,
@@ -41,28 +42,11 @@ const Sponsors = () => {
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
   };
-  const [loading, setLoading] = useState(true);
-  const [sponsors, setSponsors] = useState(null);
 
-  useEffect(() => {
-    getSponsors();
-  }, []);
-
-  const getSponsors = async () => {
-    setLoading(true);
-    try {
-      const response = await apiRequest('GET', `/sponsors/`);
-      setSponsors(response.results);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log('error', error);
-    }
-  };
   return (
     <div className='w-full w-full'>
       <div>
-        {!loading ? (
+        {!sponsorsLoading ? (
           <>
             {sponsors && sponsors.length > 3 ? (
               <SponsorsLogo logo={sponsors} />

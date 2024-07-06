@@ -40,7 +40,7 @@ const Header = ({ headerCol }) => {
               <img src={Logo2} className='flex lg:hidden' alt='' />
             </RouterLink>
           </div>
-          <div className='hidden z-10 lg:flex text-nowrap flex-row lg:gap-4 lgl:gap-9 xxl:gap-46 '>
+          <div className='hidden z-10 lg:flex text-nowrap flex-row lg:gap-4 lgl:gap-8 xxl:gap-46 '>
             <NavLink
               className={({ isActive }) =>
                 isActive && headerCol
@@ -79,6 +79,17 @@ const Header = ({ headerCol }) => {
             >
               FAQS
             </RouterLink>
+
+            <a
+              href={`${AcademyUrl}`}
+              target='_self'
+              className={`font-medium hover:cursor-pointer hover:font-semibold transition duration-300 ${
+                headerCol ? 'text-white ' : 'text-black'
+              }`}
+            >
+              <span>ACADEMY</span>
+            </a>
+
             <NavLink
               className={({ isActive }) =>
                 isActive && headerCol
@@ -94,13 +105,13 @@ const Header = ({ headerCol }) => {
               <h1>CONTACT US</h1>
             </NavLink>
           </div>
-          <a
-            href={`${AcademyUrl}`}
-            target='_self'
+
+          <RouterLink
+            to={'/get-quote'}
             className='font-semibold text-black transition duration-300 ease-in-out hidden w-[141px] h-12 items-center justify-center lg:flex zinde text-nowrap bg-white hover:bg-[#f0f0f0] rounded-[4px] hover:cursor-pointer border border-[#1c1c1c] p-2.5'
           >
-            <span>ACADEMY</span>
-          </a>
+            <span>GET A QUOTE</span>
+          </RouterLink>
           <div onClick={toggleSidebar} className='flex lg:hidden z-1'>
             {headerCol ? <img src={Menu2} alt='' /> : <img src={Menu} alt='' />}
           </div>

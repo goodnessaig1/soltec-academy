@@ -26,6 +26,12 @@
   color: rgba(84, 84, 84, 1);
 }
 
+.productdesign_container {
+  max-width: 1010px;
+  min-height: 66vh;
+  margin: 0 auto;
+}
+
 .backgroundImages2 {
   width: 100%;
   background-image: url('./assets/gradientbackground1.jpg');

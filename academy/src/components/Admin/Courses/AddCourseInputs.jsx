@@ -163,7 +163,7 @@ export const OverViewContainer = ({
               onSubmit={e => e.preventDefault()}
               action=''
             >
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -196,7 +196,7 @@ export const OverViewContainer = ({
                 </span>
               </div>
 
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -250,7 +250,7 @@ export const OverViewContainer = ({
               onSubmit={e => e.preventDefault()}
               action=''
             >
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -283,7 +283,7 @@ export const OverViewContainer = ({
                 </span>
               </div>
 
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -337,7 +337,7 @@ export const OverViewContainer = ({
               onSubmit={e => e.preventDefault()}
               action=''
             >
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -370,7 +370,7 @@ export const OverViewContainer = ({
                 </span>
               </div>
 
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -424,7 +424,7 @@ export const OverViewContainer = ({
               onSubmit={e => e.preventDefault()}
               action=''
             >
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -457,7 +457,7 @@ export const OverViewContainer = ({
                 </span>
               </div>
 
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -511,7 +511,7 @@ export const OverViewContainer = ({
               onSubmit={e => e.preventDefault()}
               action=''
             >
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -544,7 +544,7 @@ export const OverViewContainer = ({
                 </span>
               </div>
 
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -604,7 +604,7 @@ export const OverViewContainer = ({
               }}
               action=''
             >
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -637,7 +637,7 @@ export const OverViewContainer = ({
                 </span>
               </div>
 
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -874,7 +874,7 @@ export const InstructorInfo = ({
               onSubmit={e => handleSubmit(e)}
               action=''
             >
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -901,7 +901,7 @@ export const InstructorInfo = ({
                 </span>
               </div>
 
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -927,7 +927,7 @@ export const InstructorInfo = ({
                   1/20 characters
                 </span>
               </div>
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -938,7 +938,7 @@ export const InstructorInfo = ({
                   <>
                     {!instructorInfo1.image ? (
                       <div
-                        className='dropZone w-full h-[192px] rounded-[12px] flex flex-col gap-4 py-6 items-center'
+                        className='dropZone w-full h-[192px] rounded-[12px] flex flex-col gap-1.5 py-6 items-center'
                         onDrop={handleDrop}
                         onDragOver={handleDragOver}
                       >
@@ -1028,7 +1028,7 @@ export const InstructorInfo = ({
               onSubmit={e => handleSubmit2(e)}
               action=''
             >
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor='name'
@@ -1055,7 +1055,7 @@ export const InstructorInfo = ({
                 </span>
               </div>
 
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor='profession'
@@ -1081,7 +1081,7 @@ export const InstructorInfo = ({
                   1/20 characters
                 </span>
               </div>
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-1.5'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor=''
@@ -1092,7 +1092,7 @@ export const InstructorInfo = ({
                   <>
                     {!instructorInfo2.image ? (
                       <div
-                        className='dropZone w-full h-[192px] rounded-[12px] flex flex-col gap-4 py-6 items-center'
+                        className='dropZone w-full h-[192px] rounded-[12px] flex flex-col gap-1.5 py-6 items-center'
                         onDrop={handleDrop2}
                         onDragOver={handleDragOver2}
                       >
@@ -1284,7 +1284,7 @@ export const FAQInputContainer = ({
                 action=''
                 className='flex flex-col gap-[22px]'
               >
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-1.5'>
                   <label
                     className='font-semibold text-[14px] leading-[21px]'
                     htmlFor=''
@@ -1303,7 +1303,160 @@ export const FAQInputContainer = ({
                   </div>
                 </div>
 
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-1.5'>
+                  <label
+                    className='font-semibold text-[14px] leading-[21px]'
+                    htmlFor='body'
+                  >
+                    Answer
+                  </label>
+                  <div className='w-full course_input rounded-[12px]  text-[14px]'>
+                    <textarea
+                      type='text'
+                      style={{ height: '106px', resize: 'none' }}
+                      name='answer'
+                      required
+                      value={faq.answer}
+                      onChange={e => handleInputChange(faq.id, e)}
+                      className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
+                    />
+                  </div>
+                </div>
+                <button
+                  type='submit'
+                  className='rounded-[16px] w-full h-[56px] flex items-center justify-center bg-tintBlue text-mainBlue font-semibold hover:opacity-[0.8] hover:cursor-pointer transition duration-300'
+                >
+                  Save
+                </button>
+              </form>
+            ))}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export const FAQInputContainerEdit = ({
+  setOpenFaqs,
+  activeId,
+  setActiveId,
+  faqs,
+  setFAQs,
+  setFaqDone,
+}) => {
+  const IsFieldEmpty = data => {
+    return data.question.trim() === '' || data.answer.trim() === '';
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const check = faqs.some(IsFieldEmpty);
+    if (!check) {
+      if (faqs.length <= 1) {
+        alert('Add more faq questions');
+      } else {
+        setFaqDone(true);
+        setOpenFaqs(false);
+      }
+    } else {
+      setFaqDone(false);
+      alert('No field should be empty');
+    }
+  };
+  const addFAQ = () => {
+    const newFAQs = [
+      ...faqs,
+      { id: faqs.length + 1, question: '', answer: '' },
+    ];
+    setFAQs(newFAQs);
+  };
+
+  const handleInputChange = (id, e) => {
+    const { name, value } = e.target;
+    setFaqDone(false);
+    const updatedFAQs = faqs.map(faq => {
+      if (faq.id === id) {
+        return { ...faq, [name]: value };
+      }
+      return faq;
+    });
+    setFAQs(updatedFAQs);
+  };
+
+  return (
+    <div className='fixed z_indd h-screen top-0 left-0 right-0 bottom-0 px-7 md:px-0 flex  items-center justify-center bg-transparent'>
+      <div className='w-full z_indd fixed hover:cursor-pointer h-screen top-0 left-0 right-0 bottom-0 px-7 md:px-0 flex  items-center justify-center bg-dOverlay '></div>
+      <AnimatePresence className='z_ind'>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.2 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.6,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+          className='bg-white z_ind flex p-6 inter__ gap-[22px] flex-col w-[413px] h-[463px] rounded-[24px]'
+        >
+          <div className='flex flex-row justify-between items-center'>
+            <span></span>
+            <h1 className='font-medium text-[16px] text-center'>
+              FREQUENTLY ASKED QUESTIONS
+            </h1>
+            <div
+              onClick={() => setOpenFaqs(false)}
+              className='w-[34px] text-mainBlue hover:opacity-[0.7] hover:cursor-pointer transition duration-300 h-[34px] flex items-center justify-center rounded-[50%] bg-tintBlue'
+            >
+              <IoMdClose size={24} />
+            </div>
+          </div>
+          <div className='flex items-center justify-center flex-row gap-3'>
+            {faqs.map((faq, index) => (
+              <div
+                onClick={() => setActiveId(faq.id)}
+                key={index}
+                className={`w-8 h-8 rounded-[20px] cursor-pointer flex items-center justify-center ${
+                  faq.id == activeId ? 'bg-extraGray' : 'hover:bg-extraGray'
+                }`}
+              >
+                {`${index + 1}`}
+              </div>
+            ))}
+            <div
+              className='course_input rounded-[50px] w-8 h-8 cursor-pointer flex text-mainBlue items-center justify-center hover:bg-extraGray text-[30px]'
+              onClick={() => (addFAQ(), setActiveId(activeId + 1))}
+            >
+              <span className='mt-[-6px]'>+</span>
+            </div>
+          </div>
+          {faqs
+            .filter(faq => faq.id === activeId)
+            .map(faq => (
+              <form
+                key={faq.id}
+                onSubmit={e => handleSubmit(e)}
+                action=''
+                className='flex flex-col gap-[22px]'
+              >
+                <div className='flex flex-col gap-1.5'>
+                  <label
+                    className='font-semibold text-[14px] leading-[21px]'
+                    htmlFor=''
+                  >
+                    Question
+                  </label>
+                  <div className='w-full course_input rounded-[12px] h-10 text-[14px]'>
+                    <input
+                      type='text'
+                      name='question'
+                      required
+                      value={faq.question}
+                      onChange={e => handleInputChange(faq.id, e)}
+                      className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
+                    />
+                  </div>
+                </div>
+
+                <div className='flex flex-col gap-1.5'>
                   <label
                     className='font-semibold text-[14px] leading-[21px]'
                     htmlFor='body'

@@ -65,7 +65,7 @@ const Dashboard = () => {
 
   return (
     <Layout text='Dashboard'>
-      <div className='w-full inter_ flex flex-col gap-4 px-9'>
+      <div className='w-full inter_ flex flex-col gap-12 px-9'>
         <div className='flex flex-row w-full gap-3.5'>
           <div className='flex flex-col w-[24%] gap-4 p-6 rounded-[12px] bg-bg3 h-[110px] justify-center '>
             <div className='flex flex-col gap-4'>
@@ -125,7 +125,7 @@ const Dashboard = () => {
               {/* Head */}
               <div className='flex flex-row w-full mb-[10px] items-center'>
                 <div className='w-[15%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       TIME
                     </h1>
@@ -133,7 +133,7 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <div className='w-[21%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       EMAIL
                     </h1>
@@ -141,28 +141,28 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <div className='w-[17%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       PHONE NUMBER
                     </h1>
                   </div>
                 </div>
                 <div className='w-[8%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       COUPON
                     </h1>
                   </div>
                 </div>
                 <div className='w-[18%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       COURSE
                     </h1>
                   </div>
                 </div>
                 <div className='w-[17%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       PAYMENT METHOD
                     </h1>
@@ -177,22 +177,22 @@ const Dashboard = () => {
                     className='flex flex-row w-full items-start w-full min-h-[48px]'
                   >
                     <div className='w-[15%]'>
-                      <h1 className='text-[12px] font-normal gap-4.5 px-3 leading-[17px]'>
+                      <h1 className='text-[12px] font-normal gap-4 px-3 leading-[17px]'>
                         {moment(item?.date_paid).format('DD MMM YYYY, hh:mmA')}
                       </h1>
                     </div>
                     <div className='w-[21%] whitespace-normal'>
-                      <h1 className='text-[14px] font-normal gap-4.5 px-3 leading-[17px] break-all'>
+                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px] break-all'>
                         {item?.email}
                       </h1>
                     </div>
                     <div className='w-[17%]'>
-                      <h1 className='text-[14px] font-normal gap-4.5 px-3 leading-[17px]'>
+                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
                         {item?.phone_number}
                       </h1>
                     </div>
                     <div className='w-[8%]'>
-                      <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                      <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                         {item?.coupon == true ? (
                           <img src={Check} alt='' />
                         ) : (
@@ -201,12 +201,12 @@ const Dashboard = () => {
                       </div>
                     </div>
                     <div className='w-[18%]'>
-                      <h1 className='text-[14px] font-normal gap-4.5 px-3 leading-[17px]'>
+                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
                         {item?.course}
                       </h1>
                     </div>
                     <div className='w-[17%]'>
-                      <h1 className='text-[14px] font-normal gap-4.5 px-3 leading-[17px]'>
+                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
                         {item?.payment_method}
                       </h1>
                     </div>
@@ -229,7 +229,7 @@ const Dashboard = () => {
               {/* Head */}
               <div className='flex flex-row w-full mb-[10px] items-center'>
                 <div className='w-[15%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       TIME
                     </h1>
@@ -237,7 +237,7 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <div className='w-[15%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       EMAIL
                     </h1>
@@ -245,35 +245,35 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <div className='w-[17%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       FULL NAME
                     </h1>
                   </div>
                 </div>
                 <div className='w-[15%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       PHONE NUMBER
                     </h1>
                   </div>
                 </div>
                 <div className='w-[12%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       START DATE
                     </h1>
                   </div>
                 </div>
                 <div className='w-[8%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       PLAN
                     </h1>
                   </div>
                 </div>
                 <div className='w-[17%]'>
-                  <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 gap-4 px-3'>
                     <h1 className='text-[14px] font-semibold leading-[17px]'>
                       PAYMENT METHOD
                     </h1>
@@ -288,12 +288,12 @@ const Dashboard = () => {
                     className='flex flex-row w-full items-start w-full min-h-[48px]'
                   >
                     <div className='w-[15%]'>
-                      <h1 className='text-[12px] font-normal gap-4.5 px-3 leading-[17px]'>
+                      <h1 className='text-[12px] font-normal gap-4 px-3 leading-[17px]'>
                         {moment(item?.date_paid).format('DD MMM YYYY, hh:mmA')}
                       </h1>
                     </div>
                     <div className='w-[15%] whitespace-normal'>
-                      <h1 className='text-[14px] font-normal gap-4.5 px-3 leading-[17px] break-all'>
+                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px] break-all'>
                         {item?.email.length > 12
                           ? `${item?.email.substring(
                               0,
@@ -305,29 +305,29 @@ const Dashboard = () => {
                       </h1>
                     </div>
                     <div className='w-[17%]'>
-                      <h1 className='text-[14px] font-normal gap-4.5 px-3 leading-[17px]'>
+                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
                         {item?.full_name.length > 14
                           ? `${item?.full_name.substring(0, 14)}...`
                           : `${item?.full_name}`}
                       </h1>
                     </div>
                     <div className='w-[15%]'>
-                      <h1 className='text-[14px] font-normal gap-4.5 px-3 leading-[17px]'>
+                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
                         {item?.phone_number}
                       </h1>
                     </div>
                     <div className='w-[12%]'>
-                      <div className='flex flex-row text-[12px] items-center gap-4.5 gap-4.5 px-3'>
+                      <div className='flex flex-row text-[12px] items-center gap-4 gap-4 px-3'>
                         {item?.start_date}
                       </div>
                     </div>
                     <div className='w-[8%]'>
-                      <h1 className='text-[14px] font-normal gap-4.5 px-3 leading-[17px]'>
+                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
                         {item?.plan}
                       </h1>
                     </div>
                     <div className='w-[17%]'>
-                      <h1 className='text-[14px] font-normal gap-4.5 px-3 leading-[17px]'>
+                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
                         {item?.payment_method}
                       </h1>
                     </div>
@@ -338,15 +338,15 @@ const Dashboard = () => {
         </div>
 
         {/* News letter */}
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-6'>
           <h1 className='text-[14px] font-medium leading-[17px]'>
             NEWSLETTER SIGNUPS
           </h1>
-          <div className='w-full flex flex-col coursesP rounded-[12px]'>
+          <div className='w-full flex flex-col gap-3 coursesP rounded-[12px]'>
             {/* Head */}
             <div className='flex flex-row w-full items-center'>
               <div className='w-[26%]'>
-                <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                <div className='flex flex-row items-center gap-4 px-3'>
                   <h1 className='text-[14px] font-semibold leading-[17px]'>
                     TIME
                   </h1>
@@ -354,7 +354,7 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className='w-[72%]'>
-                <div className='flex flex-row items-center gap-4.5 gap-4.5 px-3'>
+                <div className='flex flex-row items-center gap-4 px-3'>
                   <h1 className='text-[14px] font-semibold leading-[17px]'>
                     EMAIL
                   </h1>
@@ -366,12 +366,12 @@ const Dashboard = () => {
             {newsLetter.map((item, index) => (
               <div key={index} className='flex flex-row items-start w-full'>
                 <div className='w-[26%]'>
-                  <h1 className='text-[14px] font-normal gap-4.5 px-3 leading-[17px]'>
+                  <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
                     {item.date}
                   </h1>
                 </div>
                 <div className='w-[72%] whitespace-normal'>
-                  <h1 className='text-[14px] font-normal gap-4.5 px-3 leading-[17px] break-all'>
+                  <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px] break-all'>
                     {item.email}
                   </h1>
                 </div>
@@ -385,20 +385,20 @@ const Dashboard = () => {
           <h1 className='text-[14px] font-medium leading-[17px]'>
             LATEST BLOG POSTS
           </h1>
-          <div className='flex flex-row w-ful gap-[28px]'>
+          <div className='flex flex-row w-ful gap-7'>
             {blogs &&
               blogs.length >= 2 &&
               blogs.slice(0, 2).map((blog, index) => (
                 <div
                   key={index}
-                  className='blog-card2 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-4 pb-[20px] rounded-[36px] '
+                  className='blog-card2 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-4 pb-5 rounded-[36px] '
                 >
                   <img
                     src={blog?.featured_image}
                     alt=''
                     className='rounded-t-[36px] w-[395px] h-[233px]'
                   />
-                  <div className='px-3 lg:px-[16px] flex flex-col gap-[13px]'>
+                  <div className='px-3 lg:px-4 flex flex-col gap-[13px]'>
                     <h1 className='font-semibold  text-nowrap text_wrap2 sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                       {blog?.title.length > 36
                         ? `${blog?.title?.substring(0, 36) + '..'}`
@@ -410,7 +410,7 @@ const Dashboard = () => {
                         : `${blog?.short_description}`}
                     </span>
                   </div>
-                  <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
+                  <div className='flex flex-row justify-between px-5 mt-4 items-center'>
                     <div className='flex flex-row gap-4 '>
                       {blog?.author_image ? (
                         <img

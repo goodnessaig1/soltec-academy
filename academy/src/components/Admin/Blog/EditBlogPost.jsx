@@ -207,7 +207,7 @@ const EditBlogPost = () => {
                 EDIT BLOG
               </h1>
               <div className='flex flex-col gap-[22px]'>
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-4'>
                   <label
                     htmlFor='title'
                     className='font-semibold text-[14px] leading-[21px]'
@@ -225,7 +225,7 @@ const EditBlogPost = () => {
                     />
                   </div>
                 </div>
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-4'>
                   <label
                     htmlFor='title'
                     className='font-semibold text-[14px] leading-[21px]'
@@ -243,7 +243,7 @@ const EditBlogPost = () => {
                     />
                   </div>
                 </div>
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-4'>
                   <label
                     htmlFor='content'
                     className='font-semibold text-[14px] leading-[21px]'
@@ -255,7 +255,7 @@ const EditBlogPost = () => {
                     setEditorState={setEditorState}
                   />
                 </div>
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-4'>
                   <label
                     htmlFor='author'
                     className='font-semibold text-[14px] leading-[21px]'
@@ -315,7 +315,7 @@ const EditBlogPost = () => {
                     )}
                   </div>
                 </div>
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-4'>
                   <label
                     htmlFor='author'
                     className='font-semibold text-[14px] leading-[21px]'
@@ -333,7 +333,7 @@ const EditBlogPost = () => {
                     />
                   </div>
                 </div>
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-4'>
                   <label
                     htmlFor='position'
                     className='font-semibold text-[14px] leading-[21px]'
@@ -351,7 +351,7 @@ const EditBlogPost = () => {
                     />
                   </div>
                 </div>
-                <div className='flex flex-col gap-4.5'>
+                <div className='flex flex-col gap-4'>
                   <label
                     className='font-semibold text-[14px] leading-[21px]'
                     htmlFor='file'

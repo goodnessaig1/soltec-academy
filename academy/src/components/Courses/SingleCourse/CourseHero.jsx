@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Next from '../../../assets/next-vector-white.svg';
 import { Link } from 'react-router-dom';
-import { EllipseSvg, hexToRGBA } from '../../../Utils/Index';
+import CustomSvg, { hexToRGBA } from '../../../Utils/Index';
 import Header from '../../common/Header';
 
 const CourseHero = ({ courseDetail }) => {
@@ -36,6 +36,7 @@ const CourseHero = ({ courseDetail }) => {
       </>
     );
   };
+  const boxShadowStyle = `0px 10px 50px 0px ${courseDetail?.color_code}0.5`;
 
   return (
     <div
@@ -49,19 +50,20 @@ const CourseHero = ({ courseDetail }) => {
       className='courseBg h-[565px] lg:h-[810px] w-full'
     >
       <Header headerCol={true} />
-      <div className='absolute ml-[-20px] top-0 left-0 w-full flex lg:items-center lg:justify-center '>
-        <EllipseSvg color={courseDetail?.color_code} />
+      <div className='absolute ml-[-160px] top-0 left-0 w-full flex lg:items-center lg:justify-center'>
+        <CustomSvg fillColor={courseDetail?.color_code} />
       </div>
       <div className='sm:px-4 lg:px-[120px] flex flex-col'>
-        <div className='flex flex-col mt-[120px] lg:mt-[140px] gap-40 items-center justify-center'>
+        <div className='flex flex-col mt-[120px] lg:mt-[140px] gap-10 items-center justify-center'>
           <CourseTitle title={courseDetail?.title} />
           <Link
             style={{
               background: courseDetail?.color_code,
-              boxShadow: `0px 10px 50px 0px ${hexToRGBA(
-                courseDetail?.color_code,
-                0.5,
-              )}`,
+              // boxShadow: `0px 10px 50px 0px ${hexToRGBA(
+              //   courseDetail?.color_code,
+              //   0.5,
+              // )}`,
+              // boxShadow: boxShadowStyle,
             }}
             to={`/courses/${courseDetail?.id}/${courseDetail?.title}/payment`}
             className='flex flex-row startLear hover:opacity-[0.9] transition duration-300 rounded-2xl w-[183px] lg:w-[221px] h-14 px-4 py-2 gap-4 items-center justify-center'

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useContext, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { adminApiRequest } from '../../Utils/ApiRequest';
+import { adminApiRequest, apiRequest } from '../../Utils/ApiRequest';
 
 const AuthContext = React.createContext();
 
@@ -11,6 +11,80 @@ export function useAuth() {
 
 export function AuthProvider(props) {
   const [user, setUser] = useState(null);
+  const [courses, setCourses] = useState(null);
+  const [sponsors, setSponsors] = useState(null);
+  const [courseLoading, setCourseLoading] = useState(true);
+  const [blogs, setBlogs] = useState(null);
+  const [blogsLoading, setBlogsLoading] = useState(true);
+  const [currentCohort, setCurrentCohort] = useState('');
+  const [testimonial, setTestimonial] = useState(null);
+  const [sponsorsLoading, setSponsorsLoading] = useState(true);
+
+  const getCourses = async () => {
+    setCourseLoading(true);
+    try {
+      const response = await apiRequest('GET', `/courses/fetch_home_courses/`);
+      setCourseLoading(false);
+      setCourses(response);
+    } catch (error) {
+      setCourseLoading(false);
+      console.log('error', error);
+    }
+  };
+
+  const getBlogs = async () => {
+    try {
+      const response = await apiRequest('GET', `/blogs/`);
+      setBlogs(response?.results);
+      setBlogsLoading(false);
+    } catch (error) {
+      setBlogsLoading(false);
+    }
+  };
+
+  const getCurrentCohort = async () => {
+    try {
+      const response = await apiRequest(
+        'GET',
+        `/cohort/check_for_current_cohorts/`,
+      );
+      if (response && response?.start_date) {
+        setCurrentCohort(response);
+      }
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
+  const getTestimonials = async () => {
+    try {
+      const response = await apiRequest('GET', `/testimonials/`);
+      setTestimonial(response?.results);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
+  const getSponsors = async () => {
+    setSponsorsLoading(true);
+    try {
+      const response = await apiRequest('GET', `/sponsors/`);
+      setSponsors(response.results);
+      setSponsorsLoading(false);
+    } catch (error) {
+      setSponsorsLoading(false);
+      console.log('error', error);
+    }
+  };
+
+  useEffect(() => {
+    getCourses();
+    getBlogs();
+    getCurrentCohort();
+    getTestimonials();
+    getSponsors();
+  }, []);
+
   const token = Cookies.get('access_token');
   useEffect(() => {
     if (token) {
@@ -41,6 +115,14 @@ export function AuthProvider(props) {
   const value = {
     user,
     setUser,
+    courses,
+    courseLoading,
+    blogs,
+    blogsLoading,
+    currentCohort,
+    testimonial,
+    sponsors,
+    sponsorsLoading,
   };
   return (
     <AuthContext.Provider value={value}>{props?.children}</AuthContext.Provider>

@@ -37,6 +37,13 @@ const Sidebar = ({ toggle, showSidebar }) => {
             >
               FAQS
             </RouterLink>
+            <a
+              href={`${AcademyUrl}`}
+              target='_self'
+              className='nav-link text-nowrap'
+            >
+              <h1 className='nav-link'>ACADEMY</h1>
+            </a>
             <NavLink
               className='nav-link text-nowrap'
               onClick={toggle}
@@ -44,13 +51,13 @@ const Sidebar = ({ toggle, showSidebar }) => {
             >
               <h1>CONTACT US</h1>
             </NavLink>
-            <a
-              href={`${AcademyUrl}`}
-              target='_self'
+            <RouterLink
+              to={'/get-quote'}
+              onClick={toggle}
               className='w-[159px] h-[48px] hover:bg-[#f1f1f1] flex items-center justify-center sidebarPay  rounded-[12px] p-[10px] text-[14px] text-[#000]'
             >
-              <h1 className='nav-link'>ACADEMY</h1>
-            </a>
+              <h1 className='nav-link'>GET QUOTE</h1>
+            </RouterLink>
           </div>
         </>
       )}

@@ -110,60 +110,72 @@ const AdminSponsors = () => {
           </div>
         </div>
 
-        <div className='grid grid-cols-5 gap-4 gap-y-4'>
+        <>
           {!loading ? (
             <>
-              {sponsors &&
-                sponsors.map((sponsor, index) => (
-                  <div
-                    key={index}
-                    className={`flex flex-col group gap-2 ${
-                      markedItems.includes(index)
-                        ? 'markedTestimonial'
-                        : 'backg'
-                    }`}
-                  >
-                    <div
-                      className={`absolute transition  duration-300 ${
-                        markedItems.includes(index)
-                          ? ''
-                          : 'hidden group-hover:block'
-                      } ml-[60px] mt-1`}
-                    >
-                      <div className='w-[100px] h-[38px] rounded-[50px] flex gap-[13px] bg-[#f1f1f1] items-center justify-center'>
+              {sponsors && sponsors.length > 0 ? (
+                <div className='grid grid-cols-5 gap-4 gap-y-4'>
+                  {sponsors &&
+                    sponsors.map((sponsor, index) => (
+                      <div
+                        key={index}
+                        className={`flex flex-col group gap-2 ${
+                          markedItems.includes(index)
+                            ? 'markedTestimonial'
+                            : 'backg'
+                        }`}
+                      >
                         <div
-                          onClick={() =>
-                            navigate(
-                              `/admin/sponsors/edit-sponsor/${sponsor?.id}`,
-                            )
-                          }
-                          className=''
+                          className={`absolute transition  duration-300 ${
+                            markedItems.includes(index)
+                              ? ''
+                              : 'hidden group-hover:block'
+                          } ml-[60px] mt-1`}
                         >
-                          <img src={EditIcon} alt='' />
-                        </div>
-                        <div
-                          onClick={() => handleDelete(sponsor?.id)}
-                          className='hover:text-mainRed transition duration-300 cursor-pointer'
-                        >
-                          <RiDeleteBin5Line size={22} />
-                        </div>
+                          <div className='w-[100px] h-[38px] rounded-[50px] flex gap-[13px] bg-[#f1f1f1] items-center justify-center'>
+                            <div
+                              onClick={() =>
+                                navigate(
+                                  `/admin/sponsors/edit-sponsor/${sponsor?.id}`,
+                                )
+                              }
+                              className=''
+                            >
+                              <img src={EditIcon} alt='' />
+                            </div>
+                            <div
+                              onClick={() => handleDelete(sponsor?.id)}
+                              className='hover:text-mainRed transition duration-300 cursor-pointer'
+                            >
+                              <RiDeleteBin5Line size={22} />
+                            </div>
 
-                        <div className=''>
-                          <input
-                            type='checkbox'
-                            className='form-checkbox h-4 w-4 text-indigo-600'
-                            checked={markedItems.includes(index)}
-                            onChange={() => toggleMarked(index, sponsor)}
-                          />
+                            <div className=''>
+                              <input
+                                type='checkbox'
+                                className='form-checkbox h-4 w-4 text-indigo-600'
+                                checked={markedItems.includes(index)}
+                                onChange={() => toggleMarked(index, sponsor)}
+                              />
+                            </div>
+                          </div>
                         </div>
+                        <img src={sponsor?.logo} alt='' />
+                        <span className='font-medium text-[14px] leading-[17px] text-byCol'>
+                          {sponsor?.name}
+                        </span>
                       </div>
-                    </div>
-                    <img src={sponsor?.logo} alt='' />
-                    <span className='font-medium text-[14px] leading-[17px] text-byCol'>
-                      {sponsor?.name}
-                    </span>
-                  </div>
-                ))}
+                    ))}
+                </div>
+              ) : (
+                <div className='h-[54vh] flex flex-col gap-3 w-full items-center justify-center '>
+                  <img
+                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKZHRIXeq8ByuIl_I6f0soTdzg6Egh5vyP2Q&s'
+                    alt=''
+                  />
+                  <h1 className='font-medium'>No Sponsor</h1>
+                </div>
+              )}
             </>
           ) : (
             <div className='flex flex-row gap-6'>
@@ -185,7 +197,7 @@ const AdminSponsors = () => {
               </div>
             </div>
           )}
-        </div>
+        </>
         {markedItems.length > 0 && (
           <div className='absolute right-0 bottom-0 mr-10 mb-10'>
             <div

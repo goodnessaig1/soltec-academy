@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { Next, Prev, Arrow, Text } from '../../Utils/Assets';
 import { courseDummyData } from '../DummyData/coursesData';
+import { useAuth } from '../Context/AuthContext';
 
 const CustomPrevArrow = props => {
   return (
@@ -32,8 +33,10 @@ const CustomNextArrow = props => {
   );
 };
 
-const Courses = ({ courses }) => {
+const Courses = () => {
   const navigate = useNavigate();
+  // const {courses}=useAuth()
+  const { courses, courseLoading } = useAuth();
 
   var lgSettings = {
     dots: false,

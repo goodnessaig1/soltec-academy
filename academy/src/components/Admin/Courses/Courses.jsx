@@ -158,7 +158,7 @@ const AdminCourses = () => {
               </h1>
             </Link>
           </div>
-          <div className='flex flex-row w-full justify-between gap-4.5'>
+          <div className='flex flex-row w-full justify-between gap-4'>
             <div className='flex flex-col gap-4 w-[43%]'>
               <div className='font-medium text-[14px] leading-[21px]'>
                 Toggle ON/OFF
@@ -173,7 +173,7 @@ const AdminCourses = () => {
                 <span className='toggle-slider'></span>
               </label>
             </div>
-            <div className='flex flex-col gap-4.5 w-[159px]'>
+            <div className='flex flex-col gap-4 w-[159px]'>
               <h1 className='font-medium text-[14px] leading-[21px]'>
                 {/* Set date */}
               </h1>
@@ -199,7 +199,7 @@ const AdminCourses = () => {
               {/* Head */}
               <div className='flex flex-row w-full items-start'>
                 <div className='w-[20%]'>
-                  <div className='flex flex-row items-center gap-4.5 py-2.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                     <h1 className='text-[14px] font-medium leading-[17px]'>
                       DATE CREATED
                     </h1>
@@ -207,35 +207,35 @@ const AdminCourses = () => {
                   </div>
                 </div>
                 <div className='w-[27%]'>
-                  <div className='flex flex-row items-center gap-4.5 py-2.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                     <h1 className='text-[14px] font-medium leading-[17px]'>
                       COURSE
                     </h1>
                   </div>
                 </div>
                 <div className='w-[13%]'>
-                  <div className='flex flex-row items-center gap-4.5 py-2.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                     <h1 className='text-[14px] font-medium leading-[17px]'>
                       COLOR CODE
                     </h1>
                   </div>
                 </div>
                 <div className='w-[12%]'>
-                  <div className='flex flex-row items-center gap-4.5 py-2.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                     <h1 className='text-[14px] font-medium leading-[17px]'>
                       PRICE
                     </h1>
                   </div>
                 </div>
                 <div className='w-[12%]'>
-                  <div className='flex flex-row items-center gap-4.5 py-2.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                     <h1 className='text-[14px] font-medium leading-[17px]'>
                       STATUS
                     </h1>
                   </div>
                 </div>
                 <div className='w-[15%]'>
-                  <div className='flex flex-row items-center gap-4.5 py-2.5 px-3'>
+                  <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                     <h1 className='text-[14px] font-medium leading-[17px]'></h1>
                   </div>
                 </div>
@@ -289,7 +289,7 @@ const AdminCourses = () => {
                         </div>
                       )}
                     </div>
-                    <div className='w-[15%] flex flex-row gap-4.5 items-center justify-center'>
+                    <div className='w-[15%] flex flex-row gap-4 items-center justify-center'>
                       <div
                         onClick={() =>
                           navigate(

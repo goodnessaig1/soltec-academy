@@ -147,7 +147,7 @@ const EditTestimonial = () => {
                 handleSubmit();
               }}
             >
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-4'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor='author'
@@ -170,7 +170,7 @@ const EditTestimonial = () => {
                   </p>
                 )}
               </div>
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-4'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor='profession'
@@ -194,7 +194,7 @@ const EditTestimonial = () => {
                 )}
               </div>
 
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-4'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor='content'
@@ -219,7 +219,7 @@ const EditTestimonial = () => {
               </div>
 
               {/* Author image section */}
-              <div className='flex flex-col gap-4.5'>
+              <div className='flex flex-col gap-4'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor='author_image'

@@ -111,76 +111,92 @@ const AdminTestimonials = () => {
           </div>
         </div>
 
-        <div className='grid lg:grid-cols-2 xll:grid-cols-3 gap-4 gap-y-4 '>
+        <>
           {!loading ? (
             <>
-              {data &&
-                data.map((testimonial, index) => (
-                  <div
-                    key={index}
-                    className={`flex flex-row px-3 group py-3 rounded-[16px] gap-4 w-[360px]  border bg-white items-center ${
-                      markedItems.includes(index)
-                        ? 'markedTestimonial'
-                        : 'backg'
-                    }`}
-                  >
-                    <div
-                      className={`absolute transition  duration-300 ${
-                        markedItems.includes(index)
-                          ? ''
-                          : 'hidden group-hover:block'
-                      } ml-[214px] mt-[54px]`}
-                    >
-                      <div className='w-[126px] h-10 rounded-[50px] flex gap-[13px] bg-whiteW items-center justify-center'>
+              {data && data.length > 0 ? (
+                <div className='grid lg:grid-cols-2 xll:grid-cols-3 gap-4 gap-y-4 '>
+                  {data &&
+                    data.map((testimonial, index) => (
+                      <div
+                        key={index}
+                        className={`flex flex-row px-3 group py-3 rounded-[16px] gap-4 w-[360px]  border bg-white items-center ${
+                          markedItems.includes(index)
+                            ? 'markedTestimonial'
+                            : 'backg'
+                        }`}
+                      >
                         <div
-                          onClick={() =>
-                            navigate(
-                              `/admin/testimonials/edit-testimonial/${testimonial?.id}`,
-                            )
-                          }
-                          className=''
+                          className={`absolute transition  duration-300 ${
+                            markedItems.includes(index)
+                              ? ''
+                              : 'hidden group-hover:block'
+                          } ml-[214px] mt-[54px]`}
                         >
-                          <img src={EditIcon} alt='' />
-                        </div>
-                        <div
-                          onClick={() => handleDelete(testimonial?.id)}
-                          className='hover:text-mainRed transition duration-300 cursor-pointer'
-                        >
-                          <RiDeleteBin5Line size={22} />
-                        </div>
+                          <div className='w-[126px] h-10 rounded-[50px] flex gap-[13px] bg-whiteW items-center justify-center'>
+                            <div
+                              onClick={() =>
+                                navigate(
+                                  `/admin/testimonials/edit-testimonial/${testimonial?.id}`,
+                                )
+                              }
+                              className=''
+                            >
+                              <img src={EditIcon} alt='' />
+                            </div>
+                            <div
+                              onClick={() => handleDelete(testimonial?.id)}
+                              className='hover:text-mainRed transition duration-300 cursor-pointer'
+                            >
+                              <RiDeleteBin5Line size={22} />
+                            </div>
 
-                        <div className=''>
-                          <input
-                            type='checkbox'
-                            className='form-checkbox h-4 w-4 text-indigo-600'
-                            checked={markedItems.includes(index)}
-                            onChange={() => toggleMarked(index, testimonial)}
+                            <div className=''>
+                              <input
+                                type='checkbox'
+                                className='form-checkbox h-4 w-4 text-indigo-600'
+                                checked={markedItems.includes(index)}
+                                onChange={() =>
+                                  toggleMarked(index, testimonial)
+                                }
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className=' w-[15%]'>
+                          <img
+                            src={testimonial?.author_image}
+                            className='h-[50px] rounded-[50%] w-[50px]'
+                            alt=''
                           />
                         </div>
+                        <div className='flex w-[85%] flex-col gap-[11px]'>
+                          <h1 className='text-[16px] font-medium z-10 leading-[19px] '>
+                            {testimonial?.content.length > 100
+                              ? `${
+                                  testimonial?.content.substring(0, 100) + '...'
+                                }`
+                              : `${testimonial?.content}`}
+                          </h1>
+                          <div>
+                            <span className='font-[400] text-[14px] profile_col leading-[16px]'>
+                              {testimonial?.author}
+                              <p>{testimonial?.profession}</p>
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                    <div className=' w-[15%]'>
-                      <img
-                        src={testimonial?.author_image}
-                        className='h-[50px] rounded-[50%] w-[50px]'
-                        alt=''
-                      />
-                    </div>
-                    <div className='flex w-[85%] flex-col gap-[11px]'>
-                      <h1 className='text-[16px] font-medium z-10 leading-[19px] '>
-                        {testimonial?.content.length > 100
-                          ? `${testimonial?.content.substring(0, 100) + '...'}`
-                          : `${testimonial?.content}`}
-                      </h1>
-                      <div>
-                        <span className='font-[400] text-[14px] profile_col leading-[16px]'>
-                          {testimonial?.author}
-                          <p>{testimonial?.profession}</p>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                    ))}
+                </div>
+              ) : (
+                <div className='h-[54vh] flex flex-col gap-3 w-full items-center justify-center '>
+                  <img
+                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKZHRIXeq8ByuIl_I6f0soTdzg6Egh5vyP2Q&s'
+                    alt=''
+                  />
+                  <h1 className='font-medium'>No Testimonial</h1>
+                </div>
+              )}
             </>
           ) : (
             <div className='flex flex-row gap-[24px]'>
@@ -198,7 +214,7 @@ const AdminTestimonials = () => {
               </div>
             </div>
           )}
-        </div>
+        </>
         {markedItems.length > 0 && (
           <div className='absolute right-0 bottom-0 mr-10 mb-10'>
             <div

@@ -9,11 +9,11 @@ import Header from '../common/Header';
 import { Emogi, SearchIcon } from '../../Utils/Assets';
 import Footer from '../common/Footer';
 import { courseDummyData } from '../DummyData/coursesData';
+import { useAuth } from '../Context/AuthContext';
 
 const Courses = () => {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-  const [courses, setCourses] = useState(null);
+  const { courses, courseLoading } = useAuth();
 
   useEffect(() => {
     window.scrollTo({
@@ -24,22 +24,6 @@ const Courses = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-
-  const getCourses = async () => {
-    setLoading(true);
-    try {
-      const response = await apiRequest('GET', `/courses/fetch_home_courses/`);
-      setLoading(false);
-      setCourses(response);
-    } catch (error) {
-      setLoading(false);
-      console.log('error', error);
-    }
-  };
-
-  useEffect(() => {
-    getCourses();
-  }, []);
 
   const handleSearch = e => {
     const term = e.target.value.toLowerCase();
@@ -138,7 +122,7 @@ const Courses = () => {
               </div>
             ) : (
               <div className='w-full flex items-center justify-center mt-[60px]'>
-                {!loading ? (
+                {!courseLoading ? (
                   <>
                     {courses && courses.length >= 1 ? (
                       <Course courses={courses} />
@@ -180,7 +164,8 @@ const Course = ({ courses, isDummy }) => {
   const navigate = useNavigate();
 
   return (
-    <div className='sm:flex sm:flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-8 sm:gap-y-[21px] lg:gap-y-8'>
+    <div className='flex flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-8 sm:gap-y-[21px] lg:gap-y-8'>
+      {/* <div className='flex flex-wrap items-center justify-center gap-5 lg:gap-8'> */}
       {courses &&
         courses.map((course, index) => (
           <div

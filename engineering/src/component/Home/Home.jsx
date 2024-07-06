@@ -45,10 +45,8 @@ const HomeDashboard = () => {
     const observer2 = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setBackgroundC('#6c5ce7');
           // setBackgroundC('#6c5ce7');
-          // setBackgroundC('#6c5ce7');
-          // setBackgroundC('#D2070C');
+          setBackgroundC('#E6B405');
         }
       },
       {
@@ -66,7 +64,8 @@ const HomeDashboard = () => {
     const observer3 = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setBackgroundC('#FEC910');
+          // setBackgroundC('#FEC910');
+          setBackgroundC('#02003E');
         }
       },
       {
