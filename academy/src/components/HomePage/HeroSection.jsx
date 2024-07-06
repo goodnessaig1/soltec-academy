@@ -28,20 +28,8 @@ const images = [
 ];
 
 const HeroSection = () => {
-  const settings = {
-    dots: false,
-    fade: true,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    waitForAnimate: false,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    cssEase: 'linear',
-  };
   return (
-    <div className='w-full min-h-[102vh] sml:min-h-[118vh] lg:min-h-[100vh]'>
+    <div className='w-full min-h-[118vh] sms:min-h-[94vh] smm:min-h-[102vh]  sml:min-h-[118vh] lg:min-h-[100vh]'>
       <Header />
       <div className='absolute w-full lg:static top-0 right-0'>
         {/* Hero session gradient */}
@@ -51,23 +39,12 @@ const HeroSection = () => {
 
         <div className='hero_se'>
           <div className='flex flex-col lg:flex-row w-full justify-between'>
-            <div className='sm:flex lg:hidden w-full flex justify-end'>
-              <Slider
-                {...settings}
-                className='w-[100%] slider-contaier overflow-hidden '
-              >
-                {images.map((img, i) => (
-                  <div key={i} className=''>
-                    <img
-                      src={img.img}
-                      className='min-h-[420px]'
-                      loading='lazy'
-                      alt=''
-                    />
-                  </div>
-                ))}
-              </Slider>
+            <div className='flex lg:hidden w-full  flex justify-end'>
+              <div className='w-full md:w-[550px]'>
+                <Images />
+              </div>
             </div>
+
             <div className='px-4 lg:pl-[76px] xl:pl-[120px] flex sm:w-full lg:w-1/2 mdl:items-center lg:items-start xxl:items-end flex-col gap-7 sm:mt-0 lg:mt-28'>
               <div className=' flex flex-col gap-7 z-10'>
                 <h1 className='text-nowrap barlow-semi condensed-bold  font-bold smm:text-[37px] xs:text-[32px] lg:text-[48px] xl:text-[64px] text-[#1c1c1c] sm:leading-[48px] lg:leading-[76px] '>
@@ -94,16 +71,7 @@ const HeroSection = () => {
               </div>
             </div>
             <div className='sm:hidden absolute top-0 right-0 min-h-[370px] justify-end lg:flex lg:w-[50%]'>
-              <Slider
-                {...settings}
-                className='w-[100%] slider-contaier overflow-hidden '
-              >
-                {images.map((img, i) => (
-                  <div key={i} className=''>
-                    <img src={img.img} loading='lazy' alt='' />
-                  </div>
-                ))}
-              </Slider>
+              <Images />
             </div>
           </div>
         </div>
@@ -113,3 +81,34 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+const Images = () => {
+  const settings = {
+    dots: false,
+    fade: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    waitForAnimate: false,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    cssEase: 'linear',
+  };
+  return (
+    <Slider {...settings} className='w-[100%] slider-contaier overflow-hidden '>
+      <div className=''>
+        <img src={Frame} className='min-h-[420px]' loading='lazy' alt='' />
+      </div>
+      <div className=''>
+        <img src={Group2} className='min-h-[420px]' loading='lazy' alt='' />
+      </div>
+      <div className=''>
+        <img src={Group3} className='min-h-[420px]' loading='lazy' alt='' />
+      </div>
+      <div className=''>
+        <img src={Group4} className='min-h-[420px]' loading='lazy' alt='' />
+      </div>
+    </Slider>
+  );
+};
