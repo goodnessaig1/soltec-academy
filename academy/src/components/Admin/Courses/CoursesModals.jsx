@@ -214,15 +214,15 @@ export const CreateCohort = ({
             duration: 0.6,
             ease: [0, 0.71, 0.2, 1.01],
           }}
-          className='bg-bg3 z_ind flex flex-col w-[412px] h-[323px] bg-white rounded-[24px] p-6 '
+          className='bg-bg3 z_ind flex flex-col w-[412px] bg-white rounded-[24px] p-6 '
         >
-          <div className='flex flex-col items-center gap-[22px] w-full'>
+          <div className='flex flex-col items-center gap-4 w-full'>
             <h1 className='text-[16px] leading-[24px] text-center w-full font-semibold'>
               CREATE COHORT
             </h1>
             <form
               action=''
-              className='w-full flex flex-col gap-[22px]'
+              className='w-full flex flex-col gap-5'
               onSubmit={e => e.preventDefault()}
             >
               <div className='flex flex-col gap-4'>

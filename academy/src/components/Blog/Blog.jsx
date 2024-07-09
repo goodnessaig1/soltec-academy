@@ -168,8 +168,7 @@ export default Blog;
 
 const SingleBlog = ({ blogs, isDummy }) => {
   return (
-    <div className='mt-[80px] items-center  flex flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 sm:gap-y-7 lg:gap-y-8'>
-      {/* <div className='mt-[80px] items-center flex flex-wrap items-center justify-center gap-7 lg:gap-8'> */}
+    <div className='mt-[80px] items-center place-items-center flex flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 sm:gap-y-7 lg:gap-y-8'>
       {blogs &&
         blogs.map((blog, index) => (
           <div

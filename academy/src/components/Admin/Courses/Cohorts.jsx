@@ -4,32 +4,22 @@ import { useEffect, useState } from 'react';
 import { AddRound, BackArrow } from '../../../Utils/Assets';
 import { isValid, isBefore } from 'date-fns';
 import { LoadingFetching } from './LoadingFetching';
-import { adminApiRequest, apiRequest } from '../../../Utils/ApiRequest';
+import { adminApiRequest } from '../../../Utils/ApiRequest';
 import Layout from '../Common/Layout';
 import { useNavigate } from 'react-router-dom';
 import { CreateCohort } from './CoursesModals';
 import Sort from '../../../assets/sort.svg';
 import moment from 'moment';
-import { calculateTimeLeft } from '../../../Utils/Index';
+import { toast } from 'react-toastify';
+import { useAuth } from '../../Context/AuthContext';
+import Countdown from './Countdown';
 
 const Cohorts = () => {
   const navigate = useNavigate();
+  const { currentCohort } = useAuth();
   const [loading, setLoading] = useState(true);
   const [cohorts, setCohorts] = useState(null);
   const [openCreateCohort, setOpenCreateCohort] = useState(false);
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-
-  const [currentCohort, setCurrentCohort] = useState(null);
-  let bootCampDate = currentCohort?.end_date;
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(bootCampDate));
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft(bootCampDate));
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [currentCohort]);
 
   const handleDateChange = (date, setFieldValue, setFieldError) => {
     const selectedDateString = date;
@@ -55,22 +45,27 @@ const Cohorts = () => {
     }
   };
 
-  const getCurrentCohort = async () => {
-    try {
-      const response = await apiRequest(
-        'GET',
-        `/cohort/check_for_current_cohorts/`,
-      );
-      setCurrentCohort(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
     getCohorts();
-    getCurrentCohort();
   }, []);
+
+  const handleIsActive = async (index, item) => {
+    setCohorts(prevCourses => {
+      const newCohort = [...prevCourses];
+      newCohort[index].is_active = !newCohort[index].is_active;
+      return newCohort;
+    });
+    try {
+      await adminApiRequest('POST', `/cohort/${item.id}/toggle_active/`);
+      toast.success('Successfully updated', {
+        position: 'top-right',
+      });
+    } catch (error) {
+      toast.error('An error occured, please try again', {
+        position: 'top-right',
+      });
+    }
+  };
 
   return (
     <Layout text='Courses'>
@@ -130,10 +125,7 @@ const Cohorts = () => {
                     <h1 className='inter_ font-medium text-[14px] leading-[17px]'>
                       CURRENT BOOTCAMP
                     </h1>
-                    <span className='inter_ font-semibold text-[24px] leading-[30px]'>
-                      {timeLeft.days} : {timeLeft.hours} : {timeLeft.minutes} :{' '}
-                      {timeLeft.seconds}
-                    </span>
+                    <Countdown startDate={currentCohort.start_date} />
                   </div>
                 </div>
 
@@ -151,14 +143,14 @@ const Cohorts = () => {
                           <img src={Sort} alt='' />
                         </div>
                       </div>
-                      <div className='w-[27%]'>
+                      <div className='w-[22%]'>
                         <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                           <h1 className='text-[14px] font-semibold leading-[17px]'>
                             TIMEFRAME
                           </h1>
                         </div>
                       </div>
-                      <div className='w-[20%]'>
+                      <div className='w-[18%]'>
                         <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                           <h1 className='text-[14px] font-semibold leading-[17px]'>
                             DATE ENDED
@@ -166,10 +158,17 @@ const Cohorts = () => {
                           <img src={Sort} alt='' />
                         </div>
                       </div>
-                      <div className='w-[32%]'>
+                      <div className='w-[26%]'>
                         <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                           <h1 className='text-[14px] font-semibold leading-[17px]'>
                             NUMBER OF ENROLLMENTS
+                          </h1>
+                        </div>
+                      </div>
+                      <div className='w-[15%]'>
+                        <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
+                          <h1 className='text-[14px] font-semibold leading-[17px]'>
+                            Status
                           </h1>
                         </div>
                       </div>
@@ -187,7 +186,7 @@ const Cohorts = () => {
                               )}
                             </h1>
                           </div>
-                          <div className='w-[27%]'>
+                          <div className='w-[22%]'>
                             <h1 className='text-[14px] font-normal  py-2.5 px-3 leading-[17px]'>
                               {item?.timeframe?.years > 0 &&
                                 `${`Years: ${item?.timeframe?.years},`}`}{' '}
@@ -196,17 +195,31 @@ const Cohorts = () => {
                               {`${item?.timeframe?.days} days,`}{' '}
                             </h1>
                           </div>
-                          <div className='w-[20%]'>
+                          <div className='w-[18%]'>
                             <h1 className='text-[14px] font-normal  py-2.5 px-3 leading-[17px]'>
                               {moment(item?.end_date).format(
                                 'DD MMM YYYY, hh:mmA',
                               )}
                             </h1>
                           </div>
-                          <div className='w-[32%]'>
+                          <div className='w-[26%]'>
                             <h1 className='text-[14px] font-normal  py-2.5 px-3 leading-[17px]'>
                               {item?.no_of_enrollments}
                             </h1>
+                          </div>
+                          <div
+                            onClick={() => handleIsActive(index, item)}
+                            className='w-[12%] py-2.5 px-3 hover:cursor-pointer'
+                          >
+                            {item?.is_active ? (
+                              <div className='w-[70px] flex h-[24px] rounded-[50px] text-mainGreen items-center justify-center bg-activeBg text-[12px]'>
+                                Active
+                              </div>
+                            ) : (
+                              <div className='w-[70px] flex h-[24px] rounded-[50px] text-mainRed items-center justify-center  bg-unactiveBg text-[12px]'>
+                                Inactive
+                              </div>
+                            )}
                           </div>
                         </div>
                       ))}

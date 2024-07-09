@@ -80,9 +80,13 @@ const AdminPayment = () => {
               </h1>
               {!loadStats ? (
                 <h1 className='font-semibold inter__ text-[24px] leading-[30px]'>
-                  {paymentStats?.most_purchased.length > 16
-                    ? `${paymentStats?.most_purchased.substring(0, 16)}...`
-                    : `${paymentStats?.most_purchased}`}
+                  {paymentStats && (
+                    <>
+                      {paymentStats?.most_purchased.length > 16
+                        ? `${paymentStats?.most_purchased.substring(0, 16)}...`
+                        : `${paymentStats?.most_purchased}`}
+                    </>
+                  )}
                 </h1>
               ) : (
                 <Skeleton height={50} width={160} />

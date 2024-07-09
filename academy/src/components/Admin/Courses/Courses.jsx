@@ -91,7 +91,7 @@ const AdminCourses = () => {
     });
     try {
       await adminApiRequest('POST', `/courses/${item.id}/toggle_active/`);
-      toast.success('Successfully deleted', {
+      toast.success('Successfully updated', {
         position: 'top-right',
       });
     } catch (error) {
