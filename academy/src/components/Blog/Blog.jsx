@@ -62,23 +62,23 @@ const Blog = () => {
         <Header headerCol={false} />
         <div className='container_ w-full'>
           <div className='flex px-4 w-full lg:px-16 lgl:px-[100px] xl:px-[60px] xll:px-[120px] pb-[160px] flex-col'>
-            <div className='flex flex-col gap-[16px] mt-[60px] items-center justify-center'>
+            <div className='flex flex-col gap-4 mt-[60px] items-center justify-center'>
               <img src={BlogTex} className='lg:block hidden' alt='' />
               <img src={BlogMobile} className='block lg:hidden' alt='' />
-              <span className='text-[20px] sm:hidden lg:block text-center font-[400] leading-[30px] text-lightB'>
+              <span className='text-[20px] sm:hidden lg:block text-center font-normal leading-[30px] text-lightB'>
                 Learn everything you need to launch you into the job market
               </span>
             </div>
-            <div className='w-full mt-[40px] flex items-center justify-center'>
-              <div className='w-[384px] bg-lightGray h-[60px] rounded-[20px] flex items-center py-[6px] pl-[20px] pr-[6px] justify-between '>
+            <div className='w-full mt-10 flex items-center justify-center'>
+              <div className='w-[384px] bg-lightGray h-[60px] rounded-[20px] flex items-center py-1.5 pl-5 pr-1.5 justify-between '>
                 <input
                   type='text'
                   placeholder='Search a blog post'
                   value={searchTerm}
-                  className='text-[16px] text-footerCol  bg-transparent focus:outline-none focus:shadow-outline '
+                  className='text-[16px] w-[84%] text-footerCol  bg-transparent focus:outline-none focus:shadow-outline '
                   onChange={handleInputChange}
                 />
-                <div className='w-[48px] h-[48px] rounded-[16px] flex items-center justify-center bg-[#000]'>
+                <div className='w-12 h-12 rounded-[16px] flex items-center justify-center bg-black'>
                   <img src={SearchIcon} alt='' />
                 </div>
               </div>
@@ -93,8 +93,8 @@ const Blog = () => {
             <div className=''>
               {searchTerm != '' && searchResults?.length != 0 && (
                 <ul className='absolute w-full left-0 '>
-                  <div className='w-full flex mt-[8px] items-center flex-col '>
-                    <div className='flex flex-col py-[12px] rounded-[12px] mt-[8px] z-10 bg-[#fff] searchGra w-[360px]  '>
+                  <div className='w-full flex mt-2 items-center flex-col '>
+                    <div className='flex flex-col py-3 rounded-[12px] mt-2 z-10 bg-[#fff] searchGra w-[360px]  '>
                       {searchResults.map((blog, index) => (
                         <li
                           key={index}
@@ -105,7 +105,7 @@ const Blog = () => {
                               }/${blog?.title.substring(0, 20)}`,
                             )
                           }
-                          className='px-[16px] py-[2px] hover:cursor-pointer w-full hover:bg-[#f1f1f1]'
+                          className='px-4 py-0.5 hover:cursor-pointer w-full hover:bg-[#f1f1f1]'
                         >
                           <span className=' w-full'>{blog?.title}</span>
                         </li>
@@ -119,7 +119,7 @@ const Blog = () => {
             searchTerm.length > 4 &&
             searchResults?.length == 0 ? (
               <div className='flex w-full items-center justify-center'>
-                <div className='flex mt-[80px] gap-[14px] flex-col items0center justify-center'>
+                <div className='flex mt-[80px] gap-3.5 flex-col items0center justify-center'>
                   <img src={Emogi} className='h-[75px]' alt='' />
                   <span className=''>
                     No search results with the term {`“${searchTerm}”`}
@@ -138,7 +138,7 @@ const Blog = () => {
                   </>
                 ) : (
                   <div className='flex w-full flex-col gap-[24px items-center justify-center'>
-                    <div className='flex flex-col mt-[80px]  w-full lg:flex-row justify-center items-center gap-[24px]'>
+                    <div className='flex flex-col mt-[80px] w-full lg:flex-row justify-center items-center gap-[24px]'>
                       <Skeleton
                         style={{ borderRadius: '20px' }}
                         className='w-[140px]'
@@ -182,38 +182,38 @@ const SingleBlog = ({ blogs, isDummy }) => {
                 className='rounded-t-[34px] w-full h-[180px] lg:h-[220px]'
               />
             </div>
-            <div className='px-[12px] lg:px-[16px] flex flex-col gap-[13px]'>
+            <div className='px-3 lg:px-4 flex flex-col gap-[13px]'>
               <h1 className='font-semibold line-clamp-1 text-nowrap   sm:text-[18px] lg:text-[20px] sm:leading-[21px] lg:leading-[24px] '>
                 {blog?.title.length > 36
                   ? `${blog?.title?.substring(0, 36) + '..'}`
                   : `${blog?.title}`}
               </h1>
-              <span className='font-[400] line-clamp-3 text-[14px] leading-[21px] text-lightB'>
+              <span className='font-normal line-clamp-3 text-[14px] leading-[21px] text-lightB'>
                 {blog?.short_description.length > 140
                   ? `${blog?.short_description?.substring(0, 140) + '..'}`
                   : `${blog?.short_description}`}
               </span>
             </div>
-            <div className='flex flex-row justify-between px-[20px] mt-[16px] items-center'>
-              <div className='flex flex-row gap-[8px] '>
+            <div className='flex flex-row justify-between px-5 mt-4 items-center'>
+              <div className='flex flex-row gap-2 '>
                 {blog?.author_image ? (
                   <img
                     src={blog?.author_image}
                     alt=''
-                    className='rounded-[100%] w-[32px] h-[32px]'
+                    className='rounded-[100%] w-8 h-8'
                   />
                 ) : (
                   <img
                     src={Unavailable}
                     alt=''
-                    className='rounded-[100%] w-[32px] h-[32px]'
+                    className='rounded-[100%] w-8 h-8'
                   />
                 )}
                 <div className='flex flex-col'>
-                  <h3 className='text-[14px] font-[500] leading-[17px] text-lightB'>
+                  <h3 className='text-[14px] font-medium leading-[17px] text-lightB'>
                     {blog?.author_name}
                   </h3>
-                  <h3 className='text-[12px] font-[400] leading-[14px] text-lightB'>
+                  <h3 className='text-[12px] font-normal leading-[14px] text-lightB'>
                     5 min read
                   </h3>
                 </div>
@@ -223,15 +223,15 @@ const SingleBlog = ({ blogs, isDummy }) => {
                   to={`/blog/${blog?.id}/${
                     blog.author_name
                   }/${blog?.title.substring(0, 20)}`}
-                  className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'
+                  className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-12'
                 >
-                  <span className='text-[14px] leading-[17px] font-[400]'>
+                  <span className='text-[14px] leading-[17px] font-normal'>
                     Read more
                   </span>
                 </Link>
               ) : (
-                <div className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'>
-                  <span className='text-[14px] leading-[17px] font-[400]'>
+                <div className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-12'>
+                  <span className='text-[14px] leading-[17px] font-normal'>
                     Read more
                   </span>
                 </div>

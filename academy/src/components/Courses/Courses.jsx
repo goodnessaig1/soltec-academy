@@ -65,12 +65,12 @@ const Courses = () => {
               </span>
             </div>
             <div className='w-full mt-10 flex items-center justify-center'>
-              <div className='w-[384px] bg-lightGray h-[60px] z-8 rounded-[20px] flex items-center py-[6px] pl-5 pr-[6px] justify-between'>
+              <div className='w-[384px] bg-lightGray h-[60px] z-8 rounded-[20px] flex items-center py-1.5 pl-5 pr-1.5 justify-between'>
                 <input
                   type='text'
                   value={searchTerm}
                   onChange={handleSearch}
-                  className='text-[16px] text-footerCol  bg-transparent focus:outline-none focus:shadow-outline '
+                  className='text-[16px] w-[84%] bg-transparent text-footerCol focus:outline-none focus:shadow-outline '
                   placeholder='Search a course'
                   onKeyPress={handleKeyPress}
                 />
@@ -165,7 +165,6 @@ const Course = ({ courses, isDummy }) => {
 
   return (
     <div className='flex flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-8 sm:gap-y-[21px] lg:gap-y-8'>
-      {/* <div className='flex flex-wrap items-center justify-center gap-5 lg:gap-8'> */}
       {courses &&
         courses.map((course, index) => (
           <div

@@ -44,9 +44,9 @@ const ContactUs = () => {
           <div className='yellowLine' />
         </div>
 
-        <div className='contact_uss px-[24px] py-8 md:p-8 mt-9 md:mt-10 w-full md:w-[600px] lg:w-[786px] rounded-[6px] flex flex-col lg:flex-row gap-[64px]'>
-          <div className='w-[240px] flex flex-col gap-[32px]'>
-            <img src={Logo} alt='' className='w-[156px] h-[48px]' />
+        <div className='contact_uss px-6 py-8 md:p-8 mt-9 md:mt-10 w-full md:w-[600px] lg:w-[786px] rounded-[6px] flex flex-col lg:flex-row gap-[64px]'>
+          <div className='w-[240px] flex flex-col gap-8'>
+            <img src={Logo} alt='' className='w-[156px] h-12' />
             <div className='flex flex-col gap-[15px]'>
               <div className='flex flex-row w-full gap-4 text-[16px] font-normal leading-[20px]  '>
                 <div className='w-1/2'>Phone:</div>
@@ -93,7 +93,7 @@ const ContactUs = () => {
             >
               {({ handleChange, handleBlur, errors, touched }) => (
                 <Form className='flex flex-col gap-4 ' action=''>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-1.5'>
                     <label
                       className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
                       htmlFor='fullName'
@@ -107,7 +107,7 @@ const ContactUs = () => {
                         required
                         onChange={handleChange('fullName')}
                         onBlur={handleBlur('fullName')}
-                        className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
+                        className='outline-none text-base pt-2 pl-4 p-2.5 bg-transparent w-full'
                       />
                     </div>
                     <AnimatePresence>
@@ -125,7 +125,7 @@ const ContactUs = () => {
                       )}
                     </AnimatePresence>
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-1.5'>
                     <label
                       className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
                       htmlFor='email'
@@ -139,7 +139,7 @@ const ContactUs = () => {
                         required
                         onChange={handleChange('email')}
                         onBlur={handleBlur('email')}
-                        className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
+                        className='outline-none text-base pt-2 pl-4 p-2.5 bg-transparent w-full'
                       />
                     </div>
                     <AnimatePresence>
@@ -157,7 +157,7 @@ const ContactUs = () => {
                       )}
                     </AnimatePresence>
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-1.5'>
                     <label
                       className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
                       htmlFor='message'
@@ -172,7 +172,7 @@ const ContactUs = () => {
                         required
                         onChange={handleChange('description')}
                         onBlur={handleBlur('description')}
-                        className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
+                        className='outline-none text-base pt-2 pl-4 p-2.5 bg-transparent w-full'
                       />
                     </div>
                     <AnimatePresence>
@@ -193,12 +193,12 @@ const ContactUs = () => {
                   {/* {!addLoading ? ( */}
                   <button
                     type='submit'
-                    className='text-[16px] hover:opacity-[0.9] text-black bg-[#FEC910] rounded-[8px] font-semibold w-full h-[48px] flex items-center justify-center '
+                    className='text-[16px] hover:opacity-[0.9] text-black bg-[#FEC910] rounded-[8px] font-semibold w-full h-12 flex items-center justify-center '
                   >
                     SEND MESSAGE
                   </button>
                   {/* ) : ( */}
-                  {/* <div className='w-full flex items-center justify-center h-[48px]'>
+                  {/* <div className='w-full flex items-center justify-center h-12'>
                         <ProgressBar
                           visible={true}
                           height='80'

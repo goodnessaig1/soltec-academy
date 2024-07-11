@@ -175,7 +175,7 @@ const GetQuote = () => {
                           required
                           onChange={handleChange('description')}
                           onBlur={handleBlur('description')}
-                          className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
+                          className='outline-none pt-2 pl-4 p-2.5 text-base bg-transparent w-full'
                         />
                       </div>
                       <AnimatePresence>
@@ -319,7 +319,7 @@ const GetQuote = () => {
                           required
                           onChange={handleChange('phoneNumber')}
                           onBlur={handleBlur('phoneNumber')}
-                          className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
+                          className='outline-none text-base pt-2 pl-4 p-2.5 bg-transparent w-full'
                         />
                       </div>
                       <AnimatePresence>
@@ -351,7 +351,7 @@ const GetQuote = () => {
                           required
                           onChange={handleChange('email')}
                           onBlur={handleBlur('email')}
-                          className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
+                          className='outline-none text-base pt-2 pl-4 p-2.5 bg-transparent w-full'
                         />
                       </div>
                       <AnimatePresence>
