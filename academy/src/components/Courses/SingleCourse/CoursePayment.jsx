@@ -84,17 +84,17 @@ const CoursePayment = () => {
       <>
         <Header />
         {!loading ? (
-          <div className='w-full sm:px-[16px] lg:px-[120px] paym flex justify-center sm:mt-[50px] lg:mt-[80px] mb-[120px] items-center'>
+          <div className='w-full sm:px-4 lg:px-[120px] paym flex justify-center sm:mt-[50px] lg:mt-[80px] mb-[120px] items-center'>
             <div className=' lg:w-[964px] flex justify-center items-start lg:justify-start items-start sm:flex-col lg:flex-row gap-[89px]'>
               <div className=' lg:w-[375px] flex flex-col gap-[50px] lg:gap-[84px]'>
                 <div
                   style={{ background: courseData?.color_code }}
                   className='p-[32px] sm:w-[343px] lg:w-[375px] hover:cursor-pointer h-[320px] rounded-[24px] flex flex-col items-center justify-center  gap-[15px]'
                 >
-                  <h1 className='font-[700] text-[32px] leading-[48px] text-center text-[#fff]'>
+                  <h1 className='font-bold text-[32px] leading-[48px] text-center text-white'>
                     {courseData?.title}
                   </h1>
-                  <span className='font-[500] text-[16px] leading-24px] text-center text-extraGray'>
+                  <span className='font-medium text-base text-center text-extraGray'>
                     {courseData?.description.length > 180 ? (
                       <span>
                         {`${courseData?.description.substring(0, 180) + '...'}`}
@@ -105,10 +105,10 @@ const CoursePayment = () => {
                   </span>
                 </div>
                 <form className='flex flex-col gap-[17px]'>
-                  <div className='flex flex-col gap-[4px]'>
-                    <div className='input_ rounded-[12px] py-[10px] px-[16px]'>
+                  <div className='flex flex-col gap-1'>
+                    <div className='input_ rounded-[12px] py-2.5 px-4'>
                       <input
-                        className='bg-transparent text-[14px] outline-none  w-full'
+                        className='bg-transparent text-base outline-none  w-full'
                         placeholder='Email address'
                         type='email'
                         name='email'
@@ -125,10 +125,10 @@ const CoursePayment = () => {
                       </div>
                     )}
                   </div>
-                  <div className='flex flex-col gap-[4px]'>
-                    <div className='input_ rounded-[12px] py-[10px] px-[16px]'>
+                  <div className='flex flex-col gap-1'>
+                    <div className='input_ rounded-[12px] py-2.5 px-4'>
                       <input
-                        className='bg-transparent text-[14px] outline-none w-full'
+                        className='bg-transparent text-base outline-none w-full'
                         placeholder='Phone number'
                         type='text'
                         name='phoneNumber'
@@ -157,12 +157,12 @@ const CoursePayment = () => {
                   </div>
                   <div className='input_ flex justify-between gap-[8px] rounded-[12px]  pl-[16px]'>
                     <input
-                      className='bg-transparent text-[14px] outline-none w-full'
+                      className='bg-transparent text-base outline-none w-full'
                       placeholder='Type Coupon'
                       type='text'
                       disabled
                     />
-                    <div className='bg-[#fff] w-[72px] borderRr py-[10px] px-[12px] font-[500] leading-[20px] h-full text-center '>
+                    <div className='bg-white w-[72px] borderRr py-2.5 px-[12px] font-[500] leading-[20px] h-full text-center '>
                       Apply
                     </div>
                   </div>
@@ -181,7 +181,7 @@ const CoursePayment = () => {
                       <h1 className=''>Coupon:</h1>
                       <span className='text-mainRed'>null</span>
                     </div>
-                    <div className='flex h-[56px] total_ font-[700] items-center text-[14px] leading-[18px] justify-between'>
+                    <div className='flex h-[56px] total_ font-bold items-center text-[14px] leading-[18px] justify-between'>
                       <h1 className=''>Total:</h1>
                       <span className=''>
                         N{parseFloat(courseData?.price).toLocaleString()}
@@ -189,13 +189,13 @@ const CoursePayment = () => {
                     </div>
                   </div>
                   <div className='flex flex-col gap-[14px]'>
-                    <div className='flex gap-[4px] text-[14px] leading-[19px] '>
+                    <div className='flex gap-1 text-[14px] leading-[19px] '>
                       <h1 className='font-[600]'>Email address:</h1>
                       <span className=''>
                         {email ? email : 'example.gmail.com'}
                       </span>
                     </div>
-                    <div className='flex gap-[4px] text-[14px] leading-[19px] '>
+                    <div className='flex gap-1 text-[14px] leading-[19px] '>
                       <h1 className='font-[600]'>Phone number:</h1>
                       <span className=''>
                         {phoneNumber ? phoneNumber : '090********'}
@@ -207,7 +207,7 @@ const CoursePayment = () => {
                 {!paymentRequest ? (
                   <div
                     onClick={() => handlePayment()}
-                    className='text-[#fff] flex items-center text-center justify-center h-[56px] rounded-[12px] bg-mainRed hover:bg-red-600 h-[56px] hover:cursor-pointer transition duration-400  font-[600]'
+                    className='text-white flex items-center text-center justify-center h-[56px] rounded-[12px] bg-mainRed hover:bg-red-600 h-[56px] hover:cursor-pointer transition duration-400  font-[600]'
                   >
                     Make payment
                   </div>

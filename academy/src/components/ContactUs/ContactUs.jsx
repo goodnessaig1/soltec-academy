@@ -103,7 +103,7 @@ const ContactUsAcademy = () => {
                         required
                         onChange={handleChange('fullName')}
                         onBlur={handleBlur('fullName')}
-                        className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
+                        className='outline-none pt-2 text-base pl-4 p-2.5 bg-transparent w-full'
                       />
                     </div>
                     <AnimatePresence>
@@ -135,7 +135,7 @@ const ContactUsAcademy = () => {
                         required
                         onChange={handleChange('email')}
                         onBlur={handleBlur('email')}
-                        className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
+                        className='outline-none pt-2 text-base pl-4 p-2.5 bg-transparent w-full'
                       />
                     </div>
                     <AnimatePresence>
@@ -168,7 +168,7 @@ const ContactUsAcademy = () => {
                         required
                         onChange={handleChange('message')}
                         onBlur={handleBlur('message')}
-                        className='outline-none pt-2 pl-4 p-2.5 bg-transparent w-full'
+                        className='outline-none pt-2 pl-4 p-2.5 text-base bg-transparent w-full'
                       />
                     </div>
                     <AnimatePresence>
