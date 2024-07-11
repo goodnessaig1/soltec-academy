@@ -174,7 +174,7 @@ const Dashboard = () => {
                 paymentData.map((item, index) => (
                   <div
                     key={index}
-                    className='flex flex-row w-full items-start w-full min-h-[48px]'
+                    className='flex flex-row w-full items-start w-full '
                   >
                     <div className='w-[15%]'>
                       <h1 className='text-[12px] font-normal gap-4 px-3 leading-[17px]'>
@@ -280,59 +280,62 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-              {/* Data */}
-              {workspaceBookings &&
-                workspaceBookings.map((item, index) => (
-                  <div
-                    key={index}
-                    className='flex flex-row w-full items-start w-full min-h-[48px]'
-                  >
-                    <div className='w-[15%]'>
-                      <h1 className='text-[12px] font-normal gap-4 px-3 leading-[17px]'>
-                        {moment(item?.date_paid).format('DD MMM YYYY, hh:mmA')}
-                      </h1>
-                    </div>
-                    <div className='w-[15%] whitespace-normal'>
-                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px] break-all'>
-                        {item?.email.length > 12
-                          ? `${item?.email.substring(
-                              0,
-                              4,
-                            )}..${item?.email.substring(
-                              item?.email.length - 8,
-                            )}`
-                          : `${item?.email}`}
-                      </h1>
-                    </div>
-                    <div className='w-[17%]'>
-                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
-                        {item?.full_name.length > 14
-                          ? `${item?.full_name.substring(0, 14)}...`
-                          : `${item?.full_name}`}
-                      </h1>
-                    </div>
-                    <div className='w-[15%]'>
-                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
-                        {item?.phone_number}
-                      </h1>
-                    </div>
-                    <div className='w-[12%]'>
-                      <div className='flex flex-row text-[12px] items-center gap-4 gap-4 px-3'>
-                        {item?.start_date}
+              <div className='flex flex-col gap-3'>
+                {workspaceBookings &&
+                  workspaceBookings.map((item, index) => (
+                    <div
+                      key={index}
+                      className='flex flex-row w-full items-start w-full '
+                    >
+                      <div className='w-[15%]'>
+                        <h1 className='text-[12px] font-normal gap-4 px-3 leading-[17px]'>
+                          {moment(item?.date_paid).format(
+                            'DD MMM YYYY, hh:mmA',
+                          )}
+                        </h1>
+                      </div>
+                      <div className='w-[15%] whitespace-normal'>
+                        <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px] break-all'>
+                          {item?.email.length > 12
+                            ? `${item?.email.substring(
+                                0,
+                                6,
+                              )}..${item?.email.substring(
+                                item?.email.length - 7,
+                              )}`
+                            : `${item?.email}`}
+                        </h1>
+                      </div>
+                      <div className='w-[17%]'>
+                        <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
+                          {item?.full_name.length > 14
+                            ? `${item?.full_name.substring(0, 14)}...`
+                            : `${item?.full_name}`}
+                        </h1>
+                      </div>
+                      <div className='w-[15%]'>
+                        <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
+                          {item?.phone_number}
+                        </h1>
+                      </div>
+                      <div className='w-[12%]'>
+                        <div className='flex flex-row text-[12px] items-center gap-4 gap-4 px-3'>
+                          {item?.start_date}
+                        </div>
+                      </div>
+                      <div className='w-[8%]'>
+                        <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
+                          {item?.plan}
+                        </h1>
+                      </div>
+                      <div className='w-[17%]'>
+                        <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
+                          {item?.payment_method}
+                        </h1>
                       </div>
                     </div>
-                    <div className='w-[8%]'>
-                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
-                        {item?.plan}
-                      </h1>
-                    </div>
-                    <div className='w-[17%]'>
-                      <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
-                        {item?.payment_method}
-                      </h1>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+              </div>
             </div>
           )}
         </div>
@@ -438,7 +441,7 @@ const Dashboard = () => {
                       to={`/academy/blog/${blog?.id}/${
                         blog.author_name
                       }/${blog?.title.substring(0, 20)}`}
-                      className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'
+                      className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-12'
                     >
                       <span className='text-[14px] leading-[17px] font-normal'>
                         Read more

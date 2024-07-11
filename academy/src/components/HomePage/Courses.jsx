@@ -2,7 +2,7 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Next, Prev, Arrow, Text } from '../../Utils/Assets';
 import { courseDummyData } from '../DummyData/coursesData';
 import { useAuth } from '../Context/AuthContext';
@@ -34,9 +34,7 @@ const CustomNextArrow = props => {
 };
 
 const Courses = () => {
-  const navigate = useNavigate();
-  // const {courses}=useAuth()
-  const { courses, courseLoading } = useAuth();
+  const { courses } = useAuth();
 
   var lgSettings = {
     dots: false,
@@ -106,18 +104,14 @@ const Courses = () => {
                                 <h1 className='font-bold text-center text-white text-[20px] leading-[30px] '>
                                   N{parseFloat(course?.price).toLocaleString()}
                                 </h1>
-                                <div
-                                  onClick={() =>
-                                    navigate(
-                                      `/courses/${course?.id}/${course?.title}`,
-                                    )
-                                  }
+                                <Link
+                                  to={`/courses/${course?.id}/${course?.title}`}
                                   className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
                                 >
                                   <span className='font-semibold text-[16px] leading-[24px]'>
                                     Enroll now
                                   </span>
-                                </div>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -152,18 +146,14 @@ const Courses = () => {
                                 <h1 className='font-bold text-center text-white text-[20px] leading-[30px] '>
                                   N{parseFloat(course?.price).toLocaleString()}
                                 </h1>
-                                <div
-                                  onClick={() =>
-                                    navigate(
-                                      `/courses/${course?.id}/${course?.title}`,
-                                    )
-                                  }
+                                <Link
+                                  to={`/courses/${course?.id}/${course?.title}`}
                                   className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
                                 >
                                   <span className='font-semibold text-[16px] leading-[24px]'>
                                     Enroll now
                                   </span>
-                                </div>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -198,18 +188,14 @@ const Courses = () => {
                                 <h1 className='font-bold text-center text-white text-[20px] leading-[30px] '>
                                   N{parseFloat(course?.price).toLocaleString()}
                                 </h1>
-                                <div
-                                  onClick={() =>
-                                    navigate(
-                                      `/courses/${course?.id}/${course?.title}`,
-                                    )
-                                  }
+                                <Link
+                                  to={`/courses/${course?.id}/${course?.title}`}
                                   className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
                                 >
                                   <span className='font-semibold text-[16px] leading-[24px]'>
                                     Enroll now
                                   </span>
-                                </div>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -243,18 +229,14 @@ const Courses = () => {
                             <h1 className='font-bold text-center text-white text-[20px] leading-[30px] '>
                               N{parseFloat(course?.price).toLocaleString()}
                             </h1>
-                            <div
-                              onClick={() =>
-                                navigate(
-                                  `/courses/${course?.id}/${course?.title}`,
-                                )
-                              }
+                            <Link
+                              to={`/courses/${course?.id}/${course?.title}`}
                               className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
                             >
                               <span className='font-semibold text-[16px] leading-[24px]'>
                                 Enroll now
                               </span>
-                            </div>
+                            </Link>
                           </div>
                         </div>
                       ))}
@@ -303,14 +285,7 @@ const Courses = () => {
                               <h1 className='font-bold text-center text-white text-[20px] leading-[30px] '>
                                 N{parseFloat(course?.price).toLocaleString()}
                               </h1>
-                              <div
-                                // onClick={() =>
-                                //   navigate(
-                                //     `/courses/${course?.id}/${course?.title}`,
-                                //   )
-                                // }
-                                className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
-                              >
+                              <div className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
                                 <span className='font-semibold text-[16px] leading-[24px]'>
                                   Enroll now
                                 </span>
@@ -348,14 +323,7 @@ const Courses = () => {
                               <h1 className='font-bold text-center text-white text-[20px] leading-[30px] '>
                                 N{parseFloat(course?.price).toLocaleString()}
                               </h1>
-                              <div
-                                // onClick={() =>
-                                //   navigate(
-                                //     `/courses/${course?.id}/${course?.title}`,
-                                //   )
-                                // }
-                                className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
-                              >
+                              <div className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
                                 <span className='font-semibold text-[16px] leading-[24px]'>
                                   Enroll now
                                 </span>
@@ -393,14 +361,7 @@ const Courses = () => {
                               <h1 className='font-bold text-center text-white text-[20px] leading-[30px] '>
                                 N{parseFloat(course?.price).toLocaleString()}
                               </h1>
-                              <div
-                                // onClick={() =>
-                                //   navigate(
-                                //     `/courses/${course?.id}/${course?.title}`,
-                                //   )
-                                // }
-                                className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
-                              >
+                              <div className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
                                 <span className='font-semibold text-[16px] leading-[24px]'>
                                   Enroll now
                                 </span>
@@ -435,14 +396,7 @@ const Courses = () => {
                           <h1 className='font-bold text-center text-white text-[20px] leading-[30px] '>
                             N{parseFloat(course?.price).toLocaleString()}
                           </h1>
-                          <div
-                            // onClick={() =>
-                            //   navigate(
-                            //     `/courses/${course?.id}/${course?.title}`,
-                            //   )
-                            // }
-                            className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
-                          >
+                          <div className='w-[301px] h-12 bg-white flex items-center justify-center rounded-2xl border-[1px] border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
                             <span className='font-semibold text-[16px] leading-[24px]'>
                               Enroll now
                             </span>

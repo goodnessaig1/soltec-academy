@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 import CourseIcon from '.././../assets/COURSES.svg';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { apiRequest } from '../../Utils/ApiRequest';
 import Header from '../common/Header';
 import { Emogi, SearchIcon } from '../../Utils/Assets';
 import Footer from '../common/Footer';
@@ -193,16 +192,14 @@ const Course = ({ courses, isDummy }) => {
                 N{parseFloat(course?.price).toLocaleString()}
               </h1>
               {!isDummy ? (
-                <div
-                  onClick={() =>
-                    navigate(`/courses/${course?.id}/${course?.title}`)
-                  }
+                <Link
+                  to={`/courses/${course?.id}/${course?.title}`}
                   className='w-[301px] h-12 bg-white flex items-center justify-center rounded-[16px] border border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '
                 >
                   <span className='font-semibold text-[16px] leading-[24px]'>
                     Enroll now
                   </span>
-                </div>
+                </Link>
               ) : (
                 <div className='w-[301px] h-12 bg-white flex items-center justify-center rounded-[16px] border border-borderLight transition duration-200 hover:bg-[#f1f1f1] hover:cursor-pointer '>
                   <span className='font-semibold text-[16px] leading-[24px]'>
