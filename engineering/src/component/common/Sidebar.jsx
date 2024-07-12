@@ -16,7 +16,7 @@ const Sidebar = ({ toggle, showSidebar }) => {
             <NavLink className='nav-link text-nowrap' onClick={toggle} to={'/'}>
               <h1>HOME</h1>
             </NavLink>
-            <RouterLink
+            {/* <RouterLink
               to='/#about-us'
               onClick={toggle}
               className='nav-link text-nowrap'
@@ -29,7 +29,7 @@ const Sidebar = ({ toggle, showSidebar }) => {
               className='nav-link text-nowrap'
             >
               OUR SERVICES
-            </RouterLink>
+            </RouterLink> */}
             <RouterLink
               to='/#faqs'
               onClick={toggle}
@@ -51,13 +51,13 @@ const Sidebar = ({ toggle, showSidebar }) => {
             >
               <h1>CONTACT US</h1>
             </NavLink>
-            {/* <RouterLink
+            <RouterLink
               to={'/get-quote'}
               onClick={toggle}
               className='w-[159px] h-[48px] hover:bg-[#f1f1f1] flex items-center justify-center sidebarPay  rounded-[12px] p-[10px] text-[14px] text-[#000]'
             >
               <h1 className='nav-link text-nowrap'>GET QUOTE</h1>
-            </RouterLink> */}
+            </RouterLink>
           </div>
         </>
       )}
