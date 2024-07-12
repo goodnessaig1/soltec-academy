@@ -22,14 +22,14 @@ const Sidebar = ({ toggle, showSidebar }) => {
               className='nav-link text-nowrap'
             >
               ABOUT US
-            </RouterLink>
+            </RouterLink> */}
             <RouterLink
               to='/#services'
               onClick={toggle}
               className='nav-link text-nowrap'
             >
               OUR SERVICES
-            </RouterLink> */}
+            </RouterLink>
             <RouterLink
               to='/#faqs'
               onClick={toggle}
