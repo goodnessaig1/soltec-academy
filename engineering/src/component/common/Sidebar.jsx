@@ -16,19 +16,19 @@ const Sidebar = ({ toggle, showSidebar }) => {
             <NavLink className='nav-link text-nowrap' onClick={toggle} to={'/'}>
               <h1>HOME</h1>
             </NavLink>
-            {/* <RouterLink
+            <RouterLink
               to='/#about-us'
               onClick={toggle}
               className='nav-link text-nowrap'
             >
               ABOUT US
-            </RouterLink> */}
+            </RouterLink>
             <RouterLink
               to='/#services'
               onClick={toggle}
               className='nav-link text-nowrap'
             >
-              OUR SERVICES
+              <span className='text-nowrap'>OUR SERVICES</span>
             </RouterLink>
             <RouterLink
               to='/#faqs'
