@@ -1,7 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
-import { Logo, Logo2, LogoDark, Menu, Menu2 } from '../../Utils/Assets';
+import { Menu, Menu2 } from '../../Utils/Assets';
+import AcademyLogo from '../../assets/academy-logo-bla.png';
+import AcademyLogoFull from '../../assets/academy-logo-full.png';
+import AcademyLogoLandscape from '../../assets/soltec-logo-landsacpe.png';
+import AcademyLogoLandscapeL from '../../assets/soltec-logo-landscapeb.png';
 import Sideber from './Sidebar';
 import { EngineeringURL } from '../../Utils/BaseUrl';
 
@@ -40,16 +44,38 @@ const Header = ({ headerCol }) => {
           <div className='z-10'>
             {headerCol ? (
               <Link to={'/'}>
-                <img src={LogoDark} className='hidden lg:flex' alt='' />
+                <img
+                  src={AcademyLogoFull}
+                  className='max-w-[188px] max-h-[72px] mt-[-8px] hidden lg:flex'
+                  alt=''
+                />
               </Link>
             ) : (
               <Link to={'/'}>
-                <img src={Logo} className='hidden lg:flex' alt='' />
+                <img
+                  src={AcademyLogo}
+                  className='max-w-[188px] max-h-[72px] mt-[-8px] hidden lg:flex'
+                  alt=''
+                />
               </Link>
             )}
-            <Link to={'/'}>
-              <img src={Logo2} className='flex lg:hidden' alt='' />
-            </Link>
+            {headerCol ? (
+              <Link to={'/'}>
+                <img
+                  src={AcademyLogoLandscapeL}
+                  className='flex lg:hidden max-w-[120px] max-h-[60px] mt-[-2px]'
+                  alt=''
+                />
+              </Link>
+            ) : (
+              <Link to={'/'}>
+                <img
+                  src={AcademyLogoLandscape}
+                  className='flex lg:hidden max-w-[120px] max-h-[60px] mt-[-2px]'
+                  alt=''
+                />
+              </Link>
+            )}
           </div>
           <div className='hidden z-10 lg:flex text-nowrap flex-row gap-6 lgl:gap-9 xxl:gap-12 '>
             {navLinks.map((link, index) => (

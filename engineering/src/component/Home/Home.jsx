@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import Header from '../common/Header';
 import { apiRequest } from '../../Utils/apiRequest';
@@ -20,78 +19,78 @@ import { scroller } from 'react-scroll';
 
 const HomeDashboard = () => {
   const location = useLocation();
-  const container1Ref = useRef(null);
-  const container2Ref = useRef(null);
-  const container3Ref = useRef(null);
-  const [backgroundC, setBackgroundC] = useState('#02003E');
+  // const container1Ref = useRef(null);
+  // const container2Ref = useRef(null);
+  // const container3Ref = useRef(null);
+  // const [backgroundC, setBackgroundC] = useState('#02003E');
 
-  useEffect(() => {
-    const observer1 = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setBackgroundC('#02003E');
-        }
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5,
-      },
-    );
+  // useEffect(() => {
+  //   const observer1 = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting) {
+  //         setBackgroundC('#02003E');
+  //       }
+  //     },
+  //     {
+  //       root: null,
+  //       rootMargin: '0px',
+  //       threshold: 0.5,
+  //     },
+  //   );
 
-    if (container1Ref.current) {
-      observer1.observe(container1Ref.current);
-    }
-    const observer2 = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // setBackgroundC('#6c5ce7');
-          setBackgroundC('#E6B405');
-        }
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5,
-      },
-    );
+  //   if (container1Ref.current) {
+  //     observer1.observe(container1Ref.current);
+  //   }
+  //   const observer2 = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting) {
+  //         // setBackgroundC('#6c5ce7');
+  //         setBackgroundC('#E6B405');
+  //       }
+  //     },
+  //     {
+  //       root: null,
+  //       rootMargin: '0px',
+  //       threshold: 0.5,
+  //     },
+  //   );
 
-    if (container2Ref.current) {
-      observer2.observe(container2Ref.current);
-    }
+  //   if (container2Ref.current) {
+  //     observer2.observe(container2Ref.current);
+  //   }
 
-    // third
-    const observer3 = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // setBackgroundC('#FEC910');
-          setBackgroundC('#02003E');
-        }
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5,
-      },
-    );
+  //   // third
+  //   const observer3 = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting) {
+  //         // setBackgroundC('#FEC910');
+  //         setBackgroundC('#02003E');
+  //       }
+  //     },
+  //     {
+  //       root: null,
+  //       rootMargin: '0px',
+  //       threshold: 0.5,
+  //     },
+  //   );
 
-    if (container3Ref.current) {
-      observer3.observe(container3Ref.current);
-    }
+  //   if (container3Ref.current) {
+  //     observer3.observe(container3Ref.current);
+  //   }
 
-    // Cleanup
-    return () => {
-      if (container1Ref.current) {
-        observer1.unobserve(container1Ref.current);
-      }
-      if (container2Ref.current) {
-        observer2.unobserve(container2Ref.current);
-      }
-      if (container3Ref.current) {
-        observer3.unobserve(container2Ref.current);
-      }
-    };
-  }, []);
+  //   // Cleanup
+  //   return () => {
+  //     if (container1Ref.current) {
+  //       observer1.unobserve(container1Ref.current);
+  //     }
+  //     if (container2Ref.current) {
+  //       observer2.unobserve(container2Ref.current);
+  //     }
+  //     if (container3Ref.current) {
+  //       observer3.unobserve(container2Ref.current);
+  //     }
+  //   };
+  // }, []);
 
   const [testimonialsData, setTestimonialsData] = useState(null);
 
@@ -144,26 +143,16 @@ const HomeDashboard = () => {
 
         <Element name='services'>
           <div className=' '>
-            <motion.div
-              initial={{ backgroundColor: backgroundC }}
-              whileInView={{
-                backgroundColor: backgroundC,
-              }}
-              transition={{ delay: 0.1 }}
-              exit={{ backgroundColor: backgroundC }}
-              className='bgTrans'
-            >
-              <Services />
-              <div ref={container1Ref} className=''>
-                <Workspace />
-              </div>
-              <div ref={container2Ref} className=''>
-                <Academy />
-              </div>
-              <div ref={container3Ref} className=''>
-                <Projects />
-              </div>
-            </motion.div>
+            <Services />
+            <div className='bg-[#02003E]'>
+              <Academy />
+            </div>
+            <div className='bg-bg3'>
+              <Workspace />
+            </div>
+            <div className='bg-[#02003E]'>
+              <Projects />
+            </div>
             <Testimonial testimonialsData={testimonialsData} />
           </div>
           <Ceo />

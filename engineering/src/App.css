@@ -249,8 +249,12 @@
   z-index: 100;
 }
 
-.slick-prev,
-.slick-next {
+.worksp:before {
+  content: '' !important;
+}
+
+.slick-prev.previou,
+.slick-next.nextbtn {
   position: absolute;
   /* top: 50%; */
   transform: translateY(-50%);

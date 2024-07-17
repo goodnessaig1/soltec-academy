@@ -12,7 +12,7 @@ import Testimonial from './Testimonial';
 import { useAuth } from '../Context/AuthContext';
 
 const Home = () => {
-  const { courses, currentCohort } = useAuth();
+  const { courses, currentCohort, blogs } = useAuth();
 
   useEffect(() => {
     window.scrollTo({
@@ -27,9 +27,9 @@ const Home = () => {
         <HeroSection />
         <Catalogue courses={courses} />
         <Sponsors />
-        <Courses />
+        {courses && courses?.length >= 1 && <Courses />}
         <Cohort startDate={currentCohort?.start_date} />
-        <Blog />
+        {blogs && blogs?.length >= 1 && <Blog />}
         <Testimonial />
         <Faqs />
         <Footer />

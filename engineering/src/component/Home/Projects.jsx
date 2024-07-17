@@ -14,7 +14,7 @@ const CustomPrevArrow = props => {
 const CustomNextArrow = props => {
   const { className, onClick } = props;
   return (
-    <div className={`${className} nextbtn`} onClick={onClick}>
+    <div className={`${className}  nextbtn`} onClick={onClick}>
       <img src={Next} alt='' />
     </div>
   );
@@ -24,7 +24,7 @@ const CustomPrevArrow2 = props => {
   return (
     <div
       style={{ display: 'none' }}
-      className={`${className} hidden z-4 previou`}
+      className={`${className} slick-prevv hidden z-4 previou`}
       onClick={onClick}
     >
       <img src={Prev} alt='' />
@@ -37,7 +37,7 @@ const CustomNextArrow2 = props => {
   return (
     <div
       style={{ display: 'none' }}
-      className={`${className} hidden nextbtn`}
+      className={`${className} slick-nextt  hidden nextbtn`}
       onClick={onClick}
     >
       <img src={Next} alt='' />

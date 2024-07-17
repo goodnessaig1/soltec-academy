@@ -13,6 +13,25 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { apiRequest } from '../../Utils/apiRequest';
 import Header from '../common/Header';
 
+import { AiFillTikTok } from 'react-icons/ai';
+
+const socialLinks = [
+  {
+    link: 'https://api.whatsapp.com/send?phone=%2B2348039814257&context=ARDimt1Sw-TfMKhFSmw-xZC0AqVllbySZK4MbtxCqr8sKsvpwBylfSMOZIygla_CnypYXv3eTOKtLgnxVULO4awE7KP28fQUbVdF6TkpfrTUw8zw1eY24otC0Bk8mz-RmZq01jTnSVbxHzjgRgVtPIFnlw&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwZXh0bgNhZW0CMTAAAR28sh3XiIt3vaieVWbtjh_wjpjc76CxbBwe3xav-aNpDfpqwW2Ts_pRL1g_aem_Ax91pdmAgn7HN-42l2PhbA',
+    icon: WhatsappC,
+  },
+  { link: 'https://www.instagram.com/solteceng', icon: Instagram },
+  {
+    link: 'https://www.facebook.com/profile.php?id=61551735897565&mibextid=kFxxJD',
+    icon: Facebook,
+  },
+  {
+    link: 'https://www.linkedin.com/company/soltec-engineering-limited/',
+    icon: Linkedin,
+  },
+  { link: 'https://x.com/solteceng', icon: Twitter },
+];
+
 const ContactUs = () => {
   const handleSubmit = async (values, resetForm) => {
     if (values?.image != '') {
@@ -65,12 +84,15 @@ const ContactUs = () => {
               </div>
             </div>
 
-            <div className='flex flex-row h-[35px] rounded-[50px] gap-5 px-5 bg-[#EEEEEE]'>
-              <img src={WhatsappC} alt='' />
-              <img src={Instagram} alt='' />
-              <img src={Facebook} alt='' />
-              <img src={Linkedin} alt='' />
-              <img src={Twitter} alt='' />
+            <div className='flex flex-row items-center h-9 rounded-[50px] gap-2.5 px-3 bg-[#EEEEEE]'>
+              {socialLinks.map((link, i) => (
+                <a key={i} href={link.link} className='' target='_blank'>
+                  <img src={link.icon} className='w-7' alt='' />
+                </a>
+              ))}
+              <a href='https://vm.tiktok.com/ZMr57L225/' target='_blank'>
+                <AiFillTikTok fill='black' size={28} />
+              </a>
             </div>
           </div>
 

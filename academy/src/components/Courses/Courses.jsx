@@ -7,12 +7,13 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import Header from '../common/Header';
 import { Emogi, SearchIcon } from '../../Utils/Assets';
 import Footer from '../common/Footer';
-import { courseDummyData } from '../DummyData/coursesData';
 import { useAuth } from '../Context/AuthContext';
+import { EmptyPage } from '../../Utils/EmptyPage';
+import { ErrorPage } from '../../Utils/ErrorPage';
 
 const Courses = () => {
   const navigate = useNavigate();
-  const { courses, courseLoading } = useAuth();
+  const { courses, courseLoading, courseError } = useAuth();
 
   useEffect(() => {
     window.scrollTo({
@@ -126,7 +127,13 @@ const Courses = () => {
                     {courses && courses.length >= 1 ? (
                       <Course courses={courses} />
                     ) : (
-                      <Course courses={courseDummyData} isDummy={true} />
+                      <>
+                        {!courseError ? (
+                          <EmptyPage text='No course available at the moment!' />
+                        ) : (
+                          <ErrorPage />
+                        )}
+                      </>
                     )}
                   </>
                 ) : (
@@ -160,8 +167,6 @@ const Courses = () => {
 export default Courses;
 
 const Course = ({ courses, isDummy }) => {
-  const navigate = useNavigate();
-
   return (
     <div className='flex flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-8 sm:gap-y-[21px] lg:gap-y-8'>
       {courses &&

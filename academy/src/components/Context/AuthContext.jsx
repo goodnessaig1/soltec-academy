@@ -14,8 +14,10 @@ export function AuthProvider(props) {
   const [courses, setCourses] = useState(null);
   const [sponsors, setSponsors] = useState(null);
   const [courseLoading, setCourseLoading] = useState(true);
+  const [courseError, setCourseError] = useState(false);
   const [blogs, setBlogs] = useState(null);
   const [blogsLoading, setBlogsLoading] = useState(true);
+  const [blogsError, setBlogsError] = useState(false);
   const [currentCohort, setCurrentCohort] = useState('');
   const [testimonial, setTestimonial] = useState(null);
   const [sponsorsLoading, setSponsorsLoading] = useState(true);
@@ -28,6 +30,7 @@ export function AuthProvider(props) {
       setCourses(response);
     } catch (error) {
       setCourseLoading(false);
+      setCourseError(true);
       console.log('error', error);
     }
   };
@@ -38,6 +41,7 @@ export function AuthProvider(props) {
       setBlogs(response?.results);
       setBlogsLoading(false);
     } catch (error) {
+      setBlogsError(true);
       setBlogsLoading(false);
     }
   };
@@ -123,6 +127,8 @@ export function AuthProvider(props) {
     testimonial,
     sponsors,
     sponsorsLoading,
+    courseError,
+    blogsError,
   };
   return (
     <AuthContext.Provider value={value}>{props?.children}</AuthContext.Provider>

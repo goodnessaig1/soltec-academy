@@ -8,7 +8,7 @@ import { courseDummyData } from '../DummyData/coursesData';
 const Catalogue = ({ courses }) => {
   return (
     <>
-      <div className='relative w-full backgroundImages2 sm:h-[1116px] md:h-[1100px] lg:h-[840px]'>
+      <div className='relative w-full backgroundImages2 sm:h-[1116px] md:h-[1100px] lg:h-[840px] xll:h-[916px]'>
         <div className='flex  items-center  justify-center'>
           <div className='flex w-full flex-col pt-[100px] lg:px-4 items-center'>
             <Marquee

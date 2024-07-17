@@ -13,6 +13,8 @@ import Header from '../common/Header';
 import Footer from '../common/Footer';
 import { blogDummyData } from '../DummyData/blogData';
 import { useAuth } from '../Context/AuthContext';
+import { EmptyPage } from '../../Utils/EmptyPage';
+import { ErrorPage } from '../../Utils/ErrorPage';
 
 const Blog = () => {
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const Blog = () => {
   const [searchResults, setSearchResults] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [searchLoading, setSearchLoading] = useState(false);
-  const { blogs, blogsLoading } = useAuth();
+  const { blogs, blogsLoading, blogsError } = useAuth();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -130,10 +132,16 @@ const Blog = () => {
               <>
                 {!blogsLoading ? (
                   <>
-                    {blogs && blogs.length >= 1 ? (
+                    {blogs && blogs?.length >= 1 ? (
                       <SingleBlog blogs={blogs} />
                     ) : (
-                      <SingleBlog blogs={blogDummyData} isDummy={true} />
+                      <div className='mt-14'>
+                        {!blogsError ? (
+                          <EmptyPage text='No Blog post available at the moment!' />
+                        ) : (
+                          <ErrorPage />
+                        )}
+                      </div>
                     )}
                   </>
                 ) : (

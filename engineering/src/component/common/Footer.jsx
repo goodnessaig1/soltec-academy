@@ -1,5 +1,23 @@
 import { Link } from 'react-router-dom';
 import { FIcon, IGIcon, IIcon, Logo, WIcon, XIcon } from '../../Utils/assets';
+import { AiFillTikTok } from 'react-icons/ai';
+
+const footerLinks = [
+  {
+    link: 'https://api.whatsapp.com/send?phone=%2B2348039814257&context=ARDimt1Sw-TfMKhFSmw-xZC0AqVllbySZK4MbtxCqr8sKsvpwBylfSMOZIygla_CnypYXv3eTOKtLgnxVULO4awE7KP28fQUbVdF6TkpfrTUw8zw1eY24otC0Bk8mz-RmZq01jTnSVbxHzjgRgVtPIFnlw&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwZXh0bgNhZW0CMTAAAR28sh3XiIt3vaieVWbtjh_wjpjc76CxbBwe3xav-aNpDfpqwW2Ts_pRL1g_aem_Ax91pdmAgn7HN-42l2PhbA',
+    icon: WIcon,
+  },
+  { link: 'https://www.instagram.com/solteceng', icon: IGIcon },
+  {
+    link: 'https://www.facebook.com/profile.php?id=61551735897565&mibextid=kFxxJD',
+    icon: FIcon,
+  },
+  {
+    link: 'https://www.linkedin.com/company/soltec-engineering-limited/',
+    icon: IIcon,
+  },
+  { link: 'https://x.com/solteceng', icon: XIcon },
+];
 
 const Footer = () => {
   return (
@@ -24,12 +42,15 @@ const Footer = () => {
               Address: #27 Billy Okoye Boulevard, <br />
               Agu-Awka
             </span>
-            <div className='flex flex-row items-center gap-4'>
-              <img src={WIcon} alt='' />
-              <img src={IGIcon} alt='' />
-              <img src={FIcon} alt='' />
-              <img src={IIcon} alt='' />
-              <img src={XIcon} alt='' />
+            <div className='flex flex-row items-center gap-3.5'>
+              {footerLinks.map((link, i) => (
+                <a key={i} href={link.link} target='_blank'>
+                  <img src={link.icon} alt='' />
+                </a>
+              ))}
+              <a href='https://vm.tiktok.com/ZMr57L225/' target='_blank'>
+                <AiFillTikTok fill='gray' size={25} />
+              </a>
             </div>
           </div>
         </div>

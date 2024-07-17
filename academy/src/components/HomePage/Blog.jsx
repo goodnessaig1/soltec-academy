@@ -6,7 +6,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 import { Arrow, Next, Prev, Unavailable } from '../../Utils/Assets';
-import { blogDummyData } from '../DummyData/blogData';
 import { useAuth } from '../Context/AuthContext';
 
 const CustomPrevArrow = props => {
@@ -42,11 +41,7 @@ const Blog = () => {
       <div className='flex items-center justify-center '>
         <img src={BlogText} alt='' className='' />
       </div>
-      {blogs && blogs.length >= 1 ? (
-        <Blogs isDummy={false} blogs={blogs} />
-      ) : (
-        <Blogs isDummy={true} blogs={blogDummyData} />
-      )}
+      {blogs && <Blogs blogs={blogs} />}
       <div className='w-full flex items-center sm:mt-16 lg:mt-20 justify-center'>
         <Link
           to={'/blog'}
@@ -66,7 +61,7 @@ const Blog = () => {
 
 export default Blog;
 
-const Blogs = ({ blogs, isDummy }) => {
+const Blogs = ({ blogs }) => {
   var settings = {
     dots: false,
     infinite: false,
@@ -134,24 +129,16 @@ const Blogs = ({ blogs, isDummy }) => {
                       </h3>
                     </div>
                   </div>
-                  {!isDummy ? (
-                    <Link
-                      to={`/blog/${blog?.id}/${
-                        blog.author_name
-                      }/${blog?.title.substring(0, 20)}`}
-                      className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'
-                    >
-                      <span className='text-[14px] leading-[17px] font-normal'>
-                        Read more
-                      </span>
-                    </Link>
-                  ) : (
-                    <div className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'>
-                      <span className='text-[14px] leading-[17px] font-normal'>
-                        Read more
-                      </span>
-                    </div>
-                  )}
+                  <Link
+                    to={`/blog/${blog?.id}/${
+                      blog.author_name
+                    }/${blog?.title.substring(0, 20)}`}
+                    className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'
+                  >
+                    <span className='text-[14px] leading-[17px] font-normal'>
+                      Read more
+                    </span>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -206,24 +193,16 @@ const Blogs = ({ blogs, isDummy }) => {
                       </h3>
                     </div>
                   </div>
-                  {!isDummy ? (
-                    <Link
-                      to={`/blog/${blog?.id}/${
-                        blog.author_name
-                      }/${blog?.title.substring(0, 20)}`}
-                      className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-2xl w-[113px] h-12'
-                    >
-                      <span className='text-[14px] leading-[17px] font-normal'>
-                        Read more
-                      </span>
-                    </Link>
-                  ) : (
-                    <div className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-2xl w-[113px] h-12'>
-                      <span className='text-[14px] leading-[17px] font-normal'>
-                        Read more
-                      </span>
-                    </div>
-                  )}
+                  <Link
+                    to={`/blog/${blog?.id}/${
+                      blog.author_name
+                    }/${blog?.title.substring(0, 20)}`}
+                    className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-2xl w-[113px] h-12'
+                  >
+                    <span className='text-[14px] leading-[17px] font-normal'>
+                      Read more
+                    </span>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -277,24 +256,16 @@ const Blogs = ({ blogs, isDummy }) => {
                     </h3>
                   </div>
                 </div>
-                {!isDummy ? (
-                  <Link
-                    to={`/blog/${blog?.id}/${
-                      blog.author_name
-                    }/${blog?.title.substring(0, 20)}`}
-                    className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'
-                  >
-                    <span className='text-[14px] leading-[17px] font-normal'>
-                      Read more
-                    </span>
-                  </Link>
-                ) : (
-                  <div className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'>
-                    <span className='text-[14px] leading-[17px] font-normal'>
-                      Read more
-                    </span>
-                  </div>
-                )}
+                <Link
+                  to={`/blog/${blog?.id}/${
+                    blog.author_name
+                  }/${blog?.title.substring(0, 20)}`}
+                  className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'
+                >
+                  <span className='text-[14px] leading-[17px] font-normal'>
+                    Read more
+                  </span>
+                </Link>
               </div>
             </div>
           ))}

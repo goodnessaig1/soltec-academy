@@ -6,6 +6,7 @@ export default defineConfig(({ mode }) => {
   const config = {
     plugins: [react(), tailwindcss('./tailwind.config.js')],
     define: {},
+    assetsInclude: ['**/*.JPG'],
   };
 
   if (mode === 'development') {

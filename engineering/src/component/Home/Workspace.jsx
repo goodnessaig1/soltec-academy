@@ -6,12 +6,12 @@ const Workspace = () => {
     <div className=' w-full flex flex-col pt-[100px] pb-[130px] w-full'>
       <div className='flex flex-col items-center justify-center w-full px-4 gap-8'>
         <div className='flex flex-col gap-3 items-center justify-center'>
-          <h1 className='text-white text-nowrap font-semibold text-[24px] leading-[34px]'>
+          <h1 className='text-black text-nowrap font-semibold text-[24px] leading-[34px]'>
             OUR WORKSPACE
           </h1>
-          <div className='whiteLine' />
+          <div className='yellowLine' />
         </div>
-        <span className='text-[18px] font-medium leading-[26px] text-center px-4 text-lightOpac'>
+        <span className='text-[18px] font-medium leading-[26px] text-center px-4 text-black'>
           Have access to our conducive workspace with unlimited internet using
           Elon Musk’s starlink and uninterrupted power{' '}
           <br className='hidden lg:block' />
