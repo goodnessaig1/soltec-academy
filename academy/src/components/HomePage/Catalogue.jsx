@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import Marquee from 'react-fast-marquee';
 import { Facilities, Industry, People, Tutor } from '../../Utils/Assets';
 import { courseDummyData } from '../DummyData/coursesData';
+import { LiaChalkboardTeacherSolid } from 'react-icons/lia';
+import { SlScreenDesktop } from 'react-icons/sl';
+import { PiUsersThree } from 'react-icons/pi';
+import { SiReaddotcv } from 'react-icons/si';
 
 const Catalogue = ({ courses }) => {
   return (
@@ -59,8 +63,8 @@ const Catalogue = ({ courses }) => {
               </div>
               <div className='sm:w-full sm:mt-[60px] lg:mt-0 lg:w-1/2 flex flex-col gap-3.5'>
                 <div className='bg-colorOpacity hover:bg-white group hover:cursor-pointer transition duration-[200] p-4 flex flex-row items-center gap-4 rounded-[24px] '>
-                  <div className='bg-white sm:px-4 lg:px-5 h-[87px] w-[106px] flex items-center justify-center rounded-[16px] '>
-                    <img src={Tutor} alt='' />
+                  <div className='bg-white sm:px-3 lg:px-5 h-[87px] w-[106px] flex items-center justify-center rounded-[16px] '>
+                    <LiaChalkboardTeacherSolid className='text-[44px] lg:text-[54px]' />
                   </div>
                   <div className='flex flex-col gap-4'>
                     <h1 className='font-bold sm:text-[18px] lg:text-[24px] sm:leading-[21px] lg:leading-[28px] text-white group-hover:text-black'>
@@ -74,7 +78,8 @@ const Catalogue = ({ courses }) => {
                 </div>
                 <div className='bg-colorOpacity hover:bg-white group hover:cursor-pointer transition duration-[200] p-3 flex flex-row items-center gap-[24px] rounded-[24px] '>
                   <div className='bg-white sm:px-4 lg:px-5 h-[87px] w-[116px] flex items-center justify-center rounded-[16px] '>
-                    <img src={Industry} alt='' />
+                    {/* <img src={Industry} alt='' /> */}
+                    <SiReaddotcv className='text-[36px] lg:text-[54px]' />
                   </div>
                   <div className='flex flex-col gap-4'>
                     <h1 className='font-bold sm:text-[18px] lg:text-[24px] sm:leading-[21px] lg: text-white group-hover:text-black '>
@@ -88,7 +93,8 @@ const Catalogue = ({ courses }) => {
                 </div>
                 <div className='bg-colorOpacity hover:bg-white group hover:cursor-pointer transition duration-[200] p-3 flex flex-row items-center gap-[24px] rounded-[24px] '>
                   <div className='bg-white sm:px-4 lg:px-5 h-[87px] w-[106px] flex items-center justify-center rounded-[16px] '>
-                    <img src={Facilities} alt='' />
+                    {/* <img src={Facilities} alt='' /> */}
+                    <SlScreenDesktop className='text-[36px] lg:text-[50px]' />
                   </div>
                   <div className='flex flex-col gap-4'>
                     <h1 className='font-bold sm:text-[18px] lg:text-[24px] sm:leading-[21px] lg: text-white group-hover:text-black '>
@@ -100,9 +106,11 @@ const Catalogue = ({ courses }) => {
                     </span>
                   </div>
                 </div>
+
                 <div className='bg-colorOpacity hover:bg-white group hover:cursor-pointer transition duration-[200] p-3 flex flex-row items-center gap-[24px] rounded-[24px] '>
                   <div className='bg-white sm:px-4 lg:px-5 h-[87px] w-[106px] flex items-center justify-center rounded-[16px] '>
-                    <img src={People} alt='' />
+                    {/* <img src={People} alt='' /> */}
+                    <PiUsersThree className='text-[38px] lg:text-[50px]' />
                   </div>
                   <div className='flex flex-col gap-4'>
                     <h1 className='font-bold sm:text-[18px] lg:text-[24px] sm:leading-[21px] lg: text-white group-hover:text-black '>

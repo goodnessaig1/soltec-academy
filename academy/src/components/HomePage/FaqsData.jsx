@@ -57,6 +57,6 @@ export const faqsData = [
     question:
       'How can I contact Soltec Engineering Academy for further assistance?',
     answer:
-      "If you have any additional questions or require further assistance, please don't hesitate to reach out to our support team. You can contact us via email at [insert email address] or by phone at [insert phone number]. We're here to help and look forward to assisting you on your learning journey.",
+      "If you have any additional questions or require further assistance, please don't hesitate to reach out to our support team. You can contact us via email at info@solteceng.com or by phone at +2348039814257. We're here to help and look forward to assisting you on your learning journey.",
   },
 ];

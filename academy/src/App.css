@@ -32,11 +32,60 @@
   margin: 0 auto;
 }
 
-.backgroundImages2 {
+/* .backgroundImages2 {
   width: 100%;
   background-image: url('./assets/gradientbackground1.jpg');
+background: purple;
   background-size: cover;
   max-width: 100%;
+} */
+
+.backgroundImages2 {
+  width: 100%;
+  background: rgb(157, 26, 157) url('./assets/gradientbackground1.jpg')
+    no-repeat center center;
+  background-size: cover;
+  max-width: 100%;
+}
+
+.backgroundImages2:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(157, 26, 157);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: opacity 0.5s ease;
+}
+
+.backgroundImages2:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/gradientbackground1.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+.backgroundImages2:before {
+  opacity: 1;
+}
+
+.backgroundImages2:after {
+  animation: imageLoaded 0.5s forwards;
+}
+
+@keyframes imageLoaded {
+  to {
+    opacity: 1;
+  }
 }
 
 .productBg {

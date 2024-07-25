@@ -107,7 +107,7 @@ const Projects = () => {
         <div className='w-full projects hidden lgl:flex items-center justify-center'>
           <div className='slick-container opacity-[1]'>
             <Slider {...settings} className=' opacity-[1]'>
-              <div className='w-1/3 p-14 hover:cursor-pointer hover:bg-[#06041FCC] transition duration-300 group flex flex-col gap-4 first_bg12 lgl:h-[367px]'>
+              <div className='w-1/3 p-11 xl:p-14 hover:cursor-pointer hover:bg-[#06041FCC] transition duration-300 group flex flex-col gap-3.5 xl:gap-4 first_bg12 lgl:h-[367px]'>
                 <div className='w-full py-3 mb-6 text-white  rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-semibold  leading-[36px]'>
                     POWER AND ENERGY
@@ -119,7 +119,7 @@ const Projects = () => {
                   sustainable energy sources available across Nigeria
                 </span>
               </div>
-              <div className='w-1/3 p-14 hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-5 second_bg12 lgl:h-[367px]'>
+              <div className='w-1/3 p-11 xl:p-14 hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-3.5 xl:gap-1 second_bg12 lgl:h-[367px]'>
                 <div className='w-full py-3 mb-6 text-white rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-semibold leading-[36px]'>
                     BUILDING AND CONSTRUCTION
@@ -132,7 +132,7 @@ const Projects = () => {
                   or structural steel.
                 </span>
               </div>
-              <div className='w-1/3 p-14 hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-4 third_bg12 lgl:h-[367px]'>
+              <div className='w-1/3 p-11 xl:p-14 hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-3.5 xl:gap-4 third_bg12 lgl:h-[367px]'>
                 <div className='w-full py-3 mb-6 text-white  rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-semibold leading-[36px]'>
                     SMART SECURITY
@@ -143,7 +143,7 @@ const Projects = () => {
                   gives you complete protection and control - from anywhere
                 </span>
               </div>
-              <div className='w-1/3 p-14 hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-4 fourth_bg12 lgl:h-[367px]'>
+              <div className='w-1/3 p-11 xl:p-14 hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-3.5 xl:gap-4 fourth_bg12 lgl:h-[367px]'>
                 <div className='w-full py-3 mb-6 text-white rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-semibold leading-[36px]'>
                     SOFTWARE DEVELOPMENT
@@ -156,7 +156,7 @@ const Projects = () => {
                   support,
                 </span>
               </div>
-              <div className='w-1/3 p-14 hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-4 fifth_bg12 lgl:h-[367px]'>
+              <div className='w-1/3 p-11 xl:p-14 hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-3.5 xl:gap-4 fifth_bg12 lgl:h-[367px]'>
                 <div className='w-full py-3 mb-6  text-white rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-semibold leading-[36px]'>
                     TEACHING COURSES
@@ -173,7 +173,7 @@ const Projects = () => {
                   </ul>
                 </span>
               </div>
-              <div className='w-1/3 p-14 hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-4 sixth_bg12 lgl:h-[367px]'>
+              <div className='w-1/3 p-11 xl:p-14 hover:cursor-pointer hover:bg-[#06041FCC]  transition duration-300 group flex flex-col gap-3.5 xl:gap-4 sixth_bg12 lgl:h-[367px]'>
                 <div className='w-full py-3 mb-6  text-white rounded-[4px]'>
                   <h1 className='text-[24px] opacity-0 group-hover:opacity-[1] group-hover:transition-opacity duration-300 ease-in-out font-semibold leading-[36px]'>
                     ROBOTICS AND AUTOMATION
@@ -288,7 +288,7 @@ const Projects = () => {
                   sustainable energy sources available across Nigeria
                 </span>
               </div>
-              <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-5 lgl:gap-4 second_bg1 h-[367px]'>
+              <div className='w-1/3 p-[40px] hover:cursor-pointer transition curation-300 group flex flex-col gap-5 xl:gap-4 second_bg1 h-[367px]'>
                 <div className='w-full py-3 mb-6 text-white rounded-[4px]'>
                   <h1 className='text-[24px] text-nowrap font-semibold leading-[26px] lgl:leading-[36px]'>
                     BUILDING AND <br className='lgl:hidden' />

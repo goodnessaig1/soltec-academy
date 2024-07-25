@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Marquee from 'react-fast-marquee';
 import { testimonialDummyData } from '../DummyData/testimonialData';
 import { useAuth } from '../Context/AuthContext';
+import LazyImage from '../../Utils/SuspenseImage';
 
 const Testimonial = () => {
   const { testimonial } = useAuth();
@@ -51,7 +52,7 @@ const Testimonials = ({ testimonial }) => {
             className='flex flex-row hover:cursor-pointer mx-5 h-[140px] rounded-[16px] gap-5 w-[506px] border backg p-5 bg-white items-center'
           >
             <div className='w-[80px] h-[80px]'>
-              <img
+              <LazyImage
                 src={testimony?.author_image}
                 className='w-20 h-20 rounded-[50%] object-cover'
                 alt=''

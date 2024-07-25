@@ -21,7 +21,7 @@ const Header = ({ headerCol }) => {
         />
       </div>
       <div className=''>
-        <div className='flex flex-row items-center justify-between'>
+        <div className='flex flex-row gap-14 items-center justify-between'>
           <div className='z-5'>
             {headerCol ? (
               <RouterLink to={'/'}>
@@ -40,16 +40,16 @@ const Header = ({ headerCol }) => {
               <img src={Logo2} className='flex lg:hidden' alt='' />
             </RouterLink>
           </div>
-          <div className='hidden z-10 lg:flex text-nowrap flex-row lg:gap-4 lgl:gap-8 xxl:gap-46 '>
+          <div className='hidden z-10 lg:flex text-nowrap flex-row lg:gap-4 lgl:gap-7 xxl:gap-10 '>
             <NavLink
               className={({ isActive }) =>
                 isActive && headerCol
-                  ? 'text-white nav-lnk font-bold'
+                  ? 'text-white text-[15px] nav-lnk font-bold'
                   : isActive
-                  ? 'nav-lik text-black font-bold'
+                  ? 'nav-lik text-[15px] text-black font-bold'
                   : !isActive && headerCol
-                  ? 'unselected transition font-medium duration-300 hover:font-bold hover:text-white'
-                  : 'unselected hover:text-black transition duration-300 hover:font-semibold font-medium'
+                  ? 'unselected text-[15px] transition font-medium duration-300 hover:font-bold hover:text-white'
+                  : 'unselected  text-[15px] hover:text-black transition duration-300 hover:font-semibold font-medium'
               }
               to={'/'}
             >

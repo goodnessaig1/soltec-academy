@@ -22,6 +22,10 @@ const Sideber = ({ toggle, showSidebar }) => {
       name: 'BLOG',
       link: '/blog',
     },
+    {
+      name: 'CONTACT US',
+      link: '/contact-us',
+    },
   ];
   return (
     <div className='overflow-hidden static'>
@@ -30,7 +34,7 @@ const Sideber = ({ toggle, showSidebar }) => {
           <div className='flex justify-end' onClick={toggle}>
             <img src={Close} alt='' />
           </div>
-          <div className='mt-[100px] flex flex-col gap-8 smm:gap-11 ml-6'>
+          <div className='mt-[100px] flex flex-col gap-9 smm:gap-12 ml-6'>
             {navLinks.map((link, index) => (
               <NavLink
                 key={index}
@@ -42,28 +46,14 @@ const Sideber = ({ toggle, showSidebar }) => {
                 <h1>{link.name}</h1>
               </NavLink>
             ))}
+
             <a
               href={`${EngineeringURL}`}
               target='_self'
-              className='nav-link unselected'
-            >
-              <h1>ENGINEERING</h1>
-            </a>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? 'nav-link text-nowrap' : 'unselected text-nowrap'
-              }
-              to={'/contact-us'}
-            >
-              <h1>CONTACT US</h1>
-            </NavLink>
-
-            <Link
-              to={'/blog/payment-guide'}
               className='w-[159px] h-12 hover:bg-[#f1f1f1] flex items-center justify-center sidebarPay rounded-2xl p-2.5 text-sm text-[#000]'
             >
-              <h1 className='text-sm'>Payment Guide</h1>
-            </Link>
+              <h1 className='text-sm'>ENGINEERING</h1>
+            </a>
           </div>
         </>
       )}
