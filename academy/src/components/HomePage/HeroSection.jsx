@@ -1,11 +1,9 @@
 import { Cursor, Gradient } from '../../Utils/Assets';
 import { Link } from 'react-router-dom';
-import Group11 from '../../../public/group11.png';
-import Group2 from '../../../public/group2.png';
-import Group3 from '../../../public/group3.png';
-// import Group3 from '../../../public/group3.png';
-import Group4 from '../../../public/group4.png';
-// import Group4 from '../../../public/group4.png';
+import Group11 from '../../assets/group11.png';
+import Group2 from '../../assets/group2.png';
+import Group3 from '../../assets/group3.png';
+import Group4 from '../../assets/group4.png';
 import Header from '../common/Header';
 import Slider from 'react-slick';
 import LazyImage from '../../Utils/SuspenseImage';

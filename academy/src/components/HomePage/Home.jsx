@@ -25,8 +25,8 @@ const Home = () => {
     <div className='w-full'>
       <>
         <HeroSection />
-        {/* <Catalogue courses={courses} /> */}
-        {/* <Sponsors /> */}
+        <Catalogue courses={courses} />
+        <Sponsors />
         {courses && courses?.length >= 1 && <Courses />}
         <Cohort startDate={currentCohort?.start_date} />
         {blogs && blogs?.length >= 1 && <Blog />}
