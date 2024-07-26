@@ -1,4 +1,4 @@
-import WorkSpaceImages from './WorkSpaceImages';
+import { WorkspaceImgs } from './WorkSpaceImages';
 import { AcademyUrl } from '../../Utils/apiRequest';
 
 const Workspace = () => {
@@ -18,7 +18,7 @@ const Workspace = () => {
           supply courtesy of solar at an affordable fee. It’s free for those who
           have registered to take courses.
         </span>
-        <WorkSpaceImages />
+        <WorkspaceImgs />
 
         <a href={`${AcademyUrl}/book-workspace`} target='_self'>
           <div className='bg-white hover:bg-[#E4E4E4] transition duration-300 ease-in-out seeMore h-12 w-[141px] rounded-[4px] flex items-center justify-center text-[14px] font-bold leading-[17px] '>

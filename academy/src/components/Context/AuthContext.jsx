@@ -31,7 +31,7 @@ export function AuthProvider(props) {
   const [testimonial, setTestimonial] = useState(null);
   const [sponsorsLoading, setSponsorsLoading] = useState(true);
   const [availableSeats, setAvailableSeats] = useState(null);
-  const [slotsLoading, setSlotsLoading] = useState(true);
+  const [slotsLoading, setSlotsLoading] = useState(false);
   const [plans, setPlans] = useState(null);
 
   useEffect(() => {

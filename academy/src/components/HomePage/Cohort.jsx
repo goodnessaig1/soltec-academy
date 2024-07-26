@@ -1,14 +1,21 @@
 /* eslint-disable react/prop-types */
 import Countdown from './Countdown';
 const Cohort = ({ startDate }) => {
+  console.log(startDate);
   return (
     <div className='pt-32 lg:pt-36'>
       <div className='background-image2'>
         <div className='flex px-4 flex-col items-center justify-center py-[140px]'>
-          <h1 className='font-[900] text-[20px] text-white '>
-            THE NEXT COHORT STARTS IN...
-          </h1>
-          {startDate && <Countdown startDate={startDate} />}
+          {startDate ? (
+            <h1 className='font-[900] text-[20px] text-white '>
+              THE NEXT COHORT STARTS IN...
+            </h1>
+          ) : (
+            <h1 className='font-[900] text-[20px] text-white'>
+              ENROLLMENT OPENING SOON...
+            </h1>
+          )}
+          {<Countdown startDate={startDate} />}
 
           <div className='mt-12 flex text-center'>
             <span className='font-normal sm:text-[16px] lg:text-[20px] text-nowrap leading-[30px] text-center text-white'>

@@ -147,7 +147,7 @@ const HomeDashboard = () => {
             <div className='bg-[#02003E]'>
               <Academy />
             </div>
-            <div className='bg-bg3'>
+            <div className='bg-[#f1f1f1]'>
               <Workspace />
             </div>
             <div className='bg-[#02003E]'>

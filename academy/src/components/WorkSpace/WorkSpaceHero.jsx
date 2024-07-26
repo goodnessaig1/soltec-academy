@@ -24,7 +24,7 @@ const WorkSpaceHero = () => {
           <div className=' px-6 mt-[60px] flex flex-row gap-[13px] col items-center justify-center text-white'>
             {!slotsLoading ? (
               <h1 className='text-[96px] font-[800] leading-[115.2px]'>
-                {availableSeats}
+                {availableSeats ? availableSeats : 4}
               </h1>
             ) : (
               <div className='w-10 h-32 flex items-center justify-center'>

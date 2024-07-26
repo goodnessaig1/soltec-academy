@@ -167,22 +167,21 @@ export const CreatePlan = ({
       plan_type: plan,
       price: price,
     };
-    console.log(data);
-    // try {
-    //     setLoading(true)
-    //   // await adminApiRequest('POST', `/workspaces/`, data);
-    //   toast.success('Success', {
-    //     position: 'top-right',
-    //   });
-    //   setLoading(false);
-    //   setOpenCreatePlans(false)
-    // } catch (error) {
-    //   setLoading(false);
-    //   console.log(error);
-    //   toast.error('An error occured !', {
-    //     position: 'top-left',
-    //   });
-    // }
+    try {
+      setLoading(true);
+      await adminApiRequest('POST', `/workspaces/`, data);
+      toast.success('Success', {
+        position: 'top-right',
+      });
+      setLoading(false);
+      setOpenCreatePlans(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+      toast.error('An error occured !', {
+        position: 'top-left',
+      });
+    }
   };
 
   return (

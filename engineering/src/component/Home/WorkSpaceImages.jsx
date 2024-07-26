@@ -6,6 +6,8 @@ import Workspace4 from '../../assets/workspace4.JPG';
 import Workspace5 from '../../assets/workspace5.JPG';
 import OfficeLocation from '../../assets/locat-work1.JPG';
 import Slider from 'react-slick';
+import Starlink from '../../assets/starlink.png';
+import Panel from '../../assets/panel.png';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -37,15 +39,16 @@ function SamplePrevArrow(props) {
   );
 }
 
+var settings = {
+  dots: false,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  prevArrow: <SamplePrevArrow />,
+  nextArrow: <SampleNextArrow />,
+};
+
 const WorkSpaceImages = () => {
-  var settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    prevArrow: <SamplePrevArrow />,
-    nextArrow: <SampleNextArrow />,
-  };
   return (
     <div className='w-full flex flex-col items-center justify-center'>
       <div className='hidden lg:block'>
@@ -141,3 +144,66 @@ const WorkSpaceImages = () => {
 };
 
 export default WorkSpaceImages;
+
+export const WorkspaceImgs = () => {
+  return (
+    <div className='w-full flex items-center justify-center'>
+      <div className='hidden lg:block'>
+        <div className='lg:h-[461px]  flex flex-col mdl:flex-row gap-4 mdl:gap-8 lg:gap-6 items-center justify-center'>
+          <div className='lgl:h-[378px] '>
+            <img
+              src={Starlink}
+              className='w-[312px] object-cover lgl:w-[461px] rounded-[24px] h-[300px] lgl:h-[378px]'
+              alt=''
+            />
+          </div>
+          <div className='lgl:h-[378px] '>
+            <img
+              src={Panel}
+              className='w-[312px] object-cover lgl:w-[461px] rounded-[24px] h-[300px] lgl:h-[378px]'
+              alt=''
+            />
+          </div>
+        </div>
+      </div>
+      <div className='block w-[89%] lg:hidden'>
+        <div className='w-full block'>
+          <Slider
+            {...settings}
+            className='max-h-[480px] overflow-initial outline-none'
+          >
+            <div className='w-[100%]'>
+              <img
+                src={Starlink}
+                className='h-[380px] sml:h-[420px] md:h-[480px] w-full object-cover'
+                alt=''
+              />
+            </div>
+            <div className='w-[100%]'>
+              <img
+                src={Panel}
+                className='h-[380px] sml:h-[420px] md:h-[480px] w-full object-cover'
+                alt=''
+              />
+            </div>
+
+            <div className='w-[100%]'>
+              <img
+                src={Workspace3}
+                className='h-[380px] sml:h-[420px] md:h-[480px] w-full object-cover'
+                alt=''
+              />
+            </div>
+            <div className='w-[100%]'>
+              <img
+                src={Workspace2}
+                className='h-[380px] sml:h-[420px] md:h-[480px] w-full object-cover'
+                alt=''
+              />
+            </div>
+          </Slider>
+        </div>
+      </div>
+    </div>
+  );
+};
