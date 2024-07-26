@@ -16,6 +16,7 @@ import WorkspaceE1 from '../../assets/workspace-e1.JPG';
 import WorkspaceE2 from '../../assets/workspace-e2.JPG';
 import OfficeLocation from '../../assets/locat-work1.JPG';
 import Slider from 'react-slick';
+import LazyImage from '../../Utils/SuspenseImage';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -25,7 +26,11 @@ function SampleNextArrow(props) {
       onClick={onClick}
     >
       <div className='w-10 sml:w-12 h-9 sml:h-12 bg-[#f1f1f1] ml-[-28px] rounded-[50%] flex items-center justify-center'>
-        <img src={Next} className='w-3 sml:w-3.5 ml-[-3px] sml:ml-0' alt='' />
+        <LazyImage
+          src={Next}
+          className='w-3 sml:w-3.5 ml-[-3px] sml:ml-0'
+          alt=''
+        />
       </div>
     </div>
   );
@@ -36,7 +41,11 @@ function SamplePrevArrow(props) {
   return (
     <div className={`${className} btnnn z-2 mt-[-16px]`} onClick={onClick}>
       <div className='w-10 sml:w-12 h-9 sml:h-12 bg-[#f1f1f1] rounded-[50%] flex items-center justify-center'>
-        <img src={Prev} className='w-3 sml:w-3.5 ml-[-3px] sml:ml-0' alt='' />
+        <LazyImage
+          src={Prev}
+          className='w-3 sml:w-3.5 ml-[-3px] sml:ml-0'
+          alt=''
+        />
       </div>
     </div>
   );
@@ -62,27 +71,27 @@ const Shots = () => {
         <div className='w-full justify-center items-center  flex-col hidden lg:flex lg:flex-row gap-4 '>
           <div className='w-[80%]  lg:w-1/2 max-w-[661px] flex gap-4 md:gap-4 flex-col'>
             <div className='flex w-full flex-row gap-4 md:gap-4'>
-              <img
+              <LazyImage
                 src={Workspace3}
                 className='w-[49%] object-cover rounded-[42px] lg:h-[170px] xl:h-[234px] '
                 alt=''
               />
-              <img
+              <LazyImage
                 src={Shorts2}
                 className='w-[48%] rounded-[42px] lg:h-[170px] xl:h-[234px] '
                 alt=''
               />
             </div>
             <div className=''>
-              <img
-                src={Shorts3}
+              <LazyImage
+                src={Workspace4}
                 className='lg:h-[240px] rounded-[42px] w-full xl:h-[350px]'
                 alt=''
               />
             </div>
           </div>
           <div className='w-[80%] max-w-[661px] lg:w-1/2'>
-            <img
+            <LazyImage
               src={Shorts4}
               className='lg:h-[430px] rounded-[42px] xl:h-[599px]'
               alt=''
@@ -97,42 +106,42 @@ const Shots = () => {
                 className='max-h-[480px] overflow-initial outline-none'
               >
                 <div className='w-[100%]'>
-                  <img
+                  <LazyImage
                     src={Workspace1}
                     className='h-[380px] sml:h-[420px] md:h-[480px] w-full object-cover'
                     alt=''
                   />
                 </div>
                 <div className='w-[100%]'>
-                  <img
+                  <LazyImage
                     src={OfficeLocation}
                     className='h-[380px] sml:h-[420px] md:h-[480px] w-full object-cover'
                     alt=''
                   />
                 </div>
                 <div className='w-[100%]'>
-                  <img
+                  <LazyImage
                     src={Workspace1}
                     className='h-[380px] sml:h-[420px] md:h-[480px] w-full object-cover'
                     alt=''
                   />
                 </div>
                 <div className='w-[100%]'>
-                  <img
+                  <LazyImage
                     src={Shorts2}
                     className='h-[380px] sml:h-[420px] md:h-[480px] w-full object-cover'
                     alt=''
                   />
                 </div>
                 <div className='w-[100%]'>
-                  <img
-                    src={Shorts3}
+                  <LazyImage
+                    src={Workspace4}
                     className='h-[380px] sml:h-[420px] md:h-[480px] w-full object-cover'
                     alt=''
                   />
                 </div>
                 <div className='w-[100%]'>
-                  <img
+                  <LazyImage
                     src={First}
                     className='h-[380px] sml:h-[420px] md:h-[480px] w-full object-cover'
                     alt=''

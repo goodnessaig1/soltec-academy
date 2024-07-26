@@ -54,7 +54,7 @@ const Sidebar = ({ toggle, showSidebar }) => {
             <RouterLink
               to={'/get-quote'}
               onClick={toggle}
-              className='w-[159px] h-[48px] hover:bg-[#f1f1f1] flex items-center justify-center sidebarPay  rounded-[12px] p-[10px] text-[14px] text-[#000]'
+              className='w-[159px] h-[48px] hover:bg-[#f1f1f1] flex items-center justify-center border border-gray-900 rounded-2xl p-[10px] text-[14px] text-[#000]'
             >
               <h1 className='nav-link'>GET QUOTE</h1>
             </RouterLink>

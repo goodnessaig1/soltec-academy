@@ -51,7 +51,7 @@ const Header = ({ headerCol }) => {
           <div className='z-10'>
             {headerCol ? (
               <Link to={'/'}>
-                <LazyImage
+                <img
                   src={AcademyLogoFull}
                   className='max-w-[188px] max-h-[72px] mt-[-8px] hidden lg:flex'
                   alt=''
@@ -59,7 +59,7 @@ const Header = ({ headerCol }) => {
               </Link>
             ) : (
               <Link to={'/'}>
-                <LazyImage
+                <img
                   src={AcademyLogo}
                   className='max-w-[188px] max-h-[72px] mt-[-8px] hidden lg:flex'
                   alt=''
@@ -68,7 +68,7 @@ const Header = ({ headerCol }) => {
             )}
             {headerCol ? (
               <Link to={'/'}>
-                <LazyImage
+                <img
                   src={AcademyLogoLandscapeL}
                   className='flex lg:hidden max-w-[120px] max-h-[60px] mt-[-2px]'
                   alt=''
@@ -76,7 +76,7 @@ const Header = ({ headerCol }) => {
               </Link>
             ) : (
               <Link to={'/'}>
-                <LazyImage
+                <img
                   src={AcademyLogoLandscape}
                   className='flex lg:hidden max-w-[120px] max-h-[60px] mt-[-2px]'
                   alt=''

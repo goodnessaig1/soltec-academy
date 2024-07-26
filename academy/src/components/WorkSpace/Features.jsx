@@ -13,6 +13,8 @@ import {
   officeChair,
   officeChairG,
 } from '../../Utils/Assets';
+import LazyImage from '../../Utils/SuspenseImage';
+
 const Features = () => {
   const [feature, setFeature] = useState('Starlink');
   return (
@@ -52,13 +54,13 @@ const Features = () => {
                   }`}
                 >
                   {feature == 'Starlink' ? (
-                    <img
+                    <LazyImage
                       src={Internet}
                       className='sm:w-6 mt-1 md:mt-0 md:w-10 h-6 md:h-10'
                       alt=''
                     />
                   ) : (
-                    <img
+                    <LazyImage
                       src={InternetG}
                       className='sm:w-6 md:w-10 h-6 md:h-10'
                       alt=''
@@ -100,13 +102,13 @@ const Features = () => {
                   }`}
                 >
                   {feature == 'Conducive' ? (
-                    <img
+                    <LazyImage
                       src={officeChair}
                       className='sm:w-6 mt-[6px] md:mt-0 md:w-10 h-6 md:h-10'
                       alt=''
                     />
                   ) : (
-                    <img
+                    <LazyImage
                       src={officeChairG}
                       className='sm:w-6 md:w-10 h-6 md:h-10'
                       alt=''
@@ -149,13 +151,13 @@ const Features = () => {
                   }`}
                 >
                   {feature == 'Power' ? (
-                    <img
+                    <LazyImage
                       src={Power}
                       className='sm:w-6 mt-1 md:mt-0 md:w-10 h-6 md:h-10'
                       alt=''
                     />
                   ) : (
-                    <img
+                    <LazyImage
                       src={PowerG}
                       className='sm:w-6 md:w-10 h-6 md:h-10'
                       alt=''
@@ -191,7 +193,7 @@ const Features = () => {
 
               {/* Time */}
               <div className='flex flex-row gap-[14px] items-center'>
-                <img
+                <LazyImage
                   className='w-[50px] h-[50px] md:h-[75px] md:w-[75px]'
                   src={Clock}
                   alt=''
@@ -211,19 +213,19 @@ const Features = () => {
             <div className='hidden  lgl:block lg:w-[440px] xl:w-[555.5px]'>
               {feature === 'Starlink' && (
                 <div className='flex flex-row gap-0 items-center'>
-                  <img key='image' src={Starlink} alt='Your Image' />
+                  <LazyImage key='image' src={Starlink} alt='Your Image' />
                   <div className='bg-[#EEEEEE] h-[465px] rounded-r-[16px] w-[41px]' />
                 </div>
               )}
               {feature === 'Conducive' && (
                 <div className='flex flex-row gap-0 items-center'>
-                  <img key='image' src={SolarPanel} alt='Your Image' />
+                  <LazyImage key='image' src={SolarPanel} alt='Your Image' />
                   <div className='bg-[#EEEEEE] h-[465px] rounded-r-[16px] w-[41px]' />
                 </div>
               )}
               {feature === 'Power' && (
                 <div className='flex flex-row gap-0 items-center'>
-                  <img key='image' src={SolarPanel} alt='Your Image' />
+                  <LazyImage key='image' src={SolarPanel} alt='Your Image' />
                   <div className='bg-[#EEEEEE] h-[465px] rounded-r-[16px] w-[41px]' />
                 </div>
               )}
@@ -235,7 +237,7 @@ const Features = () => {
         <div className='flex lgl:hidden mt-[76px] flex-col px-4 md:px-6 gap-[110px]'>
           <div className='flex flex-col gap-4 max-w-[500px] '>
             <div className='p-6 superFast  flex flex-col gap-3 rounded-2xl '>
-              <img
+              <LazyImage
                 src={Internet}
                 className='sm:w-6 mt-1 md:mt-0 md:w-10 h-6 md:h-10'
                 alt=''
@@ -255,7 +257,7 @@ const Features = () => {
               </div>
             </div>
             <div className=''>
-              <img
+              <LazyImage
                 src={StarlinkM}
                 className='max-h-[382px] w-full rounded-2xl'
                 alt=''
@@ -264,7 +266,7 @@ const Features = () => {
           </div>
           <div className='flex flex-col gap-4 max-w-[500px] '>
             <div className='p-6 conducive  flex flex-col gap-3 rounded-2xl '>
-              <img
+              <LazyImage
                 src={officeChair}
                 className='sm:w-6 mt-1 md:mt-0 md:w-10 h-6 md:h-10'
                 alt=''
@@ -284,7 +286,7 @@ const Features = () => {
               </div>
             </div>
             <div className=''>
-              <img
+              <LazyImage
                 src={SolarPanel}
                 className='max-h-[382px] w-full rounded-2xl'
                 alt=''
@@ -293,7 +295,7 @@ const Features = () => {
           </div>
           <div className='flex flex-col gap-4 max-w-[500px] '>
             <div className='p-6 solarPower  flex flex-col gap-3 rounded-2xl '>
-              <img
+              <LazyImage
                 src={Power}
                 className='sm:w-6 mt-1 md:mt-0 md:w-10 h-6 md:h-10'
                 alt=''
@@ -312,7 +314,7 @@ const Features = () => {
               </div>
             </div>
             <div className=''>
-              <img
+              <LazyImage
                 src={SolarPanel}
                 className='max-h-[382px] w-full rounded-2xl'
                 alt=''
@@ -323,7 +325,7 @@ const Features = () => {
 
         {/* Time */}
         <div className='flex lgl:hidden mt-[60px] justify-center flex-row gap-[14px] items-center'>
-          <img
+          <LazyImage
             className='w-[50px] h-[50px] md:h-[75px] md:w-[75px]'
             src={Clock}
             alt=''

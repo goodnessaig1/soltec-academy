@@ -13,13 +13,13 @@ import {
 const BookWorkSpace = () => {
   return (
     <div className='flex flex-col w-full'>
-      <div className='bookWorkBg h-[1216px] lg:h-[740px]'>
+      <div className='bookWorkBg h-full pb-14 lg:pb-0 lg:h-[740px]'>
         <div className='w-full flex flex-col px-4'>
           <div className='pt-[90px] lg:pt-14 flex flex-col gap-4 items-center justify-center'>
             <h1 className='font-medium text-[20px] lg:text-[24px] leading-[36px] text-opacityWhite'>
               TIRED OF EPILLEPTIC POWER SUPPLY?
             </h1>
-            <h1 className='font-medium text-[20px] lg:text-[24px] leading-[36px] text-opacityWhite'>
+            <h1 className='font-medium text-center text-[20px] lg:text-[24px] leading-[36px] text-opacityWhite'>
               TIRED OF INTERNET SERVICE PROVIDERS?
             </h1>
             <h1 className='font-medium text-[20px] lg:text-[24px] text-center leading-[36px] text-opacityWhite'>

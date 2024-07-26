@@ -15,8 +15,8 @@ function SampleNextArrow(props) {
       className={`${className} worksp z-4 mt-[-36px] sml:mt-[-28px] ml-[-10px]`}
       onClick={onClick}
     >
-      <div className='w-10 sml:w-12 h-9 sml:h-12 bg-[#f1f1f1] ml-[-28px] rounded-[50%] flex items-center justify-center'>
-        <img src={Next} className='w-3 sml:w-3.5 ml-[-3px] sml:ml-0' alt='' />
+      <div className='w-8 sml:w-12 h-8 sml:h-12 bg-[#f1f1f1] ml-[-32px] rounded-[50%] flex items-center justify-center'>
+        <img src={Next} className='w-2.5 sml:w-3.5 ml-0 sml:ml-0' alt='' />
       </div>
     </div>
   );
@@ -30,8 +30,8 @@ function SamplePrevArrow(props) {
       className={`${className} worksp z-4 mt-[-36px] sml:mt-[-28px]`}
       onClick={onClick}
     >
-      <div className='w-10 sml:w-12 h-9 sml:h-12 bg-[#f1f1f1] rounded-[50%] flex items-center justify-center'>
-        <img src={Prev} className='w-3 sml:w-3.5 ml-[-3px] sml:ml-0' alt='' />
+      <div className='w-8 sml:w-12 h-8 sml:h-12 bg-[#f1f1f1] rounded-[50%] flex items-center justify-center'>
+        <img src={Prev} className='w-2.5 sml:w-3.5 ml-[-3px] sml:ml-0' alt='' />
       </div>
     </div>
   );
@@ -85,7 +85,7 @@ const WorkSpaceImages = () => {
           </div>
         </div>
       </div>
-      <div className='block w-[92%] lg:hidden'>
+      <div className='block w-[89%] lg:hidden'>
         <div className='w-full block'>
           <Slider
             {...settings}

@@ -109,7 +109,11 @@ const Blog = () => {
                           }
                           className='px-4 py-0.5 hover:cursor-pointer w-full hover:bg-[#f1f1f1]'
                         >
-                          <span className=' w-full'>{blog?.title}</span>
+                          <span className=' w-full'>
+                            {blog?.title.length > 40
+                              ? `${blog?.title.substring(0, 40)}...`
+                              : blog?.title}
+                          </span>
                         </li>
                       ))}
                     </div>
@@ -118,7 +122,7 @@ const Blog = () => {
               )}
             </div>
             {searchTerm != '' &&
-            searchTerm.length > 4 &&
+            searchTerm.length > 2 &&
             searchResults?.length == 0 ? (
               <div className='flex w-full items-center justify-center'>
                 <div className='flex mt-[80px] gap-3.5 flex-col items0center justify-center'>

@@ -78,7 +78,7 @@ const Footer = () => {
           <h1 className='font-semibold text-[16px] leading-[21px] text-white'>
             COURSES
           </h1>
-          {courses && courses.length > 5 ? (
+          {courses && courses.length >= 1 ? (
             <div className='flex flex-col gap-3'>
               {courses &&
                 courses.slice(0, 5).map((course, index) => (
@@ -133,14 +133,12 @@ const FooterCourses = () => {
       <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
         Product design
       </span>
-      <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
-        Blockchain Developments
-      </span>
+
       <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
         Data Analysis
       </span>
       <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
-        Cybersecurity
+        UI/UX Development
       </span>
       <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
         Frontend Web Development

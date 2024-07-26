@@ -50,7 +50,7 @@ const Sideber = ({ toggle, showSidebar }) => {
             <a
               href={`${EngineeringURL}`}
               target='_self'
-              className='w-[159px] h-12 hover:bg-[#f1f1f1] flex items-center justify-center sidebarPay rounded-2xl p-2.5 text-sm text-[#000]'
+              className='w-[159px] h-12 border border-gray-600 hover:bg-[#f1f1f1] flex items-center justify-center rounded-3xl p-2.5 text-sm text-black'
             >
               <h1 className='text-sm'>ENGINEERING</h1>
             </a>

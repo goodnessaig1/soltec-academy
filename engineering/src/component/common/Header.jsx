@@ -44,12 +44,12 @@ const Header = ({ headerCol }) => {
             <NavLink
               className={({ isActive }) =>
                 isActive && headerCol
-                  ? 'text-white text-[15px] nav-lnk font-bold'
+                  ? 'text-white text-sm lgx:text-base nav-lnk font-bold'
                   : isActive
-                  ? 'nav-lik text-[15px] text-black font-bold'
+                  ? 'nav-lik text-sm lgx:text-base text-black font-bold'
                   : !isActive && headerCol
-                  ? 'unselected text-[15px] transition font-medium duration-300 hover:font-bold hover:text-white'
-                  : 'unselected  text-[15px] hover:text-black transition duration-300 hover:font-semibold font-medium'
+                  ? 'unselected text-sm lgx:text-base transition font-medium duration-300 hover:font-bold hover:text-white'
+                  : 'unselected  text-sm lgx:text-base hover:text-black transition duration-300 hover:font-semibold font-medium'
               }
               to={'/'}
             >
@@ -57,7 +57,7 @@ const Header = ({ headerCol }) => {
             </NavLink>
             <RouterLink
               to='/#about-us'
-              className={`font-medium hover:cursor-pointer hover:font-semibold transition duration-300 ${
+              className={`font-medium text-sm lgx:text-base hover:cursor-pointer hover:font-semibold transition duration-300 ${
                 headerCol ? 'text-white' : 'text-black'
               }`}
             >
@@ -65,7 +65,7 @@ const Header = ({ headerCol }) => {
             </RouterLink>
             <RouterLink
               to='/#services'
-              className={`font-medium hover:cursor-pointer hover:font-semibold transition duration-300 ${
+              className={`font-medium text-sm lgx:text-base hover:cursor-pointer hover:font-semibold transition duration-300 ${
                 headerCol ? 'text-white ' : 'text-black'
               }`}
             >
@@ -73,7 +73,7 @@ const Header = ({ headerCol }) => {
             </RouterLink>
             <RouterLink
               to='/#faqs'
-              className={`font-medium hover:cursor-pointer hover:font-semibold transition duration-300 ${
+              className={`font-medium text-sm lgx:text-base hover:cursor-pointer hover:font-semibold transition duration-300 ${
                 headerCol ? 'text-white ' : 'text-black'
               }`}
             >
@@ -83,8 +83,8 @@ const Header = ({ headerCol }) => {
             <a
               href={`${AcademyUrl}`}
               target='_self'
-              className={`font-medium hover:cursor-pointer hover:font-semibold transition duration-300 ${
-                headerCol ? 'text-white ' : 'text-black'
+              className={`font-medium text-sm lgx:text-base hover:cursor-pointer hover:font-semibold transition duration-300 ${
+                headerCol ? 'text-white text-sm lgx:text-base ' : 'text-black'
               }`}
             >
               <span>ACADEMY</span>
@@ -93,12 +93,12 @@ const Header = ({ headerCol }) => {
             <NavLink
               className={({ isActive }) =>
                 isActive && headerCol
-                  ? 'text-white nav-lnk font-bold'
+                  ? 'text-white  text-sm lgx:text-base nav-lnk font-bold'
                   : isActive
-                  ? 'nav-lik text-black font-bold'
+                  ? 'nav-lik text-sm lgx:text-base text-black font-bold'
                   : !isActive && headerCol
-                  ? 'unselected transition font-medium duration-300 hover:font-bold hover:text-white'
-                  : 'unselected hover:text-black transition duration-300 hover:font-semibold font-medium'
+                  ? 'unselected  transition font-medium text-sm lgx:text-base duration-300 hover:font-bold hover:text-white'
+                  : 'unselected text-sm lgx:text-base hover:text-black transition duration-300 hover:font-semibold font-medium'
               }
               to={'/contact-us'}
             >
