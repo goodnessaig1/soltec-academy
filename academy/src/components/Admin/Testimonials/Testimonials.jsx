@@ -39,7 +39,7 @@ const AdminTestimonials = () => {
     const updatedData = data.filter(item => item.id !== id);
     setData(updatedData);
     try {
-      await adminApiRequest('GET', `/testimonials/${id}`);
+      await adminApiRequest('GET', `/testimonials/${id}/`);
       toast.success('Successfully deleted', {
         position: 'top-right',
       });
@@ -52,10 +52,10 @@ const AdminTestimonials = () => {
   };
 
   const deleteMultiple = async () => {
-    const data = {
-      ids,
-    };
     try {
+      const data = {
+        ids: ids,
+      };
       setMarkedItems([]);
       await adminApiRequest('DELETE', `/testimonials/delete-multiple/`, data);
       toast.success('Successfully deleted', {
@@ -66,6 +66,7 @@ const AdminTestimonials = () => {
       toast.error('An error occured !', {
         position: 'top-left',
       });
+      console.log(error);
     }
   };
 
