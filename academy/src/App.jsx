@@ -36,6 +36,7 @@ import AdminPayment from './components/Admin/Payment/AdminPayment';
 import Newsletter from './components/Admin/Newsletter/Newsletter';
 import Settings from './components/Admin/Settings/Settings';
 import Register from './components/Admin/Register/Register';
+import AdminWorkspace from './components/Admin/Workspace/Workspace';
 
 function App() {
   const { user } = useAuth();
@@ -87,6 +88,8 @@ function App() {
           <Route path='/admin/blogs/post' Component={BlogPostAdmin} />
           <Route path='/admin/blogs/add-blog' Component={AddBlog} />
           <Route path='/admin/blogs/edit-blog/:id' Component={EditBlogPost} />
+
+          <Route path='/admin/workspace' Component={AdminWorkspace} />
 
           <Route path='/admin/testimonials' Component={AdminTestimonials} />
           <Route

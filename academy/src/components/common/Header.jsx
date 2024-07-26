@@ -8,6 +8,7 @@ import AcademyLogoLandscape from '../../assets/soltec-logo-landsacpe.png';
 import AcademyLogoLandscapeL from '../../assets/soltec-logo-landscapeb.png';
 import Sideber from './Sidebar';
 import { EngineeringURL } from '../../Utils/BaseUrl';
+import LazyImage from '../../Utils/SuspenseImage';
 
 const Header = ({ headerCol }) => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -50,7 +51,7 @@ const Header = ({ headerCol }) => {
           <div className='z-10'>
             {headerCol ? (
               <Link to={'/'}>
-                <img
+                <LazyImage
                   src={AcademyLogoFull}
                   className='max-w-[188px] max-h-[72px] mt-[-8px] hidden lg:flex'
                   alt=''
@@ -58,7 +59,7 @@ const Header = ({ headerCol }) => {
               </Link>
             ) : (
               <Link to={'/'}>
-                <img
+                <LazyImage
                   src={AcademyLogo}
                   className='max-w-[188px] max-h-[72px] mt-[-8px] hidden lg:flex'
                   alt=''
@@ -67,7 +68,7 @@ const Header = ({ headerCol }) => {
             )}
             {headerCol ? (
               <Link to={'/'}>
-                <img
+                <LazyImage
                   src={AcademyLogoLandscapeL}
                   className='flex lg:hidden max-w-[120px] max-h-[60px] mt-[-2px]'
                   alt=''
@@ -75,7 +76,7 @@ const Header = ({ headerCol }) => {
               </Link>
             ) : (
               <Link to={'/'}>
-                <img
+                <LazyImage
                   src={AcademyLogoLandscape}
                   className='flex lg:hidden max-w-[120px] max-h-[60px] mt-[-2px]'
                   alt=''
@@ -83,18 +84,18 @@ const Header = ({ headerCol }) => {
               </Link>
             )}
           </div>
-          <div className='hidden z-10 lg:flex text-nowrap flex-row gap-4 lgl:gap-8 xxl:gap-10 '>
+          <div className='hidden z-10 lg:flex text-nowrap flex-row gap-4 lg:gap-8 lgx:gap-9 xxl:gap-10 '>
             {navLinks.map((link, index) => (
               <NavLink
                 key={index}
                 className={({ isActive }) =>
                   isActive && headerCol
-                    ? 'text-white nav-link'
+                    ? 'text-white lg:text-[14px] lgx:text-base nav-link'
                     : isActive
-                    ? 'nav-link text-black'
+                    ? 'nav-link lg:text-[14px] lgx:text-base text-black'
                     : !isActive && headerCol
-                    ? 'unselected transition duration-200 hover:text-white'
-                    : 'unselected hover:text-black'
+                    ? 'unselected lg:text-[14px] lgx:text-base transition duration-200 hover:text-white'
+                    : 'unselected lg:text-[14px] lgx:text-base hover:text-black'
                 }
                 to={link.link}
               >
@@ -112,7 +113,11 @@ const Header = ({ headerCol }) => {
 
           {/* Menu bar */}
           <div onClick={toggleSidebar} className='flex lg:hidden z-1'>
-            {headerCol ? <img src={Menu2} alt='' /> : <img src={Menu} alt='' />}
+            {headerCol ? (
+              <LazyImage src={Menu2} alt='' />
+            ) : (
+              <img src={Menu} alt='' />
+            )}
           </div>
         </div>
       </div>

@@ -58,7 +58,7 @@ const AdminCourses = () => {
     }
   };
   useEffect(() => {
-    getCourses();
+    // getCourses();
   }, []);
 
   const handleDelete = async () => {
@@ -206,7 +206,7 @@ const AdminCourses = () => {
                     <img src={Sort} alt='' />
                   </div>
                 </div>
-                <div className='w-[27%]'>
+                <div className='w-[24%]'>
                   <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                     <h1 className='text-[14px] font-medium leading-[17px]'>
                       COURSE
@@ -227,7 +227,7 @@ const AdminCourses = () => {
                     </h1>
                   </div>
                 </div>
-                <div className='w-[12%]'>
+                <div className='w-[16%]'>
                   <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                     <h1 className='text-[14px] font-medium leading-[17px]'>
                       STATUS
@@ -254,7 +254,7 @@ const AdminCourses = () => {
                         )}
                       </h1>
                     </div>
-                    <div className='w-[27%] whitespace-normal'>
+                    <div className='w-[24%] whitespace-normal'>
                       <h1 className='text-[14px] font-normal py-2.5 px-3 leading-[17px] break-all'>
                         {item?.title}
                       </h1>
@@ -275,10 +275,7 @@ const AdminCourses = () => {
                         #{item?.price}
                       </h1>
                     </div>
-                    <div
-                      onClick={() => handleIsActive(index, item)}
-                      className='w-[12%] py-2.5 px-3 hover:cursor-pointer'
-                    >
+                    <div className='w-[16%] flex items-center gap-1 py-2.5 px-3 hover:cursor-pointer'>
                       {item?.is_active ? (
                         <div className='w-[70px] flex h-[24px] rounded-[50px] text-mainGreen items-center justify-center bg-activeBg text-[12px]'>
                           Active
@@ -288,26 +285,36 @@ const AdminCourses = () => {
                           Inactive
                         </div>
                       )}
+                      <label className='toggle-button'>
+                        <input
+                          type='checkbox'
+                          checked={item?.is_active}
+                          onChange={() => handleIsActive(index, item)}
+                          className='toggle-input'
+                        />
+                        <span className='toggle-slider'></span>
+                      </label>
                     </div>
-                    <div className='w-[15%] flex flex-row gap-4 items-center justify-center'>
+                    <div className='w-[15%] mt-2 flex flex-row gap-4 items-center justify-center'>
                       <div
                         onClick={() =>
                           navigate(
                             `/admin/courses/edit-course/${item?.id}/${item?.title}`,
                           )
                         }
-                        className='w-[53px] h-8 hover:bg-[#F5F7F9] transition ease-in-out duration-300 cursor-pointer rounded-[50px] flex items-center justify-center edit_del'
+                        className='w-10 h-7 hover:bg-[#F5F7F9] transition ease-in-out duration-300 cursor-pointer rounded-[50px] flex items-center justify-center edit_del'
                       >
-                        <img src={Edit} alt='' />
+                        <img src={Edit} className='h-3.5' alt='' />
                       </div>
+
                       <div
                         onClick={() => {
                           setCourse(item);
                           setOpenDeletePop(true);
                         }}
-                        className='w-[53px] h-8 hover:bg-[#F5F7F9] transition ease-in-out duration-300 cursor-pointer rounded-[50px] flex items-center justify-center edit_del'
+                        className='w-10 h-7 hover:bg-[#F5F7F9] transition ease-in-out duration-300 cursor-pointer rounded-[50px] flex items-center justify-center edit_del'
                       >
-                        <img src={Trahs} alt='' />
+                        <img src={Trahs} className='h-4' alt='' />
                       </div>
                     </div>
                   </div>

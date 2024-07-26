@@ -26,8 +26,10 @@ import { toast } from 'react-toastify';
 import { validatePhoneNumber } from '../../Utils/Index';
 import { apiRequest } from '../../Utils/ApiRequest';
 import Header from '../common/Header';
+import { useAuth } from '../Context/AuthContext';
 
 const BookSpace = () => {
+  const { availableSeats, setAvailableSeats } = useAuth();
   const [days, setDays] = useState('Daily');
   const [openSeats, setOpenSeats] = useState(false);
   const [price, setPrice] = useState(null);
@@ -39,13 +41,11 @@ const BookSpace = () => {
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState(null);
   const [isNumberValid, setIsNumberValid] = useState(true);
-
-  const [availableSeats, setAvailableSeats] = useState(1);
+  const [plans, setPlans] = useState(null);
   const [planId, setPlanId] = useState(1);
   const [planDate, setPlanDate] = useState(
     new Date().toISOString().slice(0, 10),
   );
-  const [plans, setPlans] = useState(null);
 
   const [selectedDate, setSelectedDate] = useState(null);
   const [error, setError] = useState(null);
@@ -53,6 +53,18 @@ const BookSpace = () => {
   const seats = Array.from({ length: availableSeats }, (_, index) => ({
     number: (index + 1).toString(),
   }));
+
+  useEffect(() => {
+    getPlans();
+  }, []);
+
+  useEffect(() => {
+    if (plans && plans != null) {
+      let i = plans.length - 1;
+      let id = plans[i].id;
+      setPlanId(id);
+    }
+  }, [plans]);
 
   useEffect(() => {
     if (selectedDate) {
@@ -67,46 +79,50 @@ const BookSpace = () => {
   }, [planDate, selectedDate, days]);
 
   useEffect(() => {
-    if (days === 'Daily') {
-      if (plans && plans) {
-        const filteredDailyData = plans?.filter(item => item.title === 'DAILY');
-        setPrice(filteredDailyData[0].price * numberOfSeates);
-        setPlanId(filteredDailyData[0].id);
-      }
-      if (selectedDate !== null) {
-        setDuration(`${format(new Date(selectedDate), 'dd MMM yyyy')}`);
-      }
-    } else if (days === 'Weekly') {
-      if (plans && plans) {
-        const filteredWeeklyData = plans?.filter(
-          item => item.title === 'WEEKLY',
-        );
-        setPrice(filteredWeeklyData[0].price * numberOfSeates);
-        setPlanId(filteredWeeklyData[0].id);
-      }
-      if (selectedDate !== null) {
-        setDuration(
-          `${format(new Date(selectedDate), 'dd MMM yyyy')} — ${format(
-            endDate,
-            'dd MMM yyyy',
-          )}`,
-        );
-      }
-    } else if (days === 'Monthly') {
-      if (plans && plans) {
-        const filteredMonthlyData = plans?.filter(
-          item => item.title === 'MONTHLY',
-        );
-        setPrice(filteredMonthlyData[0].price * numberOfSeates);
-        setPlanId(filteredMonthlyData[0].id);
-      }
-      if (selectedDate !== null) {
-        setDuration(
-          `${format(new Date(selectedDate), 'dd MMM yyyy')} — ${format(
-            endDate,
-            'dd MMM yyyy',
-          )}`,
-        );
+    if (plans != null) {
+      if (days === 'Daily') {
+        if (plans && plans) {
+          const filteredDailyData = plans?.filter(
+            item => item?.title === 'DAILY',
+          );
+          setPrice(filteredDailyData[0]?.price * numberOfSeates);
+          setPlanId(filteredDailyData[0]?.id);
+        }
+        if (selectedDate !== null) {
+          setDuration(`${format(new Date(selectedDate), 'dd MMM yyyy')}`);
+        }
+      } else if (days === 'Weekly') {
+        if (plans && plans) {
+          const filteredWeeklyData = plans?.filter(
+            item => item?.title === 'WEEKLY',
+          );
+          setPrice(filteredWeeklyData[0]?.price * numberOfSeates);
+          setPlanId(filteredWeeklyData[0]?.id);
+        }
+        if (selectedDate !== null) {
+          setDuration(
+            `${format(new Date(selectedDate), 'dd MMM yyyy')} — ${format(
+              endDate,
+              'dd MMM yyyy',
+            )}`,
+          );
+        }
+      } else if (days === 'Monthly') {
+        if (plans && plans) {
+          const filteredMonthlyData = plans?.filter(
+            item => item?.title === 'MONTHLY',
+          );
+          setPrice(filteredMonthlyData[0]?.price * numberOfSeates);
+          setPlanId(filteredMonthlyData[0]?.id);
+        }
+        if (selectedDate !== null) {
+          setDuration(
+            `${format(new Date(selectedDate), 'dd MMM yyyy')} — ${format(
+              endDate,
+              'dd MMM yyyy',
+            )}`,
+          );
+        }
       }
     }
   }, [days, numberOfSeates, selectedDate]);
@@ -199,9 +215,9 @@ const BookSpace = () => {
     validatePhoneNumber(number, setIsNumberValid);
   };
 
-  useEffect(() => {
-    getPlans();
-  }, [selectedDate]);
+  // useEffect(() => {
+  //   getPlans();
+  // }, [selectedDate]);
 
   function formatDate(dateString) {
     const date = moment(dateString);

@@ -2,6 +2,15 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { adminApiRequest, apiRequest } from '../../Utils/ApiRequest';
+import {
+  getAvailableSeats,
+  getBlogs,
+  getCourses,
+  getCurrentCohort,
+  getPlans,
+  getSponsors,
+  getTestimonials,
+} from './ApiRequests';
 
 const AuthContext = React.createContext();
 
@@ -21,73 +30,27 @@ export function AuthProvider(props) {
   const [currentCohort, setCurrentCohort] = useState('');
   const [testimonial, setTestimonial] = useState(null);
   const [sponsorsLoading, setSponsorsLoading] = useState(true);
-
-  const getCourses = async () => {
-    setCourseLoading(true);
-    try {
-      const response = await apiRequest('GET', `/courses/fetch_home_courses/`);
-      setCourseLoading(false);
-      setCourses(response);
-    } catch (error) {
-      setCourseLoading(false);
-      setCourseError(true);
-      console.log('error', error);
-    }
-  };
-
-  const getBlogs = async () => {
-    try {
-      const response = await apiRequest('GET', `/blogs/`);
-      setBlogs(response?.results);
-      setBlogsLoading(false);
-    } catch (error) {
-      setBlogsError(true);
-      setBlogsLoading(false);
-    }
-  };
-
-  const getCurrentCohort = async () => {
-    try {
-      const response = await apiRequest(
-        'GET',
-        `/cohort/check_for_current_cohorts/`,
-      );
-      if (response && response?.start_date) {
-        setCurrentCohort(response);
-      }
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
-
-  const getTestimonials = async () => {
-    try {
-      const response = await apiRequest('GET', `/testimonials/`);
-      setTestimonial(response?.results);
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
-
-  const getSponsors = async () => {
-    setSponsorsLoading(true);
-    try {
-      const response = await apiRequest('GET', `/sponsors/`);
-      setSponsors(response.results);
-      setSponsorsLoading(false);
-    } catch (error) {
-      setSponsorsLoading(false);
-      console.log('error', error);
-    }
-  };
+  const [availableSeats, setAvailableSeats] = useState(null);
+  const [slotsLoading, setSlotsLoading] = useState(true);
+  const [plans, setPlans] = useState(null);
 
   useEffect(() => {
-    getCourses();
-    getBlogs();
-    getCurrentCohort();
-    getTestimonials();
-    getSponsors();
+    getCourses(setCourseLoading, setCourses, setCourseError);
+    getBlogs(setBlogs, setBlogsLoading, setBlogsError);
+    getCurrentCohort(setCurrentCohort);
+    getTestimonials(setTestimonial);
+    getSponsors(setSponsorsLoading, setSponsors);
+    getAdminDetail();
+    getPlans(setPlans);
   }, []);
+
+  useEffect(() => {
+    if (plans && plans != null) {
+      let i = plans.length - 1;
+      let id = plans[i].id;
+      getAvailableSeats(id, setAvailableSeats, setSlotsLoading);
+    }
+  }, [plans]);
 
   const token = Cookies.get('access_token');
   useEffect(() => {
@@ -129,6 +92,10 @@ export function AuthProvider(props) {
     sponsorsLoading,
     courseError,
     blogsError,
+    availableSeats,
+    setAvailableSeats,
+    slotsLoading,
+    setSlotsLoading,
   };
   return (
     <AuthContext.Provider value={value}>{props?.children}</AuthContext.Provider>

@@ -15,6 +15,8 @@ import Invoice2 from '../../../assets/invoice1.svg';
 import Settings from '../../../assets/settings.svg';
 import Settings2 from '../../../assets/settings1.svg';
 import { useAuth } from '../../Context/AuthContext';
+import { MdWorkspacesOutline } from 'react-icons/md';
+import { MdOutlineMarkunreadMailbox } from 'react-icons/md';
 
 const AdminSidebar = () => {
   const location = useLocation();
@@ -27,42 +29,56 @@ const AdminSidebar = () => {
       activeIcon: Dashboard1,
       icon: Dashboard2,
       linkTo: '/admin/dashboard',
+      img: true,
     },
     {
       name: 'Courses',
       activeIcon: Courses2,
       icon: Courses,
       linkTo: '/admin/courses',
+      img: true,
     },
     {
       name: 'Blog',
       activeIcon: Blog2,
       icon: Blog,
       linkTo: '/admin/blogs',
+      img: true,
+    },
+    {
+      name: 'Workspace',
+      activeIcon: <MdWorkspacesOutline size={20} color='white' />,
+      icon: <MdWorkspacesOutline size={20} />,
+      linkTo: '/admin/workspace',
+      img: false,
     },
     {
       name: 'Testimonials',
       activeIcon: Testimonials2,
       icon: Testimonials,
       linkTo: '/admin/testimonials',
+      img: true,
     },
     {
       name: 'Sponsors',
       activeIcon: Sponsors2,
       icon: Sponsors,
       linkTo: '/admin/sponsors',
+      img: true,
     },
     {
       name: 'Payment',
       activeIcon: Invoice2,
       icon: Invoice,
       linkTo: '/admin/payments',
+      img: true,
     },
     {
       name: 'Newsletter',
-      activeIcon: Invoice2,
-      icon: Invoice,
+      activeIcon: <MdOutlineMarkunreadMailbox size={20} color='white' />,
+      icon: <MdOutlineMarkunreadMailbox size={20} />,
       linkTo: '/admin/newsletter',
+      img: false,
     },
   ];
 
@@ -72,13 +88,14 @@ const AdminSidebar = () => {
       activeIcon: Settings2,
       icon: Settings,
       linkTo: '/admin/settings',
+      img: true,
     });
   }
 
   return (
     <div className='w-[262px] py-[15px] px-2.5 min-h-[100vh] bg-sideBarBg '>
       <img src={Logo} className='w-[115px] h-[42px] ' alt='' />
-      <div className=' w-full mt-[54px] flex flex-col gap-[14px]'>
+      <div className=' w-full mt-[54px] flex flex-col gap-3'>
         {navLinks.map((link, index) => (
           <NavLink
             key={index}
@@ -90,9 +107,27 @@ const AdminSidebar = () => {
             }
           >
             {currentPath.includes(link.linkTo) ? (
-              <img src={link.activeIcon} alt='' />
+              <>
+                {link.img ? (
+                  <>
+                    {' '}
+                    <img src={link.activeIcon} alt='' />
+                  </>
+                ) : (
+                  <>{link.activeIcon}</>
+                )}
+              </>
             ) : (
-              <img src={link.icon} alt='' />
+              <>
+                {link.img ? (
+                  <>
+                    {' '}
+                    <img src={link.icon} alt='' />
+                  </>
+                ) : (
+                  <>{link.icon}</>
+                )}
+              </>
             )}
             <h1 className=' text-[14px] leading-[17px]'>{link.name}</h1>
           </NavLink>

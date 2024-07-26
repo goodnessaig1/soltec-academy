@@ -16,24 +16,27 @@ const Countdown = ({ startDate }) => {
 
   return (
     <>
-      {timeLeft.days !== undefined ? (
-        <span className='inter_ font-semibold text-[24px] leading-[30px]'>
-          {timeLeft.days} : {timeLeft.hours} : {timeLeft.minutes} :{' '}
-          {timeLeft.seconds}
-        </span>
-      ) : (
-        <div className='flex mt-8 flex-row gap-4'>
-          <img src={Stroke} alt='' />
-          <h1 className='font-[900] text-[36px] leading-[44px] text-white'>
-            :
-          </h1>
-          <img src={Stroke} alt='' />
-          <h1 className='font-[900] text-[36px] leading-[44px] text-white'>
-            :
-          </h1>
-          <img src={Stroke} alt='' />
-        </div>
-      )}
+      {
+        timeLeft.days !== undefined && (
+          <span className='inter_ font-semibold text-[24px] leading-[30px]'>
+            {timeLeft.days} : {timeLeft.hours} : {timeLeft.minutes} :{' '}
+            {timeLeft.seconds}
+          </span>
+        )
+        // : (
+        //   <div className='flex mt-8 flex-row gap-4'>
+        //     <img src={Stroke} alt='' />
+        //     <h1 className='font-[900] text-[36px] leading-[44px] text-white'>
+        //       :
+        //     </h1>
+        //     <img src={Stroke} alt='' />
+        //     <h1 className='font-[900] text-[36px] leading-[44px] text-white'>
+        //       :
+        //     </h1>
+        //     <img src={Stroke} alt='' />
+        //   </div>
+        // )
+      }
     </>
   );
 };

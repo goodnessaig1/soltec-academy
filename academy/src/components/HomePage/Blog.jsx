@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 import { Arrow, Next, Prev, Unavailable } from '../../Utils/Assets';
 import { useAuth } from '../Context/AuthContext';
+import LazyImage from '../../Utils/SuspenseImage';
 
 const CustomPrevArrow = props => {
   return (
@@ -88,7 +89,7 @@ const Blogs = ({ blogs }) => {
                 key={index}
                 className='blog-card flex flex-col gap-[18px] pb-5 rounded-[36px] '
               >
-                <img
+                <LazyImage
                   src={blog?.featured_image}
                   alt=''
                   className='borderR rounded-t-[36px] w-[425px] h-[233px]'
@@ -108,13 +109,13 @@ const Blogs = ({ blogs }) => {
                 <div className='flex flex-row justify-between px-5 mt-4 items-center'>
                   <div className='flex flex-row gap-4 '>
                     {blog?.author_image ? (
-                      <img
+                      <LazyImage
                         src={blog?.author_image}
                         alt=''
                         className='rounded-[100%] w-8 h-8'
                       />
                     ) : (
-                      <img
+                      <LazyImage
                         src={Unavailable}
                         alt=''
                         className='rounded-[100%] w-8 h-8'
@@ -152,7 +153,7 @@ const Blogs = ({ blogs }) => {
                 key={index}
                 className='blog-card flex flex-col gap-[18px] pb-[20px] rounded-[36px] '
               >
-                <img
+                <LazyImage
                   src={blog?.featured_image}
                   alt=''
                   className='borderR rounded-t-[36px] w-[425px] h-[233px]'
@@ -172,13 +173,13 @@ const Blogs = ({ blogs }) => {
                 <div className='flex flex-row justify-between px-5 mt-4 items-center'>
                   <div className='flex flex-row gap-4 '>
                     {blog?.author_image ? (
-                      <img
+                      <LazyImage
                         src={blog?.author_image}
                         alt=''
                         className='rounded-[100%] w-8 h-8'
                       />
                     ) : (
-                      <img
+                      <LazyImage
                         src={Unavailable}
                         alt=''
                         className='rounded-[100%] w-8 h-8'
@@ -215,7 +216,7 @@ const Blogs = ({ blogs }) => {
               key={index}
               className='blog-cardsm flex flex-col gap-[18px] pb-5 rounded-[36px] '
             >
-              <img
+              <LazyImage
                 src={blog?.featured_image}
                 alt=''
                 className='borderR rounded-t-[32px] w-[425px] h-[233px]'
@@ -235,13 +236,13 @@ const Blogs = ({ blogs }) => {
               <div className='flex flex-row justify-between px-5 mt-4 items-center'>
                 <div className='flex flex-row gap-4 '>
                   {blog?.author_image ? (
-                    <img
+                    <LazyImage
                       src={blog?.author_image}
                       alt=''
                       className='rounded-[100%] w-8 h-8'
                     />
                   ) : (
-                    <img
+                    <LazyImage
                       src={Unavailable}
                       alt=''
                       className='rounded-[100%] w-8 h-8'

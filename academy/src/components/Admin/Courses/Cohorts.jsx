@@ -135,7 +135,7 @@ const Cohorts = () => {
                   </h1>
                   <div className='w-full flex flex-col coursesP rounded-[12px]'>
                     <div className='flex flex-row w-full mb-2.5 items-center'>
-                      <div className='w-[20%]'>
+                      <div className='w-[14%]'>
                         <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                           <h1 className='text-[14px] font-semibold leading-[17px]'>
                             TIME
@@ -150,7 +150,7 @@ const Cohorts = () => {
                           </h1>
                         </div>
                       </div>
-                      <div className='w-[18%]'>
+                      <div className='w-[19%]'>
                         <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                           <h1 className='text-[14px] font-semibold leading-[17px]'>
                             DATE ENDED
@@ -165,7 +165,7 @@ const Cohorts = () => {
                           </h1>
                         </div>
                       </div>
-                      <div className='w-[15%]'>
+                      <div className='w-[18%]'>
                         <div className='flex flex-row items-center gap-4 py-2.5 px-3'>
                           <h1 className='text-[14px] font-semibold leading-[17px]'>
                             Status
@@ -179,11 +179,9 @@ const Cohorts = () => {
                           key={index}
                           className='flex flex-row w-full items-start w-full min-h-12'
                         >
-                          <div className='w-[20%]'>
+                          <div className='w-[14%]'>
                             <h1 className='text-[14px] font-normal  py-2.5 px-3 leading-[17px]'>
-                              {moment(item?.start_date).format(
-                                'DD MMM YYYY, hh:mmA',
-                              )}
+                              {moment(item?.start_date).format('DD MMM YYYY')}
                             </h1>
                           </div>
                           <div className='w-[22%]'>
@@ -195,11 +193,9 @@ const Cohorts = () => {
                               {`${item?.timeframe?.days} days,`}{' '}
                             </h1>
                           </div>
-                          <div className='w-[18%]'>
+                          <div className='w-[19%]'>
                             <h1 className='text-[14px] font-normal  py-2.5 px-3 leading-[17px]'>
-                              {moment(item?.end_date).format(
-                                'DD MMM YYYY, hh:mmA',
-                              )}
+                              {moment(item?.end_date).format('DD MMM YYYY')}
                             </h1>
                           </div>
                           <div className='w-[26%]'>
@@ -207,10 +203,7 @@ const Cohorts = () => {
                               {item?.no_of_enrollments}
                             </h1>
                           </div>
-                          <div
-                            onClick={() => handleIsActive(index, item)}
-                            className='w-[12%] py-2.5 px-3 hover:cursor-pointer'
-                          >
+                          <div className='w-[18%] flex items-center gap-1.5 py-2.5 px-3 hover:cursor-pointer'>
                             {item?.is_active ? (
                               <div className='w-[70px] flex h-[24px] rounded-[50px] text-mainGreen items-center justify-center bg-activeBg text-[12px]'>
                                 Active
@@ -220,6 +213,15 @@ const Cohorts = () => {
                                 Inactive
                               </div>
                             )}
+                            <label className='toggle-button'>
+                              <input
+                                type='checkbox'
+                                checked={item?.is_active}
+                                onChange={() => handleIsActive(index, item)}
+                                className='toggle-input'
+                              />
+                              <span className='toggle-slider'></span>
+                            </label>
                           </div>
                         </div>
                       ))}
