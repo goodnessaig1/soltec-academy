@@ -16,7 +16,6 @@ import { Oval } from 'react-loader-spinner';
 const Home = () => {
   const { courses, currentCohort, blogs } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
-
   const handleImageLoad = () => {
     setIsLoading(true);
   };
@@ -29,6 +28,10 @@ const Home = () => {
 
   return (
     <div className='w-full'>
+      {!isLoading && (
+        <div className='h-screen w-full flex items-center justify-center' />
+      )}
+      <SlideImages handleImageLoad={handleImageLoad} />
       {isLoading && (
         <>
           <HeroSection />
@@ -42,10 +45,6 @@ const Home = () => {
           <Footer />
         </>
       )}
-      {!isLoading && (
-        <div className='h-screen w-full flex items-center justify-center' />
-      )}
-      <SlideImages handleImageLoad={handleImageLoad} />
     </div>
   );
 };

@@ -28,10 +28,6 @@ const Countdown = ({ startDate }) => {
             :
           </h1>
           <span>{timeLeft.minutes}M</span>
-          {/* <h1 className='font-[900] text-[36px] leading-[44px] text-white'>
-            :
-          </h1>
-          <span>{timeLeft.seconds}S </span> */}
         </div>
       ) : (
         <div className='flex mt-8 flex-row gap-4'>

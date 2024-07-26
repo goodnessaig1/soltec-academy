@@ -14,13 +14,13 @@ const SlideImages = ({ handleImageLoad }) => {
         onLoad={handleImageLoad}
         style={{ display: 'none' }}
       />
-      <img
+      {/* <img
         src={AcademyLogo}
         alt='slide-images'
         onLoad={handleImageLoad}
         style={{ display: 'none' }}
-      />
-      <img
+      /> */}
+      {/* <img
         src={Group2}
         alt='slide-images'
         onLoad={handleImageLoad}
@@ -37,7 +37,7 @@ const SlideImages = ({ handleImageLoad }) => {
         alt='slide-images'
         onLoad={handleImageLoad}
         style={{ display: 'none' }}
-      />
+      /> */}
     </div>
   );
 };

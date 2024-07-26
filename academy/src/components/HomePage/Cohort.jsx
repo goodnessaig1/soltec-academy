@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import Countdown from './Countdown';
 const Cohort = ({ startDate }) => {
-  console.log(startDate);
   return (
     <div className='pt-32 lg:pt-36'>
       <div className='background-image2'>
@@ -12,7 +11,7 @@ const Cohort = ({ startDate }) => {
             </h1>
           ) : (
             <h1 className='font-[900] text-[20px] text-white'>
-              ENROLLMENT OPENING SOON...
+              THE NEXT BOOTCAMP IS YET TO BEGIN
             </h1>
           )}
           {<Countdown startDate={startDate} />}
