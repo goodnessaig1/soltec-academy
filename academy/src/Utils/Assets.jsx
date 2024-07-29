@@ -98,8 +98,10 @@ import Group3 from '../assets/group3.png';
 import Group4 from '../assets/group4.png';
 import AcademyLogo from '../assets/academy-logo-bla.png';
 import Office from '../assets/office.jpg';
+import PlaceHolder from '../assets/place-holder.png';
 
 export {
+  PlaceHolder,
   AcademyLogo,
   Office,
   Group11,

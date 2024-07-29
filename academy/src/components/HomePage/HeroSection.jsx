@@ -7,7 +7,6 @@ import {
   Group4,
 } from '../../Utils/Assets';
 import { Link } from 'react-router-dom';
-
 import Slider from 'react-slick';
 import LazyImage from '../../Utils/SuspenseImage';
 
