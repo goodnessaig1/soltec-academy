@@ -99,8 +99,14 @@ import Group4 from '../assets/group4.png';
 import AcademyLogo from '../assets/academy-logo-bla.png';
 import Office from '../assets/office.jpg';
 import PlaceHolder from '../assets/place-holder.png';
+import AcademyLogoFull from '../assets/academy-logo-full.png';
+import AcademyLogoLandscape from '../assets/soltec-logo-landsacpe.png';
+import AcademyLogoLandscapeL from '../assets/soltec-logo-landscapeb.png';
 
 export {
+  AcademyLogoFull,
+  AcademyLogoLandscape,
+  AcademyLogoLandscapeL,
   PlaceHolder,
   AcademyLogo,
   Office,
