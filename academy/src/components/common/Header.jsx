@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
-import { Menu, Menu2 } from '../../Utils/Assets';
-import AcademyLogo from '../../assets/academy-logo-bla.png';
+import { Menu, Menu2, AcademyLogo } from '../../Utils/Assets';
+// import AcademyLogo from '../../assets/academy-logo-bla.png';
 import AcademyLogoFull from '../../assets/academy-logo-full.png';
 import AcademyLogoLandscape from '../../assets/soltec-logo-landsacpe.png';
 import AcademyLogoLandscapeL from '../../assets/soltec-logo-landscapeb.png';
