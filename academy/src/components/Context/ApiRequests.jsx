@@ -44,7 +44,7 @@ export const getCurrentCohort = async setCurrentCohort => {
 
 export const getTestimonials = async setTestimonial => {
   try {
-    const response = await apiRequest('GET', `/testimonials/`);
+    const response = await apiRequest('GET', `/testimonials/?tag=ACADEMY`);
     setTestimonial(response?.results);
   } catch (error) {
     console.log('error', error);
@@ -92,6 +92,21 @@ export const getAvailableSeats = async (
     setSlotsLoading(false);
   } catch (error) {
     setSlotsLoading(false);
+    console.log(error);
+  }
+};
+
+export const getAvailableSlots = async (setAvailableSlots, setLoadSlots) => {
+  setLoadSlots(true);
+  try {
+    const response = await apiRequest(
+      'POST',
+      `/workspaces/get_slots_available/`,
+    );
+    setLoadSlots(false);
+    setAvailableSlots(response);
+  } catch (error) {
+    setLoadSlots(false);
     console.log(error);
   }
 };

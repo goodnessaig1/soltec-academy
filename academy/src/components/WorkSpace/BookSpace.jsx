@@ -42,7 +42,7 @@ const BookSpace = () => {
   const [data, setData] = useState(null);
   const [isNumberValid, setIsNumberValid] = useState(true);
   const [plans, setPlans] = useState(null);
-  const [planId, setPlanId] = useState(1);
+  const [planId, setPlanId] = useState(null);
   const [planDate, setPlanDate] = useState(
     new Date().toISOString().slice(0, 10),
   );
@@ -61,7 +61,7 @@ const BookSpace = () => {
   useEffect(() => {
     if (plans && plans != null) {
       let i = plans.length - 1;
-      let id = plans[i].id;
+      let id = plans[i]?.id;
       setPlanId(id);
     }
   }, [plans]);
@@ -73,10 +73,10 @@ const BookSpace = () => {
   }, [selectedDate, days, numberOfSeates, planDate]);
 
   useEffect(() => {
-    if (planDate != null) {
+    if (planDate != null && planId != null) {
       getAvailableSeats();
     }
-  }, [planDate, selectedDate, days]);
+  }, [planDate, selectedDate, days, planId]);
 
   useEffect(() => {
     if (plans != null) {

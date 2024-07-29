@@ -21,10 +21,10 @@ const Catalogue = ({ courses }) => {
               pauseOnHover
               className='max-w-[98%] clip-text '
             >
-              {courses && courses.length > 5 ? (
+              {courses && courses.length > 4 ? (
                 <>
                   {courses &&
-                    courses.slice(0, 6).map((course, index) => (
+                    courses.slice(0, 5).map((course, index) => (
                       <Link
                         to={`/academy/courses/${course?.id}/${course?.title}`}
                         key={index}

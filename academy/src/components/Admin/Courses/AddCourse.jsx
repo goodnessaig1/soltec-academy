@@ -24,12 +24,11 @@ import { Oval, ProgressBar } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
 import { adminApiRequest, uploadFile } from '../../../Utils/ApiRequest';
 
-const AddCourses = () => {
+const AddCourses = ({ initialColor = '#5a1994' }) => {
   const navigate = useNavigate();
-
   const fileInputRef = useRef();
   const [overallLoading, setOverallLoading] = useState(false);
-  const [background, setBackground] = useState('#5a1994');
+  const [background, setBackground] = useState(initialColor);
   const [openColor, setOpenColor] = useState(false);
   const [courseName, setCourseName] = useState('');
   const [courseNameError, setCourseNameError] = useState(false);

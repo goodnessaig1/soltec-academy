@@ -38,7 +38,10 @@ const GetQuote = () => {
   const getTestimonials = async () => {
     setPageLoading(true);
     try {
-      const response = await apiRequest('GET', `/testimonials/`);
+      const response = await apiRequest(
+        'GET',
+        `/testimonials/?tag=ENGINEERING`,
+      );
       setTestimonialsData(response.results);
       setPageLoading(false);
     } catch (error) {

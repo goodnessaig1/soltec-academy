@@ -1,12 +1,7 @@
 import Layout from '../Common/Layout';
-import Graph from '../../../assets/Graph.svg';
-import Sort from '../../../assets/sort.svg';
-import Check from '../../../assets/check.svg';
-import { newsLetter } from './coursesInvoice';
 import { Link } from 'react-router-dom';
 import { Unavailable } from '../../../Utils/Assets';
 import { useEffect, useState } from 'react';
-import moment from 'moment';
 import { LoadingFetching } from '../Courses/LoadingFetching';
 import { useAuth } from '../../Context/AuthContext';
 import {
@@ -15,13 +10,16 @@ import {
   getAdminDetail,
 } from '../../../Utils/ApiRequest';
 import WorkspaceBookings from '../Workspace/WorkspaceBookings';
+import NewsletterSubscribers from '../Newsletter/NewsletterSubscribers';
+import CoursePayment from '../Payment/CoursePayment';
 
 const Dashboard = () => {
   const { setUser } = useAuth();
   const [loading, setLoading] = useState(true);
-  const [paymentData, setPaymentData] = useState(null);
-  const [workspaceBookings, setWorkspaceBookings] = useState(null);
-  const [blogs, setBlogs] = useState(null);
+  const [paymentData, setPaymentData] = useState([]);
+  const [workspaceBookings, setWorkspaceBookings] = useState([]);
+  const [blogs, setBlogs] = useState([]);
+  const [subscribers, setSubscribers] = useState([]);
 
   const getCoursesPurchases = async () => {
     try {
@@ -47,11 +45,21 @@ const Dashboard = () => {
     }
   };
 
+  const getNewsLetterSubscribers = async () => {
+    try {
+      const response = await apiRequest('GET', `/newsletters/`);
+      setSubscribers(response?.results);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
   useEffect(() => {
     getAdminDetail(setUser);
     getCoursesPurchases();
     getWorkspaceBookings();
     getBlogs();
+    getNewsLetterSubscribers();
   }, []);
 
   const getBlogs = async () => {
@@ -100,7 +108,7 @@ const Dashboard = () => {
                 COURSE PURCHASES
               </h1>
               <h1 className='font-semibold inter__ text-[24px] leading-[30px]'>
-                5
+                {paymentData && paymentData.length}
               </h1>
             </div>
           </div>
@@ -110,171 +118,51 @@ const Dashboard = () => {
                 SIGNED UP TO NEWSLETTER
               </h1>
               <h1 className='font-semibold inter__ text-[24px] leading-[30px]'>
-                4
+                {subscribers && subscribers.length}
               </h1>
             </div>
           </div>
         </div>
 
-        <div className='flex flex-col gap-4'>
-          {/* Courses purchases */}
-          <h1 className='text-[14px] font-medium leading-[17px]'>
-            COURSE PURCHASES
-          </h1>
+        <div className='flex flex-col gap-10'>
           {!loading ? (
             <>
-              <div className='w-full flex flex-col coursesP rounded-[12px]'>
-                {/* Head */}
-                <div className='flex flex-row w-full mb-[10px] items-center'>
-                  <div className='w-[15%]'>
-                    <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-                      <h1 className='text-[14px] font-semibold leading-[17px]'>
-                        TIME
-                      </h1>
-                      <img src={Sort} alt='' />
-                    </div>
-                  </div>
-                  <div className='w-[21%]'>
-                    <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-                      <h1 className='text-[14px] font-semibold leading-[17px]'>
-                        EMAIL
-                      </h1>
-                      <img src={Sort} alt='' />
-                    </div>
-                  </div>
-                  <div className='w-[17%]'>
-                    <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-                      <h1 className='text-[14px] font-semibold leading-[17px]'>
-                        PHONE NUMBER
-                      </h1>
-                    </div>
-                  </div>
-                  <div className='w-[8%]'>
-                    <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-                      <h1 className='text-[14px] font-semibold leading-[17px]'>
-                        COUPON
-                      </h1>
-                    </div>
-                  </div>
-                  <div className='w-[18%]'>
-                    <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-                      <h1 className='text-[14px] font-semibold leading-[17px]'>
-                        COURSE
-                      </h1>
-                    </div>
-                  </div>
-                  <div className='w-[17%]'>
-                    <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-                      <h1 className='text-[14px] font-semibold leading-[17px]'>
-                        PAYMENT METHOD
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-                {/* Data */}
-                {paymentData &&
-                  paymentData.map((item, index) => (
-                    <div
-                      key={index}
-                      className='flex flex-row w-full items-start w-full '
-                    >
-                      <div className='w-[15%]'>
-                        <h1 className='text-[12px] font-normal gap-4 px-3 leading-[17px]'>
-                          {moment(item?.date_paid).format(
-                            'DD MMM YYYY, hh:mmA',
-                          )}
-                        </h1>
-                      </div>
-                      <div className='w-[21%] whitespace-normal'>
-                        <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px] break-all'>
-                          {item?.email}
-                        </h1>
-                      </div>
-                      <div className='w-[17%]'>
-                        <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
-                          {item?.phone_number}
-                        </h1>
-                      </div>
-                      <div className='w-[8%]'>
-                        <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-                          {item?.coupon == true ? (
-                            <img src={Check} alt='' />
-                          ) : (
-                            <div className=''>null</div>
-                          )}
-                        </div>
-                      </div>
-                      <div className='w-[18%]'>
-                        <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
-                          {item?.course}
-                        </h1>
-                      </div>
-                      <div className='w-[17%]'>
-                        <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
-                          {item?.payment_method}
-                        </h1>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-              {/* Workspace Bookings */}
+              {/* Courses purchases */}
               <div className='flex flex-col gap-4'>
-                {workspaceBookings && (
+                <h1 className='text-[14px] font-medium leading-[17px]'>
+                  COURSE PURCHASES
+                </h1>
+                <CoursePayment
+                  paymentData={paymentData}
+                  setPaymentData={setPaymentData}
+                />
+              </div>
+
+              {/* Workspace Bookings */}
+              {workspaceBookings && workspaceBookings.length > 0 && (
+                <div className='flex flex-col gap-4'>
                   <h1 className='text-[14px] font-medium leading-[17px]'>
                     WORKSPACE BOOKINGS
                   </h1>
-                )}
-                {workspaceBookings && (
-                  <>
-                    <WorkspaceBookings workspaceBookings={workspaceBookings} />
-                  </>
-                )}
-              </div>
+                  {workspaceBookings && (
+                    <>
+                      <WorkspaceBookings
+                        workspaceBookings={workspaceBookings}
+                      />
+                    </>
+                  )}
+                </div>
+              )}
 
               {/* News letter */}
               <div className='flex flex-col gap-6'>
                 <h1 className='text-[14px] font-medium leading-[17px]'>
                   NEWSLETTER SIGNUPS
                 </h1>
-                <div className='w-full flex flex-col gap-3 coursesP rounded-[12px]'>
-                  {/* Head */}
-                  <div className='flex flex-row w-full items-center'>
-                    <div className='w-[26%]'>
-                      <div className='flex flex-row items-center gap-4 px-3'>
-                        <h1 className='text-[14px] font-semibold leading-[17px]'>
-                          TIME
-                        </h1>
-                        <img src={Sort} alt='' />
-                      </div>
-                    </div>
-                    <div className='w-[72%]'>
-                      <div className='flex flex-row items-center gap-4 px-3'>
-                        <h1 className='text-[14px] font-semibold leading-[17px]'>
-                          EMAIL
-                        </h1>
-                        <img src={Sort} alt='' />
-                      </div>
-                    </div>
-                  </div>
-                  {/* Data */}
-                  {newsLetter.map((item, index) => (
-                    <div
-                      key={index}
-                      className='flex flex-row items-start w-full'
-                    >
-                      <div className='w-[26%]'>
-                        <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px]'>
-                          {item.date}
-                        </h1>
-                      </div>
-                      <div className='w-[72%] whitespace-normal'>
-                        <h1 className='text-[14px] font-normal gap-4 px-3 leading-[17px] break-all'>
-                          {item.email}
-                        </h1>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <NewsletterSubscribers
+                  subscribers={subscribers}
+                  setSubscribers={setSubscribers}
+                />
               </div>
 
               {/* Blog posts */}

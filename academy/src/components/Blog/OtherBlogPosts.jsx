@@ -9,10 +9,10 @@ import { Next, Prev, Unavailable } from '../../Utils/Assets';
 const CustomPrevArrow = props => {
   return (
     <div
-      className='custom-prev-arrow-blog courses_arrow_prev  courses_arrow-blog bg-transparent'
+      className='custom-prev-arrow-blog courses_arrow_prev mt-2 courses_arrow-blog bg-transparent'
       onClick={props.onClick}
     >
-      <div className='w-[48px] h-[48px] bg-[#f1f1f1] rounded-[50%] flex items-center justify-center'>
+      <div className='w-12 h-12 bg-[#f1f1f1] rounded-[50%] flex items-center justify-center'>
         <img src={Prev} alt='' />
       </div>
     </div>
@@ -22,10 +22,10 @@ const CustomPrevArrow = props => {
 const CustomNextArrow = props => {
   return (
     <div
-      className='custom-next-arrow-blog courses_arrow_next courses_arrow-blog w-[48px] h-[48px] bg-[#f1f1f1] rounded-[50%] '
+      className='custom-next-arrow-blog courses_arrow_next mt-2 courses_arrow-blog w-12 h-12 bg-[#f1f1f1] rounded-[50%] '
       onClick={props.onClick}
     >
-      <div className='w-[48px] h-[48px] bg-[#f1f1f1] rounded-[50%] flex items-center justify-center'>
+      <div className='w-12 h-12 bg-[#f1f1f1] rounded-[50%] flex items-center justify-center'>
         <img src={Next} alt='' />
       </div>
     </div>
@@ -34,7 +34,7 @@ const CustomNextArrow = props => {
 const OtherBlogPost = ({ otherBlogs }) => {
   var settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     slidesToShow: 2.4,
     slidesToScroll: 1,
     prevArrow: <CustomPrevArrow />,
@@ -42,7 +42,7 @@ const OtherBlogPost = ({ otherBlogs }) => {
   };
   var mdSettings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
     prevArrow: <CustomPrevArrow />,
@@ -50,7 +50,7 @@ const OtherBlogPost = ({ otherBlogs }) => {
   };
   var settingsIpad = {
     dots: false,
-    infinite: false,
+    infinite: true,
     slidesToShow: 2,
     slidesToScroll: 1,
     prevArrow: <CustomPrevArrow />,
@@ -62,13 +62,13 @@ const OtherBlogPost = ({ otherBlogs }) => {
       <div className='flex items-center sm:justify-center lg:justify-start lg:ml-[60px] xl:ml-[100px] '>
         <img src={BlogText} alt='' className='' />
       </div>
-      <div className=' lg:px-[60px] lg:pl-[100px] sm:hidden xl:block xll:hidden mt-8'>
+      <div className=' lg:px-[60px] lg:pl-[100px] sm:hidden xl:block xll:hidden mt-10'>
         <Slider {...settings} className='slider-container'>
           {otherBlogs &&
             otherBlogs.map((blog, index) => (
               <div
                 key={index}
-                className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-4 pb-5 rounded-[36px] '
+                className='blog-card3 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-4 pb-5 rounded-[36px]'
               >
                 <img src={blog?.featured_image} alt='' className='borderR' />
                 <div className='px-3 lg:px-4 flex flex-col gap-[13px]'>
@@ -111,7 +111,7 @@ const OtherBlogPost = ({ otherBlogs }) => {
                     to={`/blog/${blog?.id}/${
                       blog.author_name
                     }/${blog?.title.substring(0, 20)}`}
-                    className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'
+                    className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-12'
                   >
                     <span className='text-[14px] leading-[17px] font-normal'>
                       Read more
@@ -122,7 +122,7 @@ const OtherBlogPost = ({ otherBlogs }) => {
             ))}
         </Slider>
       </div>
-      <div className=' lg:px-[60px] lg:pl-[100px] sm:hidden xll:block mt-8'>
+      <div className=' lg:px-[60px] lg:pl-[100px] sm:hidden xll:block mt-10'>
         <Slider {...mdSettings} className='slider-container'>
           {otherBlogs &&
             otherBlogs.map((blog, index) => (
@@ -171,7 +171,7 @@ const OtherBlogPost = ({ otherBlogs }) => {
                     to={`/blog/${blog?.id}/${
                       blog.author_name
                     }/${blog?.title.substring(0, 20)}`}
-                    className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'
+                    className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-12'
                   >
                     <span className='text-[14px] leading-[17px] font-normal'>
                       Read more
@@ -182,7 +182,7 @@ const OtherBlogPost = ({ otherBlogs }) => {
             ))}
         </Slider>
       </div>
-      <div className='px-[60px] lg:pl-[100px] sm:hidden lg:block xl:hidden mt-8'>
+      <div className='px-[60px] lg:pl-[100px] sm:hidden lg:block xl:hidden mt-10'>
         <Slider {...settingsIpad} className='slider-container'>
           {otherBlogs &&
             otherBlogs.map((blog, index) => (
@@ -231,7 +231,7 @@ const OtherBlogPost = ({ otherBlogs }) => {
                     to={`/blog/${blog?.id}/${
                       blog.author_name
                     }/${blog?.title.substring(0, 20)}`}
-                    className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'
+                    className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-12'
                   >
                     <span className='text-[14px] leading-[17px] font-normal'>
                       Read more
@@ -294,7 +294,7 @@ const OtherBlogPost = ({ otherBlogs }) => {
                   to={`/blog/${blog?.id}/${
                     blog.author_name
                   }/${blog?.title.substring(0, 20)}`}
-                  className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-[48px]'
+                  className='flex items-center justify-center hover:bg-[#F5F7F9] transition ease-in-out duration-300  readMore rounded-[16px] w-[113px] h-12'
                 >
                   <span className='text-[14px] leading-[17px] font-normal'>
                     Read more

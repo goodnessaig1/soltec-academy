@@ -20,6 +20,8 @@ const Cohorts = () => {
   const [loading, setLoading] = useState(true);
   const [cohorts, setCohorts] = useState(null);
   const [openCreateCohort, setOpenCreateCohort] = useState(false);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   const handleDateChange = (date, setFieldValue, setFieldError) => {
     const selectedDateString = date;
@@ -68,7 +70,7 @@ const Cohorts = () => {
   };
 
   return (
-    <Layout text='Courses'>
+    <Layout text='Cohorts'>
       <div className='w-full flex flex-col gap-9 px-9 pb-[140px]'>
         {openCreateCohort && (
           <CreateCohort
@@ -78,6 +80,8 @@ const Cohorts = () => {
             endDate={endDate}
             setEndDate={setEndDate}
             handleDateChange={handleDateChange}
+            cohorts={cohorts}
+            setCohorts={setCohorts}
           />
         )}
         <div className='flex flex-row items-center justify-between'>
@@ -125,7 +129,7 @@ const Cohorts = () => {
                     <h1 className='inter_ font-medium text-[14px] leading-[17px]'>
                       CURRENT BOOTCAMP
                     </h1>
-                    <Countdown startDate={currentCohort.start_date} />
+                    <Countdown startDate={currentCohort?.start_date} />
                   </div>
                 </div>
 

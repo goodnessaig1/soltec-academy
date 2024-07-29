@@ -14,6 +14,8 @@ import OtherCourses from './OtherCourses';
 import NetworkError from '../../../Utils/NetworkError';
 import Footer from '../../common/Footer';
 import { useAuth } from '../../Context/AuthContext';
+import { Emogi } from '../../../Utils/Assets';
+import Header from '../../common/Header';
 
 const SingleCourse = () => {
   const { id } = useParams();
@@ -44,9 +46,7 @@ const SingleCourse = () => {
 
   useEffect(() => {
     if (courses && courseDetail) {
-      const filteredCourses = courses.filter(
-        course => course.title !== `${courseDetail?.title}`,
-      );
+      const filteredCourses = courses.filter(course => course.id != id);
       setOtherCourses(filteredCourses);
     }
   }, [courses, courseDetail, id]);
@@ -56,20 +56,32 @@ const SingleCourse = () => {
       {!networkError ? (
         <>
           {!loading ? (
-            <div className=''>
-              <div className='mainpBg flex flex-col'>
-                <CourseHero courseDetail={courseDetail} />
-                <CourseOverviewVideo courseDetail={courseDetail} />
-                <CourseOverview courseDetail={courseDetail} />
-                <CourseInstructors courseDetail={courseDetail} />
-                <CourseFaqs courseDetail={courseDetail} />
-              </div>
-              <CourseEnroll courseDetail={courseDetail} />
-              {otherCourses && otherCourses.length > 0 && (
-                <OtherCourses otherCourses={otherCourses} />
+            <>
+              {courseDetail && courseDetail ? (
+                <div className=''>
+                  <div className='mainpBg flex flex-col'>
+                    <CourseHero courseDetail={courseDetail} />
+                    <CourseOverviewVideo courseDetail={courseDetail} />
+                    <CourseOverview courseDetail={courseDetail} />
+                    <CourseInstructors courseDetail={courseDetail} />
+                    <CourseFaqs courseDetail={courseDetail} />
+                  </div>
+                  <CourseEnroll courseDetail={courseDetail} />
+                  {otherCourses && otherCourses.length > 0 && (
+                    <OtherCourses otherCourses={otherCourses} />
+                  )}
+                  <Footer />
+                </div>
+              ) : (
+                <div className='h-screen w-full'>
+                  <Header />
+                  <div className='w-full mt-[200px] h-full flex flex-col items-center'>
+                    <h1>Not found</h1>
+                    <img src={Emogi} className='h-[75px]' alt='' />
+                  </div>
+                </div>
               )}
-              <Footer />
-            </div>
+            </>
           ) : (
             <div className='w-full h-[100vh] flex items-center justify-center'>
               <RotatingLines

@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import { AnimatePresence, motion } from 'framer-motion';
 import { apiRequest } from '../../Utils/apiRequest';
 import Header from '../common/Header';
+import Footer from '../common/Footer';
 
 import { AiFillTikTok } from 'react-icons/ai';
 
@@ -239,6 +240,9 @@ const ContactUs = () => {
             </Formik>
           </div>
         </div>
+      </div>
+      <div className='lg:hidden mt-10 block'>
+        <Footer />
       </div>
     </div>
   );

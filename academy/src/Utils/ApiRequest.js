@@ -44,8 +44,16 @@ export async function adminApiRequest(
       },
     };
     const response = await fetch(url, config);
-    const responseData = await response.json();
-    return responseData;
+    // const responseData = await response.json();
+    // return responseData;
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      const responseData = await response.json();
+      return responseData;
+    } else {
+      const text = await response;
+      return text;
+    }
   } catch (error) {
     throw new Error(error);
   }

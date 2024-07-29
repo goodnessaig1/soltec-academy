@@ -96,7 +96,7 @@ const Blog = () => {
               {searchTerm != '' && searchResults?.length != 0 && (
                 <ul className='absolute w-full left-0 '>
                   <div className='w-full flex mt-2 items-center flex-col '>
-                    <div className='flex flex-col py-3 rounded-[12px] mt-2 z-10 bg-[#fff] searchGra w-[360px]  '>
+                    <div className='flex flex-col px-2 py-3 rounded-[12px] mt-2 z-10 bg-white searchGra w-[360px]  '>
                       {searchResults.map((blog, index) => (
                         <li
                           key={index}
@@ -107,7 +107,7 @@ const Blog = () => {
                               }/${blog?.title.substring(0, 20)}`,
                             )
                           }
-                          className='px-4 py-0.5 hover:cursor-pointer w-full hover:bg-[#f1f1f1]'
+                          className='px-2 rounded-lg py-0.5 hover:cursor-pointer w-full hover:bg-[#f1f1f1]'
                         >
                           <span className=' w-full'>
                             {blog?.title.length > 40

@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useContext, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { adminApiRequest, apiRequest } from '../../Utils/ApiRequest';
+import { adminApiRequest } from '../../Utils/ApiRequest';
 import {
   getAvailableSeats,
+  getAvailableSlots,
   getBlogs,
   getCourses,
   getCurrentCohort,
@@ -33,6 +34,8 @@ export function AuthProvider(props) {
   const [availableSeats, setAvailableSeats] = useState(null);
   const [slotsLoading, setSlotsLoading] = useState(false);
   const [plans, setPlans] = useState(null);
+  const [availableSlots, setAvailableSlots] = useState(null);
+  const [loadSlots, setLoadSlots] = useState(false);
 
   useEffect(() => {
     getCourses(setCourseLoading, setCourses, setCourseError);
@@ -40,14 +43,15 @@ export function AuthProvider(props) {
     getCurrentCohort(setCurrentCohort);
     getTestimonials(setTestimonial);
     getSponsors(setSponsorsLoading, setSponsors);
-    getAdminDetail();
+    // getAdminDetail();
     getPlans(setPlans);
+    getAvailableSlots(setAvailableSlots, setLoadSlots);
   }, []);
 
   useEffect(() => {
     if (plans && plans != null) {
       let i = plans.length - 1;
-      let id = plans[i].id;
+      let id = plans[i]?.id;
       getAvailableSeats(id, setAvailableSeats, setSlotsLoading);
     }
   }, [plans]);
@@ -96,6 +100,9 @@ export function AuthProvider(props) {
     setAvailableSeats,
     slotsLoading,
     setSlotsLoading,
+    plans,
+    loadSlots,
+    availableSlots,
   };
   return (
     <AuthContext.Provider value={value}>{props?.children}</AuthContext.Provider>

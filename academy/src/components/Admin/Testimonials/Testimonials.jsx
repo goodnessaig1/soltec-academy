@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Link, useNavigate } from 'react-router-dom';
-import { DeleteRed, EditIcon, PlusW, SearchGray } from '../../../Utils/Assets';
+import { DeleteRed, EditIcon, PlusW } from '../../../Utils/Assets';
 import Layout from '../Common/Layout';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -39,7 +39,7 @@ const AdminTestimonials = () => {
     const updatedData = data.filter(item => item.id !== id);
     setData(updatedData);
     try {
-      await adminApiRequest('GET', `/testimonials/${id}/`);
+      await adminApiRequest('DELETE', `/testimonials/${id}/`);
       toast.success('Successfully deleted', {
         position: 'top-right',
       });
@@ -53,11 +53,10 @@ const AdminTestimonials = () => {
 
   const deleteMultiple = async () => {
     try {
-      const data = {
-        ids: ids,
-      };
       setMarkedItems([]);
-      await adminApiRequest('DELETE', `/testimonials/delete-multiple/`, data);
+      await adminApiRequest('DELETE', '/testimonials/delete-multiple/', {
+        ids: ids,
+      });
       toast.success('Successfully deleted', {
         position: 'top-right',
       });
@@ -66,7 +65,6 @@ const AdminTestimonials = () => {
       toast.error('An error occured !', {
         position: 'top-left',
       });
-      console.log(error);
     }
   };
 
@@ -92,14 +90,14 @@ const AdminTestimonials = () => {
         <div className='flex flex-row items-center justify-between'>
           <span></span>
           <div className='flex flex-row gap-[11px]'>
-            <div className='flex flex-row rounded-[12px] px-4 justify-between items-center h-10 course_input w-[276px]'>
+            {/* <div className='flex flex-row rounded-[12px] px-4 justify-between items-center h-10 course_input w-[276px]'>
               <input
                 type='text'
                 placeholder='Search'
                 className='outline-none border-none bg-transparent'
               />
               <img src={SearchGray} alt='' />
-            </div>
+            </div> */}
             <Link
               to={'/admin/testimonials/add-testimonial'}
               className='w-[145px] hover:opacity-[94%] h-10 rounded-[12px] bg-lBlue flex gap-1.5 items-center justify-center'
@@ -128,7 +126,7 @@ const AdminTestimonials = () => {
                         }`}
                       >
                         <div
-                          className={`absolute transition  duration-300 ${
+                          className={`absolute transition duration-300 ${
                             markedItems.includes(index)
                               ? ''
                               : 'hidden group-hover:block'
@@ -200,7 +198,7 @@ const AdminTestimonials = () => {
               )}
             </>
           ) : (
-            <div className='flex flex-row gap-[24px]'>
+            <div className='flex flex-row gap-6'>
               <div className='flex flex-row items-center justify-center gap-3'>
                 <Skeleton height={50} circle width={50} />
                 <Skeleton height={130} width={200} />
@@ -217,10 +215,10 @@ const AdminTestimonials = () => {
           )}
         </>
         {markedItems.length > 0 && (
-          <div className='absolute right-0 bottom-0 mr-10 mb-10'>
+          <div className='fixed z-50 right-0 bottom-0 mr-10 mb-10'>
             <div
               onClick={deleteMarkedItems}
-              className='w-[114px] hover:bg-whiteW hover:cursor-pointer transition duration-300 h-10 flex items-center justify-center gap-1.5 rounded-[12px] border border-[1px] border-mainRed'
+              className='w-[114px] bg-white hover:bg-whiteW hover:cursor-pointer transition duration-300 h-10 flex items-center justify-center gap-1.5 rounded-[12px] border border-[1px] border-mainRed'
             >
               <img src={DeleteRed} alt='' />
               <span className='font-medium text-[14px] leading-[17px] text-mainRed inter__'>

@@ -3,6 +3,12 @@ import AcademyLogoFull from '../../assets/academy-logo-full.png';
 import { FIcon, IGIcon, IIcon, WIcon, XIcon } from '../../Utils/Assets';
 import { useAuth } from '../Context/AuthContext';
 import { AiFillTikTok } from 'react-icons/ai';
+import { Field, Form, Formik } from 'formik';
+import { Oval } from 'react-loader-spinner';
+import { useState } from 'react';
+import { GrStatusGood } from 'react-icons/gr';
+import { apiRequest } from '../../Utils/ApiRequest';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const footerLinks = [
   {
@@ -23,7 +29,24 @@ const footerLinks = [
 
 const Footer = () => {
   const { courses } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
+  const handleSubmit = async (values, resetForm, setFieldError) => {
+    setLoading(true);
+    try {
+      await apiRequest('POST', `/newsletters/`, values);
+      setLoading(false);
+      resetForm();
+      setSuccess(true);
+    } catch (error) {
+      setFieldError(
+        'email',
+        'Failed please check your internet connection try again',
+      );
+      setLoading(false);
+    }
+  };
   return (
     <div className='footer-bg sm:px-4 lg:px-[120px] py-[130px] sm:pt-[120px] lg:pt-[140px] '>
       <div className='flex sm:flex-col lg:flex-row sm:gap-[38px] lg:justify-between'>
@@ -105,20 +128,78 @@ const Footer = () => {
               blog posts and special discounts
             </span>
           </div>
-          <div className='flex flex-row gap-[6px]'>
-            <div className='bg-colorOpacity rounded-[12px]  p-2.5 pl-4 '>
-              <input
-                type='text'
-                placeholder='Enter your email'
-                className='font-normal text-[16px] outtline-none bg-transparent text-footerCol w-full focus:outline-none placeholder-footerCol focus:border-none leading-[16px]'
-              />
-            </div>
-            <div className='p-2 rounded-xl bg-white '>
-              <span className='font-medium text-[14px] leading-[19px]'>
-                Subscribe
-              </span>
-            </div>
-          </div>
+          <Formik
+            initialValues={{
+              email: '',
+            }}
+            onSubmit={(values, { resetForm, setFieldError }) => {
+              handleSubmit(values, resetForm, setFieldError);
+            }}
+          >
+            {({ handleChange, handleBlur, errors, touched }) => (
+              <Form action=''>
+                <div className='flex flex-row gap-[6px]'>
+                  <div className='bg-colorOpacity rounded-[12px]  p-2.5 pl-4 '>
+                    <Field
+                      type='email'
+                      name='email'
+                      required
+                      onChange={handleChange('email')}
+                      onBlur={handleBlur('email')}
+                      placeholder='Enter your email'
+                      className='font-normal text-[16px] outtline-none bg-transparent text-footerCol w-full focus:outline-none placeholder-footerCol focus:border-none leading-[16px]'
+                    />
+                  </div>
+
+                  {!success ? (
+                    <>
+                      {!loading ? (
+                        <button
+                          type='submit'
+                          className='p-2 rounded-xl bg-white'
+                        >
+                          <span className='font-medium text-[14px] leading-[19px]'>
+                            Subscribe
+                          </span>
+                        </button>
+                      ) : (
+                        <div className='mr-4 flex items-center justify-center h-12'>
+                          <Oval
+                            visible={true}
+                            height='35'
+                            width='35'
+                            color='white'
+                            secondaryColor='#f3f3f3'
+                            ariaLabel='oval-loading'
+                            wrapperStyle={{}}
+                            wrapperClass=''
+                          />
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div className='mr-2 h-12 flex items-center justify-center'>
+                      <GrStatusGood color='white' size={32} />
+                    </div>
+                  )}
+                </div>
+                <AnimatePresence>
+                  {touched.email && errors.email && (
+                    <motion.div
+                      initial={{ height: 0 }}
+                      animate={{ height: 'auto' }}
+                      exit={{ height: 0 }}
+                      transition={{ duration: 0.7, ease: 'easeInOut' }}
+                    >
+                      <p className='text-[#2C2C2CB2] max-w-[300px] absolute text-[#D50000] text-[10px] font-normal md:text-base'>
+                        {errors.email}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </div>

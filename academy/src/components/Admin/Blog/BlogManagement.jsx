@@ -59,11 +59,11 @@ const BlogManagement = () => {
       ids,
     };
     try {
+      setMarkedItems([]);
       await adminApiRequest('DELETE', `/blogs/delete-multiple/`, data);
       toast.success('Successfully deleted', {
         position: 'top-right',
       });
-      setMarkedItems([]);
       setIds([]);
     } catch (error) {
       toast.error('An error occured !', {
@@ -98,14 +98,14 @@ const BlogManagement = () => {
               LATEST BLOG POSTS
             </h1>
             <div className='flex flex-row gap-[11px]'>
-              <div className='flex flex-row rounded-[12px] px-[16px] justify-between items-center h-10 course_input w-[276px]'>
+              {/* <div className='flex flex-row rounded-[12px] px-[16px] justify-between items-center h-10 course_input w-[276px]'>
                 <input
                   type='text'
                   placeholder='Search'
                   className='outline-none border-none bg-transparent'
                 />
                 <img src={SearchGray} alt='' />
-              </div>
+              </div> */}
               <Link
                 to={'/admin/blogs/add-blog'}
                 className='w-[115px] hover:opacity-[94%] h-10 rounded-[12px] bg-lBlue flex gap-[6px] items-center justify-center'
@@ -168,7 +168,7 @@ const BlogManagement = () => {
                           />
                         </div>
                         <Link
-                          to={`/academy/blog/${blog?.id}/${
+                          to={`/blog/${blog?.id}/${
                             blog.author_name
                           }/${blog?.title.substring(0, 20)}`}
                         >
@@ -244,10 +244,10 @@ const BlogManagement = () => {
             </div>
           )}
           {markedItems.length > 0 && (
-            <div className='absolute right-0 bottom-0 mr-10 mb-10'>
+            <div className='fixed z-50 right-0 bottom-0 mr-10 mb-10'>
               <div
                 onClick={deleteMarkedItems}
-                className='w-[114px] hover:bg-whiteW z-100 hover:cursor-pointer transition duration-300 h-10 flex items-center justify-center gap-[6px] rounded-[12px] border border-[1px] border-mainRed'
+                className='w-[114px] bg-white hover:bg-whiteW z-100 hover:cursor-pointer transition duration-300 h-10 flex items-center justify-center gap-[6px] rounded-[12px] border border-[1px] border-mainRed'
               >
                 <img src={DeleteRed} alt='' />
                 <span className='font-medium text-[14px] leading-[17px] text-mainRed inter__'>

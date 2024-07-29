@@ -7,56 +7,60 @@ const WorkspaceBookings = ({ workspaceBookings }) => {
   const navigate = useNavigate();
 
   return (
-    <div className='w-full flex flex-col coursesP rounded-[12px]'>
-      {/* Head */}
-      <div className='flex flex-row w-full mb-[10px] items-center'>
-        <div className='w-[12%]'>
-          <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-            <h1 className='text-[14px] font-semibold leading-[17px]'>TIME</h1>
-            <img src={Sort} alt='' />
+    <div className='w-full py-3 flex flex-col gap-5 coursesP rounded-[12px]'>
+      <div className='flex flex-col gap-3.5'>
+        <div className='flex px-2 py-0.5 flex-row w-full items-center'>
+          <div className='w-[12%]'>
+            <div className='flex flex-row items-center gap-4 gap-4 px-3'>
+              <h1 className='text-[14px] font-semibold leading-[17px]'>TIME</h1>
+              <img src={Sort} alt='' />
+            </div>
+          </div>
+          <div className='w-[18%]'>
+            <div className='flex flex-row items-center gap-4 gap-4 px-3'>
+              <h1 className='text-[14px] font-semibold leading-[17px]'>
+                EMAIL
+              </h1>
+              <img src={Sort} alt='' />
+            </div>
+          </div>
+          <div className='w-[17%]'>
+            <div className='flex flex-row items-center gap-4 gap-4 px-3'>
+              <h1 className='text-[14px] font-semibold leading-[17px]'>
+                FULL NAME
+              </h1>
+            </div>
+          </div>
+          <div className='w-[15%]'>
+            <div className='flex flex-row items-center gap-4 gap-4 px-3'>
+              <h1 className='text-[14px] font-semibold leading-[17px]'>
+                PHONE NUMBER
+              </h1>
+            </div>
+          </div>
+          <div className='w-[12%]'>
+            <div className='flex flex-row items-center gap-4 gap-4 px-3'>
+              <h1 className='text-[14px] font-semibold leading-[17px]'>
+                START DATE
+              </h1>
+            </div>
+          </div>
+          <div className='w-[8%]'>
+            <div className='flex flex-row items-center gap-4 gap-4 px-3'>
+              <h1 className='text-[14px] font-semibold leading-[17px]'>PLAN</h1>
+            </div>
+          </div>
+          <div className='w-[17%]'>
+            <div className='flex flex-row items-center gap-4 gap-4 px-3'>
+              <h1 className='text-[14px] font-semibold leading-[17px]'>
+                PAYMENT METHOD
+              </h1>
+            </div>
           </div>
         </div>
-        <div className='w-[18%]'>
-          <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-            <h1 className='text-[14px] font-semibold leading-[17px]'>EMAIL</h1>
-            <img src={Sort} alt='' />
-          </div>
-        </div>
-        <div className='w-[17%]'>
-          <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-            <h1 className='text-[14px] font-semibold leading-[17px]'>
-              FULL NAME
-            </h1>
-          </div>
-        </div>
-        <div className='w-[15%]'>
-          <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-            <h1 className='text-[14px] font-semibold leading-[17px]'>
-              PHONE NUMBER
-            </h1>
-          </div>
-        </div>
-        <div className='w-[12%]'>
-          <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-            <h1 className='text-[14px] font-semibold leading-[17px]'>
-              START DATE
-            </h1>
-          </div>
-        </div>
-        <div className='w-[8%]'>
-          <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-            <h1 className='text-[14px] font-semibold leading-[17px]'>PLAN</h1>
-          </div>
-        </div>
-        <div className='w-[17%]'>
-          <div className='flex flex-row items-center gap-4 gap-4 px-3'>
-            <h1 className='text-[14px] font-semibold leading-[17px]'>
-              PAYMENT METHOD
-            </h1>
-          </div>
-        </div>
+        <hr />
       </div>
-      <div className='flex flex-col gap-1.5'>
+      <div className='flex flex-col px-2 gap-1.5'>
         {workspaceBookings &&
           workspaceBookings.map((item, index) => (
             <div

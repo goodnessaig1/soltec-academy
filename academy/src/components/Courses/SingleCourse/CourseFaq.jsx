@@ -43,7 +43,6 @@ const CourseFaqs = ({ courseDetail }) => {
                   </div>
 
                   <div
-                    // py-[10px]
                     className={`
                      ${
                        activeIndex == index ? 'show_answer answer_' : 'answer_'

@@ -6,7 +6,7 @@ import Header from '../../common/Header';
 
 const CourseHero = ({ courseDetail }) => {
   const CourseTitle = ({ title }) => {
-    const hasSpace = title.includes(' ');
+    const hasSpace = title?.includes(' ');
     const [firstIndex, secondIndex] = hasSpace ? title.split(' ') : [title, ''];
     return (
       <>

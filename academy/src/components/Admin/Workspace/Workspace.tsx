@@ -55,6 +55,13 @@ const AdminWorkspace: React.FC = () => {
     getPlans();
   }, []);
 
+  const reversePlans = plans => {
+    if (plans && plans.length > 0) {
+      return plans.reverse();
+    }
+    return [];
+  };
+
   return (
     <Layout text='Workspace'>
       {openCreatePlans && (
@@ -66,7 +73,10 @@ const AdminWorkspace: React.FC = () => {
       )}
       <div className='w-full inter_ flex flex-col mb-24 gap-12 px-9'>
         <div className='flex flex-row justify-between items-center '>
-          <div className='w-10 h-10 flex items-center justify-center bg-backBg rounded-[50%]'>
+          <div
+            onClick={() => navigate(-1)}
+            className='w-10 h-10 flex items-center justify-center bg-backBg rounded-[50%]'
+          >
             <img src={BackArrow} alt='' />
           </div>
           <div
@@ -81,9 +91,11 @@ const AdminWorkspace: React.FC = () => {
         </div>
         {!loading ? (
           <div className='flex flex-col gap-5'>
-            <h1 className='text-[16px] font-medium leading-[24px]'>
-              WORKSPACE BOOKINGS
-            </h1>
+            {workspaceBookings && (
+              <h1 className='text-[16px] font-medium leading-[24px]'>
+                WORKSPACE BOOKINGS
+              </h1>
+            )}
             {workspaceBookings && (
               <WorkspaceBookings workspaceBookings={workspaceBookings} />
             )}
@@ -118,7 +130,8 @@ const AdminWorkspace: React.FC = () => {
                 </div>
                 {/* Data */}
                 {plans &&
-                  plans.map((plan: any, index) => (
+                  plans.length > 0 &&
+                  reversePlans([...plans]).map((plan: any, index) => (
                     <div
                       key={index}
                       className='flex flex-row items-start w-full min-h-12'

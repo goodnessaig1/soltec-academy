@@ -94,14 +94,14 @@ const Courses = () => {
               {searchTerm != '' && searchResults?.length != 0 && (
                 <ul className='absolute w-full left-0 '>
                   <div className='w-full flex mt-2 items-center flex-col '>
-                    <div className='flex flex-col py-3 rounded-[12px] mt-2 z-10 bg-white searchGra w-[360px]  '>
+                    <div className='flex flex-col px-2 py-3 rounded-[12px] mt-2 z-10 bg-white searchGra w-[360px]  '>
                       {searchResults.map((course, index) => (
                         <li
                           key={index}
                           onClick={() =>
                             navigate(`/courses/${course?.id}/${course?.title}`)
                           }
-                          className='px-4 py-0.5 hover:cursor-pointer w-full hover:bg-[#f1f1f1]'
+                          className='px-4 py-0.5 rounded-lg hover:cursor-pointer w-full hover:bg-[#f1f1f1]'
                         >
                           <span className=' w-full'>{course?.title}</span>
                         </li>

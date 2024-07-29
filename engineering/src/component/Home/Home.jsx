@@ -95,16 +95,19 @@ const HomeDashboard = () => {
   const [testimonialsData, setTestimonialsData] = useState(null);
 
   useEffect(() => {
-    GetTestimonials();
+    getTestimonials();
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   }, []);
 
-  const GetTestimonials = async () => {
+  const getTestimonials = async () => {
     try {
-      const response = await apiRequest('GET', `/testimonials/`);
+      const response = await apiRequest(
+        'GET',
+        `/testimonials/?tag=ENGINEERING`,
+      );
       setTestimonialsData(response.results);
     } catch (error) {
       toast.error('An error occured !', {

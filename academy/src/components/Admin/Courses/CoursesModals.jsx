@@ -156,6 +156,8 @@ export const CreateCohort = ({
   setEndDate,
   handleDateChange,
   setOpenCreateCohort,
+  cohorts,
+  setCohorts,
 }) => {
   const today = new Date();
   const firstDayOfMonth = startOfMonth(today);
@@ -164,6 +166,7 @@ export const CreateCohort = ({
   const startDateRef = useRef(null);
   const endDateRef = useRef(null);
   const [loading, setLoading] = useState(false);
+
   const openCalendar = () => {
     if (startDateRef.current) {
       startDateRef.current.setOpen(true);
@@ -183,11 +186,12 @@ export const CreateCohort = ({
           start_date: startDate?.toISOString(),
           end_date: endDate?.toISOString(),
         };
-        await adminApiRequest('POST', `/cohort/`, data);
+        const resp = await adminApiRequest('POST', `/cohort/`, data);
         setLoading(false);
         toast.success('Success', {
           position: 'top-right',
         });
+        setCohorts([resp, ...cohorts]);
         setOpenCreateCohort(false);
       } catch (error) {
         setLoading(false);
@@ -222,10 +226,10 @@ export const CreateCohort = ({
             </h1>
             <form
               action=''
-              className='w-full flex flex-col gap-5'
+              className='w-full flex flex-col gap-6'
               onSubmit={e => e.preventDefault()}
             >
-              <div className='flex flex-col gap-4'>
+              <div className='flex flex-col gap-3'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor='start_date'
@@ -248,12 +252,12 @@ export const CreateCohort = ({
                   <img src={Calendar} onClick={openCalendar} alt='' />
                 </div>
                 {startDateErr && (
-                  <div className='text-[14px] text-mainRed absolute mt-[66px]'>
+                  <div className='text-[14px] text-mainRed absolute mt-[72px]'>
                     {startDateErr}
                   </div>
                 )}
               </div>
-              <div className='flex flex-col gap-4'>
+              <div className='flex flex-col gap-3'>
                 <label
                   className='font-semibold text-[14px] leading-[21px]'
                   htmlFor='start_date'
@@ -276,7 +280,7 @@ export const CreateCohort = ({
                   <img src={Calendar} onClick={openCalendar2} alt='' />
                 </div>
                 {endDateErr && (
-                  <div className='text-[14px] text-mainRed absolute mt-[66px]'>
+                  <div className='text-[14px] text-mainRed absolute mt-[72px]'>
                     {endDateErr}
                   </div>
                 )}

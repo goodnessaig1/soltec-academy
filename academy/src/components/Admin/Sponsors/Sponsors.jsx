@@ -28,8 +28,8 @@ const AdminSponsors = () => {
       const response = await apiRequest('GET', `/sponsors/`);
       setSponsors(response.results);
       setLoading(false);
-      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.log('error', error);
     }
   };
@@ -90,14 +90,14 @@ const AdminSponsors = () => {
         <div className='flex flex-row items-center justify-between'>
           <span></span>
           <div className='flex flex-row gap-[11px]'>
-            <div className='flex flex-row rounded-[12px] px-4 justify-between items-center h-10 course_input w-[276px]'>
+            {/* <div className='flex flex-row rounded-[12px] px-4 justify-between items-center h-10 course_input w-[276px]'>
               <input
                 type='text'
                 placeholder='Search'
                 className='outline-none border-none bg-transparent'
               />
               <img src={SearchGray} alt='' />
-            </div>
+            </div> */}
             <Link
               to={'/admin/sponsors/add-sponsor'}
               className='w-[135px] hover:opacity-[94%] h-10 rounded-[12px] bg-lBlue flex gap-1.5 items-center justify-center'
@@ -199,7 +199,7 @@ const AdminSponsors = () => {
           )}
         </>
         {markedItems.length > 0 && (
-          <div className='absolute right-0 bottom-0 mr-10 mb-10'>
+          <div className='fixed z-50 right-0 bottom-0 mr-10 mb-10'>
             <div
               onClick={deleteMarkedItems}
               className='w-[114px] hover:bg-whiteW hover:cursor-pointer transition duration-300 h-10 flex items-center justify-center gap-1.5 rounded-[12px] border border-[1px] border-mainRed'

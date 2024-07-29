@@ -17,10 +17,10 @@ const Settings = () => {
           <h1 className='font-normal text-[20px]'>Remove Admin</h1>
           <img src={Next} alt='' />
         </div>
-        <div className='flex flex-row items-center cursor-pointer gap-5'>
+        {/* <div className='flex flex-row items-center cursor-pointer gap-5'>
           <h1 className='font-normal text-[20px]'>Send Newsletter</h1>
           <img src={Next} alt='' />
-        </div>
+        </div> */}
       </div>
     </Layout>
   );

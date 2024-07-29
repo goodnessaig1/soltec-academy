@@ -4,16 +4,12 @@ import Group11 from '../../assets/group11.png';
 import Group2 from '../../assets/group2.png';
 import Group3 from '../../assets/group3.png';
 import Group4 from '../../assets/group4.png';
-import Header from '../common/Header';
 import Slider from 'react-slick';
 import LazyImage from '../../Utils/SuspenseImage';
 
 const HeroSection = () => {
   return (
     <div>
-      <div className='z-10'>
-        <Header />
-      </div>
       <div className='mt-[-80px] lg:mt-[-120px] mb-24'>
         <div className='absolute top-0 ml-[127px]'>
           <img src={Gradient} alt='' />

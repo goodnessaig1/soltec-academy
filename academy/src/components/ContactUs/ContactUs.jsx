@@ -13,6 +13,7 @@ import Header from '../common/Header';
 import AcademyLogo from '../../assets/academy-logo-bla.png';
 
 import { AiFillTikTok } from 'react-icons/ai';
+import Footer from '../common/Footer';
 
 const socialLinks = [
   {
@@ -233,6 +234,9 @@ const ContactUsAcademy = () => {
             </Formik>
           </div>
         </div>
+      </div>
+      <div className='lg:hidden mt-10 block'>
+        <Footer />
       </div>
     </div>
   );
