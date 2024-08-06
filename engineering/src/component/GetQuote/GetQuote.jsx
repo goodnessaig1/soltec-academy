@@ -24,8 +24,7 @@ const GetQuote = () => {
   const [testimonialsData, setTestimonialsData] = useState(null);
   const [openCategories, setOpenCategories] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [selectedproject_category, setSelectedproject_category] =
-    useState('POWER_AND_ENERGY');
+  const [selectedproject_category, setSelectedproject_category] = useState('');
   const [addLoading, setAddLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
   const [fileName, setFileName] = useState('');
@@ -235,7 +234,11 @@ const GetQuote = () => {
                         onClick={() => setOpenCategories(!openCategories)}
                         className='w-full px-[16px] text-[#9DA1A7] hover:cursor-pointer py-[10px] flex flex-row justify-between items-center bg-white course_input rounded-[6px]  text-[14px]'
                       >
-                        <span>{selectedproject_category}</span>
+                        <span>
+                          {selectedproject_category
+                            ? selectedproject_category
+                            : 'Select project category'}
+                        </span>
                         <img src={ArrowDown} alt='' />
                       </div>
                       {openCategories && (

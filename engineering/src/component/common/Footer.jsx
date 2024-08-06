@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { FIcon, IGIcon, IIcon, Logo, WIcon, XIcon } from '../../Utils/assets';
 import { AiFillTikTok } from 'react-icons/ai';
 import { Field, Form, Formik } from 'formik';
-// import * as Yup from 'yup';
 import { Oval } from 'react-loader-spinner';
 import { useState } from 'react';
 import { GrStatusGood } from 'react-icons/gr';
@@ -97,9 +96,9 @@ const Footer = () => {
             >
               Contact Us
             </Link>
-            <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
-              Terms & Conditions
-            </span>
+            {/* <span className='font-normal text-footerCol text-[16px] leading-[32px]'> */}
+            {/* Terms & Conditions */}
+            {/* </span> */}
           </div>
         </div>
         <div className='flex flex-col gap-4'>
@@ -141,9 +140,6 @@ const Footer = () => {
             initialValues={{
               email: '',
             }}
-            // validationSchema={Yup.object({
-            //   email: Yup.string().required('Required'),
-            // })}
             onSubmit={(values, { resetForm, setFieldError }) => {
               handleSubmit(values, resetForm, setFieldError);
             }}
