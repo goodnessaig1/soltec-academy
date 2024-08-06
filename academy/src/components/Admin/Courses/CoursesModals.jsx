@@ -179,29 +179,35 @@ export const CreateCohort = ({
   };
 
   const handleSubmit = async () => {
-    if (startDate && endDate) {
-      setLoading(true);
-      try {
-        let data = {
-          start_date: startDate?.toISOString(),
-          end_date: endDate?.toISOString(),
-        };
-        const resp = await adminApiRequest('POST', `/cohort/`, data);
-        setLoading(false);
-        toast.success('Success', {
-          position: 'top-right',
-        });
-        setCohorts([resp, ...cohorts]);
-        setOpenCreateCohort(false);
-      } catch (error) {
-        setLoading(false);
-        console.log(error);
-        toast.error('An error occured !', {
-          position: 'top-left',
-        });
+    if (endDate > startDate) {
+      if (startDate && endDate) {
+        setLoading(true);
+        try {
+          let data = {
+            start_date: startDate?.toISOString(),
+            end_date: endDate?.toISOString(),
+          };
+          const resp = await adminApiRequest('POST', `/cohort/`, data);
+          setLoading(false);
+          toast.success('Success', {
+            position: 'top-right',
+          });
+          setCohorts([resp, ...cohorts]);
+          setOpenCreateCohort(false);
+        } catch (error) {
+          setLoading(false);
+          console.log(error);
+          toast.error('An error occured !', {
+            position: 'top-left',
+          });
+        }
+      } else if (!startDate) {
+        setStartDateErr('Required');
+      } else if (!endDate) {
+        setEndtDateErr('Required');
       }
     } else {
-      alert('Please complete all fields');
+      setEndtDateErr('Must be greater than startdate');
     }
   };
   return (
@@ -229,61 +235,84 @@ export const CreateCohort = ({
               className='w-full flex flex-col gap-6'
               onSubmit={e => e.preventDefault()}
             >
-              <div className='flex flex-col gap-3'>
-                <label
-                  className='font-semibold text-[14px] leading-[21px]'
-                  htmlFor='start_date'
-                >
-                  Start date
-                </label>
-                <div className='w-full course_input px-2.5 pl-4 flex justify-between items-center rounded-[12px] h-10 text-[14px]'>
-                  <DatePicker
-                    ref={startDateRef}
-                    selected={startDate}
-                    onChange={date =>
-                      handleDateChange(date, setStartDate, setStartDateErr)
-                    }
-                    minDate={firstDayOfMonth}
-                    onFocus={e => {
-                      e.currentTarget.readOnly = true;
-                    }}
-                    className='outline-none bg-transparent w-ful hover:cursor-pointer w-[300px]'
-                  />
-                  <img src={Calendar} onClick={openCalendar} alt='' />
-                </div>
-                {startDateErr && (
-                  <div className='text-[14px] text-mainRed absolute mt-[72px]'>
-                    {startDateErr}
+              <div className='flex flex-col gap-1'>
+                {/* </div> */}
+                <div className='flex flex-col gap-3'>
+                  <label
+                    className='font-semibold text-[14px] leading-[21px]'
+                    htmlFor='start_date'
+                  >
+                    Start date
+                  </label>
+                  <div className='w-full course_input px-2.5 pl-4 flex justify-between items-center rounded-[12px] h-10 text-[14px]'>
+                    <DatePicker
+                      ref={startDateRef}
+                      selected={startDate}
+                      onChange={date =>
+                        handleDateChange(date, setStartDate, setStartDateErr)
+                      }
+                      minDate={firstDayOfMonth}
+                      onFocus={e => {
+                        e.currentTarget.readOnly = true;
+                      }}
+                      className='outline-none bg-transparent w-ful hover:cursor-pointer w-[300px]'
+                    />
+                    <img src={Calendar} onClick={openCalendar} alt='' />
                   </div>
-                )}
+                </div>
+                <AnimatePresence>
+                  {startDateErr && (
+                    <motion.div
+                      initial={{ height: 0 }}
+                      animate={{ height: 'auto' }}
+                      exit={{ height: 0 }}
+                      transition={{ duration: 0.7, ease: 'easeInOut' }}
+                    >
+                      <p className='text-[#2C2C2CB2] text-[#D50000] text-[10px] font-normal md:text-base'>
+                        {startDateErr}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-              <div className='flex flex-col gap-3'>
-                <label
-                  className='font-semibold text-[14px] leading-[21px]'
-                  htmlFor='start_date'
-                >
-                  End date
-                </label>
-                <div className='w-full course_input px-2.5 pl-4 flex justify-between items-center rounded-[12px] h-10 text-[14px]'>
-                  <DatePicker
-                    ref={endDateRef}
-                    selected={endDate}
-                    onChange={date =>
-                      handleDateChange(date, setEndDate, setEndtDateErr)
-                    }
-                    minDate={firstDayOfMonth}
-                    onFocus={e => {
-                      e.currentTarget.readOnly = true;
-                    }}
-                    className='outline-none bg-transparent w-ful hover:cursor-pointer w-[300px]'
-                  />
-                  <img src={Calendar} onClick={openCalendar2} alt='' />
-                </div>
-                {endDateErr && (
-                  <div className='text-[14px] text-mainRed absolute mt-[72px]'>
-                    {endDateErr}
+              <div className='flex flex-col gap-1'>
+                <div className='flex flex-col gap-3'>
+                  <label
+                    className='font-semibold text-[14px] leading-[21px]'
+                    htmlFor='start_date'
+                  >
+                    End date
+                  </label>
+                  <div className='w-full course_input px-2.5 pl-4 flex justify-between items-center rounded-[12px] h-10 text-[14px]'>
+                    <DatePicker
+                      ref={endDateRef}
+                      selected={endDate}
+                      onChange={date =>
+                        handleDateChange(date, setEndDate, setEndtDateErr)
+                      }
+                      minDate={startDate || firstDayOfMonth}
+                      onFocus={e => {
+                        e.currentTarget.readOnly = true;
+                      }}
+                      className='outline-none bg-transparent w-ful hover:cursor-pointer w-[300px]'
+                    />
+                    <img src={Calendar} onClick={openCalendar2} alt='' />
                   </div>
-                )}
+                </div>
+                <AnimatePresence>
+                  {endDateErr && (
+                    <motion.div
+                      initial={{ height: 0 }}
+                      animate={{ height: 'auto' }}
+                      exit={{ height: 0 }}
+                      transition={{ duration: 0.7, ease: 'easeInOut' }}
+                    >
+                      <p className='text-[#2C2C2CB2] text-[#D50000] text-[10px] font-normal md:text-base'>
+                        {endDateErr}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
               {!loading ? (

@@ -69,6 +69,8 @@ const AdminWorkspace: React.FC = () => {
           planType={planType}
           openCreatePlans={openCreatePlans}
           setOpenCreatePlans={setOpenCreatePlans}
+          setPlans={setPlans}
+          plans={plans}
         />
       )}
       <div className='w-full inter_ flex flex-col mb-24 gap-12 px-9'>
@@ -170,6 +172,8 @@ export const CreatePlan = ({
   planType,
   openCreatePlans,
   setOpenCreatePlans,
+  setPlans,
+  plans,
 }) => {
   const [plan, setPlan] = useState<Plans>(Plans.DAILY);
   const [loading, setLoading] = useState(false);
@@ -182,10 +186,11 @@ export const CreatePlan = ({
     };
     try {
       setLoading(true);
-      await adminApiRequest('POST', `/workspaces/`, data);
+      const response = await adminApiRequest('POST', `/workspaces/`, data);
       toast.success('Success', {
         position: 'top-right',
       });
+      setPlans([response, ...plans]);
       setLoading(false);
       setOpenCreatePlans(false);
     } catch (error) {
