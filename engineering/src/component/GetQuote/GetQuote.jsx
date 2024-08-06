@@ -2,25 +2,35 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Media from '../../assets/media-1.svg';
 import { ArrowDown, CloudAdd } from '../../Utils/assets';
-import { Form, Formik } from 'formik';
-import Skeleton from 'react-loading-skeleton';
+import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { ProgressBar, RotatingLines } from 'react-loader-spinner';
 import { AnimatePresence, motion } from 'framer-motion';
-import { apiRequest, uploadFile } from '../../Utils/apiRequest';
+import { BaseURL, apiRequest } from '../../Utils/apiRequest';
 import Header from '../common/Header';
-import { testimonialDummyData } from '../../../../academy/src/components/DummyData/testimonialData';
+import { testimonialDummyData } from '../DummyData/testimonialData';
+import Checked from '../../assets/checked.png';
 
 const categories = [
-  { name: 'POWER AND ENERGY' },
-  { name: 'SMART SECURITY' },
-  { name: 'SOFTWARE DEVELOPMENT' },
-  { name: 'TEACHING COURSES' },
-  { name: 'BUILDING AND CONSTRUCTION' },
-  { name: 'ROBOTICS AND AUTOMATION' },
+  { name: 'POWER_AND_ENERGY' },
+  { name: 'SMART_SECURITY' },
+  { name: 'SOFTWARE_DEVELOPMENT' },
+  { name: 'TEACHING_COURSES' },
+  { name: 'BUILDING_AND_CONSTRUCTION' },
+  { name: 'ROBOTICS_AND_AUTOMATION' },
 ];
 
 const GetQuote = () => {
+  const [testimonialsData, setTestimonialsData] = useState(null);
+  const [openCategories, setOpenCategories] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [selectedproject_category, setSelectedproject_category] =
+    useState('POWER_AND_ENERGY');
+  const [addLoading, setAddLoading] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
+  const [fileName, setFileName] = useState('');
+  const [preview, setPreview] = useState('');
+
   useEffect(() => {
     getTestimonials();
     window.scrollTo({
@@ -28,12 +38,6 @@ const GetQuote = () => {
       behavior: 'smooth',
     });
   }, []);
-  const [testimonialsData, setTestimonialsData] = useState(null);
-  const [openCategories, setOpenCategories] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('POWER AND ENERGY');
-  const [addLoading, setAddLoading] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [pageLoading, setPageLoading] = useState(true);
 
   const getTestimonials = async () => {
     setPageLoading(true);
@@ -50,33 +54,42 @@ const GetQuote = () => {
     }
   };
 
-  const uploadImg = async (setFieldValue, file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    try {
-      const response = await uploadFile(formData, setLoading);
-      setFieldValue('image', response?.file);
-    } catch (error) {
-      console.error('Upload failed:', error);
-    }
-  };
-
-  const handleDrop = (e, setFieldValue) => {
+  const handleDrop = (e, setFieldValue, setFieldError) => {
     e.preventDefault();
     const droppedFile = e.dataTransfer.files[0];
-    if (droppedFile.type.startsWith('image/')) {
-      uploadImg(setFieldValue, droppedFile);
-    } else {
-      alert('Please drop an image file!');
-    }
+    handleFileType(droppedFile, setFieldValue, setFieldError);
   };
 
-  const handleFileInputChange = (e, setFieldValue) => {
-    const selectedFile = e.target.files[0];
-    if (selectedFile && selectedFile.type.startsWith('image/')) {
-      uploadImg(setFieldValue, selectedFile);
-    } else {
-      alert('Please select an image file!');
+  const handleFileChange = (event, setFieldValue, setFieldError) => {
+    const file = event.target.files[0];
+    handleFileType(file, setFieldValue, setFieldError);
+  };
+
+  const handleFileType = (file, setFieldValue, setFieldError) => {
+    if (file) {
+      const type = file.type;
+      if (type.startsWith('image/')) {
+        setFieldValue('project_document', file);
+        if (file) {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            setPreview(reader.result);
+          };
+        }
+      } else if (type === 'application/pdf') {
+        setFieldValue('project_document', file);
+        setFileName(file.name);
+      } else if (
+        type === 'application/msword' ||
+        type ===
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      ) {
+        setFieldValue('project_document', file);
+        setFileName(file.name);
+      } else {
+        setFieldError('project_document', 'Invalid file type');
+      }
     }
   };
 
@@ -85,33 +98,41 @@ const GetQuote = () => {
   };
 
   const handleSubmit = async (values, resetForm) => {
+    let formData = new FormData();
+    formData.append(`project_document`, values?.project_document);
+    formData.append(`project_description`, values?.project_description);
+    formData.append(`project_category`, values?.project_category);
+    formData.append(`phone_number`, values?.phone_number);
+    formData.append(`email`, values?.email);
     setAddLoading(true);
-    if (values?.image != '') {
-      try {
-        await apiRequest('POST', `/testimonials/`, values);
-        setAddLoading(false);
-        toast.success('Success', {
-          position: 'top-right',
-        });
+    try {
+      const response = await fetch(`${BaseURL}/get-quota/`, {
+        method: 'POST',
+        body: formData,
+      });
+      if (response.ok) {
         resetForm();
-      } catch (error) {
-        console.error('Error uploading file: ', error);
-        toast.error('An error occured, please try again!', {
-          position: 'top-right',
-        });
+        setFileName('');
+        setPreview('');
+        setAddLoading(false);
+        setSuccess(true);
+      } else {
+        console.error('An error occured', response.statusText);
         setAddLoading(false);
       }
-    } else {
+    } catch (error) {
+      toast.error('An error occured, please try again!', {
+        position: 'top-right',
+      });
       setAddLoading(false);
-      alert('Please select an image');
     }
   };
   return (
-    <div className='w-full h-full bg-[#F7F7F7]'>
+    <div className='w-full min-h-screen bg-[#F7F7F7]'>
+      {success && <SuccessModal setSuccess={setSuccess} />}
       <div className=''>
         <Header />
       </div>
-
       {!pageLoading ? (
         <div className='flex flex-col pt-10 pb-[100px] items-center justify-center '>
           <div className='flex flex-col gap-4 items-center justify-center'>
@@ -122,7 +143,7 @@ const GetQuote = () => {
           </div>
           <div className='flex flex-col justify-center md:flex-row w-full mt-[56px] gap-[64px]'>
             <div className='w-[429px] hidden lg:flex flex-col gap-4 '>
-              {testimonialsData ? (
+              {testimonialsData && testimonialsData.length > 2 ? (
                 <Testimonials testimonialsData={testimonialsData} />
               ) : (
                 <Testimonials testimonialsData={testimonialDummyData} />
@@ -138,68 +159,75 @@ const GetQuote = () => {
 
               <Formik
                 initialValues={{
-                  description: '',
-                  category: '',
-                  image: '',
-                  phoneNumber: '',
+                  project_description: '',
+                  project_category: '',
+                  project_document: '',
+                  phone_number: '',
                   email: '',
                 }}
                 validationSchema={Yup.object({
-                  description: Yup.string().required('Required'),
-                  category: Yup.string().required('Required'),
-                  phoneNumber: Yup.string().required('Required'),
-                  email: Yup.string().required('Required'),
+                  project_description: Yup.string().required('Required'),
+                  project_category: Yup.string().required('Required'),
+                  project_document: Yup.string().required(
+                    'Select a valid file',
+                  ),
+                  phone_number: Yup.string().required('Required'),
+                  email: Yup.string()
+                    .email('Invalid email address')
+                    .required('Required'),
                 })}
                 onSubmit={(values, { resetForm }) => {
-                  // handleSubmit(values, resetForm);
+                  handleSubmit(values, resetForm);
                 }}
               >
                 {({
                   handleChange,
                   handleBlur,
-                  values,
                   errors,
                   touched,
                   setFieldValue,
+                  setFieldError,
                 }) => (
                   <Form className='flex flex-col gap-4 ' action=''>
                     <div className='flex flex-col gap-1.5'>
                       <label
                         className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
-                        htmlFor='description'
+                        htmlFor='project_description'
                       >
                         Describe your project
                       </label>
                       <div className='w-full bg-white course_input rounded-[6px]  text-[14px]'>
-                        <textarea
+                        <Field
+                          as='textarea'
                           type='text'
                           style={{ height: '126px', resize: 'none' }}
-                          name='description'
+                          name='project_description'
                           required
-                          onChange={handleChange('description')}
-                          onBlur={handleBlur('description')}
+                          onChange={handleChange('project_description')}
+                          onBlur={handleBlur('project_description')}
                           className='outline-none pt-2 pl-4 p-2.5 text-base bg-transparent w-full'
                         />
                       </div>
                       <AnimatePresence>
-                        {touched.description && errors.description && (
-                          <motion.div
-                            initial={{ height: 0 }}
-                            animate={{ height: 'auto' }}
-                            exit={{ height: 0 }}
-                            transition={{ duration: 0.7, ease: 'easeInOut' }}
-                          >
-                            <p className='text-[#2C2C2CB2] text-[#D50000] text-[10px] font-normal md:text-base'>
-                              {errors.description}
-                            </p>
-                          </motion.div>
-                        )}
+                        {touched.project_description &&
+                          errors.project_description && (
+                            <motion.div
+                              initial={{ height: 0 }}
+                              animate={{ height: 'auto' }}
+                              exit={{ height: 0 }}
+                              transition={{ duration: 0.7, ease: 'easeInOut' }}
+                            >
+                              <p className='text-[#2C2C2CB2] text-[#D50000] text-[10px] font-normal md:text-base'>
+                                {errors.project_description}
+                              </p>
+                            </motion.div>
+                          )}
                       </AnimatePresence>
                     </div>
                     <div className='flex flex-col gap-1.5'>
                       <label
                         className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
-                        htmlFor='description'
+                        htmlFor='project_description'
                       >
                         Project category
                       </label>
@@ -207,7 +235,7 @@ const GetQuote = () => {
                         onClick={() => setOpenCategories(!openCategories)}
                         className='w-full px-[16px] text-[#9DA1A7] hover:cursor-pointer py-[10px] flex flex-row justify-between items-center bg-white course_input rounded-[6px]  text-[14px]'
                       >
-                        <span>{selectedCategory}</span>
+                        <span>{selectedproject_category}</span>
                         <img src={ArrowDown} alt='' />
                       </div>
                       {openCategories && (
@@ -218,115 +246,171 @@ const GetQuote = () => {
                       )}
                       {openCategories && (
                         <div className='absolute bg-white  mdl:w-[418px] z-3 mt-[80px] rounded-[8px] flex flex-col border '>
-                          {categories.map((category, index) => (
+                          {categories.map((project_category, index) => (
                             <div
                               key={index}
                               onClick={() => (
-                                setFieldValue('category', category.name),
-                                setSelectedCategory(category.name),
+                                setFieldValue(
+                                  'project_category',
+                                  project_category.name,
+                                ),
+                                setSelectedproject_category(
+                                  project_category.name,
+                                ),
                                 setOpenCategories(false)
                               )}
                               className='hover:bg-blue-600 hover:text-white hover:cursor-pointer transition duration-200 ease-in-out px-[12px] rounded-[8px] py-[6px]'
                             >
-                              {category.name}
+                              {project_category.name}
                             </div>
                           ))}
                         </div>
                       )}
+                      <AnimatePresence>
+                        {touched.project_category &&
+                          errors.project_category && (
+                            <motion.div
+                              initial={{ height: 0 }}
+                              animate={{ height: 'auto' }}
+                              exit={{ height: 0 }}
+                              transition={{ duration: 0.7, ease: 'easeInOut' }}
+                            >
+                              <p className='text-[#2C2C2CB2] text-[#D50000] text-[10px] font-normal md:text-base'>
+                                {errors.project_category}
+                              </p>
+                            </motion.div>
+                          )}
+                      </AnimatePresence>
                     </div>
                     <div className='flex flex-col gap-1.5'>
                       <label
                         className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
-                        htmlFor='description'
+                        htmlFor='project_description'
                       >
                         Upload relevant documents
                       </label>
-                      {!loading ? (
-                        <>
-                          {!values.image ? (
+                      <>
+                        {!preview && !fileName && (
+                          <div
+                            className='dropZone w-full h-[192px] rounded-[12px] flex flex-col gap-4 py-6 items-center'
+                            onDrop={e =>
+                              handleDrop(e, setFieldValue, setFieldError)
+                            }
+                            onDragOver={handleDragOver}
+                          >
+                            <input
+                              type='file'
+                              id='fileInput'
+                              name='project_document'
+                              style={{ display: 'none' }}
+                              onChange={event =>
+                                handleFileChange(
+                                  event,
+                                  setFieldValue,
+                                  setFieldError,
+                                )
+                              }
+                            />
+                            <img
+                              className='hover:cursor-pointer'
+                              onClick={() =>
+                                document.getElementById('fileInput').click()
+                              }
+                              src={CloudAdd}
+                              alt=''
+                            />
+                            <div className='flex flex-col gap-2 items-center justify-center'>
+                              <h1 className='inter__ font-medium text-[14px]'>
+                                Choose a file or drag & drop it here
+                              </h1>
+                              <span className='font-medium inter__ text-[12px] leading-[15px] text-fileCol'>
+                                JPEG, PNG, and PDG,PDF formats, up to 50MB
+                              </span>
+                            </div>
                             <div
-                              className='dropZone w-full h-[192px] rounded-[12px] flex flex-col gap-4 py-6 items-center'
-                              onDrop={e => handleDrop(e, setFieldValue)}
-                              onDragOver={handleDragOver}
+                              className='course_input w-[104px] h-10 flex items-center justify-center font-medium text-mainBlue rounded-[12px] text-[14px] hover:cursor-pointer hover:opacity-[0.9] transition duration-300 '
+                              onClick={() =>
+                                document.getElementById('fileInput').click()
+                              }
                             >
-                              <input
-                                type='file'
-                                id='fileInput'
-                                accept='image/*'
-                                name='image'
-                                style={{ display: 'none' }}
-                                onChange={e =>
-                                  handleFileInputChange(e, setFieldValue)
-                                }
-                              />
-                              <img
-                                className='hover:cursor-pointer'
-                                onClick={() =>
-                                  document.getElementById('fileInput').click()
-                                }
-                                src={CloudAdd}
-                                alt=''
-                              />
-                              <div className='flex flex-col gap-2 items-center justify-center'>
-                                <h1 className='inter__ font-medium text-[14px]'>
-                                  Choose a file or drag & drop it here
-                                </h1>
-                                <span className='font-medium inter__ text-[12px] leading-[15px] text-fileCol'>
-                                  JPEG, PNG, and PDG formats, up to 50MB
-                                </span>
-                              </div>
+                              Browse Image
+                            </div>
+                          </div>
+                        )}
+                        {preview && (
+                          <div className='w-full max-h-[192px] rounded-[12px]'>
+                            <div className='absolute justify-end mt-1 ml-[300px] smm:ml-[346px] mdl:ml-[380px] flex items-end'>
                               <div
-                                className='course_input w-[104px] h-10 flex items-center justify-center font-medium text-mainBlue rounded-[12px] text-[14px] hover:cursor-pointer hover:opacity-[0.9] transition duration-300 '
-                                onClick={() =>
-                                  document.getElementById('fileInput').click()
-                                }
+                                onClick={() => (
+                                  setFieldValue('project_document', ''),
+                                  setPreview('')
+                                )}
+                                className='bg-extraGray w-[30px] h-[30px] hover:bg-white transition duration-300 hover:cursor-pointer flex items-center justify-center rounded-[50px]'
                               >
-                                Browse Image
+                                X
                               </div>
                             </div>
-                          ) : (
-                            <div className='w-full  rounded-[12px]'>
-                              <div className='absolute justify-end mt-1 ml-[376px] mdl:ml-[466px] flex items-end'>
-                                <div
-                                  onClick={() => setFieldValue('file', '')}
-                                  className='bg-extraGray w-[30px] h-[30px] hover:bg-white transition duration-300 hover:cursor-pointer flex items-center justify-center rounded-[50px]'
-                                >
-                                  X
-                                </div>
+                            <img
+                              src={preview}
+                              className='object-cover w-full h-[192px] rounded-[12px]'
+                              alt=''
+                            />
+                          </div>
+                        )}
+                        {fileName && (
+                          <div className='dropZone px-4 w-full h-[192px] rounded-[12px] py-2'>
+                            <div className='absolute justify-end  ml-[356px] mdl:ml-[362px] flex items-end'>
+                              <div
+                                onClick={() => (
+                                  setFieldValue('project_document', ''),
+                                  setFileName('')
+                                )}
+                                className='bg-extraGray w-[30px] h-[30px] hover:bg-white transition duration-300 hover:cursor-pointer flex items-center justify-center rounded-[50px]'
+                              >
+                                X
                               </div>
-                              <img
-                                src={values.image}
-                                className=' w-full rounded-[12px]'
-                                alt=''
-                              />
                             </div>
+                            <span className='w-full truncate overflow-hidden whitespace-nowrap text-ellipsis text-center flex items-center justify-center h-full'>
+                              {fileName}
+                            </span>
+                          </div>
+                        )}
+                      </>
+                      <AnimatePresence>
+                        {touched.project_document &&
+                          errors.project_document && (
+                            <motion.div
+                              initial={{ height: 0 }}
+                              animate={{ height: 'auto' }}
+                              exit={{ height: 0 }}
+                              transition={{ duration: 0.7, ease: 'easeInOut' }}
+                            >
+                              <p className='text-[#2C2C2CB2] text-[#D50000] text-[10px] font-normal md:text-base'>
+                                {errors.project_document}
+                              </p>
+                            </motion.div>
                           )}
-                        </>
-                      ) : (
-                        <div className='w-full flex items-center rounded-[14px]'>
-                          <Skeleton width={400} height={192} />
-                        </div>
-                      )}
+                      </AnimatePresence>
                     </div>
                     <div className='flex flex-col gap-1.5'>
                       <label
                         className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
-                        htmlFor='phoneNumber'
+                        htmlFor='phone_number'
                       >
                         Phone number
                       </label>
                       <div className='w-full bg-white course_input rounded-[6px]  text-[14px]'>
                         <input
                           type='text'
-                          name='phoneNumber'
+                          name='phone_number'
                           required
-                          onChange={handleChange('phoneNumber')}
-                          onBlur={handleBlur('phoneNumber')}
+                          onChange={handleChange('phone_number')}
+                          onBlur={handleBlur('phone_number')}
                           className='outline-none text-base pt-2 pl-4 p-2.5 bg-transparent w-full'
                         />
                       </div>
                       <AnimatePresence>
-                        {touched.phoneNumber && errors.phoneNumber && (
+                        {touched.phone_number && errors.phone_number && (
                           <motion.div
                             initial={{ height: 0 }}
                             animate={{ height: 'auto' }}
@@ -334,7 +418,7 @@ const GetQuote = () => {
                             transition={{ duration: 0.7, ease: 'easeInOut' }}
                           >
                             <p className='text-[#2C2C2CB2] text-[#D50000]   text-[10px] font-normal md:text-base'>
-                              {errors.phoneNumber}
+                              {errors.phone_number}
                             </p>
                           </motion.div>
                         )}
@@ -425,37 +509,68 @@ export default GetQuote;
 const Testimonials = ({ testimonialsData }) => {
   return (
     <>
-      {testimonialsData.map((testimony, index) => (
-        <div
-          key={index}
-          className='flex flex-col mx-[20px] rounded-[16px] gap-[20px] w-[429px] border backg p-[20px] bg-white items-center'
-        >
-          <div className='flex flex-col gap-[11px]'>
-            <h1 className='text-[18px] font-normal z-1 leading-[27px] '>
-              {testimony?.content}
-            </h1>
-            <div className='flex flex-row gap-[12px] items-center'>
-              <div>
-                <img
-                  src={testimony?.author_image}
-                  className='w-[49px] h-[49px] rounded-[50%]'
-                  alt=''
-                />
+      {testimonialsData &&
+        testimonialsData.slice(0, 3).map((testimony, index) => (
+          <div
+            key={index}
+            className='flex flex-col mx-[20px] rounded-[16px] gap-[20px] w-[429px] border backg p-[20px] bg-white items-center'
+          >
+            <div className='flex flex-col gap-[11px]'>
+              <h1 className='text-[18px] font-normal z-1 leading-[27px] '>
+                {testimony?.content.length > 170
+                  ? `${testimony?.content.substring(0, 170)}...`
+                  : testimony?.content}
+              </h1>
+              <div className='flex flex-row gap-[12px] items-center'>
+                <div>
+                  <img
+                    src={testimony?.author_image}
+                    className='w-[49px] h-[49px] rounded-[50%]'
+                    alt=''
+                  />
+                </div>
+                <span className='flex flex-col gap-2 font-normal text-[14px] profile_col leading-[16px]'>
+                  {testimony?.author},<p>{testimony?.profession}</p>
+                </span>
               </div>
-              <span className='flex flex-col gap-2 font-normal text-[14px] profile_col leading-[16px]'>
-                {testimony?.author},<p>{testimony?.profession}</p>
-              </span>
+            </div>
+            <div className='absolute items-right mt-[-1px] ml-[300px] '>
+              <img
+                src={Media}
+                className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[51px]   '
+                alt=''
+              />
             </div>
           </div>
-          <div className='absolute items-right mt-[-1px] ml-[300px] '>
-            <img
-              src={Media}
-              className='sm:w-[52px] lg:h-[36px] lg:w-[74px] lg:h-[51px]   '
-              alt=''
-            />
-          </div>
-        </div>
-      ))}
+        ))}
     </>
+  );
+};
+const SuccessModal = ({ setSuccess }) => {
+  return (
+    <div className='fixed z-10 h-screen px-3 top-0 left-0 right-0 bottom-0 md:px-0 flex  items-center justify-center bg-transparent'>
+      <div
+        onClick={() => setSuccess(false)}
+        className='w-full z-[4] fixed hover:cursor-pointer h-screen top-0 left-0 right-0 bottom-0 bg-[#000000B2]'
+      ></div>
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.2 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.6,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+          className='z-[20] flex flex-col gap-1 px-2 lg:px-10 w-[300px] lg:w-[360px] h-[310px] bg-white rounded-2xl lg:p-6 items-center justify-center'
+        >
+          <img src={Checked} alt='' />
+          <span className='font-semibold text-2xl'>Success!</span>
+          <span className='max-w-[397px] text-center  text-sm: lgtext-lg'>
+            You have successfully submitted the details! You will get your
+            quotes within three business days
+          </span>
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 };

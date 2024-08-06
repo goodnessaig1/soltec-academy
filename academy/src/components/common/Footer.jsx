@@ -92,9 +92,12 @@ const Footer = () => {
             >
               Contact Us
             </Link>
-            <span className='font-normal text-footerCol text-[16px] leading-[32px]'>
+            <Link
+              to={'/terms-conditions'}
+              className='font-normal text-footerCol text-[16px] leading-[32px]'
+            >
               Terms & Conditions
-            </span>
+            </Link>
           </div>
         </div>
         <div className='flex flex-col gap-4'>

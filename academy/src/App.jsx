@@ -37,6 +37,7 @@ import Newsletter from './components/Admin/Newsletter/Newsletter';
 import Settings from './components/Admin/Settings/Settings';
 import Register from './components/Admin/Register/Register';
 import AdminWorkspace from './components/Admin/Workspace/Workspace';
+import Terms from './components/Terms_Conditions/Terms';
 
 function App() {
   const { user } = useAuth();
@@ -73,6 +74,7 @@ function App() {
         <Route path='/blog/payment-guide' Component={PaymentGuide} />
 
         <Route path='/contact-us' Component={ContactUsAcademy} />
+        <Route path='/terms-conditions' Component={Terms} />
 
         {/* Admin */}
         <Route element={<AuthRoutes />}>

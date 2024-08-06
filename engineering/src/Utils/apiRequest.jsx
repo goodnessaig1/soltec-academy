@@ -1,5 +1,5 @@
 export const AcademyUrl = `${import.meta.env.VITE_ACADEMY_URL}`;
-const BaseURL = `${import.meta.env.VITE_BASE_URL}/api/v1`;
+export const BaseURL = `${import.meta.env.VITE_BASE_URL}/api/v1`;
 
 export async function apiRequest(method, path, data) {
   try {

@@ -5,15 +5,18 @@ import {
   Twitter,
   Whatsapp,
 } from '../../Utils/Assets';
-import { Form, Formik } from 'formik';
+import { Form, Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from '../common/Header';
 import AcademyLogo from '../../assets/academy-logo-bla.png';
-
+import { ProgressBar } from 'react-loader-spinner';
+import Checked from '../../assets/checked.png';
 import { AiFillTikTok } from 'react-icons/ai';
 import Footer from '../common/Footer';
+import { useState, useEffect } from 'react';
+import { apiRequest } from '../../Utils/ApiRequest';
 
 const socialLinks = [
   {
@@ -33,16 +36,32 @@ const socialLinks = [
 ];
 
 const ContactUsAcademy = () => {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    if (success) {
+      timer = setTimeout(() => {
+        setSuccess(false);
+      }, 5000);
+    }
+    return () => clearTimeout(timer);
+  }, [success]);
+
   const handleSubmit = async (values, resetForm) => {
+    setLoading(true);
     try {
-      console.log(values);
-      // await apiRequest('POST', `/testimonials/`, values);
+      await apiRequest('POST', `/contactus/`, values);
       toast.success('Success', {
         position: 'top-right',
       });
       resetForm();
+      setSuccess(true);
+      setLoading(false);
     } catch (error) {
-      console.error('Error uploading file: ', error);
+      setLoading(false);
+      console.error('An error occured: ', error);
       toast.error('An error occured, please try again!', {
         position: 'top-right',
       });
@@ -96,17 +115,20 @@ const ContactUsAcademy = () => {
           <div className='flex flex-col w-full lg:px-4 mdl:px-0 lg:w-[418px] gap-4'>
             <Formik
               initialValues={{
-                fullName: '',
+                full_name: '',
                 email: '',
                 message: '',
+                tag: 'ACADEMY',
               }}
               validationSchema={Yup.object({
-                fullName: Yup.string().required('Required'),
+                full_name: Yup.string().required('Required'),
                 message: Yup.string().required('Required'),
-                email: Yup.string().required('Required'),
+                email: Yup.string()
+                  .email('Invalid email address')
+                  .required('Required'),
               })}
               onSubmit={(values, { resetForm }) => {
-                // handleSubmit(values, resetForm);
+                handleSubmit(values, resetForm);
               }}
             >
               {({ handleChange, handleBlur, errors, touched }) => (
@@ -114,22 +136,22 @@ const ContactUsAcademy = () => {
                   <div className='flex flex-col gap-[6px]'>
                     <label
                       className='font-semibold text-[14px] leading-[21px] text-[#1C1C1C]'
-                      htmlFor='fullName'
+                      htmlFor='full_name'
                     >
                       Full Name
                     </label>
                     <div className='w-full bg-white course_input rounded-[6px]  text-[14px]'>
-                      <input
+                      <Field
                         type='text'
-                        name='fullName'
+                        name='full_name'
                         required
-                        onChange={handleChange('fullName')}
-                        onBlur={handleBlur('fullName')}
+                        onChange={handleChange('full_name')}
+                        onBlur={handleBlur('full_name')}
                         className='outline-none pt-2 text-base pl-4 p-2.5 bg-transparent w-full'
                       />
                     </div>
                     <AnimatePresence>
-                      {touched.fullName && errors.fullName && (
+                      {touched.full_name && errors.full_name && (
                         <motion.div
                           initial={{ height: 0 }}
                           animate={{ height: 'auto' }}
@@ -137,7 +159,7 @@ const ContactUsAcademy = () => {
                           transition={{ duration: 0.7, ease: 'easeInOut' }}
                         >
                           <p className='text-[#2C2C2CB2] text-[#D50000]   text-[10px] font-normal md:text-base'>
-                            {errors.fullName}
+                            {errors.full_name}
                           </p>
                         </motion.div>
                       )}
@@ -151,7 +173,7 @@ const ContactUsAcademy = () => {
                       Email address
                     </label>
                     <div className='w-full bg-white course_input rounded-[6px]  text-[14px]'>
-                      <input
+                      <Field
                         type='email'
                         name='email'
                         required
@@ -183,7 +205,8 @@ const ContactUsAcademy = () => {
                       Message
                     </label>
                     <div className='w-full bg-white course_input rounded-[6px]  text-[14px]'>
-                      <textarea
+                      <Field
+                        as='textarea'
                         type='text'
                         style={{ height: '126px', resize: 'none' }}
                         name='message'
@@ -208,27 +231,36 @@ const ContactUsAcademy = () => {
                       )}
                     </AnimatePresence>
                   </div>
-                  <button
-                    type='submit'
-                    className='text-[16px] hover:opacity-[0.9] text-black bg-[#FEC910] rounded-[8px] font-semibold w-full h-[48px] flex items-center justify-center '
-                  >
-                    SEND MESSAGE
-                  </button>
-                  {/* ) : ( */}
-                  {/* <div className='w-full flex items-center justify-center h-[48px]'>
-                        <ProgressBar
-                          visible={true}
-                          height='80'
-                          width='80'
-                          color='#f1f1f1'
-                          barColor='gray'
-                          borderColor='black'
-                          ariaLabel='progress-bar-loading'
-                          wrapperStyle={{}}
-                          wrapperClass=''
-                        />
-                      </div> */}
-                  {/* )} */}
+                  {!success ? (
+                    <>
+                      {!loading ? (
+                        <button
+                          type='submit'
+                          className='text-[16px] hover:opacity-[0.9] text-black bg-[#FEC910] rounded-lg font-semibold w-full h-12 flex items-center justify-center '
+                        >
+                          SEND MESSAGE
+                        </button>
+                      ) : (
+                        <div className='w-full flex items-center justify-center h-[48px]'>
+                          <ProgressBar
+                            visible={true}
+                            height='80'
+                            width='80'
+                            color='#f1f1f1'
+                            barColor='gray'
+                            borderColor='black'
+                            ariaLabel='progress-bar-loading'
+                            wrapperStyle={{}}
+                            wrapperClass=''
+                          />
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div className='h-12 w-full items-center flex justify-center'>
+                      <img src={Checked} className='w-9' alt='' />
+                    </div>
+                  )}
                 </Form>
               )}
             </Formik>

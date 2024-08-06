@@ -489,19 +489,21 @@ const PaymentModal = ({ data, setOpenModal }) => {
       seats: parseInt(data.numberOfSeates),
     };
     let planId = data.planId;
-    setLoading(true);
-    try {
-      const response = await apiRequest(
-        'POST',
-        `/workspaces/${planId}/book_workspace/`,
-        values,
-      );
-      window.location.href = response.url;
-    } catch (error) {
-      setLoading(false);
-      toast.error('An error occured, please try again', {
-        position: 'top-left',
-      });
+    if (planId && planId) {
+      setLoading(true);
+      try {
+        const response = await apiRequest(
+          'POST',
+          `/workspaces/${planId}/book_workspace/`,
+          values,
+        );
+        window.location.href = response.url;
+      } catch (error) {
+        setLoading(false);
+        toast.error('An error occured, please try again', {
+          position: 'top-left',
+        });
+      }
     }
   };
   return (

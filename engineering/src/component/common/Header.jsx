@@ -108,7 +108,7 @@ const Header = ({ headerCol }) => {
 
           <RouterLink
             to={'/get-quote'}
-            className='font-semibold text-black transition duration-300 ease-in-out hidden w-[141px] h-12 items-center justify-center lg:flex zinde text-nowrap bg-white hover:bg-[#f0f0f0] rounded-[4px] hover:cursor-pointer border border-[#1c1c1c] p-2.5'
+            className='font-semibold text-black transition duration-300 ease-in-out hidden w-[141px] h-12 items-center justify-center lg:flex z-5 text-nowrap bg-white hover:bg-[#f0f0f0] rounded-[4px] hover:cursor-pointer border border-[#1c1c1c] p-2.5'
           >
             <span>GET A QUOTE</span>
           </RouterLink>
