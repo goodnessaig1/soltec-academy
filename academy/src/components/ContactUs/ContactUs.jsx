@@ -53,9 +53,6 @@ const ContactUsAcademy = () => {
     setLoading(true);
     try {
       await apiRequest('POST', `/contactus/`, values);
-      toast.success('Success', {
-        position: 'top-right',
-      });
       resetForm();
       setSuccess(true);
       setLoading(false);
