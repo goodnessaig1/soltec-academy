@@ -93,9 +93,12 @@ const AdminPayment = () => {
                 <h1 className="font-semibold inter__ text-[24px] leading-[30px]">
                   {paymentStats && paymentStats.most_purchased && (
                     <>
-                      {paymentStats?.most_purchased.length > 16
-                        ? `${paymentStats?.most_purchased.substring(0, 16)}...`
-                        : `${paymentStats?.most_purchased}`}
+                      {(paymentStats.most_purchased || "").length > 16
+                        ? `${(paymentStats.most_purchased || "").substring(
+                            0,
+                            16,
+                          )}...`
+                        : `${paymentStats.most_purchased || ""}`}
                     </>
                   )}
                 </h1>
@@ -153,7 +156,6 @@ const AdminPayment = () => {
                     <h1 className="text-[14px] font-semibold leading-[17px]">
                       EMAIL
                     </h1>
-                    {/* <img src={Sort} alt='' /> */}
                   </div>
                 </div>
                 <div className="w-[12%]">
@@ -195,7 +197,6 @@ const AdminPayment = () => {
               </div>
               <hr />
             </div>
-            {/* Data */}
             <div className="px-2">
               {paymentData &&
                 paymentData.map((item, index) => (
@@ -206,8 +207,6 @@ const AdminPayment = () => {
                     }
                     className="flex flex-row hover:cursor-pointer transition duration-300 hover:bg-gray-100 py-2 rounded-md w-full items-start w-full "
                   >
-                    {/* // className='flex flex-row w-full items-start w-full */}
-                    {/* min-h-[48px]' // > */}
                     <div className="w-[10%]">
                       <h1 className="text-[14px] font-normal py-2.5 px-3 leading-[17px]">
                         {moment(item?.date_paid).format("DD MMM YYYY, hh:mmA")}
