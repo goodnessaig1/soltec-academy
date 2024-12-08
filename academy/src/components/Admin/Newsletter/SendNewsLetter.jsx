@@ -3,31 +3,33 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { ProgressBar } from "react-loader-spinner";
 import { toast } from "react-toastify";
+import { adminApiRequest } from "../../../Utils/ApiRequest";
 
 export const SendNewsLetter = ({ toggle }) => {
-  const [title, setTitle] = useState("");
+  const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const handleSubmit = async () => {
     let data = {
-      title,
+      subject,
       message,
     };
-    console.log(data);
     try {
       setLoading(true);
-      // const response = await adminApiRequest("POST", `/workspaces/`, data);
+      await adminApiRequest("POST", `/newsletters/send/`, data);
       toast.success("Success", {
         position: "top-right",
       });
-      setLoading(false);
-      // console.log(response)
+      setMessage("");
+      setSubject("");
+      toggle();
     } catch (error) {
-      setLoading(false);
       console.log(error);
       toast.error("An error occured !", {
         position: "top-left",
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,15 +63,15 @@ export const SendNewsLetter = ({ toggle }) => {
                   className="font-semibold text-[14px] leading-[21px]"
                   htmlFor="Plan"
                 >
-                  Title
+                  Subject
                 </label>
                 <div className="w-full course_input px-2.5 pl-4 flex justify-between items-center rounded-[12px] h-10 text-[14px]">
                   <input
                     type="text"
-                    name="price"
+                    name="subject"
                     required
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
                     className="w-full outline-none bg-transparent focus:outline-none"
                   />
                 </div>
@@ -84,8 +86,9 @@ export const SendNewsLetter = ({ toggle }) => {
                 <div className="w-full course_input px-2.5 pl-4 flex justify-between items-center rounded-[12px] text-[14px]">
                   <textarea
                     rows={4}
+                    cols={50}
                     type="text"
-                    name="price"
+                    name="message"
                     required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
