@@ -38,6 +38,7 @@ import Settings from "./components/Admin/Settings/Settings";
 import Register from "./components/Admin/Register/Register";
 import AdminWorkspace from "./components/Admin/Workspace/Workspace";
 import Terms from "./components/Terms_Conditions/Terms";
+import UnsubscribeSuccess from "./components/Unsubscribe/Unsubscribe";
 
 function App() {
   const { user } = useAuth();
@@ -75,6 +76,8 @@ function App() {
 
         <Route path="/contact-us" Component={ContactUsAcademy} />
         <Route path="/terms-conditions" Component={Terms} />
+
+        <Route path="/unsubscribe/:email" Component={UnsubscribeSuccess} />
 
         {/* Admin */}
         <Route element={<AuthRoutes />}>

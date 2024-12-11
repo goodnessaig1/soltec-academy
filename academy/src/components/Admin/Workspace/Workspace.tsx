@@ -355,7 +355,7 @@ export const EditePlan = ({
     };
     try {
       setLoading(true);
-      await adminApiRequest("PATCH", `/workspaces/${planData.id}`, data);
+      await adminApiRequest("PATCH", `/workspaces/${planData.id}/`, data);
       toast.success("Success", {
         position: "top-right",
       });
