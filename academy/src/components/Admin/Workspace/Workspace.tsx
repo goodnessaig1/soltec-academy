@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../Common/Layout";
-import { AddRound, ArrowDown, BackArrow, Edit } from "../../../Utils/Assets";
+import { ArrowDown, BackArrow, Edit, PlusW } from "../../../Utils/Assets";
 import { useNavigate } from "react-router-dom";
 import { adminApiRequest, apiRequest } from "../../../Utils/ApiRequest";
 import WorkspaceBookings from "./WorkspaceBookings";
@@ -8,12 +8,7 @@ import { LoadingFetching } from "../Courses/LoadingFetching";
 import { ProgressBar } from "react-loader-spinner";
 import { AnimatePresence, motion } from "framer-motion";
 import { toast } from "react-toastify";
-
-// const defaultPlans = [
-//   { price: 3000, id: 1, title: "DAILY" },
-//   { price: 12000, id: 1, title: "WEEKLY" },
-//   { price: 38000, id: 1, title: "MONTHLY" },
-// ];
+import { MdOutlineEdit } from "react-icons/md";
 
 export enum Plans {
   DAILY = "DAILY",
@@ -27,6 +22,7 @@ const AdminWorkspace: React.FC = () => {
   const [workspaceBookings, setWorkspaceBookings] = useState(null);
   const [loading, setLoading] = useState(true);
   const [openCreatePlans, setOpenCreatePlans] = useState(false);
+  const [openUpdateSeats, setOpenUpdateSeats] = useState(false);
   const [openEditPlans, setOpenEditPlans] = useState(false);
 
   const planType = [
@@ -86,6 +82,7 @@ const AdminWorkspace: React.FC = () => {
           plans={plans}
         />
       )}
+
       {openEditPlans && (
         <EditePlan
           planType={planType}
@@ -94,6 +91,11 @@ const AdminWorkspace: React.FC = () => {
           getPlans={getPlans}
         />
       )}
+
+      {openUpdateSeats && (
+        <UpdateSeats setOpenUpdateSeats={setOpenUpdateSeats} />
+      )}
+
       <div className="w-full inter_ flex flex-col mb-24 gap-12 px-9">
         <div className="flex flex-row justify-between items-center ">
           <div
@@ -102,14 +104,25 @@ const AdminWorkspace: React.FC = () => {
           >
             <img src={BackArrow} alt="" />
           </div>
-          <div
-            onClick={() => setOpenCreatePlans(true)}
-            className="w-[150px] h-12 flex flex-row items-center justify-center px-4 py-[18px] hover:bg-[#f1f1f1] hover:cursor-pointer transition duration-300 rounded-[16px] gap-[8px] addCourse"
-          >
-            <img src={AddRound} alt="" />
-            <h1 className="font-medium text-nowrap text-[16px] leading-[24px]  ">
-              Create Plan
-            </h1>
+          <div className="flex flex-row items-center gap-4">
+            <div
+              onClick={() => setOpenUpdateSeats(true)}
+              className="w-[150px] h-12 flex text-gray-600 flex-row items-center justify-center px-2 py-[18px] hover:bg-[#f1f1f1] hover:cursor-pointer transition duration-300 rounded-[16px] gap-1 addCourse"
+            >
+              <h1 className="font-medium text-nowrap text-[16px] leading-[24px]  ">
+                Update Seats
+              </h1>
+              <MdOutlineEdit size={20} />
+            </div>
+            <div
+              onClick={() => setOpenCreatePlans(true)}
+              className="w-[150px] h-12 bg-lBlue  flex flex-row items-center justify-center px-4 py-[18px] hover:bg-[#f1f1f1 hover:cursor-pointer transition duration-300 rounded-[16px] gap-[8px] addCourse"
+            >
+              <img src={PlusW} alt="" />
+              <h1 className="font-medium hover:opacity-[94%]  text-nowrap text-[16px] leading-[24px] text-white">
+                Create Plan
+              </h1>
+            </div>
           </div>
         </div>
         {!loading ? (
@@ -446,6 +459,106 @@ export const EditePlan = ({
                     required
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    className="w-full outline-none bg-transparent focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              {!loading ? (
+                <button
+                  className="w-full h-14 rounded-[16px] flex items-center justify-center bg-[#DDEAFF] hover:opacity-[0.7] duration-300 transition "
+                  type="submit"
+                  onClick={handleSubmit}
+                >
+                  <span className="text-[16px] font-semibold text-[#0043CE] leading-[24px]">
+                    Update
+                  </span>
+                </button>
+              ) : (
+                <div className="w-full flex items-center justify-center h-14">
+                  <ProgressBar
+                    visible={true}
+                    height="60"
+                    width="60"
+                    barColor="gray"
+                    borderColor="black"
+                    ariaLabel="progress-bar-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                  />
+                </div>
+              )}
+            </form>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export const UpdateSeats = ({ setOpenUpdateSeats }) => {
+  const [loading, setLoading] = useState(false);
+  const [seats, setSeats] = useState("");
+
+  const handleSubmit = async () => {
+    let data = { seats };
+    try {
+      setLoading(true);
+      await adminApiRequest("PUT", `/workspaces/update_total_seats/`, data);
+      toast.success("Success", {
+        position: "top-right",
+      });
+      setSeats("");
+      setOpenUpdateSeats(false);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+      toast.error("An error occured !", {
+        position: "top-left",
+      });
+    }
+  };
+
+  return (
+    <div className="fixed z_indd h-screen top-0 left-0 right-0 bottom-0 px-7 md:px-0 flex  items-center justify-center bg-transparent">
+      <div
+        onClick={() => setOpenUpdateSeats(false)}
+        className="w-full z_indd fixed hover:cursor-pointer h-screen top-0 left-0 right-0 bottom-0 px-7 md:px-0 flex  items-center justify-center bg-dOverlay "
+      ></div>
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.2 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.6,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+          className="bg-bg3 z_ind flex flex-col w-[334px] bg-white rounded-[24px] p-6 "
+        >
+          <div className="flex flex-col items-center gap-4 w-full">
+            <h1 className="text-[16px] leading-[24px] text-center w-full font-semibold">
+              UPDATE SEATS
+            </h1>
+            <form
+              action=""
+              className="w-full flex flex-col gap-5"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <div className="flex flex-col gap-1.5">
+                <label
+                  className="font-semibold text-[14px] leading-[21px]"
+                  htmlFor="Seat"
+                >
+                  Number of seats
+                </label>
+                <div className="w-full course_input px-2.5 pl-4 flex justify-between items-center rounded-[12px] h-10 text-[14px]">
+                  <input
+                    type="number"
+                    name="price"
+                    required
+                    value={seats}
+                    onChange={(e) => setSeats(e.target.value)}
                     className="w-full outline-none bg-transparent focus:outline-none"
                   />
                 </div>

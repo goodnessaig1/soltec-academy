@@ -7,6 +7,7 @@ import { Confett, Print } from "../../../Utils/Assets";
 import { apiRequest } from "../../../Utils/ApiRequest";
 import Header from "../../common/Header";
 import Footer from "../../common/Footer";
+import { GiCancel } from "react-icons/gi";
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -37,7 +38,7 @@ const VerifyPayment = () => {
     try {
       const response = await apiRequest(
         "GET",
-        `/courses/verify_course_enrollment_payment/?reference=${reference}`,
+        `/courses/verify_course_enrollment_payment/?reference=${reference}`
       );
       setLoading(false);
       if (response.status == "SUCCESS") {
@@ -107,15 +108,25 @@ const VerifyPayment = () => {
                                   {paymentData?.transaction_id}
                                 </div>
                               </div>
-                              <div className="w-full flex bg-extraGray  p-4">
-                                <div className="w-1/2 font-normal text-[14px] leading-[18.2px]">
-                                  Purchased Item
+                              <div className="flex flex-col">
+                                <div className="w-full flex bg-extraGray px-4 py-2.5">
+                                  <div className="w-1/2 font-normal text-[14px] leading-[18.2px]">
+                                    Course
+                                  </div>
+                                  <div className="w-1/2 font-normal text-[14px] leading-[18.2px]">
+                                    {paymentData?.course}
+                                  </div>
                                 </div>
-                                <div className="w-1/2 font-normal text-[14px] leading-[18.2px]">
-                                  N
-                                  {parseFloat(
-                                    paymentData?.amount_paid,
-                                  ).toLocaleString()}
+                                <div className="w-full flex bg-extraGray px-4 py-2.5">
+                                  <div className="w-1/2 font-normal text-[14px] leading-[18.2px]">
+                                    Amount paid
+                                  </div>
+                                  <div className="w-1/2 font-normal text-[14px] leading-[18.2px]">
+                                    N
+                                    {parseFloat(
+                                      paymentData?.amount_paid
+                                    ).toLocaleString()}
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -126,7 +137,7 @@ const VerifyPayment = () => {
                               <div className="w-1/2 font-semibold text-[14px] leading-[18.2px]">
                                 N
                                 {parseFloat(
-                                  paymentData?.amount_paid,
+                                  paymentData?.amount_paid
                                 ).toLocaleString()}
                               </div>
                             </div>
@@ -171,7 +182,17 @@ const VerifyPayment = () => {
               )}
             </>
           ) : (
-            <div className="">Failed</div>
+            <div className="w-full h-screen flex flex-col gap-2 items-center justify-center">
+              <GiCancel size={40} color="red" />
+              <div className="">Payment verification failed</div>
+              <span className="text-xs">Please try again</span>
+              <button
+                onClick={() => window.location.reload()}
+                className="bg-blue-500 mt-6 text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-600 transition duration-200"
+              >
+                Try Again
+              </button>
+            </div>
           )}
         </>
       ) : (

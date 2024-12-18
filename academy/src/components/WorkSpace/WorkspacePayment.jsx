@@ -97,7 +97,7 @@ const WorkspaceVerifyPayment = () => {
                                   Purchased Item
                                 </div>
                                 <div className="w-1/2 font-semibold text-[14px] leading-[18.2px]">
-                                  x {paymentData?.seats} seats
+                                  X{paymentData?.seats} Seat
                                 </div>
                               </div>
                               <div className="w-full flex bg-extraGray  p-[16px]">

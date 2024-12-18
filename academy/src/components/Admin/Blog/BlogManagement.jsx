@@ -1,11 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import {
-  DeleteRed,
-  EditIcon,
-  PlusW,
-  SearchGray,
-  Unavailable,
-} from "../../../Utils/Assets";
+import { DeleteRed, EditIcon, PlusW, Unavailable } from "../../../Utils/Assets";
 import Layout from "../Common/Layout";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -38,8 +32,8 @@ const BlogManagement = () => {
     }
   };
 
-  const handleDelete = async id => {
-    const updatedData = blogs.filter(item => item.id !== id);
+  const handleDelete = async (id) => {
+    const updatedData = blogs.filter((item) => item.id !== id);
     setBlogs(updatedData);
     try {
       await adminApiRequest("DELETE", `/blogs/${id}`);
@@ -75,8 +69,8 @@ const BlogManagement = () => {
 
   const toggleMarked = (index, blog) => {
     if (markedItems.includes(index)) {
-      setIds(ids.filter(id => id !== blog?.id));
-      setMarkedItems(markedItems.filter(item => item !== index));
+      setIds(ids.filter((id) => id !== blog?.id));
+      setMarkedItems(markedItems.filter((item) => item !== index));
     } else {
       setIds([...ids, blog?.id]);
       setMarkedItems([...markedItems, index]);
@@ -171,7 +165,7 @@ const BlogManagement = () => {
                           to={`/blog/${blog?.id}/${
                             blog.author_name
                           }/${encodeURIComponent(
-                            blog?.title.substring(0, 20),
+                            blog?.title.substring(0, 20)
                           )}`}
                         >
                           <div className="w-full px-[16px] mt-2 gap-4">
@@ -186,7 +180,7 @@ const BlogManagement = () => {
                                   ? `${
                                       blog?.short_description?.substring(
                                         0,
-                                        120,
+                                        120
                                       ) + ".."
                                     }`
                                   : `${blog?.short_description}`}
