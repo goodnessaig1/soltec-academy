@@ -25,7 +25,7 @@ const Dashboard = () => {
     try {
       const response = await adminApiRequest(
         "GET",
-        `/courses/course_purchases/?year=2024`,
+        `/courses/course_purchases/?year=2024`
       );
       setLoading(false);
       setPaymentData(response?.results);
@@ -37,7 +37,7 @@ const Dashboard = () => {
     try {
       const response = await adminApiRequest(
         "GET",
-        `/workspaces/workspace_bookings/?year=2024`,
+        `/workspaces/workspace_bookings/?year=2024`
       );
       setWorkspaceBookings(response?.results);
     } catch (error) {
@@ -176,7 +176,7 @@ const Dashboard = () => {
                     blogs.slice(0, 2).map((blog, index) => (
                       <div
                         key={index}
-                        className="blog-card2 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[423px] flex flex-col gap-4 pb-5 rounded-[36px] "
+                        className="blog-card2 w-[340px] lg:w-[395px] sm:h-[386px] lg:h-[443px] flex flex-col gap-4 pb-5 rounded-[36px] "
                       >
                         <img
                           src={blog?.featured_image}
