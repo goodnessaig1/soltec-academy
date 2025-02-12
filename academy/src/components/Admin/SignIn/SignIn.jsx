@@ -28,15 +28,14 @@ const SignIn = () => {
     try {
       const response = await apiRequest("POST", `/users/login/`, values);
       const { token } = response;
-      if (response?.is_admin) {
+      const { is_admin, is_super_admin } = response || {};
+      if (is_admin || is_super_admin) {
         Cookies.set("access_token", token.access);
         Cookies.set("refresh_token", token.refresh);
         navigate("/admin/dashboard");
       } else {
         setFieldError("email", "You are no longer an admin");
-        toast.error("You are no longer an admin", {
-          position: "top-right",
-        });
+        toast.error("You are no longer an admin", { position: "top-right" });
       }
     } catch (error) {
       setSubmitting(false);
